@@ -16,13 +16,6 @@ namespace Mobit
 
 
             routes.MapRoute(
-           "yuklemeIndir",
-           "Yuklemeler/{Slug}",
-            new { controller = "Destek", action = "YuklemeIndir", },
-            new[] { "Mobit.Controllers" }
-            );
-
-            routes.MapRoute(
             name: "Hakkimizda",
              url: "Sayfa/{Slug}",
              defaults: new { controller = "Sayfalar", action = "Sayfalar", Slug = "" }
@@ -80,12 +73,6 @@ namespace Mobit
             new[] { "Mobit.Controllers" }
           );
 
-            routes.MapRoute(
-          "yuklemeler",
-           "Yuklemeler",
-           new { controller = "Destek", action = "Yuklemeler", },
-           new[] { "Mobit.Controllers" }
-          );
 
             routes.MapRoute(
                "Default",
