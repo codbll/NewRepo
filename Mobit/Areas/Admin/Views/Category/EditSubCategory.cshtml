@@ -1,0 +1,129 @@
+﻿@model Mobit.Data.Context.AltKategoriler
+@{
+    ViewBag.Title = "Alt Kategori Güncelle";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Güncelle</h2>
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal ">
+
+        <hr />
+        @Html.HiddenFor(model => model.AltKategoriId)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="col-md-8">
+                <p class="text-danger">
+                    @TempData["hata"]
+
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.KategoriId, "KategoriId", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.DropDownList("KategoriId", ViewBag.kategoriler as SelectList, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AltKategoriAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.EditorFor(model => model.AltKategoriAdi, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.AltKategoriAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Url, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Url, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Url, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sira, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-2">
+                @Html.EditorFor(model => model.Sira, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Sira, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Url</label>
+            <div class="col-md-5">
+
+                <label>@Html.CheckBox("cbSlug", false) Url Değiştir</label>
+                @Html.EditorFor(model => model.Slug, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Slug, "", new { @class = "text-danger", required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ikon, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                <input type="file" name="yuklenecekDosya" />
+                @*@Html.EditorFor(model => model.Ikon, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Ikon, "", new { @class = "text-danger" })*@
+
+                @if (Model.Ikon != null)
+                {
+                    <br />
+                    <img src="~/Upload/icon/@Model.Ikon" width="150" height="150" class="img-responsive" />
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aktif, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.CheckBoxFor(model => model.Aktif, htmlAttributes: new { @checked = "checked" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Area, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+
+                @Html.CheckBoxFor(model => model.Area, htmlAttributes: new { @checked = "checked" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Depart, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+
+                @Html.CheckBoxFor(model => model.Depart, htmlAttributes: new { @checked = "checked" })
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <input type="submit" value="Kategoriyi Güncelle" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Listeye Dön", "SubCategory", "Category") -
+                <a href="/Admin/Category/DeleteSubCategory/@Model.AltKategoriId?returnUrl=@Kontrol.SayfaUrlAl(2)" onclick="return confirm('Bu kategoriyi silmek istediğinizden emin misiniz?')">Kategoriyi Sil</a>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</form>
+
+
+
+@section scripts{
+
+    @Scripts.Render("~/admin/bundles/jqueryval")
+}
+
+
+
+

@@ -1,0 +1,83 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewBag.Title | Mobit Bilişim </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <!-- Add local styles, mostly for plugins css file -->
+    @if (IsSectionDefined("Styles"))
+    {@RenderSection("Styles", required: false)}
+
+    <!-- Add jQuery Style direct - used for jQGrid plugin -->
+    <link href="@Url.Content("~/Areas/Admin/Scripts/plugins/jquery-ui/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+    <!-- Primary Inspinia style -->
+    @Styles.Render("~/admin/Content/css")
+    @Styles.Render("~/admin/font-awesome/css")
+
+</head>
+<body>
+
+    <!-- Skin configuration box -->
+   @*@Html.Partial("_SkinConfig")*@ 
+    <!-- Wrapper-->
+    <!-- PageClass give you ability to specify custom style for specific view based on action -->
+    <div id="wrapper" class="">
+
+        <!-- Navigation -->
+        @Html.Partial("_Navigation")
+
+        <!-- Page wraper -->
+        <div id="page-wrapper" class="gray-bg ">
+
+            <!-- Top Navbar -->
+            @*@Html.Action("Notify", "Home")*@
+            @Html.Partial("_TopNavbar")
+
+            <!-- Main view  -->
+            @RenderBody()
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="pull-right">
+                   
+                </div>
+                <div>
+                    Mobit Bilişim &copy; 2016
+                </div>
+            </div>
+
+
+        </div>
+        <!-- End page wrapper-->
+        <!-- Right Sidebar -->
+        @Html.Partial("_RightSidebar")
+
+    </div>
+    <!-- End wrapper-->
+    <!-- Section for main scripts render -->
+    @Scripts.Render("~/admin/bundles/jquery")
+    @Scripts.Render("~/admin/bundles/bootstrap")
+    @Scripts.Render("~/admin/plugins/slimScroll")
+    @Scripts.Render("~/admin/bundles/inspinia")
+
+    <!-- Skin config script - only for demo purpose-->
+    @Scripts.Render("~/admin/bundles/skinConfig")
+
+    <!-- Handler for local scripts -->
+    @RenderSection("scripts", required: false)
+    
+    <script type="text/javascript" src="@Url.Content("~/ckeditor/ckeditor.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/ckfinder/ckfinder.js")"></script>
+    <script type="text/javascript">
+
+    CKFinder.setupCKEditor(null, '@Url.Content("~/ckfinder/")');
+    </script>
+</body>
+</html>

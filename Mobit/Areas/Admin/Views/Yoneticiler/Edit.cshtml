@@ -1,0 +1,76 @@
+﻿@model Mobit.Data.Context.Adminler
+
+@{
+    ViewBag.Title = "Güncelle";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Haber Güncelle </h2>
+
+<form method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal ">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.HiddenFor(model => model.AdminId)
+            <label class="control-label col-md-2">
+                Yönetici Rolü
+            </label>        
+                <div class="col-md-4">
+                @Html.DropDownList("RolId", null, "Rol Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.AdSoyad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.AdSoyad, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.AdSoyad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sifre, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.PasswordFor(model => model.Sifre, new { @class = "form-control"})
+                @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aktif, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-3">
+                @Html.CheckBoxFor(model => model.Aktif, htmlAttributes: new { @checked = "checked" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a href="/Admin/Yoneticiler/Delete/@Model.AdminId" onclick="return confirm('Dikkat: Bu kaydı silmek istediğinizden emin misiniz?')" class="btn btn-danger pull-right">Sil</a>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                @Html.ActionLink("Listeye Dön", "Index")
+                <br />
+                <br />
+            </div>
+        </div>
+
+    </div>
+
+
+</form>
+
+

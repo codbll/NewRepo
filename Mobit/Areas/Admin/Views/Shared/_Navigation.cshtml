@@ -1,0 +1,95 @@
+﻿
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="sidebar-collapse">
+        <ul class="nav metismenu" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <span>
+                        @*<img alt="image" class="img-circle" src="~/Images/angular_logo.png" />*@
+                    </span>
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        <span class="clear">
+                            <span class="block m-t-xs">
+                                <strong class="font-bold">@Session["AdSoyad"]</strong>
+                            </span> <span class="text-muted text-xs block">Bilgilerim <b class="caret"></b></span>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                        <li><a href="/Admin/Uye/Profil">Hesabım</a></li>
+
+                        <li class="divider"></li>
+                        <li><a onclick="return confirm('Çıkış yapmak istediğinizden emin misiniz?')" href="@Url.Action("Logout", "Uye")">Çıkış Yap</a></li>
+                    </ul>
+                </div>
+                <div class="logo-element">
+                    @*Mobil Sürüm*@
+                </div>
+            </li>
+            <li>
+                <a href="/" target="_blank"><i class="fa fa-home"></i> <span class="nav-label">Siteye Git</span> </a>
+            </li>
+            <li class="active">
+                <a href="/Admin/Home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span> <span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li><a href="/Admin/Home">Ana Sayfa</a></li>
+                    <li><a href="/Admin/Uye/Profil">Hesabım</a></li>
+
+                </ul>
+            </li>
+
+
+            @if (Session["Yetki"] != null && Session["Yetki"].ToString() == "Admin")
+            {
+
+
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Kategori Yönetimi</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/Admin/Category">Kategoriler</a></li>
+                        <li><a href="/Admin/Category/SubCategory">Alt Kategoriler</a></li>
+                        
+                    </ul>
+                </li>
+
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Ürün Yönetimi</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/Admin/Product/Create">Yeni Kurum</a></li>
+                        <li><a href="/Admin/Product">Kurumlar</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">İçerik Yönetimi</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/Admin/Slider">Slider</a></li>
+                        <li><a href="/Admin/Solution">Çözümler</a></li>
+                        <li><a href="/Admin/News">Haberler</a></li>
+                        <li><a href="/Admin/Pages">Sayfalar</a></li>
+                        <li><a href="/Admin/Gallery">Galeri</a></li>
+                        <li><a href="/Admin/Ayarlar/iletisim">İletişim</a></li>
+                        <li><a href="/Admin/Ayarlar/Meta">Ayarlar</a></li>
+                        <li><a href="/Admin/Ayarlar/Popup">Popup</a></li>
+                        <li><a href="/Admin/Ayarlar/Bulten">Bülten Kayıtları</a></li>
+                        <li><a href="/Admin/Yoneticiler">Yöneticiler</a></li>
+                        <li><a href="/Admin/DosyaYoneticisi">Dosya Yöneticisi</a></li>
+
+
+                    </ul>
+                </li>
+
+                <li class="active">
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">API</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="/Admin/Api">Siteler</a></li>
+                    </ul>
+                </li>
+
+            }
+            
+        </ul>
+
+    </div>
+</nav>

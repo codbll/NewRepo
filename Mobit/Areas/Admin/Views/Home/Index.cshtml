@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Ana Sayfa";
+}
+
+@Html.Partial("/Areas/Admin/Views/_Partial/Urunler.cshtml", ViewData["urunler"])
+<div class="row">
+    <div class="col-lg-12">
+
+      
+    </div>
+
+
+</div>
+
+
+@section Styles {
+    @Styles.Render("~/admin/Content/plugins/dataTables/dataTablesStyles")
+}
+
+@section scripts{
+@Scripts.Render("~/admin/plugins/dataTables")
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $('.dataTables-example').DataTable({
+                "order": [[0, "desc"]],
+                //"scrollX": true,
+                "lengthMenu": [[50, 75, 100, -1], [50, 75, 100, "All"]],
+                dom: '<"html5buttons"B>lTfgitp',
+                responsive: true,
+                buttons: [
+                    { extend: 'copy' },
+                    { extend: 'csv' },
+                    { extend: 'excel', title: 'Liste' },
+                    { extend: 'pdf', title: 'Liste' },
+
+
+                    {
+
+                        extend: 'print',
+                        customize: function (win) {
+                            $(win.document.body).addClass('white-bg');
+                            $(win.document.body).css('font-size', '10px');
+
+                            $(win.document.body).find('table')
+                                    .addClass('compact')
+                                    .css('font-size', 'inherit');
+                        }
+                    }
+                ]
+
+            });
+
+
+
+
+
+        });
+
+
+</script>
+
+
+}

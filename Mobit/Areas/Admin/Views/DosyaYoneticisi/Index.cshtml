@@ -1,0 +1,227 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.IPagedList<Mobit.Data.Context.DosyaYoneticisi>
+@{
+    ViewBag.Title = "Dosya Yöneticisi";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("~/Areas/Admin/Views/_Partial/fileUpload.cshtml")
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-lg-10">
+        <h2>Tüm Dosyalar</h2>
+    </div>
+    <div class="col-lg-2">
+
+    </div>
+</div>
+
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-content">
+                    <div class="file-manager">
+                        <input id="txtAra" class="search-choice form-control" placeholder="Ara..." required />
+                        <br />
+                        <a id="btnAra" class="btn btn-primary btn-block">Ara</a>
+                        <div class="hr-line-dashed"></div>
+                        <div id="divBilgi" class="hidden">
+                            <h5>DOSYA BİLGİSİ</h5>
+                            <dl>
+                                <dt>Dosya Adı:</dt>
+                                <dd id="dosyaAdi">:</dd>
+                                <dt>Boyut</dt>
+                                <dd id="boyut"></dd>
+                                <dt>Dosya Türü:</dt>
+                                <dd id="dosyaTuru"></dd>
+                                <dt>Yükleme Tarihi:</dt>
+                                <dd id="yuklemeTarihi"></dd>
+                                <dt>Dosya Url:</dt>
+                                <dd id="dosyaUrl"></dd>
+                            </dl>
+
+
+                            <a id="sil" onclick="return confirm('Bu dosyayı silmek istediğinizden emin misiniz?')" class="btn btn-danger">Dosyayı Sil</a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-9 animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    @foreach (var item in Model)
+                    {
+
+
+                        <div class="file-box">
+                            <div class="file">
+                                <a onclick="Goruntule(@item.DosyaId)">
+                                    <span class="corner"></span>
+
+                                    @if (item.Uzanti == ".jpg" || item.Uzanti == ".png" || item.Uzanti == ".gif" || item.Uzanti == ".jpeg")
+                                    {
+                                <div class="image">
+                                    <img alt="image" class="img-responsive" title="@item.DosyaAdi" src="~/Upload/files/@item.Url">
+                                </div>
+                                    }
+                                    else
+                                    {
+                                <div class="icon" title="@item.DosyaAdi">
+                                    <i class="fa fa-file"></i>
+                                </div>
+                                    }
+                                    <div class="file-name">
+                                        @item.DosyaAdi
+                                        <br />
+
+                                        <small>Yükleme: @item.Tarih</small>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    }
+                    <div class="col-md-12">
+                        <ul class="pagination pull-left">
+
+                            @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "DosyaYoneticisi", new { Sayfa = _sayfaNo }))
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+        </div>
+
+
+    </div>
+</div>
+
+@Scripts.Render("~/admin/bundles/jquery")
+
+
+<script>
+    function Goruntule(e) {
+        var dosyaId = e;
+
+        if (dosyaId != null) {
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/DosyaYoneticisi/bilgiGetir",
+                data: { DosyaId: dosyaId },
+                success: function (result) {
+                    $("#divBilgi").removeClass("hidden");
+
+                    $("#dosyaAdi").text(result["DosyaAdi"]);
+
+                    $("#boyut").text(formatBytes(result["Boyut"]));
+                    $("#dosyaTuru").text(result["Uzanti"]);
+
+                    var dateString = dateConvert(result["Tarih"]);
+
+                    $("#yuklemeTarihi").text(dateString);
+
+                    $("#dosyaUrl").html("<a target='_blank' href='/upload/files/" + result["Url"] + " '>Görüntüle</a>");
+                    var returnUrl = window.location.pathname;
+                    $("#sil").attr("href", "/Admin/DosyaYoneticisi/Sil/" + result["DosyaId"] + "?returnUrl=" + returnUrl);
+
+                },
+                error: function (result) {
+                    alert("Bir hata oluştu");
+                }
+
+            });
+        }
+    };
+
+    function formatBytes(bytes, decimals) {
+        if (bytes == 0) return '0 Byte';
+        var k = 1000;
+        var dm = decimals + 1 || 1;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+    }
+
+    function dateConvert(date) {
+        var dateString = date.substr(6);
+        var currentTime = new Date(parseInt(dateString));
+        var month = currentTime.getMonth() + 1;
+        var day = currentTime.getDate();
+        var year = currentTime.getFullYear();
+        var date = day + "/" + month + "/" + year;
+        return date;
+    }
+
+
+    $("#btnAra").click(function () {
+        window.location.replace("/Admin/DosyaYoneticisi/?ara=" + $("#txtAra").val());
+
+    });
+
+</script>
+
+ @*file upload*@
+@Styles.Render("~/admin/Content/plugins/dropzone/dropZoneStyles")
+
+
+@Scripts.Render("~/admin/plugins/dropZone")
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            Dropzone.options.myAwesomeDropzone = {
+
+                autoProcessQueue: false,
+                parallelUploads: 100,
+                //maxFilesize:1,
+                addRemoveLinks: true,
+                maxFiles:10,
+                //dictCancelUpload: true,
+                acceptedFiles: "image/jpeg,image/jpg,image/png,image/gif,.rar,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pps",
+                paramName: "files",
+
+                // Dropzone settings
+                init: function () {
+                    var myDropzone = this;
+
+                    this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        myDropzone.processQueue();
+                    });
+                    this.on("sendingmultiple", function () {
+
+                    });
+                    this.on("successmultiple", function (files, response) {
+
+                    });
+                    this.on("errormultiple", function (files, response) {
+                        alert("Bir hata oluştu, lütfen tekrar deneyiniz.")
+                    });
+                    this.on('success', function () {
+                        //var args = Array.prototype.slice.call(arguments);
+
+                        //console.log(args);
+
+                        //location.reload();
+                    });
+
+
+                }
+
+            }
+
+        });
+</script>

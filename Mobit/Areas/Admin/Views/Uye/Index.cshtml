@@ -1,0 +1,56 @@
+﻿@model Mobit.Data.Context.Adminler
+@{
+    ViewBag.Title = "Giriş Yap";
+    Layout = "~/Areas/Admin/Views/Shared/_Login_Layout.cshtml";
+}
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <div>
+
+            <h1 class="logo-name"></h1> <br /><br />
+
+        </div>
+        <h3>Oturum Açın</h3>
+        @using (Html.BeginForm("Index", "Uye", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="m-t">
+                <div class="form-group">
+                    <p class="text-danger">
+                        @ViewBag.msg
+
+                    </p>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Mail, new { @class = "control-label pull-left" })
+                    @Html.ValidationMessageFor(m => m.Mail, "", new { @class = "text-danger pull-left" })
+
+                    @Html.TextBoxFor(model => model.Mail, new { @class = "form-control" })
+
+
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Sifre, new { @class = "control-label pull-left" })
+                    @Html.ValidationMessageFor(model => model.Sifre, "", new { @class = "text-danger pull-left" })
+
+                    @Html.PasswordFor(model => model.Sifre, new { @class = "form-control", @required = "required" })
+
+
+                </div>
+                <button type="submit" class="btn btn-primary block full-width m-b">Giriş Yap</button>
+
+                <a href="Uye/SifremiUnuttum"><small>Şifremi Unuttum</small></a>
+                @*<a class="btn btn-sm btn-white btn-block" href="@Url.Action("Yeni", "Uye")">Yeni Üyelik Oluşturun</a>*@
+            </div>
+        }
+    </div>
+</div>
+
+
+@section scripts{
+
+    @Scripts.Render("~/admin/bundles/jqueryval")
+}

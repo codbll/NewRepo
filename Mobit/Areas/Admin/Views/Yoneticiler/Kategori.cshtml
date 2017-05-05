@@ -1,0 +1,118 @@
+﻿@model Tuple<List<Mobit.Data.Context.Kategoriler>, List<Mobit.Data.Context.YoneticiKategorileri>>
+
+@{
+    ViewBag.Title = "Yönetici Kategorileri";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yönetici Kategorileri</h2>
+
+<div class="form-horizontal ">
+
+
+    <div class="form-group">
+
+        <div class="col-md-4 col-sm-offset-1">
+            <div>
+
+                <p>
+                    <h2>Tüm Kategoriler</h2>
+                </p>
+                <input type="hidden" value="@ViewBag.yoneticiId" id="yonetici" />
+                @foreach (var item in Model.Item1)
+                {
+                    <div class="checkbox">
+                        <input id="@item.KategoriId" type="checkbox" onclick="kategori(@item.KategoriId)">
+                        <label for="@item.KategoriId">
+                            @item.KategoriAdi
+                        </label>
+                    </div>
+                }
+                <br />
+            </div>
+        </div>
+        <div class="col-md-4 col-sm-offset-1">
+            <div>
+
+                <p>
+                    <h2>Yöneticinin yetkisi dahilindeki kategoriler</h2>
+                </p>
+                @foreach (var item in Model.Item2)
+                {
+                    <div class="checkbox">
+                        <input id="@item.KategoriId" type="checkbox" checked onclick="kategoriCikart(@item.Id)">
+                        <label for="@item.KategoriId">
+                            @item.Kategoriler.KategoriAdi
+                        </label>
+                    </div>
+                }
+                <br />
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-1 col-md-8">
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    function kategori(e) {
+        var KategoriId = e;
+
+        if (confirm('Yöneticiye bu kategoriyi atamak istediğinizden emin misiniz?')) {
+            $(this).removeAttr('checked');
+
+            if (KategoriId != null && KategoriId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/Yoneticiler/KategoriEkle",
+                    data: { KategoriId: KategoriId, yonetici: $("#yonetici").val() },
+                    success: function (kategoriler) {
+
+                        window.location.reload();
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: Kategoriler listelenemedi lütfen tekrar deneyin.");
+                    }
+
+                });
+            }
+        }
+    };
+
+    function kategoriCikart(e) {
+        var Id = e;
+        if (confirm('Bu kategoriyi yöneticiden almak istediğinizden emin misiniz?')) {
+            if (Id != null && Id != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/Yoneticiler/KategoriCikart",
+                    data: { Id: Id, yonetici: $("#yonetici").val() },
+                    success: function (kategoriler) {
+
+                        window.location.reload();
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: Kategoriler listelenemedi lütfen tekrar deneyin.");
+                    }
+
+                });
+            }
+        }
+    };
+</script>
+
+@*@section scripts{
+
+        @Scripts.Render("~/admin/bundles/jqueryval")
+    }*@

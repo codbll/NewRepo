@@ -1,0 +1,322 @@
+﻿using Mobit.Data.Context;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace Mobit.Areas.Admin.Controllers
+{
+    [_Yetki(Roles = "Admin")]
+    public class NewsController : Controller
+    {
+        Entities db = new Entities();
+
+        // GET: Admin/News
+        public ActionResult Index()
+        {
+            var haberler = db.Haberler.ToList();
+            return View(haberler);
+        }
+
+        public ActionResult Create()
+        {
+            kategorileriGetir();
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult Create(Haberler haberler, HttpPostedFileBase yuklenecekDosya)
+        {
+            kategorileriGetir();
+
+            if (haberler.Ad == null)
+            {
+                return View();
+            }
+
+           // resim seçmeden haber eklenebilsin
+            if (yuklenecekDosya == null)
+            {
+                //TempData["bilgi"] = "Haber resmi seçilmedi";
+                //return View();
+            }
+            else
+            {
+                string dosyaAdi = Kontrol.fileNameCreator(yuklenecekDosya.FileName);
+                var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/haber"), dosyaAdi);
+                yuklenecekDosya.SaveAs(yuklemeYeri);
+
+                haberler.Resim = dosyaAdi;
+            }
+
+
+            haberler.Hit = 1;
+            haberler.Slug = GetSlug(Kontrol.ToSlug(haberler.Ad), null);
+            haberler.Tarih = DateTime.Now;
+            db.Haberler.Add(haberler);
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+        }
+
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                HttpNotFound();
+            }
+
+            Haberler haber = db.Haberler.Find(id);
+
+            if (haber == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.KategoriId = new SelectList(db.HaberKategorileri.ToList(), "KategoriId", "Ad", haber.KategoriId);
+            ViewBag.GaleriId = new SelectList(db.Galeri.ToList(), "GaleriId", "GaleriAdi", haber.GaleriId);
+
+            return View(haber);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult Edit(Haberler haberler, HttpPostedFileBase yuklenecekDosya)
+        {
+
+            if (haberler.Ad == null)
+            {
+                return View();
+            }
+
+            Haberler haber = db.Haberler.Find(haberler.Id);
+
+            if (yuklenecekDosya != null)
+            {
+                string dosyaAdi = Kontrol.fileNameCreator(yuklenecekDosya.FileName);
+                var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/haber"), dosyaAdi);
+                yuklenecekDosya.SaveAs(yuklemeYeri);
+                haber.Resim = dosyaAdi;
+            }
+
+            haber.Ad = haberler.Ad;
+            haber.Slug = GetSlug(Kontrol.ToSlug(haberler.Slug), haberler.Id);
+            haber.GaleriId = haberler.GaleriId;
+            haber.Detay = haberler.Detay;
+            haber.Aktif = haberler.Aktif;
+            haber.Tarih = haberler.Tarih;
+            db.SaveChanges();
+
+            return RedirectToAction("Index");
+        }
+
+        public string GetSlug(string slug, int? id)
+        {
+            if (id == null)
+            {
+                int count = 0;
+                string orgSlug = slug;
+                while (db.Haberler.Where(u => u.Slug == slug).SingleOrDefault() != null)
+                {
+                    count++;
+                    var result = db.Haberler.Where(u => u.Slug == slug).SingleOrDefault();
+                    slug = orgSlug + "-" + count;
+                }
+            }
+            else
+            {
+                int count = 0;
+                string orgSlug = slug;
+                while (db.Haberler.Where(u => u.Slug == slug && u.Id != id).SingleOrDefault() != null)
+                {
+                    count++;
+                    var result = db.Haberler.Where(u => u.Slug == slug && u.Id != id).SingleOrDefault();
+                    slug = orgSlug + "-" + count;
+                }
+            }
+            return slug;
+        }
+
+        void kategorileriGetir()
+        {
+            ViewBag.KategoriId = new SelectList(db.HaberKategorileri.ToList(), "KategoriId", "Ad");
+            ViewBag.GaleriId = new SelectList(db.Galeri.OrderByDescending(g => g.GaleriId).ToList(), "GaleriId", "GaleriAdi");
+        }
+
+        public ActionResult Category()
+        {
+            var haberKategorileri = db.HaberKategorileri.ToList();
+            return View(haberKategorileri);
+        }
+
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCategory(HaberKategorileri haber)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+
+            haber.Slug = GetKategoriSlug(Kontrol.ToSlug(haber.Ad), null);
+            db.HaberKategorileri.Add(haber);
+            db.SaveChanges();
+
+            return RedirectToAction("Category");
+        }
+
+        public ActionResult EditCategory(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Category");
+            }
+
+            HaberKategorileri haber = db.HaberKategorileri.Find(id);
+
+
+            if (haber == null)
+            {
+                return RedirectToAction("Category");
+
+            }
+
+
+            return View(haber);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCategory(HaberKategorileri haberkategori)
+        {
+            if (haberkategori.KategoriId == null)
+            {
+                return RedirectToAction("Category");
+            }
+
+            HaberKategorileri haber = db.HaberKategorileri.Find(haberkategori.KategoriId);
+
+            if (haber == null)
+            {
+                return RedirectToAction("Category");
+
+            }
+
+            haber.Ad = haberkategori.Ad;
+            haber.Slug = GetKategoriSlug(Kontrol.ToSlug(haberkategori.Slug), haberkategori.KategoriId);
+            haber.Url = haberkategori.Url;
+            haber.Aktif = haberkategori.Aktif;
+            db.SaveChanges();
+            return RedirectToAction("Category");
+        }
+
+        public string GetKategoriSlug(string slug, int? id)
+        {
+            if (id == null)
+            {
+                int count = 0;
+                string orgSlug = slug;
+                while (db.HaberKategorileri.Where(u => u.Slug == slug).SingleOrDefault() != null)
+                {
+                    count++;
+                    var result = db.HaberKategorileri.Where(u => u.Slug == slug).SingleOrDefault();
+                    slug = orgSlug + "-" + count;
+                }
+            }
+            else
+            {
+                int count = 0;
+                string orgSlug = slug;
+                while (db.HaberKategorileri.Where(u => u.Slug == slug && u.KategoriId != id).SingleOrDefault() != null)
+                {
+                    count++;
+                    var result = db.HaberKategorileri.Where(u => u.Slug == slug && u.KategoriId != id).SingleOrDefault();
+                    slug = orgSlug + "-" + count;
+                }
+            }
+            return slug;
+        }
+
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            Haberler haber = db.Haberler.Find(id);
+
+            if (haber == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            FileInfo dosya = new FileInfo(Server.MapPath("~/Upload/haber/" + haber.Resim));
+
+            try
+            {
+                if (dosya != null)
+                {
+                    dosya.Decrypt();
+                }
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+            db.Haberler.Remove(haber);
+            db.SaveChanges();
+
+
+            return RedirectToAction("Index");
+
+        }
+        public ActionResult DeleteCategory(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Category");
+            }
+
+            HaberKategorileri haber = db.HaberKategorileri.Find(id);
+
+            if (haber == null)
+            {
+                return RedirectToAction("Category");
+            }
+
+            try
+            {
+                db.HaberKategorileri.Remove(haber);
+                db.SaveChanges();
+                // ilgili haber varsa ana sayfaya dön
+            }
+            catch (Exception)
+            {
+
+
+            }
+
+
+            return RedirectToAction("Category");
+
+        }
+    }
+}
