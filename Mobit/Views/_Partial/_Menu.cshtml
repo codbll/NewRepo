@@ -1,0 +1,192 @@
+﻿@model Tuple<List<Mobit.Data.Context.Kategoriler>, List<Mobit.Data.Context.AltKategoriler>, List<Mobit.Data.Context.Cozumler>, List<Mobit.Data.Context.HaberKategorileri>>
+
+<div class="header-nav-main header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
+
+    <nav>
+        <ul class="nav nav-pills" id="mainNav">
+
+            <li>
+                <a href="/">
+                    Ana Sayfa
+                </a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#.">
+                    ÜRÜNLER
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach (var kategori in Model.Item1)
+                    {
+                        <li class="dropdown-submenu">
+
+                            @if (kategori.Url == "" || kategori.Url == null)
+                            {
+                                <a href="/Kategori/@kategori.Slug" title="@kategori.KategoriAdi">@kategori.KategoriAdi</a>
+                            }
+                            else
+                            {
+                                <a href="@kategori.Url" target="_blank" title="@kategori.KategoriAdi">@kategori.KategoriAdi</a>
+                            }
+
+                            <ul class="dropdown-menu">
+                                @foreach (var altKategori in Model.Item2.Where(alt => alt.KategoriId == kategori.KategoriId && alt.Aktif == true))
+                                {
+                                    if (altKategori.Ikon == null || altKategori.Ikon == "")
+                                    {
+
+                                        if (altKategori.Url == "" || altKategori.Url == null)
+                                        {
+                                            <li><a href="/Kategori/@kategori.Slug/@altKategori.Slug" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@altKategori.Url" target="_blank" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a></li>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (altKategori.Url == "" || altKategori.Url == null)
+                                        {
+                                            <li><a href="/Kategori/@kategori.Slug/@altKategori.Slug" data-thumb-preview="/Upload/icon/@altKategori.Ikon" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a></li>
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@altKategori.Url" target="_blank" data-thumb-preview="/Upload/icon/@altKategori.Ikon" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a></li>
+                                        }
+                                    }
+
+
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </li>
+
+            @if (Model.Item3 != null)
+            {
+
+
+                <li class="dropdown dropdown-mega">
+                    <a class="dropdown-toggle" href="#.">
+                        ÇÖZÜMLER
+                    </a>
+                    <ul class="dropdown-menu" style="width:600px;margin-left:-100px;">
+                        <li>
+                            <div class="dropdown-mega-content">
+                                <div class="row">
+                                    @{
+                                        var isCozum = Model.Item3.Where(czm => czm.KategoriId == 1).Select(k => k.Ad).FirstOrDefault();
+                                        var yazilim = Model.Item3.Where(czm => czm.KategoriId == 2).Select(k => k.Ad).FirstOrDefault();
+                                    }
+                                    @if (!string.IsNullOrEmpty(isCozum))
+                                    {
+
+                                    <div class="col-md-6">
+                                        <span class="dropdown-mega-sub-title">İŞ ÇÖZÜMLERİ</span>
+                                        <ul class="dropdown-mega-sub-nav">
+                                            @*1 iş çözümleri*@
+                                            @foreach (var item in Model.Item3.Where(czm => czm.KategoriId == 1))
+                                                {
+                                                    if (item.Url == null || item.Url == "")
+                                                    {
+                                                <li><a href="/Cozumler/@item.Slug" title="@item.Ad">@item.Ad</a></li>
+                                                    }
+                                                    else
+                                                    {
+                                                <li><a href="@item.Url" target="_blank" title="@item.Ad">@item.Ad</a></li>
+                                                    }
+
+                                                }
+
+                                        </ul>
+                                    </div>
+                                    }
+                                    @if (!string.IsNullOrEmpty(yazilim))
+                                    {
+                                    <div class="col-md-6">
+                                        <span class="dropdown-mega-sub-title">YAZILIM ÇÖZÜMLERİ</span>
+                                        <ul class="dropdown-mega-sub-nav">
+                                            @*2 yazılım çözümleri*@
+                                            @foreach (var item in Model.Item3.Where(czm => czm.KategoriId == 2))
+                                                {
+                                                    if (item.Url == null || item.Url == "")
+                                                    {
+                                                <li><a href="/Cozumler/@item.Slug" title="@item.Ad">@item.Ad</a></li>
+                                                    }
+                                                    else
+                                                    {
+                                                <li><a href="@item.Url" target="_blank" title="@item.Ad">@item.Ad</a></li>
+                                                    }
+                                                }
+                                        </ul>
+                                    </div>
+                                    }
+
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                                        }
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#.">
+                    TEKNİK DESTEK
+                </a>
+                <ul class="dropdown-menu">
+
+                    <li><a href="/Destek">Teknik Destek</a></li>
+                    <li><a href="/Yuklemeler">Yüklemeler</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#.">
+                    HABERLER
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach (var haber in Model.Item4)
+                    {
+
+                        if (haber.Url == null || haber.Url == "")
+                        {
+                            <li><a href="/Haberler/@haber.Slug">@haber.Ad</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@haber.Url" target="_blank" title="@haber.Ad">@haber.Ad</a></li>
+                        }
+                    }
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#.">
+                    HAKKIMIZDA
+                </a>
+                <ul class="dropdown-menu">
+                    @foreach (var hakkimizda in ViewBag.hakkimizda)
+                    {
+                        <li><a href="@(hakkimizda.Url==null ?"/Sayfa/"+ hakkimizda.Slug : hakkimizda.Url )">@hakkimizda.Ad</a></li>
+                    }
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" href="#.">
+                    İLETİŞİM
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="/iletisim">İletişim</a></li>
+                    @foreach (var iletisim in ViewBag.iletisim)
+                    {
+                        <li><a href="@(iletisim.Url==null ?"/Sayfa/"+ iletisim.Slug : iletisim.Url )">@iletisim.Ad</a></li>
+
+                    }
+                </ul>
+            </li>
+
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,1039 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Adminler">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdSoyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Owner" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdminRolIliski">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolId" Type="int" />
+          <Property Name="AdminId" Type="int" />
+        </EntityType>
+        <EntityType Name="AdminRolleri">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolAdi" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="AltKategoriler">
+          <Key>
+            <PropertyRef Name="AltKategoriId" />
+          </Key>
+          <Property Name="AltKategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AltKategoriAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ikon" Type="nvarchar" MaxLength="100" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Area" Type="bit" Nullable="false" />
+          <Property Name="Depart" Type="bit" Nullable="false" />
+          <Property Name="KategoriId" Type="int" Nullable="false" />
+          <Property Name="Sira" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bulten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ip" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cozumler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Detay" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="KategoriId" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DosyaYoneticisi">
+          <Key>
+            <PropertyRef Name="DosyaId" />
+          </Key>
+          <Property Name="DosyaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DosyaAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ikon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Boyut" Type="nvarchar" MaxLength="50" />
+          <Property Name="Uzanti" Type="nvarchar" MaxLength="20" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Galeri">
+          <Key>
+            <PropertyRef Name="GaleriId" />
+          </Key>
+          <Property Name="GaleriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GaleriAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="GaleriYolu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GaleriResim">
+          <Key>
+            <PropertyRef Name="ResimId" />
+          </Key>
+          <Property Name="ResimId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GaleriId" Type="int" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HaberKategorileri">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Haberler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Detay" Type="nvarchar(max)" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="KategoriId" Type="int" Nullable="false" />
+          <Property Name="GaleriId" Type="int" />
+          <Property Name="Tarih" Type="datetime" Nullable="false" />
+          <Property Name="Hit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Il">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Plaka" Type="nvarchar" MaxLength="255" />
+          <Property Name="IlAdiBuyuk" Type="nvarchar" MaxLength="255" />
+          <Property Name="IlAdiKucuk" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Ilceler">
+          <Key>
+            <PropertyRef Name="IlceId" />
+          </Key>
+          <Property Name="IlceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IlId" Type="nvarchar" MaxLength="255" />
+          <Property Name="IlceAdi" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="iletisim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Faks" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Harita" Type="nvarchar(max)" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="Mailler" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="DestekMailler" Type="nvarchar" MaxLength="500" />
+          <Property Name="SmtpPort" Type="int" Nullable="false" />
+          <Property Name="SmtpMail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SmtpAdres" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ikon" Type="nvarchar" MaxLength="100" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="200" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Area" Type="bit" Nullable="false" />
+          <Property Name="Depart" Type="bit" Nullable="false" />
+          <Property Name="Sira" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Markalar">
+          <Key>
+            <PropertyRef Name="MarkaId" />
+          </Key>
+          <Property Name="MarkaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkaAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="50" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Area" Type="bit" Nullable="false" />
+          <Property Name="Depart" Type="bit" Nullable="false" />
+          <Property Name="Sira" Type="int" />
+        </EntityType>
+        <EntityType Name="MetaTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Keywords" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Facebook" Type="nvarchar" MaxLength="100" />
+          <Property Name="Twitter" Type="nvarchar" MaxLength="100" />
+          <Property Name="GooglePlus" Type="nvarchar" MaxLength="100" />
+          <Property Name="Linkedin" Type="nvarchar" MaxLength="100" />
+          <Property Name="Youtube" Type="nvarchar" MaxLength="100" />
+          <Property Name="Diger" Type="nvarchar" MaxLength="100" />
+          <Property Name="SiteLogo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Popup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="AcilisSekli" Type="tinyint" Nullable="false" />
+          <Property Name="Durum" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sayfalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Detay" Type="nvarchar(max)" />
+          <Property Name="Url" Type="nvarchar" MaxLength="100" />
+          <Property Name="Aktif" Type="bit" Nullable="false" />
+          <Property Name="Menu" Type="bit" Nullable="false" />
+          <Property Name="iletisimFormu" Type="bit" Nullable="false" />
+          <Property Name="KategoriId" Type="tinyint" Nullable="false" />
+          <Property Name="GaleriId" Type="int" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Baslik" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Target" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Sira" Type="int" Nullable="false" />
+          <Property Name="Aktif" Type="bit" />
+          <Property Name="Tarih" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_AdminRolIliski_Adminler">
+          <End Role="Adminler" Type="Self.Adminler" Multiplicity="0..1" />
+          <End Role="AdminRolIliski" Type="Self.AdminRolIliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adminler">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminRolIliski">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminRolIliski_AdminRolleri">
+          <End Role="AdminRolleri" Type="Self.AdminRolleri" Multiplicity="0..1" />
+          <End Role="AdminRolIliski" Type="Self.AdminRolIliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRolleri">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="AdminRolIliski">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AltKategoriler_Kategoriler">
+          <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+          <End Role="AltKategoriler" Type="Self.AltKategoriler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="AltKategoriler">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GaleriResim_Galeriler">
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="1" />
+          <End Role="GaleriResim" Type="Self.GaleriResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galeri">
+              <PropertyRef Name="GaleriId" />
+            </Principal>
+            <Dependent Role="GaleriResim">
+              <PropertyRef Name="GaleriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Haberler_Galeri">
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="0..1" />
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galeri">
+              <PropertyRef Name="GaleriId" />
+            </Principal>
+            <Dependent Role="Haberler">
+              <PropertyRef Name="GaleriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Haberler_HaberKategorileri">
+          <End Role="HaberKategorileri" Type="Self.HaberKategorileri" Multiplicity="1" />
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HaberKategorileri">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="Haberler">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sayfalar_Galeri">
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="0..1" />
+          <End Role="Sayfalar" Type="Self.Sayfalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galeri">
+              <PropertyRef Name="GaleriId" />
+            </Principal>
+            <Dependent Role="Sayfalar">
+              <PropertyRef Name="GaleriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="Adminler" EntityType="Self.Adminler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminRolIliski" EntityType="Self.AdminRolIliski" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminRolleri" EntityType="Self.AdminRolleri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AltKategoriler" EntityType="Self.AltKategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bulten" EntityType="Self.Bulten" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cozumler" EntityType="Self.Cozumler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DosyaYoneticisi" EntityType="Self.DosyaYoneticisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galeri" EntityType="Self.Galeri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GaleriResim" EntityType="Self.GaleriResim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HaberKategorileri" EntityType="Self.HaberKategorileri" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Haberler" EntityType="Self.Haberler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Il" EntityType="Self.Il" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ilceler" EntityType="Self.Ilceler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iletisim" EntityType="Self.iletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Markalar" EntityType="Self.Markalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MetaTag" EntityType="Self.MetaTag" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Popup" EntityType="Self.Popup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sayfalar" EntityType="Self.Sayfalar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdminRolIliski_Adminler" Association="Self.FK_AdminRolIliski_Adminler">
+            <End Role="Adminler" EntitySet="Adminler" />
+            <End Role="AdminRolIliski" EntitySet="AdminRolIliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminRolIliski_AdminRolleri" Association="Self.FK_AdminRolIliski_AdminRolleri">
+            <End Role="AdminRolleri" EntitySet="AdminRolleri" />
+            <End Role="AdminRolIliski" EntitySet="AdminRolIliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AltKategoriler_Kategoriler" Association="Self.FK_AltKategoriler_Kategoriler">
+            <End Role="Kategoriler" EntitySet="Kategoriler" />
+            <End Role="AltKategoriler" EntitySet="AltKategoriler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GaleriResim_Galeriler" Association="Self.FK_GaleriResim_Galeriler">
+            <End Role="Galeri" EntitySet="Galeri" />
+            <End Role="GaleriResim" EntitySet="GaleriResim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Haberler_Galeri" Association="Self.FK_Haberler_Galeri">
+            <End Role="Galeri" EntitySet="Galeri" />
+            <End Role="Haberler" EntitySet="Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Haberler_HaberKategorileri" Association="Self.FK_Haberler_HaberKategorileri">
+            <End Role="HaberKategorileri" EntitySet="HaberKategorileri" />
+            <End Role="Haberler" EntitySet="Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sayfalar_Galeri" Association="Self.FK_Sayfalar_Galeri">
+            <End Role="Galeri" EntitySet="Galeri" />
+            <End Role="Sayfalar" EntitySet="Sayfalar" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Adminler">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="Owner" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AdminRolIliski" Relationship="Self.FK_AdminRolIliski_Adminler" FromRole="Adminler" ToRole="AdminRolIliski" />
+        </EntityType>
+        <EntityType Name="AdminRolIliski">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolId" Type="Int32" />
+          <Property Name="AdminId" Type="Int32" />
+          <NavigationProperty Name="Adminler" Relationship="Self.FK_AdminRolIliski_Adminler" FromRole="AdminRolIliski" ToRole="Adminler" />
+          <NavigationProperty Name="AdminRolleri" Relationship="Self.FK_AdminRolIliski_AdminRolleri" FromRole="AdminRolIliski" ToRole="AdminRolleri" />
+        </EntityType>
+        <EntityType Name="AdminRolleri">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminRolIliski" Relationship="Self.FK_AdminRolIliski_AdminRolleri" FromRole="AdminRolleri" ToRole="AdminRolIliski" />
+        </EntityType>
+        <EntityType Name="AltKategoriler">
+          <Key>
+            <PropertyRef Name="AltKategoriId" />
+          </Key>
+          <Property Name="AltKategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AltKategoriAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ikon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="Area" Type="Boolean" Nullable="false" />
+          <Property Name="Depart" Type="Boolean" Nullable="false" />
+          <Property Name="KategoriId" Type="Int32" Nullable="false" />
+          <Property Name="Sira" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kategoriler" Relationship="Self.FK_AltKategoriler_Kategoriler" FromRole="AltKategoriler" ToRole="Kategoriler" />
+        </EntityType>
+        <EntityType Name="Bulten">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ip" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Cozumler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="KategoriId" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DosyaYoneticisi">
+          <Key>
+            <PropertyRef Name="DosyaId" />
+          </Key>
+          <Property Name="DosyaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DosyaAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ikon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Boyut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Uzanti" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Galeri">
+          <Key>
+            <PropertyRef Name="GaleriId" />
+          </Key>
+          <Property Name="GaleriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GaleriAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GaleriYolu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="GaleriResim" Relationship="Self.FK_GaleriResim_Galeriler" FromRole="Galeri" ToRole="GaleriResim" />
+          <NavigationProperty Name="Haberler" Relationship="Self.FK_Haberler_Galeri" FromRole="Galeri" ToRole="Haberler" />
+          <NavigationProperty Name="Sayfalar" Relationship="Self.FK_Sayfalar_Galeri" FromRole="Galeri" ToRole="Sayfalar" />
+        </EntityType>
+        <EntityType Name="GaleriResim">
+          <Key>
+            <PropertyRef Name="ResimId" />
+          </Key>
+          <Property Name="ResimId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GaleriId" Type="Int32" Nullable="false" />
+          <Property Name="Resim" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Galeri" Relationship="Self.FK_GaleriResim_Galeriler" FromRole="GaleriResim" ToRole="Galeri" />
+        </EntityType>
+        <EntityType Name="HaberKategorileri">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Haberler" Relationship="Self.FK_Haberler_HaberKategorileri" FromRole="HaberKategorileri" ToRole="Haberler" />
+        </EntityType>
+        <EntityType Name="Haberler">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="KategoriId" Type="Int32" Nullable="false" />
+          <Property Name="GaleriId" Type="Int32" />
+          <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Hit" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Galeri" Relationship="Self.FK_Haberler_Galeri" FromRole="Haberler" ToRole="Galeri" />
+          <NavigationProperty Name="HaberKategorileri" Relationship="Self.FK_Haberler_HaberKategorileri" FromRole="Haberler" ToRole="HaberKategorileri" />
+        </EntityType>
+        <EntityType Name="Il">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Plaka" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IlAdiBuyuk" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IlAdiKucuk" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Ilceler">
+          <Key>
+            <PropertyRef Name="IlceId" />
+          </Key>
+          <Property Name="IlceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IlId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IlceAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="iletisim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Telefon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Faks" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Mail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Harita" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Mailler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DestekMailler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SmtpPort" Type="Int32" Nullable="false" />
+          <Property Name="SmtpMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SmtpAdres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategoriler">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ikon" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="Area" Type="Boolean" Nullable="false" />
+          <Property Name="Depart" Type="Boolean" Nullable="false" />
+          <Property Name="Sira" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AltKategoriler" Relationship="Self.FK_AltKategoriler_Kategoriler" FromRole="Kategoriler" ToRole="AltKategoriler" />
+        </EntityType>
+        <EntityType Name="Markalar">
+          <Key>
+            <PropertyRef Name="MarkaId" />
+          </Key>
+          <Property Name="MarkaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkaAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="Area" Type="Boolean" Nullable="false" />
+          <Property Name="Depart" Type="Boolean" Nullable="false" />
+          <Property Name="Sira" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MetaTag">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Keywords" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GooglePlus" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Youtube" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Diger" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SiteLogo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Popup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AcilisSekli" Type="Byte" Nullable="false" />
+          <Property Name="Durum" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sayfalar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ad" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Slug" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Aktif" Type="Boolean" Nullable="false" />
+          <Property Name="Menu" Type="Boolean" Nullable="false" />
+          <Property Name="iletisimFormu" Type="Boolean" Nullable="false" />
+          <Property Name="KategoriId" Type="Byte" Nullable="false" />
+          <Property Name="GaleriId" Type="Int32" />
+          <NavigationProperty Name="Galeri" Relationship="Self.FK_Sayfalar_Galeri" FromRole="Sayfalar" ToRole="Galeri" />
+        </EntityType>
+        <EntityType Name="Slider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Baslik" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Target" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sira" Type="Int32" Nullable="false" />
+          <Property Name="Aktif" Type="Boolean" />
+          <Property Name="Tarih" Type="DateTime" Precision="3" />
+        </EntityType>
+        <Association Name="FK_AdminRolIliski_Adminler">
+          <End Role="Adminler" Type="Self.Adminler" Multiplicity="0..1" />
+          <End Role="AdminRolIliski" Type="Self.AdminRolIliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Adminler">
+              <PropertyRef Name="AdminId" />
+            </Principal>
+            <Dependent Role="AdminRolIliski">
+              <PropertyRef Name="AdminId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminRolIliski_AdminRolleri">
+          <End Role="AdminRolleri" Type="Self.AdminRolleri" Multiplicity="0..1" />
+          <End Role="AdminRolIliski" Type="Self.AdminRolIliski" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRolleri">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="AdminRolIliski">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AltKategoriler_Kategoriler">
+          <End Role="Kategoriler" Type="Self.Kategoriler" Multiplicity="1" />
+          <End Role="AltKategoriler" Type="Self.AltKategoriler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategoriler">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="AltKategoriler">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_GaleriResim_Galeriler">
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="1" />
+          <End Role="GaleriResim" Type="Self.GaleriResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galeri">
+              <PropertyRef Name="GaleriId" />
+            </Principal>
+            <Dependent Role="GaleriResim">
+              <PropertyRef Name="GaleriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Haberler_Galeri">
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="0..1" />
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galeri">
+              <PropertyRef Name="GaleriId" />
+            </Principal>
+            <Dependent Role="Haberler">
+              <PropertyRef Name="GaleriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sayfalar_Galeri">
+          <End Role="Galeri" Type="Self.Galeri" Multiplicity="0..1" />
+          <End Role="Sayfalar" Type="Self.Sayfalar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Galeri">
+              <PropertyRef Name="GaleriId" />
+            </Principal>
+            <Dependent Role="Sayfalar">
+              <PropertyRef Name="GaleriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Haberler_HaberKategorileri">
+          <End Role="HaberKategorileri" Type="Self.HaberKategorileri" Multiplicity="1" />
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HaberKategorileri">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="Haberler">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Adminler" EntityType="Self.Adminler" />
+          <EntitySet Name="AdminRolIliski" EntityType="Self.AdminRolIliski" />
+          <EntitySet Name="AdminRolleri" EntityType="Self.AdminRolleri" />
+          <EntitySet Name="AltKategoriler" EntityType="Self.AltKategoriler" />
+          <EntitySet Name="Bulten" EntityType="Self.Bulten" />
+          <EntitySet Name="Cozumler" EntityType="Self.Cozumler" />
+          <EntitySet Name="DosyaYoneticisi" EntityType="Self.DosyaYoneticisi" />
+          <EntitySet Name="Galeri" EntityType="Self.Galeri" />
+          <EntitySet Name="GaleriResim" EntityType="Self.GaleriResim" />
+          <EntitySet Name="HaberKategorileri" EntityType="Self.HaberKategorileri" />
+          <EntitySet Name="Haberler" EntityType="Self.Haberler" />
+          <EntitySet Name="Il" EntityType="Self.Il" />
+          <EntitySet Name="Ilceler" EntityType="Self.Ilceler" />
+          <EntitySet Name="iletisim" EntityType="Self.iletisim" />
+          <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
+          <EntitySet Name="Markalar" EntityType="Self.Markalar" />
+          <EntitySet Name="MetaTag" EntityType="Self.MetaTag" />
+          <EntitySet Name="Popup" EntityType="Self.Popup" />
+          <EntitySet Name="Sayfalar" EntityType="Self.Sayfalar" />
+          <EntitySet Name="Slider" EntityType="Self.Slider" />
+          <AssociationSet Name="FK_AdminRolIliski_Adminler" Association="Self.FK_AdminRolIliski_Adminler">
+            <End Role="Adminler" EntitySet="Adminler" />
+            <End Role="AdminRolIliski" EntitySet="AdminRolIliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminRolIliski_AdminRolleri" Association="Self.FK_AdminRolIliski_AdminRolleri">
+            <End Role="AdminRolleri" EntitySet="AdminRolleri" />
+            <End Role="AdminRolIliski" EntitySet="AdminRolIliski" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AltKategoriler_Kategoriler" Association="Self.FK_AltKategoriler_Kategoriler">
+            <End Role="Kategoriler" EntitySet="Kategoriler" />
+            <End Role="AltKategoriler" EntitySet="AltKategoriler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_GaleriResim_Galeriler" Association="Self.FK_GaleriResim_Galeriler">
+            <End Role="Galeri" EntitySet="Galeri" />
+            <End Role="GaleriResim" EntitySet="GaleriResim" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Haberler_Galeri" Association="Self.FK_Haberler_Galeri">
+            <End Role="Galeri" EntitySet="Galeri" />
+            <End Role="Haberler" EntitySet="Haberler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sayfalar_Galeri" Association="Self.FK_Sayfalar_Galeri">
+            <End Role="Galeri" EntitySet="Galeri" />
+            <End Role="Sayfalar" EntitySet="Sayfalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Haberler_HaberKategorileri" Association="Self.FK_Haberler_HaberKategorileri">
+            <End Role="HaberKategorileri" EntitySet="HaberKategorileri" />
+            <End Role="Haberler" EntitySet="Haberler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="Adminler">
+            <EntityTypeMapping TypeName="Model.Adminler">
+              <MappingFragment StoreEntitySet="Adminler">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdSoyad" ColumnName="AdSoyad" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminRolIliski">
+            <EntityTypeMapping TypeName="Model.AdminRolIliski">
+              <MappingFragment StoreEntitySet="AdminRolIliski">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminRolleri">
+            <EntityTypeMapping TypeName="Model.AdminRolleri">
+              <MappingFragment StoreEntitySet="AdminRolleri">
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="RolAdi" ColumnName="RolAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AltKategoriler">
+            <EntityTypeMapping TypeName="Model.AltKategoriler">
+              <MappingFragment StoreEntitySet="AltKategoriler">
+                <ScalarProperty Name="AltKategoriId" ColumnName="AltKategoriId" />
+                <ScalarProperty Name="AltKategoriAdi" ColumnName="AltKategoriAdi" />
+                <ScalarProperty Name="Ikon" ColumnName="Ikon" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Depart" ColumnName="Depart" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Bulten">
+            <EntityTypeMapping TypeName="Model.Bulten">
+              <MappingFragment StoreEntitySet="Bulten">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cozumler">
+            <EntityTypeMapping TypeName="Model.Cozumler">
+              <MappingFragment StoreEntitySet="Cozumler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Detay" ColumnName="Detay" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DosyaYoneticisi">
+            <EntityTypeMapping TypeName="Model.DosyaYoneticisi">
+              <MappingFragment StoreEntitySet="DosyaYoneticisi">
+                <ScalarProperty Name="DosyaId" ColumnName="DosyaId" />
+                <ScalarProperty Name="DosyaAdi" ColumnName="DosyaAdi" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Ikon" ColumnName="Ikon" />
+                <ScalarProperty Name="Boyut" ColumnName="Boyut" />
+                <ScalarProperty Name="Uzanti" ColumnName="Uzanti" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galeri">
+            <EntityTypeMapping TypeName="Model.Galeri">
+              <MappingFragment StoreEntitySet="Galeri">
+                <ScalarProperty Name="GaleriId" ColumnName="GaleriId" />
+                <ScalarProperty Name="GaleriAdi" ColumnName="GaleriAdi" />
+                <ScalarProperty Name="GaleriYolu" ColumnName="GaleriYolu" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GaleriResim">
+            <EntityTypeMapping TypeName="Model.GaleriResim">
+              <MappingFragment StoreEntitySet="GaleriResim">
+                <ScalarProperty Name="ResimId" ColumnName="ResimId" />
+                <ScalarProperty Name="GaleriId" ColumnName="GaleriId" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HaberKategorileri">
+            <EntityTypeMapping TypeName="Model.HaberKategorileri">
+              <MappingFragment StoreEntitySet="HaberKategorileri">
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Haberler">
+            <EntityTypeMapping TypeName="Model.Haberler">
+              <MappingFragment StoreEntitySet="Haberler">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Detay" ColumnName="Detay" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="GaleriId" ColumnName="GaleriId" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Hit" ColumnName="Hit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Il">
+            <EntityTypeMapping TypeName="Model.Il">
+              <MappingFragment StoreEntitySet="Il">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
+                <ScalarProperty Name="IlAdiBuyuk" ColumnName="IlAdiBuyuk" />
+                <ScalarProperty Name="IlAdiKucuk" ColumnName="IlAdiKucuk" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ilceler">
+            <EntityTypeMapping TypeName="Model.Ilceler">
+              <MappingFragment StoreEntitySet="Ilceler">
+                <ScalarProperty Name="IlceId" ColumnName="IlceId" />
+                <ScalarProperty Name="IlId" ColumnName="IlId" />
+                <ScalarProperty Name="IlceAdi" ColumnName="IlceAdi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iletisim">
+            <EntityTypeMapping TypeName="Model.iletisim">
+              <MappingFragment StoreEntitySet="iletisim">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="Faks" ColumnName="Faks" />
+                <ScalarProperty Name="Mail" ColumnName="Mail" />
+                <ScalarProperty Name="Harita" ColumnName="Harita" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Mailler" ColumnName="Mailler" />
+                <ScalarProperty Name="DestekMailler" ColumnName="DestekMailler" />
+                <ScalarProperty Name="SmtpPort" ColumnName="SmtpPort" />
+                <ScalarProperty Name="SmtpMail" ColumnName="SmtpMail" />
+                <ScalarProperty Name="SmtpAdres" ColumnName="SmtpAdres" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategoriler">
+            <EntityTypeMapping TypeName="Model.Kategoriler">
+              <MappingFragment StoreEntitySet="Kategoriler">
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+                <ScalarProperty Name="Ikon" ColumnName="Ikon" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Depart" ColumnName="Depart" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Markalar">
+            <EntityTypeMapping TypeName="Model.Markalar">
+              <MappingFragment StoreEntitySet="Markalar">
+                <ScalarProperty Name="MarkaId" ColumnName="MarkaId" />
+                <ScalarProperty Name="MarkaAdi" ColumnName="MarkaAdi" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Depart" ColumnName="Depart" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MetaTag">
+            <EntityTypeMapping TypeName="Model.MetaTag">
+              <MappingFragment StoreEntitySet="MetaTag">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Keywords" ColumnName="Keywords" />
+                <ScalarProperty Name="Facebook" ColumnName="Facebook" />
+                <ScalarProperty Name="Twitter" ColumnName="Twitter" />
+                <ScalarProperty Name="GooglePlus" ColumnName="GooglePlus" />
+                <ScalarProperty Name="Linkedin" ColumnName="Linkedin" />
+                <ScalarProperty Name="Youtube" ColumnName="Youtube" />
+                <ScalarProperty Name="Diger" ColumnName="Diger" />
+                <ScalarProperty Name="SiteLogo" ColumnName="SiteLogo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Popup">
+            <EntityTypeMapping TypeName="Model.Popup">
+              <MappingFragment StoreEntitySet="Popup">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="AcilisSekli" ColumnName="AcilisSekli" />
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sayfalar">
+            <EntityTypeMapping TypeName="Model.Sayfalar">
+              <MappingFragment StoreEntitySet="Sayfalar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Detay" ColumnName="Detay" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Menu" ColumnName="Menu" />
+                <ScalarProperty Name="iletisimFormu" ColumnName="iletisimFormu" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="GaleriId" ColumnName="GaleriId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Slider">
+            <EntityTypeMapping TypeName="Model.Slider">
+              <MappingFragment StoreEntitySet="Slider">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Baslik" ColumnName="Baslik" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Sira" ColumnName="Sira" />
+                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

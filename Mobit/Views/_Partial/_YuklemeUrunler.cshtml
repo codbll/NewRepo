@@ -1,0 +1,46 @@
+﻿@model List<Mobit.Data.Context.Urunler>
+<div class="row">
+    <div class="col-md-12">
+        <div class="featured-box featured-box-primary align-left mt-sm" style="">
+           
+            <div class="box-content">
+
+                @if (Model.Count >= 1)
+                {
+                    <h4>Ürünler</h4>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Ürün Adı</th>
+                                <th></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <span class="img-thumbnail">
+                                            <img class="img-responsive" title="@item.UrunAdi" width="50" src="~/Upload/urun/@item.UploadYolu/@item.Resim" alt="@item.UrunAdi">
+                                        </span>
+                                    </td>
+                                    <td>@item.UrunAdi</td>
+                                    <td><a href="/Yuklemeler/@item.Slug"> Sürücü - Yüklemer</a></td>
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <label>Bu kategoriye ait ürün bulunamadı.</label>
+                }
+            </div>
+        </div>
+    </div>
+</div>

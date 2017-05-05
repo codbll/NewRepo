@@ -1,0 +1,43 @@
+﻿
+@{
+    //ViewBag.title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+@section slider{
+    @Html.Partial("/Views/_Partial/_Slider.cshtml", TempData["slider"])
+}
+
+<div class="col-md-12 ">
+    <br/>
+    <img class="img-responsive center-block" title="e-fatura" alt="e-fatura" src="~/Upload/images/mobit-e-fatura.fw.png"/>
+</div>
+<h1 class="mb-sm word-rotator-title center">
+    <br/>
+    Aradığınız ürünü hemen bulun
+</h1>
+<section class="call-to-action with-borders mb-xl">
+
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <br />
+        <p class="center">Hızlı Arama</p>
+
+
+        @*@Html.Partial("~/Views/_Partial/_Arama.cshtml")*@
+
+
+    </div>
+    <div class="col-md-4"></div>
+
+
+
+</section>
+
+@*@Html.Action("KategorilerSticky", "Kategori")
+
+
+@Html.Partial("/Views/_Partial/_Markalar.cshtml", TempData["markalar"])*@
+

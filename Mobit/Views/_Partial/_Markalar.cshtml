@@ -1,0 +1,34 @@
+﻿@model List<Mobit.Data.Context.Markalar>
+<div class="col-md-1"></div>
+<div class="col-md-4">
+    <div class="container">
+
+        <div class="row center">
+            <div class="col-md-12">
+                <h1 class="mb-sm word-rotator-title">
+                    <br />
+                    Markalarımız
+                </h1>
+                <hr class="tall">
+            </div>
+        </div>
+
+
+        <div class="col-md-4 owl-carousel owl-theme" data-plugin-options='{"items": 2, "autoplay": true, "autoplayTimeout": 3000}'>
+            @foreach (var item in Model)
+            {
+                <div>
+                    <a href="/Markalar/@item.Slug" title="@item.MarkaAdi">   <img class="img-responsive" src="~/Upload/images/@item.Resim" alt="@item.MarkaAdi" title="@item.MarkaAdi"></a>
+                </div>
+            }
+        </div>
+
+        <div class="call-to-action-content center">
+            <h2 class="heading-dark mb-none"><strong> Devlet Malzeme Ofisi Katalog Ürünlerimiz</strong></h2>
+            <a target="_blank" href="~/Upload/files/DMO-2016.pdf" class="btn btn-primary"><span class="glyphicon glyphicon-circle-arrow-down"></span> Broşürü İndir</a>
+        </div>
+
+
+    </div>
+
+</div>

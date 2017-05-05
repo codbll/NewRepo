@@ -1,0 +1,152 @@
+﻿@using Mobit.Helpers
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4">
+            <div class="newsletter">
+                <h4>Bültene Kayıt Olun</h4>
+                <p>Email bültenimize kayıt olarak bizden haberlere ilk siz ulaşın.</p>
+
+                @*<div class="alert alert-success hidden" id="newsletterSuccess">
+                        <strong>Success!</strong> You've been added to our email list.
+                    </div>*@
+
+                <div class="alert alert-danger hidden" id="newsletterError"></div>
+
+                <form id="newsletterForm">
+                    <input type="checkbox" id="cbBulten" /><a class="mt-xs mb-xs mr-xs popup-with-zoom-anim" href="#sozlesme">Bülten sözleşmesini onaylıyorum.</a>
+
+
+                    <div class="input-group">
+
+                        <input class="form-control" placeholder="Email Adres" name="bultenMail" id="bultenMail" type="text">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" onclick="bultenKayit()" type="submit">Kayıt</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="contact-details">
+                <h4>İletişim</h4>
+                <ul class="contact">
+                    <li><p><i class="fa fa-phone"></i> <strong>Telefon:</strong> @ViewBag.Telefon</p></li>
+                    <li><p><i class="fa fa-fax"></i> <strong>Faks:</strong> @ViewBag.Faks</p></li>
+                    <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:@ViewBag.Mail">@ViewBag.Mail</a></p></li>
+
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <h4>Sosyal Medya Hesaplarımız</h4>
+            <ul class="social-icons">
+                <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                <li class="social-icons-twitter"><a href="@ViewBag.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                <li class="social-icons-linkedin"><a href="@ViewBag.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+
+                <li class="social-icons-googleplus"><a href="@ViewBag.GooglePlus" target="_blank" title="GooglePlus"><i class="fa fa-google-plus"></i></a></li>
+                <li class="social-icons-youtube"><a href="@ViewBag.Youtube" target="_blank" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+                <li class="social-icons-instagram"><a href="@ViewBag.Diger" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+
+
+            </ul>
+        </div>
+
+
+        @*<div class="col-md-3">
+                <h4>Latest Tweets</h4>
+                <div id="tweet" class="twitter" data-plugin-tweets data-plugin-options='{"username": "", "count": 2}'>
+                    <p>Please wait...</p>
+                </div>
+            </div>*@
+    </div>
+</div>
+<div class="footer-copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <a href="http://www.tenteglobal.com.tr" target="_blank" class="logo">
+                    <img alt="Tente Global Kuruluşudur." class="img-responsive" width="200" style="margin-top:-70px;" src="/Upload/images/tenteglobal-logo.png">
+                </a>
+            </div>
+            <div class="col-md-5 center">
+                <p>Mobit Bilişim Elektronik ve Kontrol Sistemleri Dış Tic. A.Ş. ® 2017</p>
+            </div>
+            <div class="col-md-4">
+                <nav id="sub-menu">
+                    <ul>
+                        <li><a href="/Sayfa/Hakkimizda">Hakkımızda</a></li>
+                        <li><a href="/iletisim">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="sozlesme" class="dialog dialog-lg zoom-anim-dialog mfp-hide">
+    <h1>Bülten Sözleşmesi</h1>
+    <p>
+
+        <a href="http://www.mobit.com.tr" target="_blank">www.mobi.com.tr</a>, bundan böyle&nbsp;<strong>“Mobit”</strong>&nbsp;olarak anılacaktır. Web sitesinde geçirdiğiniz süreyi en güvenli ve rahat şekilde tamamlamanız amacıyla gerekli ortamı sunmak için çalışmaktadır. Bu sebeple “Mobit” olarak kişisel bilgilerinizi toplarken ve kullanırken izlediği prensipler aşağıda sıralanmıştır:&nbsp;<br>
+        <br>
+        <strong>“Mobit”</strong>&nbsp;web sitesi ziyaretçileri hizmet alabilmek için bazı kişisel bilgilerini bu firmalarla web sitesindeki elektronik onay mekanizması yoluyla paylaşmaktadırlar. Elde edilen tüm bu bilgiler, sadece&nbsp;<strong>“Mobit”</strong>&nbsp;firmasının veri tabanında bulunmaktadır. Kullanıcılar, bu firmaların web sayfasındaki dolaşımları sırasında kişisel bilgilerini değiştirme şansına sahiptirler.&nbsp;<br>
+        <br>
+        <strong>“Mobit”</strong>kullanıcıları, kayıt olduktan sonra elektronik bülten, ürün tanıtımı mailinglerinin kendisine ulaşmasını kabul etmiş olur.<br>
+        <br>
+        <strong>“Mobit”</strong>kullanıcısı olmanız durumunda, ana sayfadan verilen link aracılığıyla kayıt sırasında paylaşmış olduğunuz bilgiler tamamen gizli tutulacaktır. Web sitelerinde ve portallarda yer alan aktivitelerin faaliyetleri e-posta aracılığı ile tarafımızca size bilgi verilecektir.&nbsp;<br>
+        <br>
+        <strong>“Mobit”</strong>yukarıda yer alan açıklamaları önceden haber vermeksizin değiştirme hakkını saklı tutar. Servislerimizden yararlananlar bütün bu şartları okumuş ve kabul etmiş sayılırlar.&nbsp;<br>
+        <br>
+        <strong>“Mobit”</strong> web sitesi, Tente Elektronik Ve Bilişim Sistemleri Teknolojileri İthalat Pazarlama Dağıtım Ve Tic. A.Ş.’ye ait tüm ana ve alt web siteleri anlamını taşımaktadır.&nbsp;
+
+    </p>
+</div>
+
+
+<script>
+
+    function bultenKayit() {
+        $(document).ready(function () {
+
+            if ($("#bultenMail").val() == "") {
+                alert("Lütfen email adresinizi yazın.");
+                $("#bultenMail").focus();
+            }
+            else if (!$("#cbBulten").is(':checked')) {
+                alert("Bülten sözleşmesini onaylamadınız.");
+            }
+
+            else {
+                $.ajax({
+                    type: "post",
+                    url: "/Home/BultenKayit",
+                    data: { mail: $("#bultenMail").val(),@Html.AntiForgeryTokenForAjaxPost() },
+                    success: function (result) {
+
+                        if (result == 0) {
+                            alert("Lütfen mail adresinizi kontrol ediniz");
+                        }
+                        else if (result == 1) {
+                            alert("Değerli ziyaretçimiz, bültene başarıyla kayıt oldunuz.");
+                            $("#bultenMail").val("")
+                        }
+                        else if (result == 2) {
+                            alert("Bültene bu mail adresinde bir kayıt var.");
+                        }
+
+                    },
+                    error: function () {
+                        alert("İşlem sırasında bir hata oluştu, tekrar deneyiniz.");
+                    },
+
+                });
+
+            }
+        });
+    }
+</script>

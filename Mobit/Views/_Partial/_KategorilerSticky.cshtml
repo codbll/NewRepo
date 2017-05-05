@@ -1,0 +1,122 @@
+﻿@model Tuple<List<Mobit.Data.Context.Kategoriler>>
+
+<div class="container myscroll">
+
+    <div class="row center ">
+        <div class="col-md-12">
+            <h1 class="mb-sm word-rotator-title" >
+                <br />
+                Ürünlerimiz
+            </h1>
+            <hr class="tall">
+        </div>
+    </div>
+
+</div>
+
+<div class="row" >
+    <div class="col-md-3">
+        <aside class="sidebar"  id="sidebar" data-plugin-sticky data-plugin-options='{"minWidth": 991, "containerSelector": ".container", "padding": {"top": 110}}'>
+        @*<aside class="sidebar" id="sidebar">*@
+
+
+            <h4 class="heading-primary"><strong>Ürünlerimiz</strong> </h4>
+
+            <ul class="nav nav-list mb-xlg sort-source" data-sort-id="portfolio" data-option-key="filter" data-plugin-options='{"layoutMode": "fitRows", "filter": "*"}'>
+                <li data-option-value="*" class="active"><a href="#" onclick="myScroll()">Tüm Kategoriler</a></li>
+                @foreach (var kategori in Model.Item1)
+                {
+                        <li data-option-value=".@kategori.Slug"><a href="#" onclick="myScroll()">@kategori.KategoriAdi</a></li>
+                }
+
+            </ul>
+
+        </aside>
+    </div>
+    <div class="col-md-9 ">
+
+        <div class="row">
+
+            <ul class="portfolio-list sort-destination" data-sort-id="portfolio">
+
+                @foreach (var kategori in Model.Item1)
+                {
+                    foreach (var altkategori in kategori.AltKategoriler.Where(alt => alt.KategoriId == kategori.KategoriId && alt.Aktif == true).OrderBy(alt => alt.Sira))
+                    {
+                        if (altkategori.Url == "" || altkategori.Url == null)
+                        {
+
+                            <li class="col-md-4 isotope-item @kategori.Slug">
+                                <div class="portfolio-item">
+                                    <a href="/Kategori/@kategori.Slug/@altkategori.Slug" title="@altkategori.AltKategoriAdi">
+                                        <span class="thumb-info thumb-info-lighten thumb-info-no-zoom">
+                                            <span class="thumb-info-wrapper">
+                                                <span class="owl-carousel owl-theme nav-inside m-none" data-plugin-options='{"items": 1, "margin": 10, "animateOut": "fadeOut", "autoplay": true, "autoplayTimeout": 3000}'>
+                                                    <span>
+                                                        <img src="~/Upload/icon/@altkategori.Ikon" class="img-responsive" alt="@altkategori.AltKategoriAdi">
+                                                    </span>
+
+                                                </span>
+                                                <span class="thumb-info-title">
+                                                    <span class="thumb-info-inner">@altkategori.AltKategoriAdi</span>
+                                                    <span class="thumb-info-type">@kategori.KategoriAdi</span>
+                                                </span>
+                                                <span class="thumb-info-action">
+                                                    <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="col-md-4 isotope-item @kategori.Slug">
+                                <div class="portfolio-item">
+                                    <a href="@altkategori.Url" title="@altkategori.AltKategoriAdi" target="_blank">
+                                        <span class="thumb-info thumb-info-lighten thumb-info-no-zoom">
+                                            <span class="thumb-info-wrapper">
+                                                <span class="owl-carousel owl-theme nav-inside m-none" data-plugin-options='{"items": 1, "margin": 10, "animateOut": "fadeOut", "autoplay": true, "autoplayTimeout": 3000}'>
+                                                    <span>
+                                                        <img src="~/Upload/icon/@altkategori.Ikon" class="img-responsive" alt="@altkategori.AltKategoriAdi">
+                                                    </span>
+
+                                                </span>
+                                                <span class="thumb-info-title">
+                                                    <span class="thumb-info-inner">@altkategori.AltKategoriAdi</span>
+                                                    <span class="thumb-info-type">@kategori.KategoriAdi</span>
+                                                </span>
+                                                <span class="thumb-info-action">
+                                                    <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+
+
+                    }
+                }
+
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function myScroll()
+    {
+        $(document).ready(function () {
+            $('html,body').animate({
+                scrollTop: $(".myscroll").offset().top
+            },
+                       'slow');
+        });
+    }
+ 
+   
+</script>
