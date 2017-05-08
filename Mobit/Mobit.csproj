@@ -181,6 +181,7 @@
     <Compile Include="Areas\Admin\Controllers\DosyaYoneticisiController.cs" />
     <Compile Include="Areas\Admin\Controllers\GalleryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\KurumController.cs" />
     <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SliderController.cs" />
     <Compile Include="Areas\Admin\Controllers\SolutionController.cs" />
@@ -2576,6 +2577,8 @@
     <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="ckfinder\skins\bootstrap\assets\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="ckfinder\userfiles\.htaccess" />
+    <Content Include="Areas\Admin\Views\Kurum\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\_Partial\Kurumlar.cshtml" />
     <None Include="Properties\PublishProfiles\Mobit.pubxml" />
     <Content Include="Views\_Partial\_YuklemeUrunler.cshtml" />
     <Content Include="Views\_Partial\_YuklemeIndir.cshtml" />

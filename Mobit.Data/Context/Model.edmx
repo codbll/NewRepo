@@ -79,6 +79,22 @@
           <Property Name="Uzanti" Type="nvarchar" MaxLength="20" />
           <Property Name="Tarih" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Application" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Host" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Source" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StatusCode" Type="int" Nullable="false" />
+          <Property Name="TimeUtc" Type="datetime" Nullable="false" />
+          <Property Name="Sequence" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AllXml" Type="ntext" Nullable="false" />
+        </EntityType>
         <EntityType Name="Galeri">
           <Key>
             <PropertyRef Name="GaleriId" />
@@ -121,22 +137,13 @@
           <Property Name="Tarih" Type="datetime" Nullable="false" />
           <Property Name="Hit" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="Il">
+        <EntityType Name="ilceler">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ilceId" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Plaka" Type="nvarchar" MaxLength="255" />
-          <Property Name="IlAdiBuyuk" Type="nvarchar" MaxLength="255" />
-          <Property Name="IlAdiKucuk" Type="nvarchar" MaxLength="255" />
-        </EntityType>
-        <EntityType Name="Ilceler">
-          <Key>
-            <PropertyRef Name="IlceId" />
-          </Key>
-          <Property Name="IlceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IlId" Type="nvarchar" MaxLength="255" />
-          <Property Name="IlceAdi" Type="nvarchar" MaxLength="255" />
+          <Property Name="ilceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilId" Type="int" Nullable="false" />
+          <Property Name="ilceAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="iletisim">
           <Key>
@@ -155,6 +162,16 @@
           <Property Name="SmtpAdres" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
+        <EntityType Name="iller">
+          <Key>
+            <PropertyRef Name="ilId" />
+          </Key>
+          <Property Name="ilId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UlkeId" Type="int" Nullable="false" />
+          <Property Name="ilAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="PlakaNo" Type="nvarchar" MaxLength="2" Nullable="false" />
+          <Property Name="TelKodu" Type="nvarchar" MaxLength="7" Nullable="false" />
+        </EntityType>
         <EntityType Name="Kategoriler">
           <Key>
             <PropertyRef Name="KategoriId" />
@@ -168,6 +185,13 @@
           <Property Name="Area" Type="bit" Nullable="false" />
           <Property Name="Depart" Type="bit" Nullable="false" />
           <Property Name="Sira" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kurumlar">
+          <Key>
+            <PropertyRef Name="KurumId" />
+          </Key>
+          <Property Name="KurumId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KurumAdi" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <EntityType Name="Markalar">
           <Key>
@@ -273,6 +297,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Counties_Cities">
+          <End Role="iller" Type="Self.iller" Multiplicity="1" />
+          <End Role="ilceler" Type="Self.ilceler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="iller">
+              <PropertyRef Name="ilId" />
+            </Principal>
+            <Dependent Role="ilceler">
+              <PropertyRef Name="ilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_GaleriResim_Galeriler">
           <End Role="Galeri" Type="Self.Galeri" Multiplicity="1" />
           <End Role="GaleriResim" Type="Self.GaleriResim" Multiplicity="*" />
@@ -329,14 +365,16 @@
           <EntitySet Name="Bulten" EntityType="Self.Bulten" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cozumler" EntityType="Self.Cozumler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DosyaYoneticisi" EntityType="Self.DosyaYoneticisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Galeri" EntityType="Self.Galeri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GaleriResim" EntityType="Self.GaleriResim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HaberKategorileri" EntityType="Self.HaberKategorileri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Haberler" EntityType="Self.Haberler" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Il" EntityType="Self.Il" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Ilceler" EntityType="Self.Ilceler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilceler" EntityType="Self.ilceler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iletisim" EntityType="Self.iletisim" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="iller" EntityType="Self.iller" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kurumlar" EntityType="Self.Kurumlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Markalar" EntityType="Self.Markalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetaTag" EntityType="Self.MetaTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Popup" EntityType="Self.Popup" Schema="dbo" store:Type="Tables" />
@@ -353,6 +391,10 @@
           <AssociationSet Name="FK_AltKategoriler_Kategoriler" Association="Self.FK_AltKategoriler_Kategoriler">
             <End Role="Kategoriler" EntitySet="Kategoriler" />
             <End Role="AltKategoriler" EntitySet="AltKategoriler" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Counties_Cities" Association="Self.FK_Counties_Cities">
+            <End Role="iller" EntitySet="iller" />
+            <End Role="ilceler" EntitySet="ilceler" />
           </AssociationSet>
           <AssociationSet Name="FK_GaleriResim_Galeriler" Association="Self.FK_GaleriResim_Galeriler">
             <End Role="Galeri" EntitySet="Galeri" />
@@ -454,6 +496,22 @@
           <Property Name="Uzanti" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
+        <EntityType Name="ELMAH_Error">
+          <Key>
+            <PropertyRef Name="ErrorId" />
+          </Key>
+          <Property Name="ErrorId" Type="Guid" Nullable="false" />
+          <Property Name="Application" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Host" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Source" Type="String" MaxLength="60" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusCode" Type="Int32" Nullable="false" />
+          <Property Name="TimeUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sequence" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AllXml" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
         <EntityType Name="Galeri">
           <Key>
             <PropertyRef Name="GaleriId" />
@@ -503,22 +561,14 @@
           <NavigationProperty Name="Galeri" Relationship="Self.FK_Haberler_Galeri" FromRole="Haberler" ToRole="Galeri" />
           <NavigationProperty Name="HaberKategorileri" Relationship="Self.FK_Haberler_HaberKategorileri" FromRole="Haberler" ToRole="HaberKategorileri" />
         </EntityType>
-        <EntityType Name="Il">
+        <EntityType Name="ilceler">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ilceId" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Plaka" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IlAdiBuyuk" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IlAdiKucuk" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Ilceler">
-          <Key>
-            <PropertyRef Name="IlceId" />
-          </Key>
-          <Property Name="IlceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IlId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="IlceAdi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ilceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilId" Type="Int32" Nullable="false" />
+          <Property Name="ilceAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="iller" Relationship="Self.FK_Counties_Cities" FromRole="ilceler" ToRole="iller" />
         </EntityType>
         <EntityType Name="iletisim">
           <Key>
@@ -536,6 +586,17 @@
           <Property Name="SmtpMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SmtpAdres" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Sifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="iller">
+          <Key>
+            <PropertyRef Name="ilId" />
+          </Key>
+          <Property Name="ilId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UlkeId" Type="Int32" Nullable="false" />
+          <Property Name="ilAdi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PlakaNo" Type="String" MaxLength="2" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TelKodu" Type="String" MaxLength="7" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ilceler" Relationship="Self.FK_Counties_Cities" FromRole="iller" ToRole="ilceler" />
         </EntityType>
         <EntityType Name="Kategoriler">
           <Key>
@@ -705,6 +766,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Counties_Cities">
+          <End Role="iller" Type="Self.iller" Multiplicity="1" />
+          <End Role="ilceler" Type="Self.ilceler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="iller">
+              <PropertyRef Name="ilId" />
+            </Principal>
+            <Dependent Role="ilceler">
+              <PropertyRef Name="ilId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Adminler" EntityType="Self.Adminler" />
           <EntitySet Name="AdminRolIliski" EntityType="Self.AdminRolIliski" />
@@ -713,13 +786,14 @@
           <EntitySet Name="Bulten" EntityType="Self.Bulten" />
           <EntitySet Name="Cozumler" EntityType="Self.Cozumler" />
           <EntitySet Name="DosyaYoneticisi" EntityType="Self.DosyaYoneticisi" />
+          <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" />
           <EntitySet Name="Galeri" EntityType="Self.Galeri" />
           <EntitySet Name="GaleriResim" EntityType="Self.GaleriResim" />
           <EntitySet Name="HaberKategorileri" EntityType="Self.HaberKategorileri" />
           <EntitySet Name="Haberler" EntityType="Self.Haberler" />
-          <EntitySet Name="Il" EntityType="Self.Il" />
-          <EntitySet Name="Ilceler" EntityType="Self.Ilceler" />
+          <EntitySet Name="ilceler" EntityType="Self.ilceler" />
           <EntitySet Name="iletisim" EntityType="Self.iletisim" />
+          <EntitySet Name="iller" EntityType="Self.iller" />
           <EntitySet Name="Kategoriler" EntityType="Self.Kategoriler" />
           <EntitySet Name="Markalar" EntityType="Self.Markalar" />
           <EntitySet Name="MetaTag" EntityType="Self.MetaTag" />
@@ -754,7 +828,19 @@
             <End Role="HaberKategorileri" EntitySet="HaberKategorileri" />
             <End Role="Haberler" EntitySet="Haberler" />
           </AssociationSet>
+          <AssociationSet Name="FK_Counties_Cities" Association="Self.FK_Counties_Cities">
+            <End Role="iller" EntitySet="iller" />
+            <End Role="ilceler" EntitySet="ilceler" />
+          </AssociationSet>
+          <EntitySet Name="Kurumlar" EntityType="Model.Kurumlar" />
         </EntityContainer>
+        <EntityType Name="Kurumlar">
+          <Key>
+            <PropertyRef Name="KurumId" />
+          </Key>
+          <Property Name="KurumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KurumAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -842,6 +928,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ELMAH_Error">
+            <EntityTypeMapping TypeName="Model.ELMAH_Error">
+              <MappingFragment StoreEntitySet="ELMAH_Error">
+                <ScalarProperty Name="ErrorId" ColumnName="ErrorId" />
+                <ScalarProperty Name="Application" ColumnName="Application" />
+                <ScalarProperty Name="Host" ColumnName="Host" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="TimeUtc" ColumnName="TimeUtc" />
+                <ScalarProperty Name="Sequence" ColumnName="Sequence" />
+                <ScalarProperty Name="AllXml" ColumnName="AllXml" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Galeri">
             <EntityTypeMapping TypeName="Model.Galeri">
               <MappingFragment StoreEntitySet="Galeri">
@@ -888,22 +991,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Il">
-            <EntityTypeMapping TypeName="Model.Il">
-              <MappingFragment StoreEntitySet="Il">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Plaka" ColumnName="Plaka" />
-                <ScalarProperty Name="IlAdiBuyuk" ColumnName="IlAdiBuyuk" />
-                <ScalarProperty Name="IlAdiKucuk" ColumnName="IlAdiKucuk" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Ilceler">
-            <EntityTypeMapping TypeName="Model.Ilceler">
-              <MappingFragment StoreEntitySet="Ilceler">
-                <ScalarProperty Name="IlceId" ColumnName="IlceId" />
-                <ScalarProperty Name="IlId" ColumnName="IlId" />
-                <ScalarProperty Name="IlceAdi" ColumnName="IlceAdi" />
+          <EntitySetMapping Name="ilceler">
+            <EntityTypeMapping TypeName="Model.ilceler">
+              <MappingFragment StoreEntitySet="ilceler">
+                <ScalarProperty Name="ilceId" ColumnName="ilceId" />
+                <ScalarProperty Name="ilId" ColumnName="ilId" />
+                <ScalarProperty Name="ilceAdi" ColumnName="ilceAdi" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -922,6 +1015,17 @@
                 <ScalarProperty Name="SmtpMail" ColumnName="SmtpMail" />
                 <ScalarProperty Name="SmtpAdres" ColumnName="SmtpAdres" />
                 <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="iller">
+            <EntityTypeMapping TypeName="Model.iller">
+              <MappingFragment StoreEntitySet="iller">
+                <ScalarProperty Name="ilId" ColumnName="ilId" />
+                <ScalarProperty Name="UlkeId" ColumnName="UlkeId" />
+                <ScalarProperty Name="ilAdi" ColumnName="ilAdi" />
+                <ScalarProperty Name="PlakaNo" ColumnName="PlakaNo" />
+                <ScalarProperty Name="TelKodu" ColumnName="TelKodu" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1010,6 +1114,14 @@
                 <ScalarProperty Name="Sira" ColumnName="Sira" />
                 <ScalarProperty Name="Aktif" ColumnName="Aktif" />
                 <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurumlar">
+            <EntityTypeMapping TypeName="Model.Kurumlar">
+              <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="KurumAdi" ColumnName="KurumAdi" />
+                <ScalarProperty Name="KurumId" ColumnName="KurumId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -12,12 +12,18 @@ namespace Mobit.Data.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class ilceler
+    public partial class ELMAH_Error
     {
-        public int ilceId { get; set; }
-        public int ilId { get; set; }
-        public string ilceAdi { get; set; }
-    
-        public virtual iller iller { get; set; }
+        public System.Guid ErrorId { get; set; }
+        public string Application { get; set; }
+        public string Host { get; set; }
+        public string Type { get; set; }
+        public string Source { get; set; }
+        public string Message { get; set; }
+        public string User { get; set; }
+        public int StatusCode { get; set; }
+        public System.DateTime TimeUtc { get; set; }
+        public int Sequence { get; set; }
+        public string AllXml { get; set; }
     }
 }

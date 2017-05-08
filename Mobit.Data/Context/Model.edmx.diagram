@@ -4,27 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a6fd328c772f4f8ca2bfd8fc5251a8fb" Name="Diagram1">
+      <Diagram DiagramId="db01e08bce2445f2aaf0d399c8307a8c" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Adminler" Width="1.5" PointX="5.75" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AdminRolIliski" Width="1.5" PointX="8" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AdminRolleri" Width="1.5" PointX="5.75" PointY="9.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.AltKategoriler" Width="1.5" PointX="11" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Bulten" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Cozumler" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.DosyaYoneticisi" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Cozumler" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.DosyaYoneticisi" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ELMAH_Error" Width="1.5" PointX="12.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Galeri" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.GaleriResim" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.HaberKategorileri" Width="1.5" PointX="3.75" PointY="6.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Haberler" Width="1.5" PointX="6" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Il" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Ilceler" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.iletisim" Width="1.5" PointX="11.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ilceler" Width="1.5" PointX="10" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.iletisim" Width="1.5" PointX="9.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.iller" Width="1.5" PointX="7.75" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Kategoriler" Width="1.5" PointX="8.75" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Markalar" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.MetaTag" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Popup" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Markalar" Width="1.5" PointX="13.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MetaTag" Width="1.5" PointX="5.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Popup" Width="1.5" PointX="11.75" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Sayfalar" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Slider" Width="1.5" PointX="7.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Slider" Width="1.5" PointX="13.75" PointY="13.75" IsExpanded="true" />
         <AssociationConnector Association="Model.FK_AdminRolIliski_Adminler" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_AdminRolIliski_AdminRolleri" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_AltKategoriler_Kategoriler" ManuallyRouted="false" />
@@ -32,6 +33,8 @@
         <AssociationConnector Association="Model.FK_Haberler_Galeri" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Sayfalar_Galeri" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Haberler_HaberKategorileri" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Counties_Cities" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.Kurumlar" Width="1.5" PointX="0.75" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

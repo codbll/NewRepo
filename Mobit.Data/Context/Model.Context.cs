@@ -32,18 +32,20 @@ namespace Mobit.Data.Context
         public virtual DbSet<Bulten> Bulten { get; set; }
         public virtual DbSet<Cozumler> Cozumler { get; set; }
         public virtual DbSet<DosyaYoneticisi> DosyaYoneticisi { get; set; }
+        public virtual DbSet<ELMAH_Error> ELMAH_Error { get; set; }
         public virtual DbSet<Galeri> Galeri { get; set; }
         public virtual DbSet<GaleriResim> GaleriResim { get; set; }
         public virtual DbSet<HaberKategorileri> HaberKategorileri { get; set; }
         public virtual DbSet<Haberler> Haberler { get; set; }
-        public virtual DbSet<Il> Il { get; set; }
-        public virtual DbSet<Ilceler> Ilceler { get; set; }
+        public virtual DbSet<ilceler> ilceler { get; set; }
         public virtual DbSet<iletisim> iletisim { get; set; }
+        public virtual DbSet<iller> iller { get; set; }
         public virtual DbSet<Kategoriler> Kategoriler { get; set; }
         public virtual DbSet<Markalar> Markalar { get; set; }
         public virtual DbSet<MetaTag> MetaTag { get; set; }
         public virtual DbSet<Popup> Popup { get; set; }
         public virtual DbSet<Sayfalar> Sayfalar { get; set; }
         public virtual DbSet<Slider> Slider { get; set; }
+        public virtual DbSet<Kurumlar> Kurumlar { get; set; }
     }
 }

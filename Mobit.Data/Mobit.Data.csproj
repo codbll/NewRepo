@@ -76,6 +76,9 @@
     <Compile Include="Context\DosyaYoneticisi.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\ELMAH_Error.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Galeri.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -88,16 +91,19 @@
     <Compile Include="Context\Haberler.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Il.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\Ilceler.cs">
+    <Compile Include="Context\ilceler.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\iletisim.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\iller.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Kategoriler.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\Kurumlar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Markalar.cs">

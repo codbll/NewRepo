@@ -12,11 +12,9 @@ namespace Mobit.Data.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Il
+    public partial class Kurumlar
     {
-        public int Id { get; set; }
-        public string Plaka { get; set; }
-        public string IlAdiBuyuk { get; set; }
-        public string IlAdiKucuk { get; set; }
+        public int KurumId { get; set; }
+        public string KurumAdi { get; set; }
     }
 }
