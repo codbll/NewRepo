@@ -19,7 +19,7 @@ namespace Mobit.Controllers
         {
             TitleGetir();
             Slider();
-            Markalar();
+           
             return View();
 
         }
@@ -44,7 +44,24 @@ namespace Mobit.Controllers
             return PartialView("~/Views/_Partial/_Menu.cshtml", Tuple.Create(kategoriler, altKategoriler, cozumler, haberKategori));
 
         }
+        public PartialViewResult HeaderReklam()
+        {
 
+            return PartialView("~/Views/_Partial/_headerReklam.cshtml");
+
+        }
+        public PartialViewResult Body1()
+        {
+
+            return PartialView("~/Views/_Partial/_Body1.cshtml");
+
+        }
+        public PartialViewResult Body2()
+        {
+
+            return PartialView("~/Views/_Partial/_Body2.cshtml");
+
+        }
         void Slider()
         {
             //slider
@@ -53,11 +70,6 @@ namespace Mobit.Controllers
 
         }
 
-        void Markalar()
-        {
-            var markalar = db.Markalar.Where(m => m.Aktif == true).OrderBy(m=>m.Sira).ToList();
-            TempData["markalar"] = markalar;
-        }
 
         public void TitleGetir()
         {
@@ -204,7 +216,7 @@ namespace Mobit.Controllers
 
         }
 
-       
+
 
     }
 }

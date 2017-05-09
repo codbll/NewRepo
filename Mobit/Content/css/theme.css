@@ -580,8 +580,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
 	#header .header-nav-main nav > ul > li.dropdown-mega {
-		/*position: static;*/
-       
+		position: static;
 	}
 
 	#header .header-nav-main nav > ul > li.dropdown-mega > .dropdown-menu {
@@ -689,13 +688,9 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
 	#header .header-nav-main a > .thumb-info-preview .thumb-info-image {
-		/*transition: all 6s linear 0s;
+		transition: all 6s linear 0s;
 		width: 182px;
 		height: 136px;
-		min-height: 0;*/
-        transition: all 500s linear 0s;
-		width: 182px;
-		height: 190px;
 		min-height: 0;
 	}
 

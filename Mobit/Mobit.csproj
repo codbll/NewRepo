@@ -2241,9 +2241,7 @@
     <Content Include="Upload\icon\pdf_en.jpg" />
     <Content Include="Upload\icon\pdf_genel.jpg" />
     <Content Include="Upload\icon\pdf_tr.jpg" />
-    <Content Include="Upload\images\mobit-e-fatura.fw.png" />
-    <Content Include="Upload\images\tente-logo.png" />
-    <Content Include="Upload\images\tenteglobal-logo.png" />
+    <Content Include="Upload\images\project.jpg" />
     <Content Include="Upload\slide\1-2110.png" />
     <Content Include="Upload\slide\8355-casio-it-300-b-8446.jpg" />
     <Content Include="Upload\slide\powerbank1-7327.jpg" />
@@ -2590,6 +2588,9 @@
     <Content Include="Views\_Partial\_Popup.cshtml" />
     <Content Include="Views\_Partial\_KategoriMarkalar.cshtml" />
     <Content Include="Views\_Partial\_UrunOzellikleri.cshtml" />
+    <Content Include="Views\_Partial\_headerReklam.cshtml" />
+    <Content Include="Views\_Partial\_Body1.cshtml" />
+    <Content Include="Views\_Partial\_Body2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
