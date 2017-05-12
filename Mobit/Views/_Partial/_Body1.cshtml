@@ -1,19 +1,19 @@
-﻿
+﻿@model Mobit.Models.BodyModel
+
 @* alt slider alanı *@
 <div class="row">
     <div class="col-md-7">
 
         <div class="owl-carousel owl-theme show-nav-hover mt-none owl-loaded owl-drag owl-carousel-init" data-plugin-options="{&quot;items&quot;: 1, &quot;margin&quot;: 10, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;animateOut&quot;: &quot;fadeOut&quot;}">
-            <div>
-                <img alt="" class="img-responsive img-thumbnail" src="https://placehold.it/800x400">
-            </div>
-            <div>
-                <img alt="" class="img-responsive img-thumbnail" src="https://placehold.it/800x400">
-            </div>
-            <div>
-                <img alt="" class="img-responsive img-thumbnail" src="https://placehold.it/800x400">
-            </div>
 
+            @foreach (var item in Model.Slider)
+            {
+                <div>
+                    <a href="@item.Url" target="@item.Target">
+                        <img alt="@item.Baslik" title="@item.Baslik" class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim">
+                    </a>
+                </div>
+            }
         </div>
 
 

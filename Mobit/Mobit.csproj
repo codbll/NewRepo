@@ -201,7 +201,7 @@
     <Compile Include="Helpers\Msg.cs" />
     <Compile Include="Helpers\AjaxValidate.cs" />
     <Compile Include="Helpers\SendMail.cs" />
-    <Compile Include="Models\cvModel.cs" />
+    <Compile Include="Models\BodyModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

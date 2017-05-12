@@ -53,61 +53,6 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("insan-kaynaklari")]
-        public ActionResult ikCv()
-        {
-            return View();
-        }
 
-        [Route("insan-kaynaklari")]
-        [HttpPost]
-        public ActionResult ikCv(cvModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var config = ConfigurationManager.GetSection("system.net/mailSettings/smtp") as SmtpSection;
-
-                    using (MailMessage mail = new MailMessage(config.Network.UserName, "ik@mobit.com.tr"))
-                    {
-
-                        mail.Subject = "Mobit İK Başvuru Formu";
-                        string body = "Ad Soyad: " + model.AdSoyad + " <br></br> Email: " + model.Email;
-                        mail.Body = body;
-
-                        if (model.File != null)
-                        {
-                            string fileName = Path.GetFileName(model.File.FileName);
-                            mail.Attachments.Add(new Attachment(model.File.InputStream, fileName));
-                        }
-                        mail.IsBodyHtml = true;
-                        SmtpClient smtp = new SmtpClient();
-                        smtp.Host = config.Network.Host;
-                        smtp.EnableSsl = false;
-                        NetworkCredential networkCredential = new NetworkCredential(config.Network.UserName, config.Network.Password);
-                        smtp.UseDefaultCredentials = true;
-                        smtp.Credentials = networkCredential;
-                        smtp.Port = config.Network.Port;
-                        smtp.Send(mail);
-
-                        TempData["Bilgi"] = "Başvurunuz  gönderildi.";
-
-                        return View();
-                    }
-                }
-                catch (System.Exception)
-                {
-                    TempData["Hata"] = "Başvurunuz gönderilemedi lütfen tekrar deneyin.";
-
-                }
-
-
-
-            }
-
-
-            return View();
-        }
     }
 }

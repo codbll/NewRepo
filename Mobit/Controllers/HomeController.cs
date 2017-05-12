@@ -1,5 +1,6 @@
 ﻿using Mobit.Data.Context;
 using Mobit.Data.Model;
+using Mobit.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -19,7 +20,7 @@ namespace Mobit.Controllers
         {
             TitleGetir();
             Slider();
-           
+
             return View();
 
         }
@@ -53,7 +54,11 @@ namespace Mobit.Controllers
         public PartialViewResult Body1()
         {
 
-            return PartialView("~/Views/_Partial/_Body1.cshtml");
+            var model = new BodyModel();
+
+            //slider
+            model.Slider = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 2).OrderBy(sld => sld.Sira).ToList();
+            return PartialView("~/Views/_Partial/_Body1.cshtml", model);
 
         }
         public PartialViewResult Body2()
@@ -65,7 +70,7 @@ namespace Mobit.Controllers
         void Slider()
         {
             //slider
-            var slider = db.Slider.Where(sld => sld.Aktif == true).OrderBy(sld => sld.Sira).ToList();
+            var slider = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 1).OrderBy(sld => sld.Sira).ToList();
             TempData["slider"] = slider;
 
         }
