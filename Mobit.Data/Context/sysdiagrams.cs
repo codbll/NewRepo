@@ -12,16 +12,12 @@ namespace Mobit.Data.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Slider
+    public partial class sysdiagrams
     {
-        public int Id { get; set; }
-        public string Baslik { get; set; }
-        public string Url { get; set; }
-        public string Target { get; set; }
-        public string Resim { get; set; }
-        public int Sira { get; set; }
-        public Nullable<bool> Aktif { get; set; }
-        public Nullable<System.DateTime> Tarih { get; set; }
-        public int SliderId { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

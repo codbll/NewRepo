@@ -466,6 +466,8 @@
     <Content Include="Areas\Admin\Scripts\plugins\d3\d3.min.js" />
     <Content Include="Areas\Admin\Scripts\plugins\datapicker\bootstrap-datepicker.js" />
     <Content Include="Areas\Admin\Scripts\plugins\dataTables\datatables.min.js" />
+    <Content Include="Areas\Admin\Scripts\plugins\dataTables\dataTables.rowReorder.min.js" />
+    <Content Include="Areas\Admin\Scripts\plugins\dataTables\dataTables.select.min.js" />
     <Content Include="Areas\Admin\Scripts\plugins\daterangepicker\daterangepicker.js" />
     <Content Include="Areas\Admin\Scripts\plugins\diff_match_patch\javascript\diff_match_patch.js" />
     <Content Include="Areas\Admin\Scripts\plugins\diff_match_patch\README.txt" />
@@ -2242,10 +2244,6 @@
     <Content Include="Upload\icon\pdf_genel.jpg" />
     <Content Include="Upload\icon\pdf_tr.jpg" />
     <Content Include="Upload\images\project.jpg" />
-    <Content Include="Upload\slide\1-2110.png" />
-    <Content Include="Upload\slide\8355-casio-it-300-b-8446.jpg" />
-    <Content Include="Upload\slide\powerbank1-7327.jpg" />
-    <Content Include="Upload\slide\slide1.fw-4180.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2599,6 +2597,7 @@
     <Folder Include="Upload\files\" />
     <Folder Include="Upload\galeri\" />
     <Folder Include="Upload\haber\" />
+    <Folder Include="Upload\slide\" />
     <Folder Include="Upload\temp\" />
     <Folder Include="Upload\urun\casio-dt-x8-el-terminali\" />
   </ItemGroup>

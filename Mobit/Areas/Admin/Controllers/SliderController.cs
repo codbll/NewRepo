@@ -21,6 +21,8 @@ namespace Mobit.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi");
+
             return View();
         }
 
@@ -28,6 +30,8 @@ namespace Mobit.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Slider Slider, HttpPostedFileBase Resim)
         {
+            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi");
+
             if (Slider.Baslik == null)
             {
                 RedirectToAction("Index");
@@ -68,11 +72,14 @@ namespace Mobit.Areas.Admin.Controllers
 
             var slider = db.Slider.Find(id);
 
+
             if (slider == null)
             {
                 return RedirectToAction("Index");
             }
             ViewBag.Target = slider.Target;
+            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi", slider.SliderId);
+
             return View(slider);
         }
 
@@ -80,6 +87,7 @@ namespace Mobit.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Slider Slider, HttpPostedFileBase Resim)
         {
+            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi", Slider.SliderId);
 
             if (Slider.Baslik == null)
             {
@@ -107,6 +115,7 @@ namespace Mobit.Areas.Admin.Controllers
                 target = "_self";
 
             sld.Target = target;
+            sld.SliderId = Slider.SliderId;
             sld.Baslik = Slider.Baslik;
             sld.Sira = Slider.Sira;
             sld.Url = Slider.Url;
@@ -130,7 +139,7 @@ namespace Mobit.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-             try
+            try
             {
                 FileInfo dosya = new FileInfo(Server.MapPath("~/Upload/slide/" + slider.Resim));
 
@@ -142,13 +151,55 @@ namespace Mobit.Areas.Admin.Controllers
             catch (Exception)
             {
             }
-			
+
             db.Slider.Remove(slider);
             db.SaveChanges();
 
 
             return RedirectToAction("Index");
 
+        }
+
+        public ActionResult RowChange(int id, int? fromPosition, int? toPosition, string direction)
+        {
+            if (direction == "back")
+            {
+                var slides = db.Slider.Where(s => (toPosition <= s.Sira && s.Sira <= fromPosition)).ToList();
+
+                if (slides != null)
+                {
+                    var sld = slides.FirstOrDefault(s => s.Id == id);
+                    sld.Sira = Convert.ToInt32(toPosition);
+                    foreach (var item in slides)
+                    {
+                        if (item.Id != sld.Id)
+                        {
+                            item.Sira++;
+                        }
+                    }
+                }
+            }
+            else// forward
+            {
+                var slides = db.Slider.Where(s => (fromPosition <= s.Sira && s.Sira <= toPosition)).ToList();
+
+                if (slides != null)
+                {
+                    var sld = slides.FirstOrDefault(s => s.Id == id);
+                    sld.Sira = Convert.ToInt32(toPosition);
+                    foreach (var item in slides)
+                    {
+                        if (item.Id != sld.Id)
+                        {
+                            item.Sira--;
+                        }
+                    }
+                }
+            }
+
+
+            db.SaveChanges();
+            return null;
         }
 
     }

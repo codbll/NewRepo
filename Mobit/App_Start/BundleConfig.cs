@@ -8,7 +8,7 @@ namespace Mobit
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-         
+
 
             // admin config
             // jQuery
@@ -30,11 +30,11 @@ namespace Mobit
 
 
             // jQueryUI CSS
-            bundles.Add(new ScriptBundle("~/admin/Scripts/plugins/jquery-ui/jqueryuiStyles").Include(
+            bundles.Add(new StyleBundle("~/admin/Scripts/plugins/jquery-ui/jqueryuiStyles").Include(
                         "~/Areas/Admin/Scripts/plugins/jquery-ui/jquery-ui.css"));
 
             // jQueryUI 
-            bundles.Add(new StyleBundle("~/admin/bundles/jqueryui").Include(
+            bundles.Add(new ScriptBundle("~/admin/bundles/jqueryui").Include(
                         "~/Areas/Admin/Scripts/plugins/jquery-ui/jquery-ui.min.js"));
 
             // Bootstrap
@@ -116,7 +116,9 @@ namespace Mobit
 
             // dataTables 
             bundles.Add(new ScriptBundle("~/admin/plugins/dataTables").Include(
-                      "~/Areas/Admin/Scripts/plugins/dataTables/datatables.min.js"));
+                      "~/Areas/Admin/Scripts/plugins/dataTables/datatables.min.js",
+                      "~/Areas/Admin/Scripts/plugins/dataTables/dataTables.rowReorder.min.js",
+                      "~/Areas/Admin/Scripts/plugins/dataTables/dataTables.select.min.js"));
 
             // jeditable 
             bundles.Add(new ScriptBundle("~/admin/plugins/jeditable").Include(
@@ -145,7 +147,7 @@ namespace Mobit
             bundles.Add(new ScriptBundle("~/admin/plugins/nestable").Include(
                       "~/Areas/Admin/Scripts/plugins/nestable/jquery.nestable.js"));
 
-         
+
             // fullCalendar styles
             bundles.Add(new StyleBundle("~/admin/plugins/fullCalendarStyles").Include(
                       "~/Areas/Admin/Content/plugins/fullcalendar/fullcalendar.css"));
@@ -430,7 +432,7 @@ namespace Mobit
             BundleTable.EnableOptimizations = true;
 
         }
- 
+
 
     }
 }

@@ -35,6 +35,8 @@
         <AssociationConnector Association="Model.FK_Haberler_HaberKategorileri" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Counties_Cities" ManuallyRouted="false" />
         <EntityTypeShape EntityType="Model.Kurumlar" Width="1.5" PointX="0.75" PointY="14.75" />
+        <EntityTypeShape EntityType="Model.SliderKategori" Width="1.5" PointX="15.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="15.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

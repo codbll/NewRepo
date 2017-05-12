@@ -136,6 +136,12 @@
     <Compile Include="Context\Slider.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\SliderKategori.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\sysdiagrams.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Admins.cs" />
     <Compile Include="Model\AltKategori.cs" />
     <Compile Include="Model\AltKategoriGetir.cs" />
