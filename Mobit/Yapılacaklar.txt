@@ -1,0 +1,4 @@
+﻿Yapılacaklar:
+1-)Ana banner müşterinin gönderdiği şekilde olması gerekiyor.
+2-)Boyutlar istenilen gibi ayarlanmalıdır.
+ 
