@@ -1,4 +1,5 @@
 ﻿Yapılacaklar:
 1-)Ana banner müşterinin gönderdiği şekilde olması gerekiyor.
 2-)Boyutlar istenilen gibi ayarlanmalıdır.
+3-)http://okul34.com/ sitesindeki gibi olacaktır. Detaylar incelenecektir. 
  
