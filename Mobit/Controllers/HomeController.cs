@@ -64,7 +64,10 @@ namespace Mobit.Controllers
         public PartialViewResult Body2()
         {
 
-            return PartialView("~/Views/_Partial/_Body2.cshtml");
+            var model = new BodyModel();
+
+            model.Haberler = db.Haberler.ToList();
+            return PartialView("~/Views/_Partial/_Body2.cshtml", model);
 
         }
         void Slider()
