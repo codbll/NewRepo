@@ -79,7 +79,6 @@ namespace Mobit.Controllers
 
         }
 
-
         public void TitleGetir()
         {
             var meta = db.MetaTag.OrderBy(m => new { m.Title, m.Description, m.Keywords }).FirstOrDefault();
