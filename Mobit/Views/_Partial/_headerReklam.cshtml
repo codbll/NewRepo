@@ -1,4 +1,4 @@
-﻿
+﻿@model List<Mobit.Data.Context.Slider>
 <div class="header-top header-top-style-2">
     <div class="container">
         <div class="row">
@@ -6,30 +6,14 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 7, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
+
+                        @foreach (var item in Model.Where(s => s.SliderId == 3))
+                        {
+
                         <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                            <img alt="" class="img-responsive img-rounded" src="~/Upload/slide/@item.Resim">
                         </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
-                        <div>
-                            <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
-                        </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -163,22 +147,22 @@
 @*kayan 20 haber alanı*@
 
 
-    <div class="header-top">
-      <br />
-            <p class="col-md-12">
-                <div class="col-md-1"><h6><strong>HABERLER</strong></h6></div>
-                <div class="col-md-11">
-                    <marquee direction=left>
+<div class="header-top">
+    <br />
+    <p class="col-md-12">
+        <div class="col-md-1"><h6><strong>HABERLER</strong></h6></div>
+        <div class="col-md-11">
+            <marquee direction=left>
 
-                        <h5>
-                            <i class="fa fa-newspaper-o"></i><a href="#"> haber 1 örneği</a>
-                            <i class="fa fa-newspaper-o"></i><a href="#"> haber 2 örneği</a>
-                            <i class="fa fa-newspaper-o"></i><a href="#"> haber 3 örneği</a>
+                <h5>
+                    <i class="fa fa-newspaper-o"></i><a href="#"> haber 1 örneği</a>
+                    <i class="fa fa-newspaper-o"></i><a href="#"> haber 2 örneği</a>
+                    <i class="fa fa-newspaper-o"></i><a href="#"> haber 3 örneği</a>
 
-                        </h5>
-                    </marquee>
-                </div>
-            </p>
+                </h5>
+            </marquee>
+        </div>
+    </p>
 
-        
-    </div>
+
+</div>

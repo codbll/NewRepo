@@ -2244,6 +2244,21 @@
     <Content Include="Upload\icon\pdf_genel.jpg" />
     <Content Include="Upload\icon\pdf_tr.jpg" />
     <Content Include="Upload\images\project.jpg" />
+    <Content Include="Upload\slide\A1 Tek Reklam.jpg" />
+    <Content Include="Upload\slide\A2-2 Reklam -1.jpg" />
+    <Content Include="Upload\slide\A2-2 Reklam -2.jpg" />
+    <Content Include="Upload\slide\Alt Slider1.jpg" />
+    <Content Include="Upload\slide\Alt Slider2.jpg" />
+    <Content Include="Upload\slide\Alt Slider3.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner1.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner2.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner3.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner4.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner5.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner6.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner7.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner8.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner9.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2597,7 +2612,6 @@
     <Folder Include="Upload\files\" />
     <Folder Include="Upload\galeri\" />
     <Folder Include="Upload\haber\" />
-    <Folder Include="Upload\slide\" />
     <Folder Include="Upload\temp\" />
     <Folder Include="Upload\urun\casio-dt-x8-el-terminali\" />
   </ItemGroup>
