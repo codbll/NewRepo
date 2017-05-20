@@ -28,21 +28,12 @@ namespace Mobit.Controllers
 
         public PartialViewResult Menu()
         {
+            var model = new MenuModel();
             // kategoriler
-            db.Configuration.LazyLoadingEnabled = false;
-            var kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
-            var altKategoriler = db.AltKategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
-            // çözümler
-            var cozumler = db.Cozumler.Where(czm => czm.Aktif == true).ToList();
-            var haberKategori = db.HaberKategorileri.Where(h => h.Aktif == true).ToList();
+            model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
 
-            List<Sayfalar> hakkimizda = db.Sayfalar.Where(s => s.Aktif == true && s.Menu == true && s.KategoriId == 1).ToList();
-            ViewBag.hakkimizda = hakkimizda;
 
-            List<Sayfalar> iletisim = db.Sayfalar.Where(s => s.Aktif == true && s.Menu == true && s.KategoriId == 2).ToList();
-            ViewBag.iletisim = iletisim;
-
-            return PartialView("~/Views/_Partial/_Menu.cshtml", Tuple.Create(kategoriler, altKategoriler, cozumler, haberKategori));
+            return PartialView("~/Views/_Partial/_Menu.cshtml", model);
 
         }
         public PartialViewResult HeaderReklam()

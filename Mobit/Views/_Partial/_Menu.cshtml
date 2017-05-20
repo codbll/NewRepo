@@ -1,4 +1,5 @@
-﻿<div class="header-container header-nav header-nav-bar header-nav-bar-primary">
+﻿@model Mobit.Models.MenuModel
+<div class="header-container header-nav header-nav-bar header-nav-bar-primary">
     <div class="container">
         <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
             <i class="fa fa-bars"></i>
@@ -12,66 +13,12 @@
                             Ana Sayfa
                         </a>
                     </li>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="index-overview.html">
-                                    Overview
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html">
-                                    Landing Page
-                                </a>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="index-classic.html">Classic</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="index-classic.html" data-thumb-preview="img/previews/preview-classic.jpg">Classic - Original</a></li>
-                                    <li><a href="index-classic-color.html" data-thumb-preview="img/previews/preview-classic-color.jpg">Classic - Color</a></li>
-                                    <li><a href="index-classic-light.html" data-thumb-preview="img/previews/preview-classic-light.jpg">Classic - Light</a></li>
-                                    <li><a href="index-classic-video.html" data-thumb-preview="img/previews/preview-classic-video.jpg">Classic - Video</a></li>
-                                    <li><a href="index-classic-video-light.html" data-thumb-preview="img/previews/preview-classic-video-light.jpg">Classic - Video - Light</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="index-corporate.html">Corporate <span class="tip tip-dark">hot</span></a>
-                                <ul class="dropdown-menu">
-                                    <li class="dropdown-submenu">
-                                        <a href="#">Corporate - Versions <span class="tip tip-dark">hot</span></a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="index-corporate.html" data-thumb-preview="img/previews/preview-corporate.jpg">Corporate - Version 1</a></li>
-                                            <li><a href="index-corporate-2.html" data-thumb-preview="img/previews/preview-corporate-version2.jpg">Corporate - Version 2</a></li>
-                                            <li><a href="index-corporate-3.html" data-thumb-preview="img/previews/preview-corporate-version3.jpg">Corporate - Version 3</a></li>
-                                            <li><a href="index-corporate-4.html" data-thumb-preview="img/previews/preview-corporate-version4.jpg">Corporate - Version 4</a></li>
-                                            <li><a href="index-corporate-5.html" data-thumb-preview="img/previews/preview-corporate-version5.jpg">Corporate - Version 5</a></li>
-                                            <li><a href="index-corporate-6.html" data-thumb-preview="img/previews/preview-corporate-version6.jpg">Corporate - Version 6</a></li>
-                                            <li><a href="index-corporate-7.html" data-thumb-preview="img/previews/preview-corporate-version7.jpg">Corporate - Version 7</a></li>
-                                            <li><a href="index-corporate-8.html" data-thumb-preview="img/previews/preview-corporate-version8.jpg">Corporate - Version 8</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="index-corporate-hosting.html" data-thumb-preview="img/previews/preview-corporate-hosting.jpg">Corporate - Hosting</a></li>
-                                    <li><a href="index-corporate-digital-agency.html" data-thumb-preview="img/previews/preview-corporate-digital-agency.jpg">Corporate - Digital Agency</a></li>
-                                    <li><a href="index-corporate-law-office.html" data-thumb-preview="img/previews/preview-corporate-law-office.jpg">Corporate - Law Office</a></li>
-                                    <li><a href="index-corporate-construction.html" data-thumb-preview="img/previews/preview-corporate-construction.jpg">Corporate - Construction <span class="tip">new</span></a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="#">Extra <span class="tip">new</span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="index-extra-restaurant.html" data-thumb-preview="img/previews/preview-extra-restaurant.jpg">Extra - Restaurant <span class="tip">new</span></a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a href="#">One Page</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="index-one-page.html" data-thumb-preview="img/previews/preview-one-page.jpg">One Page Original</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                   
-                    @*<li class="dropdown dropdown-mega">
+                       
+                   @foreach (var item in Model.Kategoriler)
+                   {
+                    <li class="dropdown dropdown-mega">
                         <a class="dropdown-toggle" href="#">
-                            Shortcodes
+                            @item.KategoriAdi
                         </a>
                         <ul class="dropdown-menu">
                             <li>
@@ -133,13 +80,16 @@
                                 </div>
                             </li>
                         </ul>
-                    </li>*@
-                
-                    <li>
-                        <a href="/">
-                           İletişim
-                        </a>
                     </li>
+
+                   }
+                        <li>
+                            <a href="/">
+                               İletişim
+                            </a>
+                        </li>
+                    
+                  
                 </ul>
             </nav>
         </div>

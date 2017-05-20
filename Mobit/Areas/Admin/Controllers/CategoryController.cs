@@ -239,7 +239,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             }
 
-            return RedirectToAction("Category");
+            return RedirectToAction("Index");
         }
 
         public ActionResult DeleteSubCategory(int id, string returnUrl)

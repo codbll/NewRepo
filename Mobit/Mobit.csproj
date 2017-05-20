@@ -203,6 +203,7 @@
     <Compile Include="Helpers\SendMail.cs" />
     <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Models\BodyModel.cs" />
+    <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
