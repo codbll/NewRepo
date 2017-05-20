@@ -59,7 +59,8 @@ namespace Mobit.Controllers
             var model = new BodyModel();
 
             //slider
-            model.Slider = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 2).OrderBy(sld => sld.Sira).ToList();
+            model.Slider = db.Slider.Where(sld => sld.Aktif == true).OrderBy(sld => sld.Sira).ToList();
+            
             return PartialView("~/Views/_Partial/_Body1.cshtml", model);
 
         }
@@ -69,6 +70,7 @@ namespace Mobit.Controllers
             var model = new BodyModel();
             // haberler
             model.Haberler = db.HaberKategorileri.Where(h => h.Slug.Contains("haberler") || h.Slug.Contains("roportajlar")).OrderByDescending(h => h.KategoriId).ToList();
+            model.Slider = db.Slider.Where(s => s.Aktif == true).ToList();
 
             return PartialView("~/Views/_Partial/_Body2.cshtml", model);
 
