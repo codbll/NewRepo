@@ -9,9 +9,10 @@
 
                         @foreach (var item in Model.Where(s => s.SliderId == 3))
                         {
-
                             <div>
-                                <img alt="" class="img-responsive img-rounded" src="~/Upload/slide/@item.Resim">
+                                <a href="@item.Url" target="@item.Target">
+                                    <img alt="" class="img-responsive img-rounded" src="~/Upload/slide/@item.Resim">
+                                </a>
                             </div>
                         }
                     </div>
