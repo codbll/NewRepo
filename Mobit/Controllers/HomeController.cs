@@ -47,8 +47,10 @@ namespace Mobit.Controllers
         }
         public PartialViewResult HeaderReklam()
         {
-            var slider = db.Slider.Where(s => s.Aktif == true).ToList();
-            return PartialView("~/Views/_Partial/_headerReklam.cshtml", slider);
+            var model = new HeaderModel();
+            model.Slider = db.Slider.Where(s => s.Aktif == true).ToList();
+            model.Haberler = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h=>h.Id).Take(20).ToList();
+            return PartialView("~/Views/_Partial/_headerReklam.cshtml", model);
 
         }
         public PartialViewResult Body1()

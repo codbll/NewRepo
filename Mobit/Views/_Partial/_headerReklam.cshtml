@@ -1,4 +1,4 @@
-﻿@model List<Mobit.Data.Context.Slider>
+﻿@model Mobit.Models.HeaderModel
 <div class="header-top header-top-style-2">
     <div class="container">
         <div class="row">
@@ -7,11 +7,11 @@
                 <div class="col-md-12">
                     <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 7, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
 
-                        @foreach (var item in Model.Where(s => s.SliderId == 3))
+                        @foreach (var item in Model.Slider.Where(s => s.SliderId == 3))
                         {
                             <div>
                                 <a href="@item.Url" target="@item.Target">
-                                    <img alt="" width="140px" height="80px" class="img-responsive img-rounded" src="~/Upload/slide/@item.Resim">
+                                    <img alt="@item.Baslik" width="140px" height="80px" class="img-responsive img-rounded" src="~/Upload/slide/@item.Resim">
                                 </a>
                             </div>
                         }
@@ -21,116 +21,52 @@
 
             @*A1 reklam alanı*@
             <div class="row">
-                <div class="col-md-12">
-                    <img class="img-responsive img-thumbnail" src="https://placehold.it/1170x100" width="%100" height="125px" alt="">
-                </div>
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 4).Take(1).OrderByDescending(s => s.Id))
+                {
+                    <div class="col-md-12">
+                        <a href="@item.Url" target="@item.Target">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="%100" height="125px" alt="@item.Baslik">
+                        </a>
+                    </div>
+                }
             </div>
 
             @*A2 A-B reklam alanı*@
             <div class="row">
-                <div class="col-md-6">
-                    <img class="img-responsive img-thumbnail" src="https://placehold.it/600x100" width="%100"  height="125px" alt="">
-                </div>
-
-                <div class="col-md-6">
-                    <img class="img-responsive img-thumbnail" src="https://placehold.it/600x100" width="%100"  height="125px" alt="">
-                </div>
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 5).Take(2).OrderByDescending(s => s.Id))
+                {
+                    <div class="col-md-6">
+                        <a href="@item.Url" target="@item.Target">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="%100" height="125px" alt="@item.Baslik">
+                        </a>
+                    </div>
+                }
             </div>
 
-            @*5 reklam alanı*@
+            @*A3 5 reklam alanı*@
             <br />
             <ul class="image-gallery sort-destination full-width">
-
-                <li class="isotope-item">
-                    <div class="image-gallery-item">
-                        <a href="portfolio-single-small-slider.html">
-                            <span class="thumb-info thumb-info-centered-info">
-                                <span class="thumb-info-wrapper">
-                                    <img src="~/Upload/images/project.jpg" class="img-responsive" alt="">
-                                    <span class="thumb-info-title">
-                                        <span class="thumb-info-inner">Project Title</span>
-                                        <span class="thumb-info-type">Project Type</span>
-                                    </span>
-                                    <span class="thumb-info-action">
-                                        <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
-                <li class="isotope-item">
-                    <div class="image-gallery-item">
-                        <a href="portfolio-single-small-slider.html">
-                            <span class="thumb-info thumb-info-centered-info">
-                                <span class="thumb-info-wrapper">
-                                    <img src="~/Upload/images/project.jpg" class="img-responsive" alt="">
-                                    <span class="thumb-info-title">
-                                        <span class="thumb-info-inner">Project Title</span>
-                                        <span class="thumb-info-type">Project Type</span>
-                                    </span>
-                                    <span class="thumb-info-action">
-                                        <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 6).Take(5).OrderByDescending(s => s.Id))
+                {
+                    <li class="isotope-item">
+                        <div class="image-gallery-item">
+                            <a href="@item.Url" target="@item.Target">
+                                <span class="thumb-info thumb-info-centered-info">
+                                    <span class="thumb-info-wrapper">
+                                        <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="">
+                                        @*<span class="thumb-info-title">
+                                                <span class="thumb-info-inner">Project Title</span>
+                                                <span class="thumb-info-type">Project Type</span>
+                                            </span>
+                                            <span class="thumb-info-action">
+                                                <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                                            </span>*@
                                     </span>
                                 </span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
-                <li class="isotope-item">
-                    <div class="image-gallery-item">
-                        <a href="portfolio-single-small-slider.html">
-                            <span class="thumb-info thumb-info-centered-info">
-                                <span class="thumb-info-wrapper">
-                                    <img src="~/Upload/images/project.jpg" class="img-responsive" alt="">
-                                    <span class="thumb-info-title">
-                                        <span class="thumb-info-inner">Project Title</span>
-                                        <span class="thumb-info-type">Project Type</span>
-                                    </span>
-                                    <span class="thumb-info-action">
-                                        <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
-                <li class="isotope-item">
-                    <div class="image-gallery-item">
-                        <a href="portfolio-single-small-slider.html">
-                            <span class="thumb-info thumb-info-centered-info">
-                                <span class="thumb-info-wrapper">
-                                    <img src="~/Upload/images/project.jpg" class="img-responsive" alt="">
-                                    <span class="thumb-info-title">
-                                        <span class="thumb-info-inner">Project Title</span>
-                                        <span class="thumb-info-type">Project Type</span>
-                                    </span>
-                                    <span class="thumb-info-action">
-                                        <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
-                <li class="isotope-item">
-                    <div class="image-gallery-item">
-                        <a href="portfolio-single-small-slider.html">
-                            <span class="thumb-info thumb-info-centered-info">
-                                <span class="thumb-info-wrapper">
-                                    <img src="~/Upload/images/project.jpg" class="img-responsive" alt="">
-                                    <span class="thumb-info-title">
-                                        <span class="thumb-info-inner">Project Title</span>
-                                        <span class="thumb-info-type">Project Type</span>
-                                    </span>
-                                    <span class="thumb-info-action">
-                                        <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
-                                    </span>
-                                </span>
-                            </span>
-                        </a>
-                    </div>
-                </li>
+                            </a>
+                        </div>
+                    </li>
+                }
             </ul>
 
 
@@ -156,10 +92,10 @@
             <marquee direction=left>
 
                 <h5>
-                    <i class="fa fa-newspaper-o"></i><a href="#"> haber 1 örneği</a>
-                    <i class="fa fa-newspaper-o"></i><a href="#"> haber 2 örneği</a>
-                    <i class="fa fa-newspaper-o"></i><a href="#"> haber 3 örneği</a>
-
+                    @foreach (var item in Model.Haberler)
+                    {
+                        <i class="fa fa-newspaper-o"></i><a href="/haber/@item.Slug" title="@item.Ad"> @item.Ad</a>
+                    }
                 </h5>
             </marquee>
         </div>
