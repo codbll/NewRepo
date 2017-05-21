@@ -31,7 +31,7 @@ namespace Mobit.Controllers
             var model = new MenuModel();
             // kategoriler
             model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
-
+            model.ilceler = db.ilceler.Where(i => i.ilId == 40).ToList();
 
             return PartialView("~/Views/_Partial/_Menu.cshtml", model);
 
@@ -40,7 +40,7 @@ namespace Mobit.Controllers
         {
             var model = new HeaderModel();
             model.Slider = db.Slider.Where(s => s.Aktif == true).ToList();
-            model.Haberler = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h=>h.Id).Take(20).ToList();
+            model.Haberler = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h => h.Id).Take(20).ToList();
             return PartialView("~/Views/_Partial/_headerReklam.cshtml", model);
 
         }
@@ -51,7 +51,7 @@ namespace Mobit.Controllers
 
             //slider
             model.Slider = db.Slider.Where(sld => sld.Aktif == true).OrderBy(sld => sld.Sira).ToList();
-            
+
             return PartialView("~/Views/_Partial/_Body1.cshtml", model);
 
         }
