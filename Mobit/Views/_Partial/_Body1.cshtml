@@ -1,8 +1,8 @@
 ﻿@model Mobit.Models.BodyModel
-<hr />
+
 @* alt slider alanı *@
 <div class="row">
-    <div class="col-md-7">
+    <div class="col-md-7" style="padding:3px;">
 
         <div class="owl-carousel owl-theme show-nav-hover mt-none owl-loaded owl-drag owl-carousel-init" data-plugin-options="{&quot;items&quot;: 1, &quot;margin&quot;: 10, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;animateOut&quot;: &quot;fadeOut&quot;}">
 
@@ -19,10 +19,10 @@
 
     </div>
     @* sağ reklam alanı *@
-    <div class="col-md-5">
+    <div class="col-md-5" style="padding:3px;">
 
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 8).Take(1).OrderByDescending(s => s.Id))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 12).Take(1).OrderByDescending(s => s.Id))
             {
                 <div class="col-md-12">
                     <a href="@item.Url" target="@item.Target">
@@ -31,11 +31,11 @@
                 </div>
             }
 
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 7).Take(2).OrderByDescending(s => s.Id))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 7).Take(2).OrderBy(s => s.Sira))
             {
                 <div class="col-md-6" style="padding-right:0px;">
                     <a href="@item.Url" target="@item.Target">
-                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="%100" alt="@item.Baslik">
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                     </a>
                 </div>
 
@@ -49,34 +49,33 @@
 
 @*A5 slider altı reklam *@
 <div class="row">
-    @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(1).OrderByDescending(s => s.Id))
+    @foreach (var item in Model.Slider.Where(s => s.SliderId == 8).Take(1).OrderByDescending(s => s.Id))
     {
-        <div class="col-md-12">
+        <div class="col-md-12" style="padding:3px;">
             <a href="@item.Url" target="@item.Target">
-                <img class="img-responsive img-thumbnail" src="https://placehold.it/1170x100" width="%100" height="125px" alt="@item.Baslik">
+                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%"  alt="@item.Baslik">
             </a>
         </div>
     }
 </div>
 @* A6 A-B reklam alanı *@
 <div class="row">
-    <div class="col-md-6">
-        <img class="img-responsive img-thumbnail" src="https://placehold.it/600x100" width="%100" height="125px" alt="">
-    </div>
-
-    <div class="col-md-6">
-        <img class="img-responsive img-thumbnail" src="https://placehold.it/600x100" width="%100" height="125px" alt="">
-    </div>
+    @foreach (var item in Model.Slider.Where(s => s.SliderId == 9).Take(2).OrderBy(s => s.Sira))
+    {
+        <div class="col-md-6" style="padding:3px;">
+            <a href="@item.Url" target="@item.Target">
+                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+            </a>
+        </div>
+    }
 </div>
 <div class="row">
-    <div class="col-md-4">
-        <img class="img-responsive img-thumbnail" src="https://placehold.it/390x100" width="%100" height="125px" alt="">
-    </div>
-
-    <div class="col-md-4">
-        <img class="img-responsive img-thumbnail" src="https://placehold.it/390x100" width="%100" height="125px" alt="">
-    </div>
-    <div class="col-md-4">
-        <img class="img-responsive img-thumbnail" src="https://placehold.it/390x100" width="%100" height="125px" alt="">
-    </div>
+    @foreach (var item in Model.Slider.Where(s => s.SliderId == 10).Take(3).OrderBy(s => s.Sira))
+    {
+        <div class="col-md-4" style="padding:3px;">
+            <a href="@item.Url" target="@item.Target">
+                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+            </a>
+        </div>
+    }
 </div>
