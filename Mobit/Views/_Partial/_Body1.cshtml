@@ -1,7 +1,7 @@
 ﻿@model Mobit.Models.BodyModel
 
 @* alt slider alanı *@
-<div class="row">
+<div class="row" style="padding:3px;">
     <div class="col-md-7" style="padding:3px;">
 
         <div class="owl-carousel owl-theme show-nav-hover mt-none owl-loaded owl-drag owl-carousel-init" data-plugin-options="{&quot;items&quot;: 1, &quot;margin&quot;: 10, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;animateOut&quot;: &quot;fadeOut&quot;}">
@@ -19,28 +19,29 @@
 
     </div>
     @* sağ reklam alanı *@
-    <div class="col-md-5" style="padding:3px;">
+    <div class="col-md-5">
 
-        <div class="row">
+        <div class="row"  style="padding:1px;">
             @foreach (var item in Model.Slider.Where(s => s.SliderId == 12).Take(1).OrderByDescending(s => s.Id))
             {
-                <div class="col-md-12">
-                    <a href="@item.Url" target="@item.Target">
-                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" alt="@item.Baslik">
-                    </a>
-                </div>
-            }
-
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 7).Take(2).OrderBy(s => s.Sira))
-            {
-                <div class="col-md-6" style="padding-right:0px;">
+                <div class="col-md-12" style="padding:3px;">
                     <a href="@item.Url" target="@item.Target">
                         <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                     </a>
                 </div>
-
             }
         </div>
+            <div class="row"  style="padding:1px;">
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 7).Take(2).OrderBy(s => s.Sira))
+            {
+                    <div class="col-md-6" style="padding:3px;" >
+                        <a href="@item.Url" target="@item.Target">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                        </a>
+                    </div>
+
+                }
+            </div>
 
     </div>
 </div>
