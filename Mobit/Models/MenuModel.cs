@@ -9,6 +9,7 @@ namespace Mobit.Models
     public class MenuModel
     {
         public List<Kategoriler> Kategoriler { get; set; }
+        public List<iller> iller { get; set; }
         public List<ilceler> ilceler { get; set; }
 
     }

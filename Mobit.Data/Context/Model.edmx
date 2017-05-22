@@ -233,6 +233,16 @@
           <Property Name="AcilisSekli" Type="tinyint" Nullable="false" />
           <Property Name="Durum" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Reklamlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategorKodu" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Target" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="Sayfalar">
           <Key>
             <PropertyRef Name="Id" />
@@ -269,6 +279,7 @@
           <Property Name="SliderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SliderAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Durum" Type="bit" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -376,6 +387,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Slider_SliderKategori">
+          <End Role="SliderKategori" Type="Self.SliderKategori" Multiplicity="1" />
+          <End Role="Slider" Type="Self.Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SliderKategori">
+              <PropertyRef Name="SliderId" />
+            </Principal>
+            <Dependent Role="Slider">
+              <PropertyRef Name="SliderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="Adminler" EntityType="Self.Adminler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AdminRolIliski" EntityType="Self.AdminRolIliski" Schema="dbo" store:Type="Tables" />
@@ -397,6 +420,7 @@
           <EntitySet Name="Markalar" EntityType="Self.Markalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MetaTag" EntityType="Self.MetaTag" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Popup" EntityType="Self.Popup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reklamlar" EntityType="Self.Reklamlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sayfalar" EntityType="Self.Sayfalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderKategori" EntityType="Self.SliderKategori" Schema="dbo" store:Type="Tables" />
@@ -432,6 +456,10 @@
           <AssociationSet Name="FK_Sayfalar_Galeri" Association="Self.FK_Sayfalar_Galeri">
             <End Role="Galeri" EntitySet="Galeri" />
             <End Role="Sayfalar" EntitySet="Sayfalar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Slider_SliderKategori" Association="Self.FK_Slider_SliderKategori">
+            <End Role="SliderKategori" EntitySet="SliderKategori" />
+            <End Role="Slider" EntitySet="Slider" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -703,6 +731,7 @@
           <Property Name="Aktif" Type="Boolean" />
           <Property Name="Tarih" Type="DateTime" Precision="3" />
           <Property Name="SliderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SliderKategori" Relationship="Model.FK_Slider_SliderKategori" FromRole="Slider" ToRole="SliderKategori" />
         </EntityType>
         <Association Name="FK_AdminRolIliski_Adminler">
           <End Role="Adminler" Type="Self.Adminler" Multiplicity="0..1" />
@@ -857,6 +886,11 @@
           <EntitySet Name="Kurumlar" EntityType="Model.Kurumlar" />
           <EntitySet Name="SliderKategori" EntityType="Model.SliderKategori" />
           <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
+          <EntitySet Name="Reklamlar" EntityType="Model.Reklamlar" />
+          <AssociationSet Name="FK_Slider_SliderKategori" Association="Model.FK_Slider_SliderKategori">
+            <End Role="SliderKategori" EntitySet="SliderKategori" />
+            <End Role="Slider" EntitySet="Slider" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Kurumlar">
           <Key>
@@ -872,6 +906,8 @@
           <Property Name="SliderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SliderAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="Boolean" Nullable="false" />
+          <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Slider" Relationship="Model.FK_Slider_SliderKategori" FromRole="SliderKategori" ToRole="Slider" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -883,6 +919,28 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <EntityType Name="Reklamlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategorKodu" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Target" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Slider_SliderKategori">
+          <End Type="Model.SliderKategori" Role="SliderKategori" Multiplicity="1" />
+          <End Type="Model.Slider" Role="Slider" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SliderKategori">
+              <PropertyRef Name="SliderId" />
+            </Principal>
+            <Dependent Role="Slider">
+              <PropertyRef Name="SliderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1171,6 +1229,7 @@
           <EntitySetMapping Name="SliderKategori">
             <EntityTypeMapping TypeName="Model.SliderKategori">
               <MappingFragment StoreEntitySet="SliderKategori">
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="SliderAdi" ColumnName="SliderAdi" />
                 <ScalarProperty Name="SliderId" ColumnName="SliderId" />
@@ -1185,6 +1244,17 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reklamlar">
+            <EntityTypeMapping TypeName="Model.Reklamlar">
+              <MappingFragment StoreEntitySet="Reklamlar">
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="KategorKodu" ColumnName="KategorKodu" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

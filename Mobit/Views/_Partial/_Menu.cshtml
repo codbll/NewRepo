@@ -17,52 +17,63 @@
                     @foreach (var kategori in Model.Kategoriler)
                     {
                         <li class="dropdown dropdown-mega">
-                            <a class="dropdown-toggle" href="#">
+                            <a class="dropdown-toggle" href="@(kategori.Url != null ? kategori.Url : "#.")">
                                 @kategori.KategoriAdi
                             </a>
-                            <ul class="dropdown-menu">
-                                @if (kategori.AltKategoriler.Count() >= 1)
-                                {
-                                    <li>
-                                        <div class="dropdown-mega-content">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <span class="dropdown-mega-sub-title">@kategori.KategoriAdi</span>
-                                                    <ul class="dropdown-mega-sub-nav">
-                                                        @foreach (var altKategori in kategori.AltKategoriler.Where(a => a.Aktif == true))
-                                                        {
+                            @if (kategori.Area == true)// açılır menü ise
+                            {
+                                <ul class="dropdown-menu">
+                                    @if (kategori.AltKategoriler.Count() >= 1)
+                                    {
+                                        <li>
+                                            <div class="dropdown-mega-content">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <span class="dropdown-mega-sub-title">@kategori.KategoriAdi</span>
+                                                        <ul class="dropdown-mega-sub-nav">
+                                                            @foreach (var altKategori in kategori.AltKategoriler.Where(a => a.Aktif == true))
+                                                            {
 
-                                                            <li><a href="shortcodes-accordions.html">@altKategori.AltKategoriAdi</a></li>
-                                                        }
-                                                    </ul>
+                                                                <li><a href="shortcodes-accordions.html"><b>@altKategori.AltKategoriAdi</b></a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+
                                                 </div>
-
                                             </div>
-                                        </div>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li>
-                                        <div class="dropdown-mega-content">
-                                            <div class="row">
-                                                <div class="col-md-3">
-                                                    <span class="dropdown-mega-sub-title">@kategori.KategoriAdi</span>
-                                                    <ul class="dropdown-mega-sub-nav">
-                                                        @foreach (var ilce in Model.ilceler)
-                                                        {
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <div class="dropdown-mega-content">
+                                                <div class="row">
+                                                    @foreach (var iller in Model.iller)
+                                                    {
 
-                                                            <li><a href="shortcodes-accordions.html">@ilce.ilceAdi</a></li>
-                                                        }
-                                                    </ul>
+                                                        <div class="col-md-6">
+                                                            <span class="dropdown-mega-sub-title">@iller.ilAdi Yakası</span>
+                                                            <ul class="dropdown-mega-sub-nav">
+
+                                                                @foreach (var ilce in iller.ilceler)
+                                                                {
+                                                                    <div class="col-md-4">
+                                                                        <li>
+                                                                            <a href="shortcodes-accordions.html"><b>@ilce.ilceAdi </b></a>
+                                                                        </li>
+                                                                    </div>
+                                                                }
+                                                            </ul>
+                                                        </div>
+
+                                                    }
                                                 </div>
-
                                             </div>
-                                        </div>
-                                    </li>
-                                }
+                                        </li>
+                                    }
 
-                            </ul>
+                                </ul>
+                            }
                         </li>
 
                     }

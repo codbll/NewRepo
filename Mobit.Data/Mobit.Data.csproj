@@ -130,6 +130,9 @@
     <Compile Include="Context\Popup.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Reklamlar.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Sayfalar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

@@ -31,7 +31,7 @@ namespace Mobit.Controllers
             var model = new MenuModel();
             // kategoriler
             model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
-            model.ilceler = db.ilceler.Where(i => i.ilId == 40).ToList();
+            model.iller = db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
 
             return PartialView("~/Views/_Partial/_Menu.cshtml", model);
 

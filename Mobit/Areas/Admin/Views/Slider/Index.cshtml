@@ -28,6 +28,7 @@
                             <th width="30">Sıra</th>
                             <th width="30">Resim</th>
                             <th>Başlık</th>
+                            <th>Kategori</th>
                             <th>Durum</th>
                             <th>Güncelle</th>
 
@@ -42,7 +43,7 @@
                                 <td>@item.Sira</td>
                                 <td><a href="~/Upload/slide/@item.Resim" target="_blank"><img src="~/Upload/slide/@item.Resim" class="img-responsive" width="50" /></a></td>
                                 <td><a href="@item.Url" target="@item.Target"> @item.Baslik </a></td>
-                                
+                                <td>@item.SliderKategori.SliderAdi</td>
                                 @if (item.Aktif == true)
                                 {
                                     <td>Aktif</td>
@@ -72,19 +73,19 @@
 
 @section Scripts {
     @Scripts.Render("~/admin/plugins/dataTables")
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
 
             var table = $('.dataTables-example').DataTable({
-               
+
                 "order": [[0, "asc"]],
                 "scrollX": true,
                 "lengthMenu": [[50, 75, 100, -1], [50, 75, 100, "All"]],
                 dom: '<"html5buttons"B>lTfgitp',
                 responsive: true,
-                
+
                 buttons: [
                     { extend: 'copy' },
                     { extend: 'csv' },

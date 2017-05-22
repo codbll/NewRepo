@@ -29,8 +29,6 @@
                             <th>Sıra</th>
                             <th>Alt Kategori Adı</th>
                             <th>Kategori Adı</th>
-                            <th>Area</th>
-                            <th>Depart</th>
                             <th>Aktif</th>
                             <th>Güncelle</th>
 
@@ -46,22 +44,7 @@
                                 <td>@item.Sira</td>
                                 <td>@item.AltKategoriAdi</td>
                                 <td>@item.Kategoriler.KategoriAdi</td>
-                                @if (item.Area == true)
-                                {
-                                    <td>Aktif</td>
-                                }
-                                else
-                                {
-                                    <td><b>Pasif</b></td>
-                                }
-                                @if (item.Depart == true)
-                                {
-                                    <td>Aktif</td>
-                                }
-                                else
-                                {
-                                    <td><b>Pasif</b></td>
-                                }
+                               
                                 @if (item.Aktif == true)
                                 {
                                     <td>Aktif</td>
