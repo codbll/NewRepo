@@ -8,7 +8,7 @@
     @{
         foreach (var item in Model.Haberler)
         {
-            <div class="col-md-4">
+            <div class="col-md-4" style="padding:3px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
                     <h1 class="heading-primary">@item.Ad</h1>
                 </div>
@@ -42,26 +42,26 @@
         }
 
     }
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:3px;">
         <aside class="sidebar">
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary">En İyi Okullar</h1>
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 2, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
             </div>
 
@@ -71,19 +71,19 @@
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 2, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
             </div>
 
@@ -92,31 +92,39 @@
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 2, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-rounded" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
-            </div>
-
-            <div class="col-md-12">
-                <img class="img-responsive img-thumbnail" src="https://placehold.it/500x150" alt="">
             </div>
 
         </aside>
+        <br />
+        <div class="row">
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(1).OrderByDescending(s => s.Id))
+            {
+                <div class="col-md-12" style="padding:3px;">
+                    <a href="@item.Url" target="@item.Target">
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                    </a>
+                </div>
+            }
+        </div>
     </div>
+    
 </div>
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:3px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Anaokulu</h4>
         </div>
@@ -124,10 +132,10 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="https://placehold.it/390x300" class="img-responsive" alt="">
+                        <img src="~/Upload/slide/anaokulu.png" class="img-responsive" alt="">
                         <span class="thumb-info-title">
-                            <span class="thumb-info-inner">Okul Adı</span>
-                            <span class="thumb-info-type">Şehir Adı</span>
+                            <span class="thumb-info-inner">En İyi Anaokulu</span>
+                            <span class="thumb-info-type">İstanbul</span>
                         </span>
                         <span class="thumb-info-action">
                             <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
@@ -137,7 +145,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:3px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Koleji</h4>
         </div>
@@ -145,10 +153,10 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="https://placehold.it/390x300" class="img-responsive" alt="">
+                        <img src="~/Upload/slide/Eniyikoleji.png" class="img-responsive" alt="">
                         <span class="thumb-info-title">
-                            <span class="thumb-info-inner">Okul Adı</span>
-                            <span class="thumb-info-type">Şehir Adı</span>
+                            <span class="thumb-info-inner">En İyi Kolej</span>
+                            <span class="thumb-info-type">İstanbul</span>
                         </span>
                         <span class="thumb-info-action">
                             <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
@@ -158,7 +166,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-4">
+    <div class="col-md-4" style="padding:3px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Üniversitesi</h4>
         </div>
@@ -166,10 +174,10 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="https://placehold.it/390x300" class="img-responsive" alt="">
+                        <img src="~/Upload/slide/Eniyiuniversitesi.png" class="img-responsive" alt="">
                         <span class="thumb-info-title">
-                            <span class="thumb-info-inner">Okul Adı</span>
-                            <span class="thumb-info-type">Şehir Adı</span>
+                            <span class="thumb-info-inner">En İyi Üniversitesi</span>
+                            <span class="thumb-info-type">İstanbul</span>
                         </span>
                         <span class="thumb-info-action">
                             <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
