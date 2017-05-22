@@ -14,6 +14,12 @@ namespace Mobit.Data.Context
     
     public partial class AltKategoriler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public AltKategoriler()
+        {
+            this.Kurumlar = new HashSet<Kurumlar>();
+        }
+    
         public int AltKategoriId { get; set; }
         public string AltKategoriAdi { get; set; }
         public string Ikon { get; set; }
@@ -26,5 +32,7 @@ namespace Mobit.Data.Context
         public int Sira { get; set; }
     
         public virtual Kategoriler Kategoriler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kurumlar> Kurumlar { get; set; }
     }
 }

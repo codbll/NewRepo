@@ -34,7 +34,7 @@
                                                             @foreach (var altKategori in kategori.AltKategoriler.Where(a => a.Aktif == true))
                                                             {
 
-                                                                <li><a href="shortcodes-accordions.html"><b>@altKategori.AltKategoriAdi</b></a></li>
+                                                                <li><a href="/kategori/@kategori.Slug/@altKategori.Slug"><b>@altKategori.AltKategoriAdi</b></a></li>
                                                             }
                                                         </ul>
                                                     </div>
@@ -59,7 +59,7 @@
                                                                 {
                                                                     <div class="col-md-4">
                                                                         <li>
-                                                                            <a href="shortcodes-accordions.html"><b>@ilce.ilceAdi </b></a>
+                                                                            <a href="/kategori/@kategori.Slug/@Kontrol.ToSlug(ilce.ilceAdi)"><b>@ilce.ilceAdi </b></a>
                                                                         </li>
                                                                     </div>
                                                                 }

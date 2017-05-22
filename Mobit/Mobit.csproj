@@ -2592,6 +2592,7 @@
     <Content Include="ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\Kurum\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_Partial\Kurumlar.cshtml" />
+    <Content Include="Areas\Admin\Views\Kurum\Create.cshtml" />
     <None Include="Properties\PublishProfiles\Mobit.pubxml" />
     <Content Include="Views\_Partial\_YuklemeUrunler.cshtml" />
     <Content Include="Views\_Partial\_YuklemeIndir.cshtml" />

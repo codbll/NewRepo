@@ -39,6 +39,12 @@
         <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="15.375" PointY="8.75" />
         <EntityTypeShape EntityType="Model.Reklamlar" Width="1.5" PointX="16.375" PointY="3.75" />
         <AssociationConnector Association="Model.FK_Slider_SliderKategori" />
+        <EntityTypeShape EntityType="Model.KurumResim" Width="1.5" PointX="3" PointY="16.25" />
+        <AssociationConnector Association="Model.FK_KurumResim_Kurumlar" />
+        <AssociationConnector Association="Model.FK_Kurumlar_AltKategoriler" />
+        <AssociationConnector Association="Model.FK_Kurumlar_ilceler" />
+        <AssociationConnector Association="Model.FK_Kurumlar_iller" />
+        <AssociationConnector Association="Model.FK_Kurumlar_Kategoriler" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

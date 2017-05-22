@@ -106,6 +106,9 @@
     <Compile Include="Context\Kurumlar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\KurumResim.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Markalar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
