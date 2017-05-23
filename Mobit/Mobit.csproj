@@ -2533,8 +2533,6 @@
     <Content Include="Content\css\fonts\star.woff" />
     <Content Include="Views\_Partial\_Menu.cshtml" />
     <Content Include="Views\_Partial\_Slider.cshtml" />
-    <Content Include="Upload\urun\casio-it-300-el-terminali\8355-casio-it-300-tr.pdf" />
-    <Content Include="Upload\urun\casio-it-300-el-terminali\8355-it-300-en.pdf" />
     <Content Include="Views\_Partial\_KategorilerSticky.cshtml" />
     <Content Include="Views\_Partial\_Urunler.cshtml" />
     <Content Include="Views\_Partial\_Markalar.cshtml" />
@@ -2593,6 +2591,7 @@
     <Content Include="Areas\Admin\Views\Kurum\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_Partial\Kurumlar.cshtml" />
     <Content Include="Areas\Admin\Views\Kurum\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Kurum\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Mobit.pubxml" />
     <Content Include="Views\_Partial\_YuklemeUrunler.cshtml" />
     <Content Include="Views\_Partial\_YuklemeIndir.cshtml" />
@@ -2615,8 +2614,9 @@
     <Folder Include="Upload\files\" />
     <Folder Include="Upload\galeri\" />
     <Folder Include="Upload\haber\" />
+    <Folder Include="Upload\kurum\" />
     <Folder Include="Upload\temp\" />
-    <Folder Include="Upload\urun\casio-dt-x8-el-terminali\" />
+    <Folder Include="Upload\urun\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

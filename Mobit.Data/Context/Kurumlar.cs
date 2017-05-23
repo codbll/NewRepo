@@ -39,6 +39,7 @@ namespace Mobit.Data.Context
         public string Adres { get; set; }
         public bool Durum { get; set; }
         public string Resim { get; set; }
+        public string UploadYolu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KurumResim> KurumResim { get; set; }

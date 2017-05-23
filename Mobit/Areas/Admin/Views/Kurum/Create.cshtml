@@ -75,7 +75,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Aktiviteler, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-6">
-                @Html.EditorFor(model => model.Aktiviteler, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Aktiviteler,  new { @class = "form-control", @rows = "3", @cols = "4" })
                 @Html.ValidationMessageFor(model => model.Aktiviteler, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -218,7 +218,7 @@
             if (KategoriId != null && KategoriId != '') {
                 $.ajax({
                     type: "post",
-                    url: "AltKategoriGetir/Kurum",
+                    url: "/Kurum/AltKategoriGetir",
                     data: { KategoriId: KategoriId },
                     success: function (kategoriler) {
 
@@ -260,7 +260,7 @@
             if (ilId != null && ilId != '') {
                 $.ajax({
                     type: "post",
-                    url: "ilceGetir/Kurum",
+                    url: "/Kurum/ilceGetir",
                     data: { ilId: ilId },
                     success: function (kategoriler) {
 

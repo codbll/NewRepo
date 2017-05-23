@@ -1,6 +1,6 @@
-﻿
+﻿@model List<Mobit.Data.Context.Kurumlar>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Kurumlar";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
@@ -29,7 +29,6 @@
                             <th>Kurum Adı</th>
                             <th>Kategori</th>
                             <th>Durum</th>
-                            <th>Alt Kategori</th>
                             <th>Güncelle</th>
 
                         </tr>
@@ -38,33 +37,17 @@
 
                         @foreach (var item in Model)
                         {
-                            @*        <tr class="gradeX">
+                            <tr class="gradeX">
 
 
-                                    <td>@item.Sira</td>
-                                    <td>@item.KategoriAdi</td>
-                                    @if (item.Area == true)
-                                    {
-                                        <td>Aktif</td>
-                                    }
-                                    else
-                                    {
-                                        <td><b>Pasif</b></td>
-                                    }
-
-                                    @if (item.Aktif == true)
-                                    {
-                                        <td>Aktif</td>
-                                    }
-                                    else
-                                    {
-                                        <td><b>Pasif</b></td>
-                                    }
-                                    <td><a href="/Admin/Category/SubCategory/@item.KategoriId">Alt Kategoriler</a></td>
-                                    <td><a href="/Admin/Category/Edit/@item.KategoriId">Güncelle</a></td>
+                                <td>@item.KurumId</td>
+                                <td>@item.KurumAdi</td>
+                                <td>@item.Kategoriler.KategoriAdi</td>
+                                <td>@(item.Durum == true ? "Aktif" : "Pasif")</td>
+                                <td><a href="/Admin/Kurum/Edit/@item.KurumId">Güncelle</a></td>
 
 
-                                </tr>*@
+                            </tr>
                         }
                     </tbody>
 

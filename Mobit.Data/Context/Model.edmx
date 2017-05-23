@@ -197,12 +197,13 @@
           <Property Name="ilceId" Type="int" />
           <Property Name="KurumAdi" Type="nvarchar" MaxLength="150" />
           <Property Name="Slug" Type="nvarchar" MaxLength="150" />
+          <Property Name="UploadYolu" Type="nvarchar" MaxLength="150" />
           <Property Name="Resim" Type="nvarchar" MaxLength="50" />
           <Property Name="KurumMuduru" Type="nvarchar" MaxLength="150" />
           <Property Name="MudurYardimcilari" Type="nvarchar" MaxLength="250" />
           <Property Name="Aktiviteler" Type="nvarchar" MaxLength="250" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
-          <Property Name="KurulusTarihi" Type="date" />
+          <Property Name="KurulusTarihi" Type="nvarchar" MaxLength="50" />
           <Property Name="WebSitesi" Type="nvarchar" MaxLength="50" />
           <Property Name="Tel" Type="nvarchar" MaxLength="50" />
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
@@ -1038,7 +1039,7 @@
           <Property Name="MudurYardimcilari" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Aktiviteler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="KurulusTarihi" Type="DateTime" Precision="0" />
+          <Property Name="KurulusTarihi" Type="DateTime" />
           <Property Name="WebSitesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
@@ -1051,6 +1052,7 @@
           <NavigationProperty Name="iller" Relationship="Model.FK_Kurumlar_iller" FromRole="Kurumlar" ToRole="iller" />
           <NavigationProperty Name="Kategoriler" Relationship="Model.FK_Kurumlar_Kategoriler" FromRole="Kurumlar" ToRole="Kategoriler" />
           <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UploadYolu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SliderKategori">
           <Key>
@@ -1443,6 +1445,7 @@
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="UploadYolu" ColumnName="UploadYolu" />
                 <ScalarProperty Name="Resim" ColumnName="Resim" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="Adres" ColumnName="Adres" />
