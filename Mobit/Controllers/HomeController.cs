@@ -4,8 +4,10 @@ using Mobit.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -113,6 +115,63 @@ namespace Mobit.Controllers
 
             return PartialView("~/Views/_Partial/_Header.cshtml");
 
+        }
+
+        [Route("Home/HaberAra")]
+        [HttpPost]
+        public async Task<PartialViewResult> Search(string searchKey)
+        {
+            HaberAramaModel viewModel = null;
+
+            var tasks = new Task[1];
+            int i = 0;
+            viewModel = new HaberAramaModel();
+            viewModel.SearchKey = Kontrol.AramaKontrol(searchKey);
+            List<Task> TaskList = GetSeachResult(searchKey, viewModel);
+            foreach (Task tsk in TaskList)
+            {
+                tasks[i] = tsk;
+                i++;
+            }
+            await Task.WhenAll(tasks);
+
+            return PartialView("~/Views/_Partial/_HaberAramaSonuc.cshtml", viewModel);
+        }
+
+        private List<Task> GetSeachResult(string search, HaberAramaModel model)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+
+            List<Task> Tasks = new List<Task>();
+            var taskNews = Task.Factory.StartNew(() =>
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    model.Haberler = dbContext.Haberler.Where(ur => ur.Ad.Contains(search) && ur.Aktif == true).ToList();
+                    if (model.Haberler.Count < 1)
+                    {
+                        try
+                        {
+
+
+                            var urun = db.Haberler.Where(k => SqlFunctions.SoundCode(k.Ad) == SqlFunctions.SoundCode(search) && k.Aktif == true).Select(k => new { k.Ad }).FirstOrDefault();
+
+                            if (urun != null)
+                            {
+                                model.DidYouMean = urun.Ad;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+                }
+            });
+            Tasks.Add(taskNews);
+           
+
+            return Tasks;
         }
 
         [Route("Home/BultenKayit")]

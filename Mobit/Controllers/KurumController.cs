@@ -12,7 +12,6 @@ namespace Mobit.Controllers
         // GET: Kurum
         Entities db = new Entities();
 
-        [Route("{kategoriSlug}/{kurumSlug}")]
         public ActionResult Index(string kategoriSlug, string kurumSlug)
         {
 

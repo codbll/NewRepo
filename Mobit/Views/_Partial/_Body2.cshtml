@@ -1,14 +1,25 @@
 ﻿@model Mobit.Models.BodyModel
 
 <hr class="solid tall">
-@* alt haberler *@
 <div class="row">
 
+
+    <div class="col-md-8">
+        @Html.Partial("/Views/_Partial/_HaberArama.cshtml")
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>
+@* alt haberler *@
+<div class="row">
+   
 
     @{
         foreach (var item in Model.Haberler)
         {
             <div class="col-md-4" style="padding:3px;">
+                
                 <div class="heading heading-primary heading-border heading-bottom-border">
                     <h1 class="heading-primary">@item.Ad</h1>
                 </div>

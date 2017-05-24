@@ -14,34 +14,34 @@ namespace Mobit
             routes.MapMvcAttributeRoutes();
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-          //  routes.MapRoute(
-          // name: "haberkategori",
-          //  url: "Haberler/{Slug}",
-          //  defaults: new { controller = "Sayfalar", action = "Haberler", Slug = "" }
+            //  routes.MapRoute(
+            // name: "haberkategori",
+            //  url: "Haberler/{Slug}",
+            //  defaults: new { controller = "Sayfalar", action = "Haberler", Slug = "" }
 
-          // );
-          //  routes.MapRoute(
-          // name: "haberDetay",
-          //  url: "Haber/{Slug}",
-          //  defaults: new { controller = "Sayfalar", action = "HaberDetay", Slug = "" }
-
-
-          //);
+            // );
+            //  routes.MapRoute(
+            // name: "haberDetay",
+            //  url: "Haber/{Slug}",
+            //  defaults: new { controller = "Sayfalar", action = "HaberDetay", Slug = "" }
 
 
-          //  routes.MapRoute(
-          //    "Kategori",
-          //     "Kategori/{Slug}",
-          //     new { controller = "Kategori", action = "Index", },
-          //     new[] { "Mobit.Controllers" }
-          //  );
+            //);
 
-          //  routes.MapRoute(
-          //    "altKategori",
-          //     "Kategori/{kategori}/{ilce}",
-          //     new { controller = "AltKategori", action = "Index", },
-          //     new[] { "Mobit.Controllers" }
-          //      );
+
+            routes.MapRoute(
+              "kurumDetay",
+               "{kategoriSlug}/{kurumSlug}",
+               new { controller = "Kurum", action = "Index", },
+               new[] { "Mobit.Controllers" }
+            );
+
+            //  routes.MapRoute(
+            //    "altKategori",
+            //     "Kategori/{kategori}/{ilce}",
+            //     new { controller = "AltKategori", action = "Index", },
+            //     new[] { "Mobit.Controllers" }
+            //      );
 
             routes.MapRoute(
                "Default",
