@@ -190,6 +190,7 @@
     <Compile Include="Areas\Admin\Controllers\YoneticilerController.cs" />
     <Compile Include="Areas\Admin\_Yetki.cs" />
     <Compile Include="Controllers\AltKategoriController.cs" />
+    <Compile Include="Controllers\KurumController.cs" />
     <Compile Include="Helpers\YetkiKontrol.cs" />
     <Compile Include="Areas\Admin\_SessionController.cs" />
     <Compile Include="Controllers\HataController.cs" />
@@ -2608,6 +2609,7 @@
     <Content Include="Views\_Partial\_Body1.cshtml" />
     <Content Include="Views\_Partial\_Body2.cshtml" />
     <Content Include="Views\AltKategori\Index.cshtml" />
+    <Content Include="Views\Kurum\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
