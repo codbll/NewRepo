@@ -189,6 +189,7 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\YoneticilerController.cs" />
     <Compile Include="Areas\Admin\_Yetki.cs" />
+    <Compile Include="Controllers\AltKategoriController.cs" />
     <Compile Include="Helpers\YetkiKontrol.cs" />
     <Compile Include="Areas\Admin\_SessionController.cs" />
     <Compile Include="Controllers\HataController.cs" />
@@ -2534,7 +2535,7 @@
     <Content Include="Views\_Partial\_Menu.cshtml" />
     <Content Include="Views\_Partial\_Slider.cshtml" />
     <Content Include="Views\_Partial\_KategorilerSticky.cshtml" />
-    <Content Include="Views\_Partial\_Urunler.cshtml" />
+    <Content Include="Views\_Partial\_Kurumlar.cshtml" />
     <Content Include="Views\_Partial\_Markalar.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\Create.cshtml" />
@@ -2606,6 +2607,7 @@
     <Content Include="Views\_Partial\_headerReklam.cshtml" />
     <Content Include="Views\_Partial\_Body1.cshtml" />
     <Content Include="Views\_Partial\_Body2.cshtml" />
+    <Content Include="Views\AltKategori\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -117,7 +117,7 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.MudurYardimcilari = kurum.MudurYardimcilari;
             kurumlar.Aktiviteler = kurum.Aktiviteler;
             kurumlar.Aciklama = kurum.Aciklama;
-            kurumlar.KurulusTarihi = kurum.KurulusTarihi;
+            kurumlar.KurulusTarih = kurum.KurulusTarih;
             kurumlar.WebSitesi = kurum.WebSitesi;
             kurumlar.Tel = kurum.Tel;
             kurumlar.Fax = kurum.Fax;

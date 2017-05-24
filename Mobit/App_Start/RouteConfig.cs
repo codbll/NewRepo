@@ -14,65 +14,34 @@ namespace Mobit
             routes.MapMvcAttributeRoutes();
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+          //  routes.MapRoute(
+          // name: "haberkategori",
+          //  url: "Haberler/{Slug}",
+          //  defaults: new { controller = "Sayfalar", action = "Haberler", Slug = "" }
 
-            routes.MapRoute(
-            name: "Hakkimizda",
-             url: "Sayfa/{Slug}",
-             defaults: new { controller = "Sayfalar", action = "Sayfalar", Slug = "" }
-
-          );
-
-            routes.MapRoute(
-             name: "cozumler",
-              url: "Cozumler/{Slug}",
-              defaults: new { controller = "Sayfalar", action = "Cozumler", Slug = "" }
+          // );
+          //  routes.MapRoute(
+          // name: "haberDetay",
+          //  url: "Haber/{Slug}",
+          //  defaults: new { controller = "Sayfalar", action = "HaberDetay", Slug = "" }
 
 
-          );
-
-            routes.MapRoute(
-           name: "haberkategori",
-            url: "Haberler/{Slug}",
-            defaults: new { controller = "Sayfalar", action = "Haberler", Slug = "" }
-
-           );
-            routes.MapRoute(
-           name: "haberDetay",
-            url: "Haber/{Slug}",
-            defaults: new { controller = "Sayfalar", action = "HaberDetay", Slug = "" }
+          //);
 
 
-          );
+          //  routes.MapRoute(
+          //    "Kategori",
+          //     "Kategori/{Slug}",
+          //     new { controller = "Kategori", action = "Index", },
+          //     new[] { "Mobit.Controllers" }
+          //  );
 
-
-            routes.MapRoute(
-              "Kategori",
-               "Kategori/{Slug}",
-               new { controller = "Kategori", action = "Index", },
-               new[] { "Mobit.Controllers" }
-            );
-
-            routes.MapRoute(
-              "altKategori",
-               "Kategori/{slugKategori}/{slugAltKategori}",
-               new { controller = "Kategori", action = "AltKategori", },
-               new[] { "Mobit.Controllers" }
-                );
-
-            routes.MapRoute(
-             "markaurunleri",
-              "Markalar/{Slug}",
-              new { controller = "Markalar", action = "Index", },
-              new[] { "Mobit.Controllers" }
-               );
-
-            routes.MapRoute(
-           "urunDetay",
-            "{Slug}/{urunSlug}",
-            new { controller = "Urun", action = "Index", },
-            new[] { "Mobit.Controllers" }
-          );
-
+          //  routes.MapRoute(
+          //    "altKategori",
+          //     "Kategori/{kategori}/{ilce}",
+          //     new { controller = "AltKategori", action = "Index", },
+          //     new[] { "Mobit.Controllers" }
+          //      );
 
             routes.MapRoute(
                "Default",

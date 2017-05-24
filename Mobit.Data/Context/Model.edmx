@@ -203,7 +203,7 @@
           <Property Name="MudurYardimcilari" Type="nvarchar" MaxLength="250" />
           <Property Name="Aktiviteler" Type="nvarchar" MaxLength="250" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
-          <Property Name="KurulusTarihi" Type="nvarchar" MaxLength="50" />
+          <Property Name="KurulusTarih" Type="nvarchar" MaxLength="50" />
           <Property Name="WebSitesi" Type="nvarchar" MaxLength="50" />
           <Property Name="Tel" Type="nvarchar" MaxLength="50" />
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
@@ -994,7 +994,6 @@
             <End Role="iller" EntitySet="iller" />
             <End Role="ilceler" EntitySet="ilceler" />
           </AssociationSet>
-          <EntitySet Name="Kurumlar" EntityType="Model.Kurumlar" />
           <EntitySet Name="SliderKategori" EntityType="Model.SliderKategori" />
           <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
           <EntitySet Name="Reklamlar" EntityType="Model.Reklamlar" />
@@ -1003,10 +1002,7 @@
             <End Role="Slider" EntitySet="Slider" />
           </AssociationSet>
           <EntitySet Name="KurumResim" EntityType="Model.KurumResim" />
-          <AssociationSet Name="FK_KurumResim_Kurumlar" Association="Model.FK_KurumResim_Kurumlar">
-            <End Role="Kurumlar" EntitySet="Kurumlar" />
-            <End Role="KurumResim" EntitySet="KurumResim" />
-          </AssociationSet>
+          <EntitySet Name="Kurumlar" EntityType="Model.Kurumlar" />
           <AssociationSet Name="FK_Kurumlar_AltKategoriler" Association="Model.FK_Kurumlar_AltKategoriler">
             <End Role="AltKategoriler" EntitySet="AltKategoriler" />
             <End Role="Kurumlar" EntitySet="Kurumlar" />
@@ -1023,37 +1019,11 @@
             <End Role="Kategoriler" EntitySet="Kategoriler" />
             <End Role="Kurumlar" EntitySet="Kurumlar" />
           </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Kurumlar">
-          <Key>
-            <PropertyRef Name="KurumId" />
-          </Key>
-          <Property Name="KurumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="KurumAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="KategoriId" Type="Int32" />
-          <Property Name="AltKategoriId" Type="Int32" />
-          <Property Name="ilId" Type="Int32" />
-          <Property Name="ilceId" Type="Int32" />
-          <Property Name="Slug" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="KurumMuduru" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="MudurYardimcilari" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Aktiviteler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="KurulusTarihi" Type="DateTime" />
-          <Property Name="WebSitesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Durum" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="KurumResim" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="Kurumlar" ToRole="KurumResim" />
-          <NavigationProperty Name="AltKategoriler" Relationship="Model.FK_Kurumlar_AltKategoriler" FromRole="Kurumlar" ToRole="AltKategoriler" />
-          <NavigationProperty Name="ilceler" Relationship="Model.FK_Kurumlar_ilceler" FromRole="Kurumlar" ToRole="ilceler" />
-          <NavigationProperty Name="iller" Relationship="Model.FK_Kurumlar_iller" FromRole="Kurumlar" ToRole="iller" />
-          <NavigationProperty Name="Kategoriler" Relationship="Model.FK_Kurumlar_Kategoriler" FromRole="Kurumlar" ToRole="Kategoriler" />
-          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UploadYolu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-        </EntityType>
+          <AssociationSet Name="FK_KurumResim_Kurumlar" Association="Model.FK_KurumResim_Kurumlar">
+            <End Role="Kurumlar" EntitySet="Kurumlar" />
+            <End Role="KurumResim" EntitySet="KurumResim" />
+          </AssociationSet>
+          </EntityContainer>
         <EntityType Name="SliderKategori">
           <Key>
             <PropertyRef Name="SliderId" />
@@ -1105,18 +1075,36 @@
           <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Kurumlar" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="KurumResim" ToRole="Kurumlar" />
         </EntityType>
-        <Association Name="FK_KurumResim_Kurumlar">
-          <End Type="Model.Kurumlar" Role="Kurumlar" Multiplicity="1" />
-          <End Type="Model.KurumResim" Role="KurumResim" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Kurumlar">
-              <PropertyRef Name="KurumId" />
-            </Principal>
-            <Dependent Role="KurumResim">
-              <PropertyRef Name="KurumId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="Kurumlar">
+          <Key>
+            <PropertyRef Name="KurumId" />
+          </Key>
+          <Property Name="KurumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriId" Type="Int32" />
+          <Property Name="AltKategoriId" Type="Int32" />
+          <Property Name="ilId" Type="Int32" />
+          <Property Name="ilceId" Type="Int32" />
+          <Property Name="KurumAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="UploadYolu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KurumMuduru" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MudurYardimcilari" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Aktiviteler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="KurulusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSitesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Durum" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AltKategoriler" Relationship="Model.FK_Kurumlar_AltKategoriler" FromRole="Kurumlar" ToRole="AltKategoriler" />
+          <NavigationProperty Name="ilceler" Relationship="Model.FK_Kurumlar_ilceler" FromRole="Kurumlar" ToRole="ilceler" />
+          <NavigationProperty Name="iller" Relationship="Model.FK_Kurumlar_iller" FromRole="Kurumlar" ToRole="iller" />
+          <NavigationProperty Name="Kategoriler" Relationship="Model.FK_Kurumlar_Kategoriler" FromRole="Kurumlar" ToRole="Kategoriler" />
+          <NavigationProperty Name="KurumResim" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="Kurumlar" ToRole="KurumResim" />
+        </EntityType>
         <Association Name="FK_Kurumlar_AltKategoriler">
           <End Type="Model.AltKategoriler" Role="AltKategoriler" Multiplicity="0..1" />
           <End Type="Model.Kurumlar" Role="Kurumlar" Multiplicity="*" />
@@ -1165,7 +1153,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_KurumResim_Kurumlar">
+          <End Type="Model.Kurumlar" Role="Kurumlar" Multiplicity="1" />
+          <End Type="Model.KurumResim" Role="KurumResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kurumlar">
+              <PropertyRef Name="KurumId" />
+            </Principal>
+            <Dependent Role="KurumResim">
+              <PropertyRef Name="KurumId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1442,32 +1442,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Kurumlar">
-            <EntityTypeMapping TypeName="Model.Kurumlar">
-              <MappingFragment StoreEntitySet="Kurumlar">
-                <ScalarProperty Name="UploadYolu" ColumnName="UploadYolu" />
-                <ScalarProperty Name="Resim" ColumnName="Resim" />
-                <ScalarProperty Name="Durum" ColumnName="Durum" />
-                <ScalarProperty Name="Adres" ColumnName="Adres" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Tel" ColumnName="Tel" />
-                <ScalarProperty Name="WebSitesi" ColumnName="WebSitesi" />
-                <ScalarProperty Name="KurulusTarihi" ColumnName="KurulusTarihi" />
-                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
-                <ScalarProperty Name="Aktiviteler" ColumnName="Aktiviteler" />
-                <ScalarProperty Name="MudurYardimcilari" ColumnName="MudurYardimcilari" />
-                <ScalarProperty Name="KurumMuduru" ColumnName="KurumMuduru" />
-                <ScalarProperty Name="Slug" ColumnName="Slug" />
-                <ScalarProperty Name="ilceId" ColumnName="ilceId" />
-                <ScalarProperty Name="ilId" ColumnName="ilId" />
-                <ScalarProperty Name="AltKategoriId" ColumnName="AltKategoriId" />
-                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
-                <ScalarProperty Name="KurumAdi" ColumnName="KurumAdi" />
-                <ScalarProperty Name="KurumId" ColumnName="KurumId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="SliderKategori">
             <EntityTypeMapping TypeName="Model.SliderKategori">
               <MappingFragment StoreEntitySet="SliderKategori">
@@ -1506,6 +1480,32 @@
                 <ScalarProperty Name="Resim" ColumnName="Resim" />
                 <ScalarProperty Name="KurumId" ColumnName="KurumId" />
                 <ScalarProperty Name="ResimId" ColumnName="ResimId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kurumlar">
+            <EntityTypeMapping TypeName="Model.Kurumlar">
+              <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Durum" ColumnName="Durum" />
+                <ScalarProperty Name="Adres" ColumnName="Adres" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="WebSitesi" ColumnName="WebSitesi" />
+                <ScalarProperty Name="KurulusTarih" ColumnName="KurulusTarih" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Aktiviteler" ColumnName="Aktiviteler" />
+                <ScalarProperty Name="MudurYardimcilari" ColumnName="MudurYardimcilari" />
+                <ScalarProperty Name="KurumMuduru" ColumnName="KurumMuduru" />
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="UploadYolu" ColumnName="UploadYolu" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="KurumAdi" ColumnName="KurumAdi" />
+                <ScalarProperty Name="ilceId" ColumnName="ilceId" />
+                <ScalarProperty Name="ilId" ColumnName="ilId" />
+                <ScalarProperty Name="AltKategoriId" ColumnName="AltKategoriId" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="KurumId" ColumnName="KurumId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
