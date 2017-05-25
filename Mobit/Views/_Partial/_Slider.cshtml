@@ -1,11 +1,9 @@
 ﻿@model List<Mobit.Data.Context.Slider>
 <div class="header-top header-top-style-2">
     <div class="slider-container rev_slider_wrapper">
-        <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 500, "gridheight": 500}'>
-            <ul>
+        <div id="revolutionSlider">
                 @foreach (var item in Model)
             {
-                    <li data-transition="fade">
                         <a href="@item.Url" target="@item.Target">
                             <img src="~/Upload/slide/@item.Resim"
                                  alt="@item.Baslik"
@@ -15,10 +13,7 @@
                                  data-bgrepeat="no-repeat"
                                  class="rev-slidebg" style="width:100%; height:100%">
                         </a>
-
-                    </li>
                 }
-            </ul>
         </div>
     </div>
 

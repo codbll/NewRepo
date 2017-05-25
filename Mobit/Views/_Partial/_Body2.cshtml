@@ -13,8 +13,6 @@
 </div>
 @* alt haberler *@
 <div class="row">
-   
-
     @{
         foreach (var item in Model.Haberler)
         {
@@ -30,8 +28,8 @@
                             <li>
                                 <div class="post-image">
                                     <div class="img-thumbnail">
-                                        <a href="#.">
-                                            <img src="~/Upload/haber/@haberler.Resim" alt="">
+                                        <a href="/Haberler/@haberler.Slug">
+                                            <img src="~/Upload/haber/@haberler.Resim" width="100px" height="100px" alt="">
                                         </a>
                                     </div>
                                 </div>
@@ -43,11 +41,7 @@
                                 </div>
                             </li>
                         }
-
-
                     </ul>
-
-
                 </aside>
             </div>
         }
