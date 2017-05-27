@@ -12,7 +12,7 @@
 <div class="container">
 
     <div class="row">
-      
+
         <div class="col-md-12">
 
             @*<h2> <strong>@ViewBag.bilgi</strong> </h2> _urunler partialinde kullandım.*@
@@ -36,6 +36,19 @@
                         </div>
                     </div>
 
+                    <hr />
+                    @if (ViewData["detayReklam"] != null)
+                    {
+                        foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                        {
+                            <div class="col-md-12">
+                                <a href="@item.Url" target="@item.Target">
+                                    <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                                </a>
+                            </div>
+                        }
+
+                    }
                 </div>
             </div>
 

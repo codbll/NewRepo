@@ -25,7 +25,7 @@
             <div class="row">
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 4).Take(1).OrderBy(s => s.Sira))
                 {
-                    <div class="col-md-12" style="padding:3px;">
+                    <div class="col-md-12" style="padding:3px;margin-top:-19px" >
                         <a href="@item.Url" target="@item.Target">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                         </a>

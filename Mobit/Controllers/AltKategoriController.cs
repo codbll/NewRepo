@@ -13,43 +13,45 @@ namespace Mobit.Controllers
     {
         Entities db = new Entities();
 
-        [Route("kategori/{kategori}/{ilce}")]
-        public ActionResult Index(int? Sayfa, string kategori, string ilce)
+
+        public ActionResult Index(int? Sayfa, string kategori)
         {
             db.Configuration.LazyLoadingEnabled = false;
 
             int _sayfaNo = Sayfa ?? 1;
 
-            if (ilce == null || ilce == "")
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            }
-            var ilceler = db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
+            //if (ilce == null || ilce == "")
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            //}
+            //var ilceler = db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
 
-            int ilceId = 0;
-            foreach (var item in ilceler)
-            {
-                if (Kontrol.ToSlug(item.ilceAdi) == ilce)
-                {
-                    ilceId = item.ilceId;
-                    break;
-                }
-            }
+            //int ilceId = 0;
+            //foreach (var item in ilceler)
+            //{
+            //    if (Kontrol.ToSlug(item.ilceAdi) == ilce)
+            //    {
+            //        ilceId = item.ilceId;
+            //        break;
+            //    }
+            //}
 
             IPagedList<Kurumlar> kurumlar;
 
-            var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == ilce);
+            //var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == ilce);
 
-            if (altKategori == null)
-            {
-                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+            //if (altKategori == null)
+            //{
+            //    kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
-            }
-            else
-            {
-                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == ilce && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+            //}
+            //else
+            //{
+            //    kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == ilce && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
-            }
+            //}
+
+            kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 
             var kat = db.Kategoriler.Where(k => k.Slug == kategori && k.Aktif == true).Select(k => new { k.KategoriId, k.KategoriAdi }).FirstOrDefault();
 
@@ -67,6 +69,8 @@ namespace Mobit.Controllers
                 ViewBag.kurumsayi = "Bu kategoriye ait kurum bulunamadı.";
             }
 
+            var reklam = db.Slider.Where(s => s.SliderId == 13).ToList();
+            ViewData["detayReklam"] = reklam;
             return View(kurumlar);
         }
     }

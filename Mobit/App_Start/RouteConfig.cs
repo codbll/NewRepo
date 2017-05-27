@@ -28,6 +28,12 @@ namespace Mobit
 
             //);
 
+            routes.MapRoute(
+           "kategori",
+            "Kategori/{kategori}",
+            new { controller = "AltKategori", action = "Index", },
+            new[] { "Mobit.Controllers" }
+             );
 
             routes.MapRoute(
               "kurumDetay",
@@ -36,12 +42,7 @@ namespace Mobit
                new[] { "Mobit.Controllers" }
             );
 
-            //  routes.MapRoute(
-            //    "altKategori",
-            //     "Kategori/{kategori}/{ilce}",
-            //     new { controller = "AltKategori", action = "Index", },
-            //     new[] { "Mobit.Controllers" }
-            //      );
+         
 
             routes.MapRoute(
                "Default",
