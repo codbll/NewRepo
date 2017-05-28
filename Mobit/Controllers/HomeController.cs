@@ -116,10 +116,91 @@ namespace Mobit.Controllers
             return PartialView("~/Views/_Partial/_Header.cshtml");
 
         }
+        [Route("Home/Arama")]
+        [HttpPost]
+        public async Task<PartialViewResult> Arama(string searchKey)
+        {
+            AramaModel viewModel = null;
+
+            var tasks = new Task[2];
+            int i = 0;
+            viewModel = new AramaModel();
+            viewModel.SearchKey = Kontrol.AramaKontrol(searchKey);
+            List<Task> TaskList = AramaSonucGetir(searchKey, viewModel);
+            foreach (Task tsk in TaskList)
+            {
+                tasks[i] = tsk;
+                i++;
+            }
+            await Task.WhenAll(tasks);
+
+            return PartialView("~/Views/_Partial/_AramaSonuc.cshtml", viewModel);
+        }
+
+        private List<Task> AramaSonucGetir(string search, AramaModel model)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            List<Task> Tasks = new List<Task>();
+            var taskCustomer = Task.Factory.StartNew(() =>
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    model.Kurumlar = dbContext.Kurumlar.Include("Kategoriler").Where(ur => ur.KurumAdi.Contains(search) && ur.Durum == true).Take(10).ToList();
+                    if (model.Kurumlar.Count < 1)
+                    {
+                        try
+                        {
+
+
+                            var urun = db.Kurumlar.Where(k => SqlFunctions.SoundCode(k.KurumAdi) == SqlFunctions.SoundCode(search) && k.Durum == true).Select(k => new { k.KurumAdi }).FirstOrDefault();
+
+                            if (urun != null)
+                            {
+                                model.DidYouMean = urun.KurumAdi;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+                }
+            });
+            Tasks.Add(taskCustomer);
+            var taskSupplier = Task.Factory.StartNew(() =>
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    model.Kategoriler = dbContext.Kategoriler.Where(k => k.KategoriAdi.Contains(search) && k.Aktif == true).ToList();
+
+                    if (model.Kategoriler.Count < 1)
+                    {
+                        try
+                        {
+                            var kat = db.Kategoriler.Where(k => SqlFunctions.SoundCode(k.KategoriAdi) == SqlFunctions.SoundCode(search) && k.Aktif == true).Select(k => new { k.KategoriAdi }).FirstOrDefault();
+
+                            if (kat != null)
+                            {
+                                model.DidYouMean = kat.KategoriAdi;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+
+                    }
+                }
+            });
+            Tasks.Add(taskSupplier);
+
+            return Tasks;
+        }
 
         [Route("Home/HaberAra")]
         [HttpPost]
-        public async Task<PartialViewResult> Search(string searchKey)
+        public async Task<PartialViewResult> HaberAra(string searchKey)
         {
             HaberAramaModel viewModel = null;
 

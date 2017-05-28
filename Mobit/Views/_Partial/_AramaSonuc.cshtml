@@ -1,11 +1,11 @@
 ﻿
-@*@model Mobit.Data.Model.AramaModel
+@model Mobit.Data.Model.AramaModel
 @using Mobit.Data.Model;
 
 
 <div class="panel-body" style="height: 200px;  overflow-y: scroll;">
 
-    @if (Model.Urunler.Count <= 0 && Model.Kategoriler.Count <= 0)
+    @if (Model.Kurumlar.Count <= 0 && Model.Kategoriler.Count <= 0)
     {
 
         if (Model.DidYouMean == null)
@@ -19,16 +19,16 @@
 
     }
 
-    @if (Model.Urunler.Count > 0)
+    @if (Model.Kurumlar.Count > 0)
     {
-        <h6>Ürünler</h6>
+        <h6>Kurumlar</h6>
         <div>
             <ul class='SearchResultItemHead'>
-                @foreach (var item in Model.Urunler)
+                @foreach (var item in Model.Kurumlar)
                 {
-                    <a href="/@item.Kategoriler.Slug/@item.Slug" title="@item.UrunAdi">
+                    <a href="/@item.Kategoriler.Slug/@item.Slug" title="@item.KurumAdi">
                         <li class='SearchResultItem'>
-                            @Html.Raw(item.UrunAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+                            @Html.Raw(item.KurumAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
                                              .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
                                              .Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
                                              .Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
@@ -66,6 +66,6 @@
         </div>
     }
 
-</div>*@
+</div>
 
 
