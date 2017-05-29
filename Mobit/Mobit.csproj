@@ -189,6 +189,8 @@
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
     <Compile Include="Areas\Admin\Controllers\YoneticilerController.cs" />
     <Compile Include="Areas\Admin\_Yetki.cs" />
+    <Compile Include="Controllers\AltKategoriController.cs" />
+    <Compile Include="Controllers\KurumController.cs" />
     <Compile Include="Helpers\YetkiKontrol.cs" />
     <Compile Include="Areas\Admin\_SessionController.cs" />
     <Compile Include="Controllers\HataController.cs" />
@@ -201,7 +203,9 @@
     <Compile Include="Helpers\Msg.cs" />
     <Compile Include="Helpers\AjaxValidate.cs" />
     <Compile Include="Helpers\SendMail.cs" />
+    <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Models\BodyModel.cs" />
+    <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2245,6 +2249,21 @@
     <Content Include="Upload\icon\pdf_genel.jpg" />
     <Content Include="Upload\icon\pdf_tr.jpg" />
     <Content Include="Upload\images\project.jpg" />
+    <Content Include="Upload\slide\A1 Tek Reklam.jpg" />
+    <Content Include="Upload\slide\A2-2 Reklam -1.jpg" />
+    <Content Include="Upload\slide\A2-2 Reklam -2.jpg" />
+    <Content Include="Upload\slide\Alt Slider1.jpg" />
+    <Content Include="Upload\slide\Alt Slider2.jpg" />
+    <Content Include="Upload\slide\Alt Slider3.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner1.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner2.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner3.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner4.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner5.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner6.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner7.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner8.jpg" />
+    <Content Include="Upload\slide\UstReklamKayanBanner9.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -2517,10 +2536,8 @@
     <Content Include="Content\css\fonts\star.woff" />
     <Content Include="Views\_Partial\_Menu.cshtml" />
     <Content Include="Views\_Partial\_Slider.cshtml" />
-    <Content Include="Upload\urun\casio-it-300-el-terminali\8355-casio-it-300-tr.pdf" />
-    <Content Include="Upload\urun\casio-it-300-el-terminali\8355-it-300-en.pdf" />
     <Content Include="Views\_Partial\_KategorilerSticky.cshtml" />
-    <Content Include="Views\_Partial\_Urunler.cshtml" />
+    <Content Include="Views\_Partial\_Kurumlar.cshtml" />
     <Content Include="Views\_Partial\_Markalar.cshtml" />
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\Create.cshtml" />
@@ -2576,6 +2593,8 @@
     <Content Include="ckfinder\userfiles\.htaccess" />
     <Content Include="Areas\Admin\Views\Kurum\Index.cshtml" />
     <Content Include="Areas\Admin\Views\_Partial\Kurumlar.cshtml" />
+    <Content Include="Areas\Admin\Views\Kurum\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Kurum\Edit.cshtml" />
     <None Include="Properties\PublishProfiles\Mobit.pubxml" />
     <Content Include="Views\_Partial\_YuklemeUrunler.cshtml" />
     <Content Include="Views\_Partial\_YuklemeIndir.cshtml" />
@@ -2590,6 +2609,10 @@
     <Content Include="Views\_Partial\_headerReklam.cshtml" />
     <Content Include="Views\_Partial\_Body1.cshtml" />
     <Content Include="Views\_Partial\_Body2.cshtml" />
+    <Content Include="Views\AltKategori\Index.cshtml" />
+    <Content Include="Views\Kurum\Index.cshtml" />
+    <Content Include="Views\_Partial\_HaberAramaSonuc.cshtml" />
+    <Content Include="Views\_Partial\_HaberArama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2598,9 +2621,9 @@
     <Folder Include="Upload\files\" />
     <Folder Include="Upload\galeri\" />
     <Folder Include="Upload\haber\" />
-    <Folder Include="Upload\slide\" />
+    <Folder Include="Upload\kurum\" />
     <Folder Include="Upload\temp\" />
-    <Folder Include="Upload\urun\casio-dt-x8-el-terminali\" />
+    <Folder Include="Upload\urun\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

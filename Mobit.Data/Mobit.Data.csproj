@@ -106,6 +106,9 @@
     <Compile Include="Context\Kurumlar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\KurumResim.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Markalar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -130,6 +133,9 @@
     <Compile Include="Context\Popup.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Reklamlar.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Sayfalar.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -145,6 +151,7 @@
     <Compile Include="Model\Admins.cs" />
     <Compile Include="Model\AltKategori.cs" />
     <Compile Include="Model\AltKategoriGetir.cs" />
+    <Compile Include="Model\HaberAramaModel.cs" />
     <Compile Include="Model\AramaModel.cs" />
     <Compile Include="Model\KategoriMarkalar.cs" />
     <Compile Include="Model\RouteRecirect.cs" />

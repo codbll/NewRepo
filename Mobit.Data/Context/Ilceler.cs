@@ -14,10 +14,18 @@ namespace Mobit.Data.Context
     
     public partial class ilceler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ilceler()
+        {
+            this.Kurumlar = new HashSet<Kurumlar>();
+        }
+    
         public int ilceId { get; set; }
         public int ilId { get; set; }
         public string ilceAdi { get; set; }
     
         public virtual iller iller { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kurumlar> Kurumlar { get; set; }
     }
 }

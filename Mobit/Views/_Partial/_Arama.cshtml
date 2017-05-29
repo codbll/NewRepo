@@ -133,7 +133,7 @@
                     delay(function () {
 
                         var options = {};
-                        options.url = '/Arama/Search',
+                        options.url = '/Home/Arama',
                 options.type = "POST";
                         options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
                         options.contentType = "application/json; charset=utf-8",
@@ -143,7 +143,7 @@
                         };
                         options.error = function (err) {
                             if (err.status == 500) {
-                                window.location.href = "/Home";
+                                //window.location.href = "/Home";
                             } else {
                                 if (err.status != 0) {
                                     alert(err.statusText);
@@ -176,7 +176,7 @@
         delay(function () {
 
             var options = {};
-            options.url = '/Arama/Search',
+            options.url = '/Home/Arama',
     options.type = "POST";
             options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
             options.contentType = "application/json; charset=utf-8",
@@ -186,7 +186,7 @@
             };
             options.error = function (err) {
                 if (err.status == 500) {
-                    window.location.href = "/Home";
+                    //window.location.href = "/Home";
                 } else {
                     if (err.status != 0) {
                         alert(err.statusText);

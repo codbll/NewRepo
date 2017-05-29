@@ -18,6 +18,7 @@ namespace Mobit.Data.Context
         public Kategoriler()
         {
             this.AltKategoriler = new HashSet<AltKategoriler>();
+            this.Kurumlar = new HashSet<Kurumlar>();
         }
     
         public int KategoriId { get; set; }
@@ -32,5 +33,7 @@ namespace Mobit.Data.Context
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AltKategoriler> AltKategoriler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kurumlar> Kurumlar { get; set; }
     }
 }

@@ -1,0 +1,299 @@
+﻿@model Mobit.Data.Context.Kurumlar
+@{
+    ViewBag.Title = "Kurum Ekle";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kurum Ekle</h2>
+@*<div>
+        @Html.ActionLink("Listeye Dön", "Index")
+    </div>*@
+<form id="myform" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.KategoriId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AltKategoriId, "Alt Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("AltKategoriId", Enumerable.Empty<SelectListItem>(), "Önce Kategori Seçiniz", new { @class = "form-control" })
+
+                @Html.ValidationMessageFor(model => model.AltKategoriId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ilId, "İl ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("ilId", null, "İl Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(model => model.ilId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ilceId, "İlçe ", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.DropDownList("ilceId", null, "İlçe Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(model => model.ilceId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                <input type="file" name="resimYukle" id="resimYukle" accept="image/*" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KurumAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.KurumAdi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.KurumAdi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.KurumMuduru, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.KurumMuduru, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KurumMuduru, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MudurYardimcilari, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.MudurYardimcilari, new { @class = "form-control", @rows = "3",@cols="4" } )
+                @Html.ValidationMessageFor(model => model.MudurYardimcilari, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aktiviteler, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Aktiviteler,  new { @class = "form-control", @rows = "3", @cols = "4" })
+                @Html.ValidationMessageFor(model => model.Aktiviteler, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.KurulusTarih, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.KurulusTarih, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.KurulusTarih, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.WebSitesi, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.EditorFor(model => model.WebSitesi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.WebSitesi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control"} })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Adres, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.Adres, new { @class = "form-control", @rows = "3", @cols = "4" })
+                @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control ckeditor" })
+                @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <input id="btnGonder" type="submit" value="Yeni Kurum Ekle" class="btn btn-primary" />
+                <br />
+                <br />
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div id="small-chat">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Kurum İşlemi</h5>
+            <div class="ibox-tools">
+
+                <a href="#" id="back-to-top" title="Back to top">
+                    <i class="fa fa-arrow-up fa-3" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content" style="display: block;">
+
+            <a id="btnKisaSubmit" class="btn btn-primary center-block"><i class="fa fa-check"></i> Kurumu Ekle</a>
+
+        </div>
+    </div>
+
+
+
+</div>
+<div>
+    @Html.ActionLink("Listeye Dön", "Index")
+</div>
+
+@section Styles {
+
+    @Styles.Render("~/admin/plugins/summernoteStyles")
+
+}
+
+@section Scripts {
+
+    <script>
+        $("#btnKisaSubmit").click(function () {
+            $("#btnGonder").trigger("click");
+        });
+    </script>
+
+
+    <script>
+        $("document").ready(function () {
+
+            $("#resimYukle").change(function () {
+
+                var ext = $('#resimYukle').val().split('.').pop().toLowerCase();
+                if ($.inArray(ext, ['png', 'jpeg', 'jpg', 'gif', 'bmp']) == -1) {
+                    alert('Sadece resim dosyaları seçebilirsiniz.');
+
+                    fileTypeControl($("#resimYukle"));
+                }
+
+            });
+
+
+
+        });
+
+
+        function fileTypeControl(dosya) {
+            var fileopen = dosya,
+            clone = fileopen.clone(true);
+            fileopen.replaceWith(clone);
+        }
+    </script>
+    @Scripts.Render("~/admin/bundles/jqueryval")
+
+    <script>
+
+        $('#KategoriId').change(function () {
+            var KategoriId = $(this).val();
+
+            if (KategoriId != null && KategoriId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Kurum/AltKategoriGetir",
+                    data: { KategoriId: KategoriId },
+                    success: function (kategoriler) {
+
+                        var dropdown = $('#AltKategoriId');
+                        dropdown.empty();
+
+                        $.each(kategoriler, function (index, kategori) {
+                            $('#AltKategoriId').append($('<option/>', {
+                                value: kategori.AltKategoriId,
+                                text: kategori.AltKategoriAdi
+
+                            }));
+
+                        });
+
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: Kategoriler listelenemedi.");
+                    },
+                    beforeSend: function () {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            }
+        });
+
+    </script>
+
+    <script>
+
+        $('#ilId').change(function () {
+            var ilId = $(this).val();
+
+            if (ilId != null && ilId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Kurum/ilceGetir",
+                    data: { ilId: ilId },
+                    success: function (kategoriler) {
+
+                        var dropdown = $('#ilceId');
+                        dropdown.empty();
+
+                        $.each(kategoriler, function (index, kategori) {
+                            $('#ilceId').append($('<option/>', {
+                                value: kategori.ilceId,
+                                text: kategori.ilceAdi
+
+                            }));
+
+                        });
+
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: İlçeler listelenemedi.");
+                    },
+                    beforeSend: function () {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            }
+        });
+
+    </script>
+
+}
+
+

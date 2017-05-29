@@ -34,10 +34,18 @@
         <AssociationConnector Association="Model.FK_Sayfalar_Galeri" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Haberler_HaberKategorileri" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Counties_Cities" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Model.Kurumlar" Width="1.5" PointX="0.75" PointY="14.75" />
         <EntityTypeShape EntityType="Model.SliderKategori" Width="1.5" PointX="15.375" PointY="0.75" />
         <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="15.375" PointY="8.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="Model.Reklamlar" Width="1.5" PointX="16.375" PointY="3.75" />
+        <AssociationConnector Association="Model.FK_Slider_SliderKategori" />
+        <EntityTypeShape EntityType="Model.KurumResim" Width="1.5" PointX="3" PointY="16.25" />
+        <EntityTypeShape EntityType="Model.Kurumlar" Width="1.5" PointX="18.25" PointY="6.75" />
+        <AssociationConnector Association="Model.FK_Kurumlar_AltKategoriler" />
+        <AssociationConnector Association="Model.FK_Kurumlar_ilceler" />
+        <AssociationConnector Association="Model.FK_Kurumlar_iller" />
+        <AssociationConnector Association="Model.FK_Kurumlar_Kategoriler" />
+        <AssociationConnector Association="Model.FK_KurumResim_Kurumlar" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

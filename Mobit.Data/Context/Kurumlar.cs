@@ -14,7 +14,38 @@ namespace Mobit.Data.Context
     
     public partial class Kurumlar
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kurumlar()
+        {
+            this.KurumResim = new HashSet<KurumResim>();
+        }
+    
         public int KurumId { get; set; }
+        public Nullable<int> KategoriId { get; set; }
+        public Nullable<int> AltKategoriId { get; set; }
+        public Nullable<int> ilId { get; set; }
+        public Nullable<int> ilceId { get; set; }
         public string KurumAdi { get; set; }
+        public string Slug { get; set; }
+        public string UploadYolu { get; set; }
+        public string Resim { get; set; }
+        public string KurumMuduru { get; set; }
+        public string MudurYardimcilari { get; set; }
+        public string Aktiviteler { get; set; }
+        public string Aciklama { get; set; }
+        public string KurulusTarih { get; set; }
+        public string WebSitesi { get; set; }
+        public string Tel { get; set; }
+        public string Fax { get; set; }
+        public string Email { get; set; }
+        public string Adres { get; set; }
+        public bool Durum { get; set; }
+    
+        public virtual AltKategoriler AltKategoriler { get; set; }
+        public virtual ilceler ilceler { get; set; }
+        public virtual iller iller { get; set; }
+        public virtual Kategoriler Kategoriler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KurumResim> KurumResim { get; set; }
     }
 }

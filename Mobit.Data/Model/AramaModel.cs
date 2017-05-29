@@ -9,7 +9,7 @@ namespace Mobit.Data.Model
 {
     public class AramaModel
     {
-        //public List<Urunler> Urunler { get; set; }
+        public List<Kurumlar> Kurumlar { get; set; }
         public List<Kategoriler> Kategoriler { get; set; }
         public string SearchKey { get; set; }
         public string DidYouMean { get; set; }

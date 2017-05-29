@@ -23,5 +23,7 @@ namespace Mobit.Data.Context
         public Nullable<bool> Aktif { get; set; }
         public Nullable<System.DateTime> Tarih { get; set; }
         public int SliderId { get; set; }
+    
+        public virtual SliderKategori SliderKategori { get; set; }
     }
 }

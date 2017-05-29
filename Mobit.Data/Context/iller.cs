@@ -18,6 +18,7 @@ namespace Mobit.Data.Context
         public iller()
         {
             this.ilceler = new HashSet<ilceler>();
+            this.Kurumlar = new HashSet<Kurumlar>();
         }
     
         public int ilId { get; set; }
@@ -28,5 +29,7 @@ namespace Mobit.Data.Context
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ilceler> ilceler { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kurumlar> Kurumlar { get; set; }
     }
 }

@@ -1,0 +1,69 @@
+﻿
+@model PagedList.IPagedList<Mobit.Data.Context.Kurumlar>
+
+<div role="main" class="main shop">
+
+    <div class="container">
+
+
+        <div class="row">
+            <div class="col-md-9">
+
+                <div class="row">
+                    <div class="col-md-12">
+                        @*<h2 class="mb-none"><strong>@ViewBag.bilgi</strong></h2>*@
+                        <p>@ViewBag.kurumsayi</p>
+                    </div>
+                </div>
+
+
+                <div class="row" id="dvMusteriListesi">
+
+                    <ul class="products product-thumb-info-list" data-plugin-masonry data-plugin-options='{"layoutMode": "fitRows"}'>
+                        @foreach (var kurum in Model)
+                        {
+
+                            <li class="col-md-4 col-sm-6 col-xs-12 product">
+                                @*<a href="shop-product-sidebar.html">
+                                        <span class="onsale">Sale!</span>
+                                    </a>*@
+                                <span class="product-thumb-info">
+                                    @*<a href="shop-cart.html" class="add-to-cart-product">
+                                            <span><i class="fa fa-shopping-cart"></i> Sepete Ekle</span>
+                                        </a>*@
+                                    <a href="/@kurum.Kategoriler.Slug/@kurum.Slug" title="@kurum.KurumAdi">
+                                        <span class="product-thumb-info-image">
+                                            <span class="product-thumb-info-act">
+                                                <span class="product-thumb-info-act-left"><em>Ürün Detayı</em></span>
+                                                @*<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>*@
+                                            </span>
+                                            <img alt="@kurum.KurumAdi" title="@kurum.KurumAdi" class="img-responsive" src="~/Upload/kurum/@kurum.UploadYolu/@kurum.Resim">
+                                        </span>
+                                    </a>
+                                    <span class="product-thumb-info-content">
+                                        <a href="/@kurum.Kategoriler.Slug/@kurum.Slug">
+                                            <h4 class="heading-primary">@kurum.KurumAdi</h4>
+                                            @*<span class="price">
+                                                <del><span class="amount">$325</span></del>
+                                                <ins><span class="amount">$299</span></ins>
+                                            </span>*@
+                                        </a>
+                                    </span>
+                                </span>
+                            </li>
+                        }
+                    </ul>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}

@@ -14,8 +14,18 @@ namespace Mobit.Data.Context
     
     public partial class SliderKategori
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public SliderKategori()
+        {
+            this.Slider = new HashSet<Slider>();
+        }
+    
         public int SliderId { get; set; }
         public string SliderAdi { get; set; }
         public bool Durum { get; set; }
+        public string Kod { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Slider> Slider { get; set; }
     }
 }

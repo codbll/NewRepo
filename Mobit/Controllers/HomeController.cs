@@ -4,8 +4,10 @@ using Mobit.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -28,27 +30,20 @@ namespace Mobit.Controllers
 
         public PartialViewResult Menu()
         {
+            var model = new MenuModel();
             // kategoriler
-            db.Configuration.LazyLoadingEnabled = false;
-            var kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
-            var altKategoriler = db.AltKategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
-            // çözümler
-            var cozumler = db.Cozumler.Where(czm => czm.Aktif == true).ToList();
-            var haberKategori = db.HaberKategorileri.Where(h => h.Aktif == true).ToList();
+            model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
+            model.iller = db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
 
-            List<Sayfalar> hakkimizda = db.Sayfalar.Where(s => s.Aktif == true && s.Menu == true && s.KategoriId == 1).ToList();
-            ViewBag.hakkimizda = hakkimizda;
-
-            List<Sayfalar> iletisim = db.Sayfalar.Where(s => s.Aktif == true && s.Menu == true && s.KategoriId == 2).ToList();
-            ViewBag.iletisim = iletisim;
-
-            return PartialView("~/Views/_Partial/_Menu.cshtml", Tuple.Create(kategoriler, altKategoriler, cozumler, haberKategori));
+            return PartialView("~/Views/_Partial/_Menu.cshtml", model);
 
         }
         public PartialViewResult HeaderReklam()
         {
-
-            return PartialView("~/Views/_Partial/_headerReklam.cshtml");
+            var model = new HeaderModel();
+            model.Slider = db.Slider.Where(s => s.Aktif == true).ToList();
+            model.Haberler = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h => h.Id).Take(20).ToList();
+            return PartialView("~/Views/_Partial/_headerReklam.cshtml", model);
 
         }
         public PartialViewResult Body1()
@@ -57,14 +52,20 @@ namespace Mobit.Controllers
             var model = new BodyModel();
 
             //slider
-            model.Slider = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 2).OrderBy(sld => sld.Sira).ToList();
+            model.Slider = db.Slider.Where(sld => sld.Aktif == true).OrderBy(sld => sld.Sira).ToList();
+
             return PartialView("~/Views/_Partial/_Body1.cshtml", model);
 
         }
         public PartialViewResult Body2()
         {
 
-            return PartialView("~/Views/_Partial/_Body2.cshtml");
+            var model = new BodyModel();
+            // haberler
+            model.Haberler = db.HaberKategorileri.Where(h => h.Slug.Contains("haberler") || h.Slug.Contains("roportajlar")).OrderByDescending(h => h.KategoriId).ToList();
+            model.Slider = db.Slider.Where(s => s.Aktif == true).ToList();
+
+            return PartialView("~/Views/_Partial/_Body2.cshtml", model);
 
         }
         void Slider()
@@ -74,7 +75,6 @@ namespace Mobit.Controllers
             TempData["slider"] = slider;
 
         }
-
 
         public void TitleGetir()
         {
@@ -115,6 +115,144 @@ namespace Mobit.Controllers
 
             return PartialView("~/Views/_Partial/_Header.cshtml");
 
+        }
+        [Route("Home/Arama")]
+        [HttpPost]
+        public async Task<PartialViewResult> Arama(string searchKey)
+        {
+            AramaModel viewModel = null;
+
+            var tasks = new Task[2];
+            int i = 0;
+            viewModel = new AramaModel();
+            viewModel.SearchKey = Kontrol.AramaKontrol(searchKey);
+            List<Task> TaskList = AramaSonucGetir(searchKey, viewModel);
+            foreach (Task tsk in TaskList)
+            {
+                tasks[i] = tsk;
+                i++;
+            }
+            await Task.WhenAll(tasks);
+
+            return PartialView("~/Views/_Partial/_AramaSonuc.cshtml", viewModel);
+        }
+
+        private List<Task> AramaSonucGetir(string search, AramaModel model)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+            List<Task> Tasks = new List<Task>();
+            var taskCustomer = Task.Factory.StartNew(() =>
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    model.Kurumlar = dbContext.Kurumlar.Include("Kategoriler").Where(ur => ur.KurumAdi.Contains(search) && ur.Durum == true).Take(10).ToList();
+                    if (model.Kurumlar.Count < 1)
+                    {
+                        try
+                        {
+
+
+                            var urun = db.Kurumlar.Where(k => SqlFunctions.SoundCode(k.KurumAdi) == SqlFunctions.SoundCode(search) && k.Durum == true).Select(k => new { k.KurumAdi }).FirstOrDefault();
+
+                            if (urun != null)
+                            {
+                                model.DidYouMean = urun.KurumAdi;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+                }
+            });
+            Tasks.Add(taskCustomer);
+            var taskSupplier = Task.Factory.StartNew(() =>
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    model.Kategoriler = dbContext.Kategoriler.Where(k => k.KategoriAdi.Contains(search) && k.Aktif == true).ToList();
+
+                    if (model.Kategoriler.Count < 1)
+                    {
+                        try
+                        {
+                            var kat = db.Kategoriler.Where(k => SqlFunctions.SoundCode(k.KategoriAdi) == SqlFunctions.SoundCode(search) && k.Aktif == true).Select(k => new { k.KategoriAdi }).FirstOrDefault();
+
+                            if (kat != null)
+                            {
+                                model.DidYouMean = kat.KategoriAdi;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+
+                        }
+
+                    }
+                }
+            });
+            Tasks.Add(taskSupplier);
+
+            return Tasks;
+        }
+
+        [Route("Home/HaberAra")]
+        [HttpPost]
+        public async Task<PartialViewResult> HaberAra(string searchKey)
+        {
+            HaberAramaModel viewModel = null;
+
+            var tasks = new Task[1];
+            int i = 0;
+            viewModel = new HaberAramaModel();
+            viewModel.SearchKey = Kontrol.AramaKontrol(searchKey);
+            List<Task> TaskList = GetSeachResult(searchKey, viewModel);
+            foreach (Task tsk in TaskList)
+            {
+                tasks[i] = tsk;
+                i++;
+            }
+            await Task.WhenAll(tasks);
+
+            return PartialView("~/Views/_Partial/_HaberAramaSonuc.cshtml", viewModel);
+        }
+
+        private List<Task> GetSeachResult(string search, HaberAramaModel model)
+        {
+            db.Configuration.LazyLoadingEnabled = false;
+
+            List<Task> Tasks = new List<Task>();
+            var taskNews = Task.Factory.StartNew(() =>
+            {
+                using (Entities dbContext = new Entities())
+                {
+                    model.Haberler = dbContext.Haberler.Where(ur => ur.Ad.Contains(search) && ur.Aktif == true).ToList();
+                    if (model.Haberler.Count < 1)
+                    {
+                        try
+                        {
+
+
+                            var urun = db.Haberler.Where(k => SqlFunctions.SoundCode(k.Ad) == SqlFunctions.SoundCode(search) && k.Aktif == true).Select(k => new { k.Ad }).FirstOrDefault();
+
+                            if (urun != null)
+                            {
+                                model.DidYouMean = urun.Ad;
+                            }
+                        }
+                        catch (Exception)
+                        {
+
+                        }
+                    }
+                }
+            });
+            Tasks.Add(taskNews);
+           
+
+            return Tasks;
         }
 
         [Route("Home/BultenKayit")]

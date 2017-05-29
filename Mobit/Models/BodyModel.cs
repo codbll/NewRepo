@@ -9,6 +9,8 @@ namespace Mobit.Models
     public class BodyModel
     {
         public List<Slider> Slider { get; set; }
+        public List<HaberKategorileri> Haberler { get; set; }
+
 
     }
 }
