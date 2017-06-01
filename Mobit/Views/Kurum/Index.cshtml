@@ -27,9 +27,9 @@
             <div class="col-md-12">
 
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-9">
 
-                        <div class="thumb-gallery" style="max-width:350px;">
+                        <div class="thumb-gallery" >
 
                             <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail">
                                 <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
@@ -37,7 +37,7 @@
 
                                         <span class="img-thumbnail thumb-info-wrapper">
 
-                                            <img alt="@Model.KurumAdi" title="@Model.KurumAdi" src="~/Upload/kurum/@Model.UploadYolu/@Model.Resim" style="width:320px;height:345px;" class="img-responsive">
+                                            <img alt="@Model.KurumAdi" title="@Model.KurumAdi" src="~/Upload/kurum/@Model.UploadYolu/@Model.Resim" class="img-responsive">
                                             <span class="thumb-info-action">
 
                                                 <a title="@Model.KurumAdi" href="~/Upload/kurum/@Model.UploadYolu/@Model.Resim" class="lightbox-portfolio">
@@ -56,7 +56,7 @@
 
                                                 <span class="img-thumbnail thumb-info-wrapper">
 
-                                                    <img alt="@Model.KurumAdi" title="@Model.KurumAdi" src="~/Upload/kurum/@Model.UploadYolu/@resim.Resim" style="width:320px;height:345px;" class="img-responsive">
+                                                    <img alt="@Model.KurumAdi" title="@Model.KurumAdi" src="~/Upload/kurum/@Model.UploadYolu/@resim.Resim" class="img-responsive">
                                                     <span class="thumb-info-action">
 
                                                         <a title="@Model.KurumAdi" href="~/Upload/kurum/@Model.UploadYolu/@resim.Resim" class="lightbox-portfolio">
@@ -115,77 +115,124 @@
 
                     </div>
 
-                    <div class="col-md-8">
+                    <div class="col-md-3">
+                        <aside class="sidebar">
 
-                        <div class="summary entry-summary">
-
-                            <h2 class="mb-none" title="@Model.KurumAdi"><strong>@Model.KurumAdi</strong></h2>
-
-                            <p class="taller">
-                                <dl>
-                                    <dt>Kurum Müdürü</dt>
-                                    <dd>@Model.KurumMuduru</dd>
-
-                                    <dt>Müdür Yardımcıları</dt>
-                                    <dd>@Model.KurumMuduru</dd>
-
-                                    <dt>Kuruluş Tarihi</dt>
-                                    <dd>@Model.KurulusTarih</dd>
-
-                                    <dt>Aktiviteler</dt>
-                                    <dd>@Model.Aktiviteler</dd>
-
-                                    <dt>Telefon</dt>
-                                    <dd>@Model.Tel</dd>
-
-                                    <dt>Faks</dt>
-                                    <dd>@Model.Fax</dd>
-
-                                    <dt>E-mail</dt>
-                                    <dd>@Model.Email</dd>
-
-                                    <dt>Web Sitesi</dt>
-                                    <dd><a href="@Model.WebSitesi" target="_blank">@Model.WebSitesi</a></dd>
-
-                                    <dt>Adres</dt>
-                                    <dd>@Model.Adres</dd>
-                                </dl>
-                            </p>
-
-                            @*<div class="product_meta">
-                                <span class="posted_in">Categories: <a rel="tag" href="#">Accessories</a>, <a rel="tag" href="#">Bags</a>.</span>
-                                </div>*@
-
-                        </div>
+                            <h4 class="heading-primary">Mesaj Gönderin</h4>
+                            @Html.Partial("/Views/_Partial/_kurumMesajGonder.cshtml", Model)
 
 
-                          <div class="row">
-                    <div class="col-md-12">
-                        <div class="tabs tabs-product">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
-                               
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane active" id="aciklama">
-                                    <p>
-                                        @Html.Raw(Model.Aciklama)
-                                    </p>
+                            @*<p></p>
+
+                            <form id="contactForm" action="php/contact-form.php" method="POST" novalidate="novalidate">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Ad Soyad*</label>
+                                            <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required="" aria-required="true">
+                                        </div>
+                                    </div>
                                 </div>
-                             
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Email *</label>
+                                            <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email" required="" aria-required="true">
+                                        </div>
+                                    </div>
+                                </div>
+                               
+                                <div class="row">
+                                    <div class="form-group">
+                                        <div class="col-md-12">
+                                            <label>Mesaj *</label>
+                                            <textarea maxlength="5000" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message" required="" aria-required="true"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <input type="submit" value="Mesajı Gönder" class="btn btn-primary mb-xl" data-loading-text="Loading...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="alert alert-success hidden" id="contactSuccess">
+                                            Message has been sent to us.
+                                        </div>
+
+                                        <div class="alert alert-danger hidden" id="contactError">
+                                            Error sending your message.
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>*@
+
+
+                        </aside>
+
+                
+                    </div>
+
+                    <div class="col-md-12">
+                        <p class="taller">
+                            <dl>
+                                @*<dt>Kurum Müdürü</dt>
+                    <dd>@Model.KurumMuduru</dd>
+
+                    <dt>Müdür Yardımcıları</dt>
+                    <dd>@Model.KurumMuduru</dd>
+
+                    <dt>Kuruluş Tarihi</dt>
+                    <dd>@Model.KurulusTarih</dd>
+
+                    <dt>Aktiviteler</dt>
+                    <dd>@Model.Aktiviteler</dd>*@
+
+                                <dt>Telefon</dt>
+                                <dd>@Model.Tel</dd>
+
+                                <dt>İlçe</dt>
+                                <dd>@Model.ilceler.ilceAdi</dd>
+                                @*<dt>Faks</dt>
+                    <dd>@Model.Fax</dd>
+
+                    <dt>E-mail</dt>
+                    <dd>@Model.Email</dd>
+
+                    <dt>Web Sitesi</dt>
+                    <dd><a href="@Model.WebSitesi" target="_blank">@Model.WebSitesi</a></dd>*@
+
+                                @*<dt>Adres</dt>
+                    <dd>@Model.Adres</dd>*@
+                            </dl>
+                        </p>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="tabs tabs-product">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
+
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active" id="aciklama">
+                                            <p>
+                                                @Html.Raw(Model.Aciklama)
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
                     </div>
                 </div>
 
               
 
-                <hr class="tall">
+           
 
             </div>
            
+
         </div>
     </div>
 

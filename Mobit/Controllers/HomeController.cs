@@ -250,9 +250,34 @@ namespace Mobit.Controllers
                 }
             });
             Tasks.Add(taskNews);
-           
+
 
             return Tasks;
+        }
+
+        [Route("Home/MesajGonder")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MailGonder(string adSoyad, string mail, string telefon, int kurum, string mesaj, string url)
+        {
+
+            if (adSoyad != null && mail != null && mesaj != null && kurum > 0 && Kontrol.mailValidation(mail) == true)
+            {
+
+                var mailler = db.Kurumlar.Where(k => k.KurumId == kurum).Select(m => new { m.Email }).FirstOrDefault();
+
+                string icerik = "<b>Okul34 iletişim formu mesajı.</b> <br/> <b>Gönderen:</b>  " + adSoyad + "<br/> <b>Telefon: </b>" + telefon + "<br/> <b>Mail: </b>" + mail + "<br/> <b>Mesaj: </b>" + mesaj + " <br/> <b>Kaynak Url: </b> " + url;
+
+                Helpers.SendMail.Mail("Okul34 Mesaj", icerik, mailler.Email);
+
+                return Json(new { success = true, responseText = "Mesajınız başarıyla gönderildi." });
+
+            }
+            else
+            {
+                return Json(new { success = false, responseText = "Lütfen bilgilerinizi kontrol edip tekrar deneyiniz." });
+            }
+
         }
 
         [Route("Home/BultenKayit")]

@@ -1,0 +1,133 @@
+﻿@model Mobit.Data.Context.Kurumlar
+@using Mobit.Helpers
+
+
+
+
+@*<h2 class="mb-sm mt-sm">İletişim Formu</h2>*@
+
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12">
+            <input type="hidden" value="@Model.KurumId" id="kurum" />
+            <label>Ad Soyad *</label>
+            <input type="text" value="" data-msg-required="Lütfen ad ve soyadınızı yazın." maxlength="100" class="form-control" id="AdSoyad" required>
+        </div>
+     
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12">
+            <label>Telefon</label>
+            <input type="text" value="" class="form-control" name="telefon" id="telefon" required>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12">
+            <label>Email *</label>
+            <input type="email" value="" data-msg-required="Lütfen email adresinizi yazın." data-msg-email="Emal adresi formatınızı kontrol ediniz." maxlength="100" class="form-control" name="email" id="email" required>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="form-group">
+        <div class="col-md-12">
+            <label>Mesajınız *</label>
+            <textarea maxlength="5000" data-msg-required="Lütfen mesajınızı yazınız" rows="5" class="form-control" name="mesaj" id="mesaj" required></textarea>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <input type="submit" value="Mesajı Gönder" onclick="formSend()" class="btn btn-primary btn-lg mb-xlg" id="btnGonder" data-loading-text="Loading...">
+   
+    </div>
+
+    <div class="alert alert-success hidden mt-lg" id="bilgiMesaj">
+        <strong>Başarılı!</strong> Mesajınız başarıyla gönderildi.
+    </div>
+
+    <div class="alert alert-danger hidden mt-lg" id="hataMesaj">
+        <strong>Hata!</strong> İşlem sırasında bir hata oluştu, tekrar deneyiniz.
+        <span class="font-size-xs mt-sm display-block" id="mailErrorMessage"></span>
+    </div>
+</div>
+
+
+
+
+<script>
+
+
+
+    function formSend() {
+        $(document).ready(function () {
+
+            var url = window.location.href;
+            if ($("#AdSoyad").val() == "") {
+                alert("Lütfen ad ve soyadınızı yazın.");
+                $("#AdSoyad").focus();
+            }
+            else if ($("#email").val() == "") {
+                alert("Lütfen email adresinizi yazın.");
+                $("#email").focus();
+            }
+            else if ($("#mesaj").val() == "") {
+                alert("Lütfen mesajınızı yazın.");
+                $("#mesaj").focus();
+            }
+            else {
+            $.ajax({
+                type: "post",
+                url: "/Home/MesajGonder",
+                data: { adSoyad: $("#AdSoyad").val(), mail: $("#email").val(), telefon: $("#telefon").val(), kurum: $("#kurum").val(), mesaj: $("#mesaj").val(), url: url,@Html.AntiForgeryTokenForAjaxPost() },
+                success: function (response) {
+
+                    if (response != null && response.success) {
+                     
+                        $("#bilgiMesaj").removeClass("hidden");
+                        $("#hataMesaj").addClass("hidden");
+                        //alert("Mesajınız başarıyla gönderildi.");
+                        alert(response.responseText);
+
+                        $("#AdSoyad").val(""); $("#email").val(""); $("#telefon").val(""); $("#konu").val(""); $("#mesaj").val("");
+                        $("#btnGonder").removeClass("disabled");
+
+                    } else {
+                        // DoSomethingElse()
+                        alert(response.responseText);
+                    }
+                    $("#btnGonder").removeClass("disabled");
+                },
+                error: function (response) {
+                    $("#btnGonder").removeClass("disabled");
+
+                    $("#hataMesaj").removeClass("hidden");
+                    $("#bilgiMesaj").addClass("hidden");
+
+                    alert("İşlem sırasında bir hata oluştu, tekrar deneyiniz.");
+                },
+                beforeSend: function () {
+                    $("#btnGonder").addClass("disabled");
+
+                },
+                complate: function () {
+
+                   
+
+                },
+
+            });
+
+
+
+        }
+        });
+    }
+
+  
+
+</script>
