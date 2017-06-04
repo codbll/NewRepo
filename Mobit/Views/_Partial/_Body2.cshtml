@@ -23,7 +23,7 @@
                 </div>
                 <aside class="sidebar">
                     <ul class="simple-post-list">
-                        @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(10))
+                        @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
                         {
                             <li>
                                 <div class="post-image">
@@ -116,11 +116,11 @@
         </aside>
         <br />
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(1).OrderByDescending(s => s.Id))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).OrderBy(s => s.Sira))
             {
                 <div class="col-md-12" style="padding:5px;">
                     <a href="@item.Url" target="@item.Target">
-                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  alt="@item.Baslik">
                     </a>
                 </div>
             }
