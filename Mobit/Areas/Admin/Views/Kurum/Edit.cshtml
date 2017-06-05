@@ -28,7 +28,7 @@
                         @Html.CheckBoxFor(model => model.Durum, htmlAttributes: new { @checked = "checked" })
 
                     </div>
-             
+
                 </div>
 
                 <div class="form-group">
@@ -141,6 +141,20 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(model => model.Harita, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Harita, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Harita, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Video, new { @class = "form-control ckeditor" })
+                        @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.LabelFor(model => model.Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control ckeditor" })
@@ -229,15 +243,31 @@
                             @Html.AntiForgeryToken()
                             <input type="hidden" name="kurumId" value="@Model.KurumId" />
                             <input type="hidden" name="uploadYol" value="@Model.UploadYolu" />
+
                             <div>
-                                <input type="file" name="galeriResim" id="galeriResim" accept="image/*" multiple /> <br />
-                                <input type="submit" class="btn btn-primary" value="Resim Yükle" />
+                                <div class="col-md-5">
+                                    <select name="ResimTipi" class="form-control ">
+                                        <option value="1">Resim</option>
+                                        <option value="2">3D Resim</option>
+                                    </select>
+                                    <br /><br />
+                                </div>
+
+                                <div class="col-md-12">
+                                    <input type="file" name="galeriResim" id="galeriResim" accept="image/*" multiple /> <br />
+                                </div>
+
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-primary" value="Resim Yükle" />
+                                </div>
                             </div>
                         </form>
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Tip</th>
                                     <th>İşlem</th>
                                 </tr>
                             </thead>
@@ -251,6 +281,11 @@
 
                                             <td>
                                                 <a href="~/Upload/kurum/@Model.UploadYolu/@item.Resim" target="_blank"> <img src="~/Upload/kurum/@Model.UploadYolu/@item.Resim" width="70" class="img-responsive" /></a>
+                                            </td>
+                                            <td>
+
+                                                @(item.ResimTipi == 1 ? "Resim" : "3D Resim")
+
                                             </td>
                                             <td>
                                                 <a href="/Admin/Kurum/DeleteFile/@Model.KurumId?kurumResim=@item.ResimId" onclick="return confirm('Dikkat: Bu dosyayı istediğinizden emin misiniz?')" class="btn btn-warning btn-circle " title="Sil">
@@ -270,6 +305,8 @@
                 </div>
             </div>
         </div>
+
+
     </div>
 
 
@@ -299,7 +336,7 @@
     </div>
 
 
-  
+
 </div>
 <div>
     @Html.ActionLink("Listeye Dön", "Index")

@@ -37,6 +37,8 @@ namespace Mobit.Data.Context
         public string WebSitesi { get; set; }
         public string Tel { get; set; }
         public string Fax { get; set; }
+        public string Harita { get; set; }
+        public string Video { get; set; }
         public string Email { get; set; }
         public string Adres { get; set; }
         public bool Durum { get; set; }

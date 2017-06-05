@@ -15,6 +15,7 @@ namespace Mobit.Data.Context
     public partial class Slider
     {
         public int Id { get; set; }
+        public int SliderId { get; set; }
         public string Baslik { get; set; }
         public string Url { get; set; }
         public string Target { get; set; }
@@ -22,7 +23,6 @@ namespace Mobit.Data.Context
         public int Sira { get; set; }
         public Nullable<bool> Aktif { get; set; }
         public Nullable<System.DateTime> Tarih { get; set; }
-        public int SliderId { get; set; }
     
         public virtual SliderKategori SliderKategori { get; set; }
     }

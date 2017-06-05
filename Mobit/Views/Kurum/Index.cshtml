@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col-md-9">
 
-                        <div class="thumb-gallery" >
+                        <div class="thumb-gallery">
 
                             <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail">
                                 <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
@@ -49,7 +49,7 @@
                                 </div>
                                 @if (Model.KurumResim.Count() > 0)
                                 {
-                                    foreach (var resim in Model.KurumResim)
+                                    foreach (var resim in Model.KurumResim.Where(r => r.ResimTipi == 1))
                                     {
                                         <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
                                             <span class="thumb-info thumb-info-lighten thumb-info-bottom-info thumb-info-centered-icons" style="border:none;">
@@ -80,7 +80,7 @@
                                         </span>
                                     </div>
 
-                                    foreach (var resim in Model.KurumResim)
+                                    foreach (var resim in Model.KurumResim.Where(r => r.ResimTipi == 1))
                                     {
                                         <div>
                                             <span class="img-thumbnail cur-pointer">
@@ -124,68 +124,68 @@
 
                             @*<p></p>
 
-                            <form id="contactForm" action="php/contact-form.php" method="POST" novalidate="novalidate">
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Ad Soyad*</label>
-                                            <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required="" aria-required="true">
+                                <form id="contactForm" action="php/contact-form.php" method="POST" novalidate="novalidate">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>Ad Soyad*</label>
+                                                <input type="text" value="" data-msg-required="Please enter your name." maxlength="100" class="form-control" name="name" id="name" required="" aria-required="true">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Email *</label>
-                                            <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email" required="" aria-required="true">
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>Email *</label>
+                                                <input type="email" value="" data-msg-required="Please enter your email address." data-msg-email="Please enter a valid email address." maxlength="100" class="form-control" name="email" id="email" required="" aria-required="true">
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                               
-                                <div class="row">
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>Mesaj *</label>
-                                            <textarea maxlength="5000" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message" required="" aria-required="true"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <input type="submit" value="Mesajı Gönder" class="btn btn-primary mb-xl" data-loading-text="Loading...">
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="alert alert-success hidden" id="contactSuccess">
-                                            Message has been sent to us.
-                                        </div>
 
-                                        <div class="alert alert-danger hidden" id="contactError">
-                                            Error sending your message.
+                                    <div class="row">
+                                        <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>Mesaj *</label>
+                                                <textarea maxlength="5000" data-msg-required="Please enter your message." rows="3" class="form-control" name="message" id="message" required="" aria-required="true"></textarea>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </form>*@
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <input type="submit" value="Mesajı Gönder" class="btn btn-primary mb-xl" data-loading-text="Loading...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="alert alert-success hidden" id="contactSuccess">
+                                                Message has been sent to us.
+                                            </div>
+
+                                            <div class="alert alert-danger hidden" id="contactError">
+                                                Error sending your message.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>*@
 
 
                         </aside>
 
-                
+
                     </div>
 
                     <div class="col-md-12">
                         <p class="taller">
                             <dl>
                                 @*<dt>Kurum Müdürü</dt>
-                    <dd>@Model.KurumMuduru</dd>
+                                    <dd>@Model.KurumMuduru</dd>
 
-                    <dt>Müdür Yardımcıları</dt>
-                    <dd>@Model.KurumMuduru</dd>
+                                    <dt>Müdür Yardımcıları</dt>
+                                    <dd>@Model.KurumMuduru</dd>
 
-                    <dt>Kuruluş Tarihi</dt>
-                    <dd>@Model.KurulusTarih</dd>
+                                    <dt>Kuruluş Tarihi</dt>
+                                    <dd>@Model.KurulusTarih</dd>
 
-                    <dt>Aktiviteler</dt>
-                    <dd>@Model.Aktiviteler</dd>*@
+                                    <dt>Aktiviteler</dt>
+                                    <dd>@Model.Aktiviteler</dd>*@
 
                                 <dt>Telefon</dt>
                                 <dd>@Model.Tel</dd>
@@ -193,16 +193,16 @@
                                 <dt>İlçe</dt>
                                 <dd>@Model.ilceler.ilceAdi</dd>
                                 @*<dt>Faks</dt>
-                    <dd>@Model.Fax</dd>
+                                    <dd>@Model.Fax</dd>
 
-                    <dt>E-mail</dt>
-                    <dd>@Model.Email</dd>
+                                    <dt>E-mail</dt>
+                                    <dd>@Model.Email</dd>
 
-                    <dt>Web Sitesi</dt>
-                    <dd><a href="@Model.WebSitesi" target="_blank">@Model.WebSitesi</a></dd>*@
+                                    <dt>Web Sitesi</dt>
+                                    <dd><a href="@Model.WebSitesi" target="_blank">@Model.WebSitesi</a></dd>*@
 
                                 @*<dt>Adres</dt>
-                    <dd>@Model.Adres</dd>*@
+                                    <dd>@Model.Adres</dd>*@
                             </dl>
                         </p>
                         <div class="row">
@@ -226,15 +226,14 @@
                     </div>
                 </div>
 
-              
 
-           
+
+
 
             </div>
-           
+
 
         </div>
     </div>
 
 </div>
-

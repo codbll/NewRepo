@@ -123,6 +123,8 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.Fax = kurum.Fax;
             kurumlar.Email = kurum.Email;
             kurumlar.Adres = kurum.Adres;
+            kurumlar.Harita = kurum.Harita;
+            kurumlar.Video = kurum.Video;
             kurumlar.Durum = kurum.Durum;
 
             db.SaveChanges();
@@ -256,7 +258,7 @@ namespace Mobit.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult FileUpload(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol)
+        public ActionResult FileUpload(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol,string ResimTipi)
         {
             if (galeriResim == null)
             {
@@ -279,7 +281,8 @@ namespace Mobit.Areas.Admin.Controllers
                     KurumResim resimler = new KurumResim()
                     {
                         Resim = dosyaAdi,
-                        KurumId = kurumId
+                        KurumId = kurumId,
+                        ResimTipi = Convert.ToInt32(ResimTipi)
                     };
 
                     kurumResim.Add(resimler);

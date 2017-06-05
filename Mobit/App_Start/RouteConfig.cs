@@ -30,7 +30,7 @@ namespace Mobit
 
             routes.MapRoute(
            "kategori",
-            "Kategori/{kategori}",
+            "Kategori/{kategori}/{AltKategori}",
             new { controller = "AltKategori", action = "Index", },
             new[] { "Mobit.Controllers" }
              );

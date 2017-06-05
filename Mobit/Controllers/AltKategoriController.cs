@@ -14,7 +14,7 @@ namespace Mobit.Controllers
         Entities db = new Entities();
 
 
-        public ActionResult Index(int? Sayfa, string kategori)
+        public ActionResult Index(int? Sayfa, string kategori, string Altkategori)
         {
             db.Configuration.LazyLoadingEnabled = false;
 
@@ -38,20 +38,13 @@ namespace Mobit.Controllers
 
             IPagedList<Kurumlar> kurumlar;
 
-            //var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == ilce);
+            var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == Altkategori);
 
-            //if (altKategori == null)
-            //{
-            //    kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+            kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altKategori.Slug && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
-            //}
-            //else
-            //{
-            //    kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == ilce && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
-            //}
 
-            kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            //kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 
             var kat = db.Kategoriler.Where(k => k.Slug == kategori && k.Aktif == true).Select(k => new { k.KategoriId, k.KategoriAdi }).FirstOrDefault();
 
