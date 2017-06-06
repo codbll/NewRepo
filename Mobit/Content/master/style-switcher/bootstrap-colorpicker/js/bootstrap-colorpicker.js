@@ -146,7 +146,7 @@
                 "orange": "#ffa500",
                 "orangered": "#ff4500",
                 "orchid": "#da70d6",
-                "palegoldenrod": "#eee8aa",
+                "palegoldenrod": "#E3C8AD",
                 "palegreen": "#98fb98",
                 "paleturquoise": "#afeeee",
                 "palevioletred": "#d87093",

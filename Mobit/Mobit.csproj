@@ -1859,6 +1859,7 @@
     <Content Include="Content\img\avatar-4.jpg" />
     <Content Include="Content\img\avatar.jpg" />
     <Content Include="Content\img\background-restaurant.png" />
+    <Content Include="Content\img\background.jpg" />
     <Content Include="Content\img\blank.gif" />
     <Content Include="Content\img\custom-divider-1.png" />
     <Content Include="Content\img\custom-header-bg-2.jpg" />
