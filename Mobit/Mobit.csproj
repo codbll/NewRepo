@@ -206,6 +206,7 @@
     <Compile Include="Helpers\SendMail.cs" />
     <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Models\BodyModel.cs" />
+    <Compile Include="Models\KurumDetayModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2615,6 +2616,8 @@
     <Content Include="Views\_Partial\_HaberAramaSonuc.cshtml" />
     <Content Include="Views\_Partial\_HaberArama.cshtml" />
     <Content Include="Views\_Partial\_kurumMesajGonder.cshtml" />
+    <Content Include="Views\Haber\Index.cshtml" />
+    <Content Include="Views\Haber\Haberler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2626,7 +2629,6 @@
     <Folder Include="Upload\kurum\" />
     <Folder Include="Upload\temp\" />
     <Folder Include="Upload\urun\" />
-    <Folder Include="Views\Haber\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

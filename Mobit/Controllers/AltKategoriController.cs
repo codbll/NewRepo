@@ -14,35 +14,44 @@ namespace Mobit.Controllers
         Entities db = new Entities();
 
 
-        public ActionResult Index(int? Sayfa, string kategori, string Altkategori)
+        public ActionResult Index(int? Sayfa, string kategori,  string altkategori)
         {
             db.Configuration.LazyLoadingEnabled = false;
 
             int _sayfaNo = Sayfa ?? 1;
 
-            //if (ilce == null || ilce == "")
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            //}
-            //var ilceler = db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
+            if (altkategori == null || altkategori == "")
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            var ilceler = db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
 
-            //int ilceId = 0;
-            //foreach (var item in ilceler)
-            //{
-            //    if (Kontrol.ToSlug(item.ilceAdi) == ilce)
-            //    {
-            //        ilceId = item.ilceId;
-            //        break;
-            //    }
-            //}
+            int ilceId = 0;
+            foreach (var item in ilceler)
+            {
+                if (Kontrol.ToSlug(item.ilceAdi) == altkategori)
+                {
+                    ilceId = item.ilceId;
+                    break;
+                }
+            }
 
             IPagedList<Kurumlar> kurumlar;
 
-            var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == Altkategori);
+            var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == altkategori);
 
-            kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altKategori.Slug && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+           // kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altKategori.Slug && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
+            if (altKategori == null)
+            {
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
+            }
+            else
+            {
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+
+            }
 
             //kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 

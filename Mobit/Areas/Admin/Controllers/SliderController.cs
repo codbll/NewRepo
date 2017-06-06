@@ -15,7 +15,7 @@ namespace Mobit.Areas.Admin.Controllers
         // GET: Admin/Slider
         public ActionResult Index()
         {
-            var slider = db.Slider.ToList();
+            var slider = db.Slider.OrderBy(s=>s.SliderKategori.SliderId).ToList();
             return View(slider);
         }
 
@@ -162,43 +162,43 @@ namespace Mobit.Areas.Admin.Controllers
 
         public ActionResult RowChange(int id, int? fromPosition, int? toPosition, string direction)
         {
-            if (direction == "back")
-            {
-                var slides = db.Slider.Where(s => (toPosition <= s.Sira && s.Sira <= fromPosition)).ToList();
+            //if (direction == "back")
+            //{
+            //    var slides = db.Slider.Where(s => (toPosition <= s.Sira && s.Sira <= fromPosition)).ToList();
 
-                if (slides != null)
-                {
-                    var sld = slides.FirstOrDefault(s => s.Id == id);
-                    sld.Sira = Convert.ToInt32(toPosition);
-                    foreach (var item in slides)
-                    {
-                        if (item.Id != sld.Id)
-                        {
-                            item.Sira++;
-                        }
-                    }
-                }
-            }
-            else// forward
-            {
-                var slides = db.Slider.Where(s => (fromPosition <= s.Sira && s.Sira <= toPosition)).ToList();
+            //    if (slides != null)
+            //    {
+            //        var sld = slides.FirstOrDefault(s => s.Id == id);
+            //        sld.Sira = Convert.ToInt32(toPosition);
+            //        foreach (var item in slides)
+            //        {
+            //            if (item.Id != sld.Id)
+            //            {
+            //                item.Sira++;
+            //            }
+            //        }
+            //    }
+            //}
+            //else// forward
+            //{
+            //    var slides = db.Slider.Where(s => (fromPosition <= s.Sira && s.Sira <= toPosition)).ToList();
 
-                if (slides != null)
-                {
-                    var sld = slides.FirstOrDefault(s => s.Id == id);
-                    sld.Sira = Convert.ToInt32(toPosition);
-                    foreach (var item in slides)
-                    {
-                        if (item.Id != sld.Id)
-                        {
-                            item.Sira--;
-                        }
-                    }
-                }
-            }
+            //    if (slides != null)
+            //    {
+            //        var sld = slides.FirstOrDefault(s => s.Id == id);
+            //        sld.Sira = Convert.ToInt32(toPosition);
+            //        foreach (var item in slides)
+            //        {
+            //            if (item.Id != sld.Id)
+            //            {
+            //                item.Sira--;
+            //            }
+            //        }
+            //    }
+            //}
 
 
-            db.SaveChanges();
+            //db.SaveChanges();
             return null;
         }
 

@@ -1,0 +1,48 @@
+﻿@model Mobit.Data.Context.Haberler
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9">
+            <div class="blog-posts">
+
+                <article class="post post-large">
+
+                    <div class="post-content">
+
+                        @{
+                            ViewBag.bilgi = Model.Ad;
+                        }
+                        <h2>@Model.Ad</h2>
+                        <p>
+                            @Html.Raw(Model.Detay)
+                        </p>
+                        <p>
+                            @if (Model.GaleriId != null && ViewData["GaleriResim"] != null)
+                            {
+                                @Html.Partial("/Views/_Partial/_Galeri.cshtml", ViewData["GaleriResim"])
+                            }
+                        </p>
+
+                    </div>
+                </article>
+
+
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <aside class="sidebar">
+
+                @{Html.RenderAction("SonHaberler", "Haber");}
+
+            </aside>
+        </div>
+    </div>
+
+</div>

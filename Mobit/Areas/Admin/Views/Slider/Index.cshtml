@@ -25,6 +25,7 @@
                     <thead>
                         <tr>
 
+                            <th></th>
                             <th width="30">Sıra</th>
                             <th width="30">Resim</th>
                             <th>Başlık</th>
@@ -39,7 +40,7 @@
                         @foreach (var item in Model)
                         {
                             <tr class="gradeX" id="@item.Id">
-
+                                <td>@item.SliderKategori.SliderId</td>
                                 <td>@item.Sira</td>
                                 <td><a href="~/Upload/slide/@item.Resim" target="_blank"><img src="~/Upload/slide/@item.Resim" class="img-responsive" width="50" /></a></td>
                                 <td><a href="@item.Url" target="@item.Target"> @item.Baslik </a></td>

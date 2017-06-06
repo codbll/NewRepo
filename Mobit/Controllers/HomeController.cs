@@ -24,7 +24,7 @@ namespace Mobit.Controllers
             Slider();
 
             return View();
-
+            
         }
 
 
