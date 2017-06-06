@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Mobit.Data.Context;
+using Mobit.Models;
 
 namespace Mobit.Controllers
 {
@@ -14,19 +15,22 @@ namespace Mobit.Controllers
 
         public ActionResult Index(string kategoriSlug, string kurumSlug)
         {
+            var model = new KurumDetayModel();
 
-            var kurum = db.Kurumlar.Where(u => u.Slug == kurumSlug && u.Durum == true).FirstOrDefault();
+            model.Kurumlar = db.Kurumlar.Where(u => u.Slug == kurumSlug && u.Durum == true).FirstOrDefault();
 
-            if (kurum == null)
+            if (model.Kurumlar == null)
             {
                 return Redirect("/");
             }
 
-            ViewBag.title = kurum.KurumAdi + " - " + kurum.Kategoriler.KategoriAdi;
-            ViewBag.desc = kurum.Kategoriler.KategoriAdi + " - " + kurum.KurumAdi;
-            ViewBag.keywords = kurum.Kategoriler.KategoriAdi + kurum.KurumAdi.Replace(" ", ",");
+            ViewBag.title = model.Kurumlar.KurumAdi + " - " + model.Kurumlar.Kategoriler.KategoriAdi;
+            ViewBag.desc = model.Kurumlar.Kategoriler.KategoriAdi + " - " + model.Kurumlar.KurumAdi;
+            ViewBag.keywords = model.Kurumlar.Kategoriler.KategoriAdi + model.Kurumlar.KurumAdi.Replace(" ", ",");
 
-            return View(kurum);
+
+            model.Slider = db.Slider.Where(s => s.SliderId == 14 && s.Aktif == true).OrderBy(s => s.Sira).Take(5).ToList();
+            return View(model);
 
         }
     }
