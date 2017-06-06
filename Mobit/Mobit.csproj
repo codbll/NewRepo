@@ -190,6 +190,7 @@
     <Compile Include="Areas\Admin\Controllers\YoneticilerController.cs" />
     <Compile Include="Areas\Admin\_Yetki.cs" />
     <Compile Include="Controllers\AltKategoriController.cs" />
+    <Compile Include="Controllers\HaberController.cs" />
     <Compile Include="Controllers\KurumController.cs" />
     <Compile Include="Helpers\YetkiKontrol.cs" />
     <Compile Include="Areas\Admin\_SessionController.cs" />
@@ -2613,6 +2614,7 @@
     <Content Include="Views\Kurum\Index.cshtml" />
     <Content Include="Views\_Partial\_HaberAramaSonuc.cshtml" />
     <Content Include="Views\_Partial\_HaberArama.cshtml" />
+    <Content Include="Views\_Partial\_kurumMesajGonder.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2624,6 +2626,7 @@
     <Folder Include="Upload\kurum\" />
     <Folder Include="Upload\temp\" />
     <Folder Include="Upload\urun\" />
+    <Folder Include="Views\Haber\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

@@ -124,6 +124,20 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.LabelFor(model => model.Harita, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.Harita, new { @class = "form-control", @rows = "3", @cols = "4" })
+                @Html.ValidationMessageFor(model => model.Harita, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+                @Html.TextAreaFor(model => model.Video, new { @class = "form-control ckeditor" })
+                @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-8">
                 @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control ckeditor" })

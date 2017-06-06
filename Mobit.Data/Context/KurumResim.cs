@@ -17,6 +17,7 @@ namespace Mobit.Data.Context
         public int ResimId { get; set; }
         public int KurumId { get; set; }
         public string Resim { get; set; }
+        public int ResimTipi { get; set; }
     
         public virtual Kurumlar Kurumlar { get; set; }
     }

@@ -16,25 +16,25 @@
     @{
         foreach (var item in Model.Haberler)
         {
-            <div class="col-md-4" style="padding:3px;">
+            <div class="col-md-4" style="padding:5px;">
                 
                 <div class="heading heading-primary heading-border heading-bottom-border">
                     <h1 class="heading-primary">@item.Ad</h1>
                 </div>
                 <aside class="sidebar">
                     <ul class="simple-post-list">
-                        @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(10))
+                        @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
                         {
                             <li>
                                 <div class="post-image">
                                     <div class="img-thumbnail">
-                                        <a href="/Haberler/@haberler.Slug">
+                                        <a href="/Haber/@haberler.Slug">
                                             <img src="~/Upload/haber/@haberler.Resim" width="100px" height="100px" alt="">
                                         </a>
                                     </div>
                                 </div>
                                 <div class="post-info">
-                                    <a href="blog-post.html">@haberler.Ad</a>
+                                    <a href="/Haber/@haberler.Slug">@haberler.Ad</a>
                                     <div class="post-meta">
                                         @haberler.Tarih.ToShortDateString()
                                     </div>
@@ -47,12 +47,12 @@
         }
 
     }
-    <div class="col-md-4" style="padding:3px;">
+    <div class="col-md-4" style="padding:5px;">
         <aside class="sidebar">
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary">En İyi Okullar</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 2, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
                     <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
@@ -74,7 +74,7 @@
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary">En İyi Yöneticiler</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 2, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
                     <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
@@ -95,7 +95,7 @@
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary"></h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 2, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
                     <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
                 </div>
@@ -116,11 +116,11 @@
         </aside>
         <br />
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(1).OrderByDescending(s => s.Id))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).OrderBy(s => s.Sira))
             {
-                <div class="col-md-12" style="padding:3px;">
+                <div class="col-md-12" style="padding:5px;">
                     <a href="@item.Url" target="@item.Target">
-                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  alt="@item.Baslik">
                     </a>
                 </div>
             }
@@ -129,7 +129,7 @@
     
 </div>
 <div class="row">
-    <div class="col-md-4" style="padding:3px;">
+    <div class="col-md-4" style="padding:5px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Anaokulu</h4>
         </div>
@@ -150,7 +150,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-4" style="padding:3px;">
+    <div class="col-md-4" style="padding:5px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Koleji</h4>
         </div>
@@ -171,7 +171,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-4" style="padding:3px;">
+    <div class="col-md-4" style="padding:5px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Üniversitesi</h4>
         </div>

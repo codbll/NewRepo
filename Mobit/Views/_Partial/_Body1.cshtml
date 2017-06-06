@@ -1,10 +1,10 @@
 ﻿@model Mobit.Models.BodyModel
 
 @* alt slider alanı *@
-<div class="row" style="padding:3px;">
-    <div class="col-md-7" style="padding:3px;">
+<div class="row" style="padding:5px;">
+    <div class="col-md-7" style="padding:5px;">
 
-        <div class="owl-carousel owl-theme show-nav-hover mt-none owl-loaded owl-drag owl-carousel-init" data-plugin-options="{&quot;items&quot;: 1, &quot;margin&quot;: 10, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;animateOut&quot;: &quot;fadeOut&quot;}">
+        <div class="owl-carousel owl-theme show-nav-hover mt-none owl-loaded owl-drag owl-carousel-init" data-plugin-options="{&quot;items&quot;: 1, &quot;margin&quot;: 20, &quot;loop&quot;: true, &quot;nav&quot;: true, &quot;animateOut&quot;: &quot;fadeOut&quot;}">
 
             @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 2))
             {
@@ -15,8 +15,6 @@
                 </div>
             }
         </div>
-
-
     </div>
     @* sağ reklam alanı *@
     <div class="col-md-5">
@@ -24,7 +22,7 @@
         <div class="row"  style="padding:1px;">
             @foreach (var item in Model.Slider.Where(s => s.SliderId == 12).Take(1).OrderByDescending(s => s.Id))
             {
-                <div class="col-md-12" style="padding:3px;">
+                <div class="col-md-12" style="padding:5px;">
                     <a href="@item.Url" target="@item.Target">
                         <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                     </a>
@@ -34,7 +32,7 @@
             <div class="row"  style="padding:1px;">
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 7).Take(2).OrderBy(s => s.Sira))
             {
-                    <div class="col-md-6" style="padding:3px;" >
+                    <div class="col-md-6" style="padding:5px;" >
                         <a href="@item.Url" target="@item.Target">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                         </a>
@@ -52,7 +50,7 @@
 <div class="row">
     @foreach (var item in Model.Slider.Where(s => s.SliderId == 8).Take(1).OrderByDescending(s => s.Id))
     {
-        <div class="col-md-12" style="padding:3px;">
+        <div class="col-md-12" style="padding:5px;">
             <a href="@item.Url" target="@item.Target">
                 <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%"  alt="@item.Baslik">
             </a>
@@ -63,7 +61,7 @@
 <div class="row">
     @foreach (var item in Model.Slider.Where(s => s.SliderId == 9).Take(2).OrderBy(s => s.Sira))
     {
-        <div class="col-md-6" style="padding:3px;">
+        <div class="col-md-6" style="padding:5px;">
             <a href="@item.Url" target="@item.Target">
                 <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
             </a>
@@ -73,7 +71,7 @@
 <div class="row">
     @foreach (var item in Model.Slider.Where(s => s.SliderId == 10).Take(3).OrderBy(s => s.Sira))
     {
-        <div class="col-md-4" style="padding:3px;">
+        <div class="col-md-4" style="padding:5px;">
             <a href="@item.Url" target="@item.Target">
                 <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
             </a>

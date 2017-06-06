@@ -1,0 +1,20 @@
+.size-auto,
+.size-full,
+.size-large,
+.size-medium,
+.size-thumbnail {
+  max-width: 100%;
+  height: auto;
+}
+
+body.custom-background .non-boxed .site-wrap {
+  background-color: transparent;
+}
+
+body.custom-background .non-boxed .center {
+  background-color: transparent;
+}
+
+body.custom-background .non-boxed .breadcrumbs {
+  background-color: transparent;
+}

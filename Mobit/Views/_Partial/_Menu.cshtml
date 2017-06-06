@@ -1,88 +1,92 @@
 ﻿@model Mobit.Models.MenuModel
-<div class="header-container header-nav header-nav-bar header-nav-bar-primary">
-    <div class="container">
-        <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
-            <i class="fa fa-bars"></i>
-        </button>
         <div class="header-nav-main header-nav-main-light header-nav-main-effect-1 header-nav-main-sub-effect-1 collapse">
             <nav>
                 <ul class="nav nav-pills" id="mainNav">
-
-
+                    <li>
+                        <a href="/">
+                            Ana Sayfa
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/">
+                            HABERLER
+                        </a>
+                    </li>
                     @foreach (var kategori in Model.Kategoriler)
                     {
-                        @*<li class="dropdown dropdown-mega">
-                                <a class="dropdown-toggle" href="@(kategori.Url != null ? kategori.Url : "#.")">
-                                    @kategori.KategoriAdi
-                                </a>
-                                @if (kategori.Area == true)// açılır menü ise
-                                {
-                                    <ul class="dropdown-menu">
-                                        @if (kategori.AltKategoriler.Count() >= 1)
-                                        {
-                                            <li>
-                                                <div class="dropdown-mega-content">
-                                                    <div class="row">
-                                                        <div class="col-md-3">
-                                                            <span class="dropdown-mega-sub-title">@kategori.KategoriAdi</span>
-                                                            <ul class="dropdown-mega-sub-nav">
-                                                                @foreach (var altKategori in kategori.AltKategoriler.Where(a => a.Aktif == true))
-                                                                {
+                        <li class="dropdown dropdown-mega">
+                            <a class="dropdown-toggle" href="@(kategori.Url != null ? kategori.Url : "#.")">
+                                @kategori.KategoriAdi
+                            </a>
+                            
+                            @if (kategori.Area == true)// açılır menü ise
+                            {
+                                <ul class="dropdown-menu">
+                                    @if (kategori.AltKategoriler.Count() >= 1)
+                                    {
+                                        <li>
+                                            <div class="dropdown-mega-content">
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        <div class="heading heading-primary heading-border heading-bottom-border">
+                                                            <h4 class="heading-primary">@kategori.KategoriAdi</h4>
+                                                        </div>
+                                                        <ul class="dropdown-mega-sub-nav">
+                                                            @foreach (var altKategori in kategori.AltKategoriler.Where(a => a.Aktif == true))
+                                                            {
 
-                                                                    <li><a href="/kategori/@kategori.Slug/@altKategori.Slug"><b>@altKategori.AltKategoriAdi</b></a></li>
+                                                                <li><a href="/kategori/@kategori.Slug/@altKategori.Slug"><b>@altKategori.AltKategoriAdi</b></a></li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <div class="dropdown-mega-content">
+                                                <div class="row">
+                                                    @foreach (var iller in Model.iller)
+                                                    {
+
+                                                        <div class="col-md-6">
+                                                            <div class="heading heading-primary heading-border heading-bottom-border">
+                                                                <h4 class="heading-primary">@iller.ilAdi Yakası</h4>
+                                                            </div>
+                                                            <ul class="dropdown-mega-sub-nav">
+
+                                                                @foreach (var ilce in iller.ilceler)
+                                                                {
+                                                                    <div class="col-md-4">
+                                                                        <li>
+                                                                            <a href="/kategori/@kategori.Slug/@Kontrol.ToSlug(ilce.ilceAdi)"><b>@ilce.ilceAdi </b></a>
+                                                                        </li>
+                                                                    </div>
                                                                 }
                                                             </ul>
                                                         </div>
 
-                                                    </div>
+                                                    }
                                                 </div>
-                                            </li>
-                                        }
-                                        else
-                                        {
-                                            <li>
-                                                <div class="dropdown-mega-content">
-                                                    <div class="row">
-                                                        @foreach (var iller in Model.iller)
-                                                        {
+                                            </div>
+                                        </li>
+                                    }
 
-                                                            <div class="col-md-6">
-                                                                <span class="dropdown-mega-sub-title">@iller.ilAdi Yakası</span>
-                                                                <ul class="dropdown-mega-sub-nav">
-
-                                                                    @foreach (var ilce in iller.ilceler)
-                                                                    {
-                                                                        <div class="col-md-4">
-                                                                            <li>
-                                                                                <a href="/kategori/@kategori.Slug/@Kontrol.ToSlug(ilce.ilceAdi)"><b>@ilce.ilceAdi </b></a>
-                                                                            </li>
-                                                                        </div>
-                                                                    }
-                                                                </ul>
-                                                            </div>
-
-                                                        }
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        }
-
-                                    </ul>
-                                }
-                            </li>*@
-
-                        <li>
-                            <a href="@(kategori.Url != null ? kategori.Url : "/kategori/"+kategori.Slug)">
-                                @kategori.KategoriAdi
-                            </a>
+                                </ul>
+                            }
                         </li>
 
                     }
-
+                    <li>
+                        <a href="/">
+                            İletişim
+                        </a>
+                    </li>
 
 
                 </ul>
             </nav>
         </div>
-    </div>
-</div>

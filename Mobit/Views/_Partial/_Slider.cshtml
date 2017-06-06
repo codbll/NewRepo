@@ -13,41 +13,34 @@
     }
 </style>
 
-<div class="header-top header-top-style-2">
-    <div class="slider-container rev_slider_wrapper">
-        <div id="revolutionSlider">
-                @foreach (var item in Model)
+<div class="slider-container rev_slider_wrapper" >
+    <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 850, "gridheight": 600}'>
+        <ul>
+            @foreach (var item in Model)
             {
-                    <div>
-                        <a href="@item.Url" target="@item.Target">
-                            <img src="~/Upload/slide/@item.Resim"
-                                 alt="@item.Baslik"
-                                 title="@item.Baslik"
-                                 data-bgposition="center center"
-                                 data-bgfit="cover"
-                                 data-bgrepeat="no-repeat"
-                                 class="rev-slidebg" style="width:100%; height:100%">
-                            <div>ddadddddddddddddddddd</div>
-                        </a>
-
-
-                        <div class="portfolio_description">
-                            
-                            <div class="col-md-12">
-                                <h2>Arama</h2>
-                                @Html.Partial("/Views/_Partial/_Arama.cshtml")
-                            </div>
-
+                <li data-transition="fade">
+                    <a href="@item.Url" target="@item.Target">
+                        <img src="~/Upload/slide/@item.Resim"
+                             alt="@item.Baslik"
+                             title="@item.Baslik"
+                             data-bgposition="center center"
+                             data-bgfit="cover"
+                             data-bgrepeat="no-repeat"
+                             class="rev-slidebg" style="width:100%; height:100%">
+                    </a>
+                    
+                    
+                    <div class="portfolio_description" style="margin-top:70px">
+                        <div class="col-md-12">
+                            <h4>Arama</h4>
+                            @Html.Partial("/Views/_Partial/_Arama.cshtml")
                         </div>
+
                     </div>
-                }
-         
-
-           
-        </div>
+                        </li>
+            }
+        </ul>
+       
     </div>
-
- 
-
 </div>
     
