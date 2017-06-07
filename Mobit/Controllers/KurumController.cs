@@ -29,7 +29,7 @@ namespace Mobit.Controllers
             ViewBag.keywords = model.Kurumlar.Kategoriler.KategoriAdi + model.Kurumlar.KurumAdi.Replace(" ", ",");
 
 
-            model.Slider = db.Slider.Where(s => s.SliderId == 14 && s.Aktif == true).OrderBy(s => s.Sira).Take(5).ToList();
+            model.Slider = db.Slider.Where(s => (s.SliderId == 14 || s.SliderId == 15) && (s.Aktif == true)).OrderBy(s => s.Sira).Take(5).ToList();
             return View(model);
 
         }

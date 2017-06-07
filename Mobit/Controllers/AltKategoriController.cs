@@ -14,7 +14,7 @@ namespace Mobit.Controllers
         Entities db = new Entities();
 
 
-        public ActionResult Index(int? Sayfa, string kategori,  string altkategori)
+        public ActionResult Index(int? Sayfa, string kategori, string altkategori)
         {
             db.Configuration.LazyLoadingEnabled = false;
 
@@ -40,7 +40,7 @@ namespace Mobit.Controllers
 
             var altKategori = db.AltKategoriler.FirstOrDefault(a => a.Slug == altkategori);
 
-           // kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altKategori.Slug && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+            // kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altKategori.Slug && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
             if (altKategori == null)
             {
@@ -71,8 +71,10 @@ namespace Mobit.Controllers
                 ViewBag.kurumsayi = "Bu kategoriye ait kurum bulunamadı.";
             }
 
-            var reklam = db.Slider.Where(s => s.SliderId == 13).ToList();
-            ViewData["detayReklam"] = reklam;
+            var reklam = db.Slider.Where(s => s.SliderId == 13 || s.SliderId == 16).OrderBy(s => s.Sira).ToList();
+            ViewData["detayReklam"] = reklam.Where(r => r.SliderId == 13).Take(5).ToList();
+            ViewData["ustTekReklam"] = reklam.Where(r => r.SliderId == 16).OrderBy(s=>s.Sira).Take(1).ToList();
+
             return View(kurumlar);
         }
     }
