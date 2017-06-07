@@ -20,13 +20,13 @@ namespace Mobit
             //  defaults: new { controller = "Sayfalar", action = "Haberler", Slug = "" }
 
             // );
-            //  routes.MapRoute(
-            // name: "haberDetay",
-            //  url: "Haber/{Slug}",
-            //  defaults: new { controller = "Sayfalar", action = "HaberDetay", Slug = "" }
+            routes.MapRoute(
+           name: "haberDetay",
+            url: "Haber/{Slug}",
+            defaults: new { controller = "Haber", action = "Index" }
 
 
-            //);
+          );
 
             routes.MapRoute(
            "kategori",

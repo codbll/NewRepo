@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             @*üst kayan reklam*@
-            <div class="row" style="padding:5px;">
+            <div class="row" style="padding:7px;">
                 <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 10, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
 
                     @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
@@ -25,7 +25,7 @@
             <div class="row">
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 4).Take(1).OrderBy(s => s.Sira))
                 {
-                    <div class="col-md-12" style="padding:5px;margin-top:-19px" >
+                    <div class="col-md-12" style="padding:7px;margin-top:-19px" >
                         <a href="@item.Url" target="@item.Target">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                         </a>
@@ -37,7 +37,7 @@
             <div class="row">
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 5).Take(2).OrderBy(s => s.Sira))
                 {
-                    <div class="col-md-6" style="padding:5px;">
+                    <div class="col-md-6" style="padding:7px;">
                         <a href="@item.Url" target="@item.Target">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                         </a>
@@ -46,12 +46,12 @@
             </div>
 
             @*A3 5 reklam alanı*@
-            <div class="row"  style="padding:5px;" >
+            <div class="row"  style="padding:7px;" >
                 <ul class="image-gallery sort-destination full-width">
                     @foreach (var item in Model.Slider.Where(s => s.SliderId == 6).Take(5).OrderBy(s => s.Sira))
                 {
                         <li class="isotope-item">
-                            <div class="image-gallery-item" style="padding:5px;" >
+                            <div class="image-gallery-item" style="padding:7px;" >
                                 <a href="@item.Url" target="@item.Target">
                                     <span class="thumb-info thumb-info-centered-info">
                                         <span class="thumb-info-wrapper">
@@ -79,7 +79,7 @@
 @*kayan 20 haber alanı*@
 
 
-<div class="header-top"   style="padding:5px;">
+<div class="header-top"   style="padding:7px;">
         <div class="col-md-1"><h6><strong>HABERLER</strong></h6></div>
         <div class="col-md-11">
             <marquee direction=left>

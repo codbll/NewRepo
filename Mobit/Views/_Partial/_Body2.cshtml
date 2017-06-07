@@ -16,7 +16,7 @@
     @{
         foreach (var item in Model.Haberler)
         {
-            <div class="col-md-4" style="padding:5px;">
+            <div class="col-md-4" style="padding:7px;">
                 
                 <div class="heading heading-primary heading-border heading-bottom-border">
                     <h1 class="heading-primary">@item.Ad</h1>
@@ -47,7 +47,7 @@
         }
 
     }
-    <div class="col-md-4" style="padding:5px;">
+    <div class="col-md-4" style="padding:7px;">
         <aside class="sidebar">
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary">En İyi Okullar</h1>
@@ -118,7 +118,7 @@
         <div class="row">
             @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).OrderBy(s => s.Sira))
             {
-                <div class="col-md-12" style="padding:5px;">
+                <div class="col-md-12" style="padding:7px;">
                     <a href="@item.Url" target="@item.Target">
                         <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  alt="@item.Baslik">
                     </a>
@@ -129,7 +129,7 @@
     
 </div>
 <div class="row">
-    <div class="col-md-4" style="padding:5px;">
+    <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Anaokulu</h4>
         </div>
@@ -150,7 +150,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-4" style="padding:5px;">
+    <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Koleji</h4>
         </div>
@@ -171,7 +171,7 @@
             </a>
         </div>
     </div>
-    <div class="col-md-4" style="padding:5px;">
+    <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ocak Ayının En İyi Üniversitesi</h4>
         </div>
