@@ -34,19 +34,20 @@
                                     <a href="/@kurum.Kategoriler.Slug/@kurum.Slug" title="@kurum.KurumAdi">
                                         <span class="product-thumb-info-image">
                                             <span class="product-thumb-info-act">
-                                                <span class="product-thumb-info-act-left"><em>Ürün Detayı</em></span>
+                                                <span class="product-thumb-info-act-left"><em>@kurum.KurumAdi</em></span>
                                                 @*<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>*@
                                             </span>
                                             <img alt="@kurum.KurumAdi" title="@kurum.KurumAdi" class="img-responsive" src="~/Upload/kurum/@kurum.UploadYolu/@kurum.Resim">
+
                                         </span>
                                     </a>
                                     <span class="product-thumb-info-content">
                                         <a href="/@kurum.Kategoriler.Slug/@kurum.Slug">
                                             <h4 class="heading-primary">@kurum.KurumAdi</h4>
-                                            @*<span class="price">
-                                                <del><span class="amount">$325</span></del>
-                                                <ins><span class="amount">$299</span></ins>
-                                            </span>*@
+                                            <span class="price">
+                                                <ins class="pull-left"><span class="amount">@(kurum.ilceId == null ? "" : kurum.ilceler.ilceAdi)</span></ins>
+                                                <ins class="pull-right"><span class="amount">@kurum.Tel</span></ins>
+                                            </span>
                                         </a>
                                     </span>
                                 </span>

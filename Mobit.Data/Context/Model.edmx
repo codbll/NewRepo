@@ -204,13 +204,13 @@
           <Property Name="Aktiviteler" Type="nvarchar" MaxLength="250" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
           <Property Name="KurulusTarih" Type="nvarchar" MaxLength="50" />
-          <Property Name="WebSitesi" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSitesi" Type="nvarchar" MaxLength="100" />
           <Property Name="Tel" Type="nvarchar" MaxLength="50" />
           <Property Name="Fax" Type="nvarchar" MaxLength="50" />
           <Property Name="Harita" Type="nvarchar(max)" />
           <Property Name="Video" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" />
-          <Property Name="Adres" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
           <Property Name="Durum" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="KurumResim">
@@ -878,13 +878,13 @@
           <Property Name="Aktiviteler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="KurulusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WebSitesi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSitesi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Harita" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Adres" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AltKategoriler" Relationship="Model.FK_Kurumlar_AltKategoriler" FromRole="Kurumlar" ToRole="AltKategoriler" />
           <NavigationProperty Name="ilceler" Relationship="Model.FK_Kurumlar_ilceler" FromRole="Kurumlar" ToRole="ilceler" />

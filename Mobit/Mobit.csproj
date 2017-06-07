@@ -204,10 +204,12 @@
     <Compile Include="Helpers\Msg.cs" />
     <Compile Include="Helpers\AjaxValidate.cs" />
     <Compile Include="Helpers\SendMail.cs" />
+    <Compile Include="Models\GelismisAramaModel.cs" />
     <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Models\BodyModel.cs" />
     <Compile Include="Models\KurumDetayModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
+    <Compile Include="Models\SliderModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -2619,6 +2621,7 @@
     <Content Include="Views\_Partial\_kurumMesajGonder.cshtml" />
     <Content Include="Views\Haber\Index.cshtml" />
     <Content Include="Views\Haber\Haberler.cshtml" />
+    <Content Include="Views\_Partial\_GelismisArama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

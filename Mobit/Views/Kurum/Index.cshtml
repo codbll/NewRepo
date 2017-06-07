@@ -25,6 +25,18 @@
 
         <div class="row">
             <div class="col-md-12">
+                @*A1 reklam alanı*@
+                <div class="row">
+                    @foreach (var item in Model.Slider.Where(s => s.SliderId == 15))
+                    {
+                        <div class="col-md-12" style="padding:7px;margin-top:-19px">
+                            <a href="@item.Url" target="@item.Target">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                            </a>
+                        </div>
+                    }
+
+                </div>
 
                 <div class="row">
                     <div class="col-md-9">
@@ -268,8 +280,8 @@
         </div>
         <div class="row" style="padding:5px;">
             <ul class="image-gallery sort-destination full-width">
-               
-                @foreach (var item in Model.Slider)
+
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 14))
                 {
                     <li class="isotope-item">
                         <div class="image-gallery-item" style="padding:5px;">

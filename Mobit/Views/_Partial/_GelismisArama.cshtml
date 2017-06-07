@@ -1,0 +1,39 @@
+﻿@model Mobit.Models.GelismisAramaModel
+@using Mobit.Helpers
+<div id="searchForm">
+    <form id="myform" method="post" action="/Home/SearchForm" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="form-group">
+            <div class="col-md-10">
+                <select class="form-control">
+                    <option value="1">İstanbul</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @*<input type="text" id="txtSearch" class="form-control" name="q" placeholder="Ara..." required>*@
+                @Html.EditorFor(model => model.SearchKey, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                @Html.ValidationMessageFor(model => model.SearchKey, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <button type="button" class="btn btn-default mr-xs mb-sm"><i class="fa fa-search"></i> Ara</button>
+
+            </div>
+        </div>
+        </form>
+
+</div>
+
+<script src="~/Scripts/vendor/jquery.validation/jquery.validation.min.js"></script>
