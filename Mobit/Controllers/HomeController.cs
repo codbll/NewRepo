@@ -21,10 +21,13 @@ namespace Mobit.Controllers
         public ActionResult Index()
         {
             TitleGetir();
-            Slider();
+             Slider();
 
+            GelismisAramaBilgi();
+
+         
             return View();
-            
+
         }
 
 
@@ -255,6 +258,19 @@ namespace Mobit.Controllers
             return Tasks;
         }
 
+        public void GelismisAramaBilgi()
+        {
+            ViewBag.KategoriId = new SelectList(db.Kategoriler.ToList(), "KategoriId", "KategoriAdi");
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Route("Home/SearchForm")]
+        public ActionResult SearchForm(GelismisAramaModel arama)
+        {
+            return View();
+        }
         [Route("Home/MesajGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
