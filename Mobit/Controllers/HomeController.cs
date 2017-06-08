@@ -1,6 +1,7 @@
 ﻿using Mobit.Data.Context;
 using Mobit.Data.Model;
 using Mobit.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -21,11 +22,11 @@ namespace Mobit.Controllers
         public ActionResult Index()
         {
             TitleGetir();
-             Slider();
+            Slider();
 
             GelismisAramaBilgi();
 
-         
+
             return View();
 
         }
@@ -260,16 +261,36 @@ namespace Mobit.Controllers
 
         public void GelismisAramaBilgi()
         {
-            ViewBag.KategoriId = new SelectList(db.Kategoriler.ToList(), "KategoriId", "KategoriAdi");
+            ViewBag.KategoriId = new SelectList(db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList(), "KategoriId", "KategoriAdi");
+            ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82), "ilceId", "ilceAdi");
 
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Home/SearchForm")]
-        public ActionResult SearchForm(GelismisAramaModel arama)
+        [Route("Arama")]
+        public ActionResult Arama(GelismisAramaModel arama, int? Sayfa)
         {
-            return View();
+
+            int _sayfaNo = Sayfa ?? 1;
+            IPagedList<Kurumlar> kurumlar;
+
+            if (string.IsNullOrEmpty(arama.SearchKey))
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            }
+            else
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilceId == arama.ilceId && k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+
+            }
+
+            if (kurumlar.Count == 0)
+            {
+                ViewBag.bilgi = "Arama kriterlernize uygun sonuç bulunamadı.";
+
+            }
+            return View(kurumlar);
         }
         [Route("Home/MesajGonder")]
         [HttpPost]

@@ -1,0 +1,51 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Mobit.Data.Context.Kurumlar>
+@{
+    ViewBag.Title = "Arama";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            @*<h2> <strong>@ViewBag.bilgi</strong> </h2> _urunler partialinde kullandım.*@
+
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    @Html.Partial("/Views/_Partial/_Kurumlar.cshtml", Model)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="pagination pull-left">
+                                @*<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>*@
+
+                                @Html.PagedListPager(Model, _sayfaNo => Url.Action("Arama", "Home", new { Sayfa = _sayfaNo }))
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr />
+                   
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section styles{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+

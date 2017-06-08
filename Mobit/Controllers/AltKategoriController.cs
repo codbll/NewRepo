@@ -44,12 +44,12 @@ namespace Mobit.Controllers
 
             if (altKategori == null)
             {
-                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 
             }
             else
             {
-                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 
             }
 
