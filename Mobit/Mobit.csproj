@@ -2623,6 +2623,7 @@
     <Content Include="Views\Haber\Index.cshtml" />
     <Content Include="Views\Haber\Haberler.cshtml" />
     <Content Include="Views\_Partial\_GelismisArama.cshtml" />
+    <Content Include="Views\Home\Arama.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

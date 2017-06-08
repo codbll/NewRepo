@@ -10,7 +10,9 @@ namespace Mobit.Models
     {
         [Required(ErrorMessage = "Lütfen kategori seçiniz")]
         public int KategoriId { get; set; }
-        [Required(ErrorMessage = "Lütfen arama kriterini yazınız")]
+        [Required(ErrorMessage = "Lütfen ilçe seçiniz")]
+        public int ilceId { get; set; }
+        //[Required(ErrorMessage = "Lütfen arama kriterini yazınız")]
         public string SearchKey { get; set; }
     }
 }
