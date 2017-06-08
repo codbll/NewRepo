@@ -90,6 +90,15 @@
                 </div>
             </div>
         </div>*@
+            @if (ViewBag.Logo != null)
+            {
+                /**/
+                <div class="header-logo">
+                    <a href="/">
+                        <img alt="Mobit Bilişim" title="Mobit Bilişim" width="130" height="30" data-sticky-width="100" data-sticky-height="36" data-sticky-top="33" src="~/Upload/images/@ViewBag.Logo">
+                    </a>
+                </div>
+            }
         @{Html.RenderAction("Menu", "Home"); }
     </div>
 </header>
