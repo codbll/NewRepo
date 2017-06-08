@@ -1,5 +1,8 @@
 ﻿
-@*<header id="header" data-plugin-options='{"stickyEnabled": true, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 57, "stickySetTop": "-57px", "stickyChangeLogo": true}'>
+<header id="header" data-plugin-options='{"stickyEnabled": false, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 57, "stickySetTop": "-57px", "stickyChangeLogo": true}'>
+    <div>
+        @{Html.RenderAction("HeaderReklam", "Home"); }
+    </div>
     <div class="header-body">
         <div class="header-container container">
             <div class="header-row">
@@ -9,31 +12,12 @@
                         /**/
                         <div class="header-logo">
                             <a href="/">
-                                <img alt="Mobit Bilişim" title="Mobit Bilişim" width="180" height="80" data-sticky-width="82" data-sticky-height="60" data-sticky-top="33" src="~/Upload/images/@ViewBag.Logo">
+                                <img alt="" title="" width="90" height="33" data-sticky-width="90" data-sticky-height="36" data-sticky-top="33" src="~/Upload/images/@ViewBag.Logo">
                             </a>
                         </div>
                     }
                 </div>
                 <div class="header-column">
-                    <div class="header-row">
-                        <div class="header-search hidden-xs">
-
-                        </div>
-                        <nav class="header-nav-top">
-                            <ul class="nav nav-pills">
-                                <li class="hidden-xs">
-                                    <a href="/Sayfa/Hakkimizda"><i class="fa fa-angle-right"></i> Hakkımızda</a>
-                                </li>
-                                <li class="hidden-xs">
-                                    <a href="/iletisim"><i class="fa fa-angle-right"></i> İletişim</a>
-                                </li>
-                                <li>
-                                    <span class="ws-nowrap"><i class="fa fa-phone"></i> @ViewBag.Telefon</span>
-                                </li>
-                               
-                            </ul>
-                        </nav>
-                    </div>
                     <div class="header-row">
                         <div class="header-nav">
                             <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
@@ -46,59 +30,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</header>*@
-
-<header id="header" class="header-no-border-bottom" data-plugin-options='{"stickyEnabled": false, "stickyEnableOnBoxed": false, "stickyEnableOnMobile": false, "stickyStartAt": 148, "stickySetTop": "-148px", "stickyChangeLogo": false}'>
-    <div >
-        @{Html.RenderAction("HeaderReklam", "Home"); }
-
-        @*<div class="header-container container">
-            <div class="header-row">
-                <div class="header-column">
-                    <div class="header-logo">
-                        <a href="index.html">
-                            <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" data-sticky-top="33" src="img/logo.png">
-                        </a>
-                    </div>
-                </div>
-                <div class="header-column">
-                    <ul class="header-extra-info hidden-xs">
-                        <li>
-                            <div class="feature-box feature-box-style-3">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-phone"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-none">(800) 123-4567</h4>
-                                    <p><small>Get in touch with us</small></p>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="feature-box feature-box-style-3">
-                                <div class="feature-box-icon">
-                                    <i class="fa fa-envelope"></i>
-                                </div>
-                                <div class="feature-box-info">
-                                    <h4 class="mb-none">mail@example.com</h4>
-                                    <p><small>Send us an e-mail</small></p>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>*@
-            @if (ViewBag.Logo != null)
-            {
-                /**/
-                <div class="header-logo">
-                    <a href="/">
-                        <img alt="Mobit Bilişim" title="Mobit Bilişim" width="130" height="30" data-sticky-width="100" data-sticky-height="36" data-sticky-top="33" src="~/Upload/images/@ViewBag.Logo">
-                    </a>
-                </div>
-            }
-        @{Html.RenderAction("Menu", "Home"); }
     </div>
 </header>
