@@ -39,16 +39,16 @@ li {
 }
 
     #header .header-body {
-        background-color: #F4EBDA;
-        border-top: 5px solid #EDEDED;
+        background-color:antiquewhite;
+        border-top: 1px solid #EDEDED;
         border-bottom: 1px solid transparent;
-        padding: 8px 0;
+        padding: 1px 0;
         -webkit-transition: min-height 0.3s ease;
         -moz-transition: min-height 0.3s ease;
         transition: min-height 0.3s ease;
         width: 100%;
         z-index: 1001;
-        min-height: 125px;
+        min-height: 50px;
     }
 
 #header .container {
@@ -61,7 +61,7 @@ li {
 }
 
 #header .header-top {
-    background-color: #F4EBDA;
+    background-color: #EEF4F2;
     border-bottom: 1px solid #ededed;
     margin-top: -13px;
     padding: 8px 0;
@@ -1580,7 +1580,7 @@ html[dir="rtl"] #header .header-search .btn-default {
 
 /* Page Header */
 .page-header {
-	background-color: lightcyan;
+	background-color: antiquewhite;
 	border-bottom: 5px solid #CCC;
 	border-top: 5px solid #384045;
 	margin: 0 0 35px 0;
