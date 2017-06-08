@@ -39,7 +39,7 @@ li {
 }
 
     #header .header-body {
-        background-color: #E3C8AD;
+        background-color: #F4EBDA;
         border-top: 5px solid #EDEDED;
         border-bottom: 1px solid transparent;
         padding: 8px 0;
@@ -61,7 +61,7 @@ li {
 }
 
 #header .header-top {
-    background-color: #E3C8AD;
+    background-color: #F4EBDA;
     border-bottom: 1px solid #ededed;
     margin-top: -13px;
     padding: 8px 0;
@@ -122,7 +122,7 @@ li {
 }
 
 #header .header-top.header-top-style-2 {
-	background-color: #E3C8AD;
+	background-color: #EEF4F2;
 	margin-top: -16px;
 }
 
@@ -1580,7 +1580,7 @@ html[dir="rtl"] #header .header-search .btn-default {
 
 /* Page Header */
 .page-header {
-	background-color: #171717;
+	background-color: lightcyan;
 	border-bottom: 5px solid #CCC;
 	border-top: 5px solid #384045;
 	margin: 0 0 35px 0;
@@ -4201,7 +4201,7 @@ html.dark #footer .newsletter form .btn-default {
 
     html.dark #header.header-transparent .header-nav-main, html.dark #header.header-semi-transparent .header-nav-main, html.dark #header.header-semi-transparent-light .header-nav-main {
         /*background-color: #1d2127;*/
-        background-color: #E3C8AD;
+        background-color: #EEF4F2;
     }
 }
 /* Boxed Layout */
@@ -4214,7 +4214,7 @@ html.boxed body {
 
 html.boxed .body {
     /*background-color: #FFF;*/
-    background-color:  #E3C8AD;
+    background-color:  #EEF4F2;
     border-bottom: 5px solid #1d2127;
     border-radius: 5px;
     border-top: 5px solid #CCC;

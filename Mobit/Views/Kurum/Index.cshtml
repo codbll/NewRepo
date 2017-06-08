@@ -29,7 +29,7 @@
                 <div class="row">
                     @foreach (var item in Model.Slider.Where(s => s.SliderId == 15))
                     {
-                        <div class="col-md-12" style="padding:7px;margin-top:-19px">
+                        <div class="col-md-12" style="padding:7px;margin-top:-10px">
                             <a href="@item.Url" target="@item.Target">
                                 <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
                             </a>
@@ -146,43 +146,12 @@
                     </div>
 
                     <div class="col-md-12">
-                        <p class="taller">
-                            <dl>
-                                @*<dt>Kurum Müdürü</dt>
-                                    <dd>@Model.Kurumlar.KurumMuduru</dd>
-
-                                    <dt>Müdür Yardımcıları</dt>
-                                    <dd>@Model.Kurumlar.KurumMuduru</dd>
-
-                                    <dt>Kuruluş Tarihi</dt>
-                                    <dd>@Model.Kurumlar.KurulusTarih</dd>
-
-                                    <dt>Aktiviteler</dt>
-                                    <dd>@Model.Kurumlar.Aktiviteler</dd>*@
-
-                                <dt>Telefon</dt>
-                                <dd>@Model.Kurumlar.Tel</dd>
-
-                                <dt>İlçe</dt>
-                                <dd>@Model.Kurumlar.ilceler.ilceAdi</dd>
-                                @*<dt>Faks</dt>
-                                    <dd>@Model.Kurumlar.Fax</dd>
-
-                                    <dt>E-mail</dt>
-                                    <dd>@Model.Kurumlar.Email</dd>
-
-                                    <dt>Web Sitesi</dt>
-                                    <dd><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></dd>*@
-
-                                @*<dt>Adres</dt>
-                                    <dd>@Model.Kurumlar.Adres</dd>*@
-                            </dl>
-                        </p>
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tabs tabs-product">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
+                                        <li class="active"><a href="#detay" data-toggle="tab">Detay</a></li>
+                                        <li><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
                                             <li><a href="#video" data-toggle="tab">Video</a></li>
@@ -201,11 +170,47 @@
 
                                     </ul>
                                     <div class="tab-content">
+                                        <div class="tab-pane active" id="detay">
+                                            <p class="taller">
+                                                <dl>
+                                                    <dt>Kurum Müdürü</dt>
+                                                    <dd>@Model.Kurumlar.KurumMuduru</dd>
+
+                                                    <dt>Müdür Yardımcıları</dt>
+                                                    <dd>@Model.Kurumlar.KurumMuduru</dd>
+
+                                                    <dt>Kuruluş Tarihi</dt>
+                                                    <dd>@Model.Kurumlar.KurulusTarih</dd>
+
+                                                    <dt>Aktiviteler</dt>
+                                                    <dd>@Model.Kurumlar.Aktiviteler</dd>
+
+                                                    <dt>Telefon</dt>
+                                                    <dd>@Model.Kurumlar.Tel</dd>
+
+                                                    <dt>İlçe</dt>
+                                                    <dd>@Model.Kurumlar.ilceler.ilceAdi</dd>
+                                                    <dt>Faks</dt>
+                                                    <dd>@Model.Kurumlar.Fax</dd>
+
+                                                    <dt>E-mail</dt>
+                                                    <dd>@Model.Kurumlar.Email</dd>
+
+                                                    <dt>Web Sitesi</dt>
+                                                    <dd><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></dd>
+
+                                                    <dt>Adres</dt>
+                                                        <dd>@Model.Kurumlar.Adres</dd>
+                                                </dl>
+                                            </p>
+                                        </div>
+
                                         <div class="tab-pane active" id="aciklama">
                                             <p>
                                                 @Html.Raw(Model.Kurumlar.Aciklama)
                                             </p>
                                         </div>
+
                                         <div class="tab-pane" id="video">
                                             <p>
                                                 @Html.Raw(Model.Kurumlar.Video)

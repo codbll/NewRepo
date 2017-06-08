@@ -31,19 +31,22 @@
                                     @*<a href="shop-cart.html" class="add-to-cart-product">
                                             <span><i class="fa fa-shopping-cart"></i> Sepete Ekle</span>
                                         </a>*@
+                                    <span class="product-thumb-info-content">
+                                            <h4 class="heading-primary">@kurum.KurumAdi</h4>
+                                    </span>
                                     <a href="/@kurum.Kategoriler.Slug/@kurum.Slug" title="@kurum.KurumAdi">
                                         <span class="product-thumb-info-image">
                                             <span class="product-thumb-info-act">
                                                 <span class="product-thumb-info-act-left"><em>@kurum.KurumAdi</em></span>
                                                 @*<span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>*@
                                             </span>
-                                            <img alt="@kurum.KurumAdi" title="@kurum.KurumAdi" class="img-responsive" src="~/Upload/kurum/@kurum.UploadYolu/@kurum.Resim">
+                                            <img alt="@kurum.KurumAdi" title="@kurum.KurumAdi" style="height:200px;" class="img-responsive" src="~/Upload/kurum/@kurum.UploadYolu/@kurum.Resim">
 
                                         </span>
                                     </a>
                                     <span class="product-thumb-info-content">
                                         <a href="/@kurum.Kategoriler.Slug/@kurum.Slug">
-                                            <h4 class="heading-primary">@kurum.KurumAdi</h4>
+                                            @*<h4 class="heading-primary">@kurum.KurumAdi</h4>*@
                                             <span class="price">
                                                 <ins class="pull-left"><span class="amount">@(kurum.ilceId == null ? "" : kurum.ilceler.ilceAdi)</span></ins>
                                                 <ins class="pull-right"><span class="amount">@kurum.Tel</span></ins>
