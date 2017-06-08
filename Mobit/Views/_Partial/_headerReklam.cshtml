@@ -45,6 +45,18 @@
                 }
             </div>
 
+            @*A2-3 Reklam A-B-C reklam alanı*@
+            <div class="row">
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 17).Take(3).OrderBy(s => s.Sira))
+                {
+                    <div class="col-md-6" style="padding:7px;">
+                        <a href="@item.Url" target="@item.Target">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                        </a>
+                    </div>
+                }
+            </div>
+
             @*A3 5 reklam alanı*@
             <div class="row"  style="padding:7px;" >
                 <ul class="image-gallery sort-destination full-width">
