@@ -1,17 +1,71 @@
-﻿
+﻿@model List<Mobit.Data.Context.Kurumlar>
 @{
     ViewBag.Title = "Ana Sayfa";
 }
+<div class="col-lg-12">
 
-@*@Html.Partial("/Areas/Admin/Views/_Partial/Urunler.cshtml", ViewData["urunler"])*@
-<div class="row">
-    <div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-success">Kategoriler</span>
 
-      
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.kategoriSayi</h1>
+                    <small>Kayıt</small>
+                    <div class="stat-percent font-bold text-success"><a href="/Admin/Category">Tüm Kategoriler</a> <i class="fa fa-list"></i></div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-info">Alt Kategoriler</span>
+
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.altKategoriSayi</h1>
+                    <div class="stat-percent font-bold text-info"><a href="/Admin/Category/SubCategory">Tüm Alt Kategoriler</a> <i class="fa fa-list"></i></div>
+
+                    <small>Kayıt</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-primary">Kurumlar</span>
+
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.kurumSayi</h1>
+                    <div class="stat-percent font-bold text-primary"><a href="/Admin/Kurum">Tüm Kurumlar</a> <i class="fa fa-list"></i></div>
+                    <small>Kayıt</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span class="label label-danger">Haberler</span>
+
+                </div>
+                <div class="ibox-content">
+                    <h1 class="no-margins">@ViewBag.haberler</h1>
+
+                    <div class="stat-percent font-bold text-danger"><a href="/Admin/News">Tüm Haberler</a> <i class="fa fa-list"></i></div>
+
+                    <small>Kayıt</small>
+                </div>
+            </div>
+        </div>
     </div>
-
-
 </div>
+<br /><br />
+
+@Html.Partial("/Areas/Admin/Views/_Partial/Kurumlar.cshtml", Model)
 
 
 @section Styles {

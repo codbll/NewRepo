@@ -18,15 +18,23 @@ namespace Mobit.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            //var urunler = db.Urunler.Where(u => u.Sil == false).ToList();
-            //ViewData["urunler"] = urunler;
+            var kurumlar = db.Kurumlar.Where(u => u.Durum == true).ToList();
 
-            return View();
+
+            var haberler = db.Haberler.ToList();
+            ViewData["urunler"] = haberler;
+
+            ViewBag.kategoriSayi = db.Kategoriler.Count();
+            ViewBag.altKategoriSayi = db.AltKategoriler.Count();
+            ViewBag.kurumSayi = db.Kurumlar.Count();
+            ViewBag.haberler = db.Haberler.Count();
+
+            return View(kurumlar);
         }
         public ActionResult YetkiYok()
         {
             return View();
         }
-      
+
     }
 }

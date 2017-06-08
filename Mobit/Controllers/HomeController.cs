@@ -262,9 +262,19 @@ namespace Mobit.Controllers
         public void GelismisAramaBilgi()
         {
             ViewBag.KategoriId = new SelectList(db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList(), "KategoriId", "KategoriAdi");
-            ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82), "ilceId", "ilceAdi");
+            ViewBag.ilId = new SelectList(db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList(), "ilId", "ilAdi");
+           // ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82), "ilceId", "ilceAdi");
 
         }
+
+        [Route("Home/ilceGetir")]
+        public ActionResult ilceGetir(int ilId)
+        {
+            var kategoriler = db.ilceler.Where(k => k.ilId == ilId).Select(k => new { k.ilceAdi, k.ilceId }).ToList();
+
+            return Json(kategoriler, JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -277,11 +287,11 @@ namespace Mobit.Controllers
 
             if (string.IsNullOrEmpty(arama.SearchKey))
             {
-                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId==arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
             else
             {
-                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilceId == arama.ilceId && k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 
             }
 

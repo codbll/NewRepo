@@ -9,23 +9,22 @@
     <form id="myform" method="post" action="/Arama" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
         <div class="form-group">
+            <div class="form-group">
+                <div class="col-md-2">
+                    <label class="control-label">Kategori:</label>
+                </div>
+                <div class="col-md-10">
+                    @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                    @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+
+                </div>
+            </div>
             <div class="col-md-2">
                 <label class="control-label">İl:</label>
             </div>
             <div class="col-md-10">
-                <select class="form-control">
-                    <option value="1">İstanbul</option>
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-md-2">
-                <label class="control-label">Kategori:</label>
-            </div>
-            <div class="col-md-10">
-                @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
-                @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
-
+                @Html.DropDownList("ilId", null, "İl Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                @Html.ValidationMessageFor(model => model.ilId, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">
@@ -34,11 +33,14 @@
             </div>
             <div class="col-md-10">
 
-                @Html.DropDownList("ilceId", null, "İlçe Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                @Html.DropDownList("ilceId", Enumerable.Empty<SelectListItem>(), "İlçe Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+
                 @Html.ValidationMessageFor(model => model.ilceId, "", new { @class = "text-danger" })
 
             </div>
         </div>
+      
+      
         <div class="form-group">
             <div class="col-md-2">
                 <label class="control-label">Ara:</label>
@@ -62,4 +64,51 @@
 
 </div>
 
+<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
 <script src="~/Scripts/vendor/jquery.validation/jquery.validation.min.js"></script>
+
+
+    <script>
+
+        $('#ilId').change(function () {
+            var ilId = $(this).val();
+
+            if (ilId != null && ilId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Home/ilceGetir",
+                    data: { ilId: ilId },
+                    success: function (kategoriler) {
+
+                        var dropdown = $('#ilceId');
+                        dropdown.empty();
+
+                        $.each(kategoriler, function (index, kategori) {
+                            $('#ilceId').append($('<option/>', {
+                                value: kategori.ilceId,
+                                text: kategori.ilceAdi
+
+                            }));
+
+                        });
+
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: İlçeler listelenemedi.");
+                    },
+                    beforeSend: function () {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            }
+        });
+
+    </script>
+
+
+
