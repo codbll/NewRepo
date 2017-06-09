@@ -11,7 +11,7 @@
                                 <a href="@item.Url" target="@item.Target">
                                     <span class="thumb-info thumb-info-centered-info">
                                         <span class="thumb-info-wrapper">
-                                            <img alt="@item.Baslik" class="img-responsive"  src="~/Upload/slide/@item.Resim" style="width:100%; height:125px">
+                                            <img alt="@item.Baslik" class="img-responsive"  src="~/Upload/slide/@item.Resim" style="width:100%; height:150px">
                                         </span>
                                     </span>
                                 </a>
@@ -26,7 +26,7 @@
                     {
                         <div class="col-md-12" style="padding:7px;margin-top:-19px" >
                             <a href="@item.Url" target="@item.Target">
-                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  style="width:100%; height:125px" alt="@item.Baslik">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  style="width:100%;" alt="@item.Baslik">
                             </a>
                         </div>
                     }
@@ -38,7 +38,7 @@
                     {
                         <div class="col-md-6" style="padding:7px;">
                             <a href="@item.Url" target="@item.Target">
-                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  style="width:100%; height:125px"alt="@item.Baslik">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  style="width:100%; height:150px"alt="@item.Baslik">
                             </a>
                         </div>
                     }
@@ -50,7 +50,7 @@
                     {
                         <div class="col-md-4" style="padding:7px;">
                             <a href="@item.Url" target="@item.Target">
-                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  style="width:100%;height:125px" alt="@item.Baslik">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  style="width:100%;height:150px" alt="@item.Baslik">
                             </a>
                         </div>
                     }
@@ -66,7 +66,7 @@
                                     <a href="@item.Url" target="@item.Target">
                                         <span class="thumb-info thumb-info-centered-info">
                                             <span class="thumb-info-wrapper">
-                                                <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Baslik" style="width:100%;height:300px">
+                                                <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Baslik" style="width:100%;height:380px">
                                             </span>
                                         </span>
                                     </a>
@@ -83,15 +83,15 @@
 
 @*kayan 20 haber alanı*@
 
-<div class="header-top header-top-style-2" style="padding-top:-50px">
-    <div class="col-md-2"><h6><strong>EN SON HABERLER</strong></h6></div>
-    <div class="col-md-10">
+<div class="header-top header-top-style-2" style="padding-top:-20px;background-color:black;vertical-align:middle;">
+    <div class="col-md-1" ><h5><strong style="color:white;vertical-align:middle;">HABERLER</strong></h5></div>
+    <div class="col-md-11">
         <marquee direction=left>
 
             <h5>
                 @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
                 {
-                    <i class="fa fa-newspaper-o"></i><a href="/haber/@item.Slug" title="@item.Ad"> @item.Ad</a>
+                    <i class="fa-paper-plane-o"></i><a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"> @item.Ad</a>
                 }
             </h5>
         </marquee>

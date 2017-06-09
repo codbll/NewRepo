@@ -39,7 +39,7 @@ li {
 }
 
     #header .header-body {
-        background-color:antiquewhite;
+        background-color:aliceblue;
         border-top: 1px solid #EDEDED;
         border-bottom: 1px solid transparent;
         padding: 1px 0;
@@ -1580,7 +1580,7 @@ html[dir="rtl"] #header .header-search .btn-default {
 
 /* Page Header */
 .page-header {
-	background-color: antiquewhite;
+	background-color: aliceblue;
 	border-bottom: 5px solid #CCC;
 	border-top: 5px solid #384045;
 	margin: 0 0 35px 0;
@@ -2896,7 +2896,7 @@ html.dark .text-muted {
 	}
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 75%) {
 	.col-lg-1-5 {
 		width: 20%;
 		float: left;
@@ -4220,7 +4220,7 @@ html.boxed .body {
     border-top: 5px solid #CCC;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     margin: 25px auto;
-    max-width: 1200px;
+    max-width: 75%;
     height: auto;
     overflow: hidden;
 }
@@ -4230,7 +4230,7 @@ html.boxed #header .header-body {
 }
 
 /* Responsive */
-@media (min-width: 1200px) {
+@media (min-width: 80%) {
 	html.boxed.sticky-header-active #header .header-body {
 		width: auto;
 	}

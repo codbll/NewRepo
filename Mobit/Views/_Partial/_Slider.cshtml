@@ -15,7 +15,7 @@
 </style>
 
 <div class="slider-container rev_slider_wrapper">
-    <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 850, "gridheight": 600}'>
+    <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 850, "gridheight": 700}'>
         <ul>
             @foreach (var item in Model)
             {
@@ -44,4 +44,10 @@
         </ul>
 
     </div>
+</div>
+<div class="row"  style="padding:40px">
+    @{Html.RenderAction("Body1", "Home"); }
+    @{Html.RenderAction("Body2", "Home"); }
+
+
 </div>
