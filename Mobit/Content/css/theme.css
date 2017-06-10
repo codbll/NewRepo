@@ -2896,7 +2896,7 @@ html.dark .text-muted {
 	}
 }
 
-@media (min-width: 75%) {
+@media (min-width: 90%) {
 	.col-lg-1-5 {
 		width: 20%;
 		float: left;
@@ -4220,7 +4220,7 @@ html.boxed .body {
     border-top: 5px solid #CCC;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     margin: 25px auto;
-    max-width: 75%;
+    max-width: 90%;
     height: auto;
     overflow: hidden;
 }
