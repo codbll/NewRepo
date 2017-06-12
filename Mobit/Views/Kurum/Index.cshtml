@@ -40,117 +40,12 @@
 
                 <div class="row">
                     <div class="col-md-9">
-
-                        <div class="thumb-gallery">
-
-                            <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail">
-
-                                <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
-                                    <span class="thumb-info thumb-info-lighten thumb-info-bottom-info thumb-info-centered-icons" style="border:none;">
-
-                                        <span class="img-thumbnail thumb-info-wrapper">
-
-                                            <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" class="img-responsive" style="width:100%;height:250px;">
-                                            <span class="thumb-info-action">
-
-                                                <a title="@Model.Kurumlar.KurumAdi" href="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" class="lightbox-portfolio">
-                                                    <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-search-plus"></i></span>
-                                                </a>
-                                            </span>
-                                        </span>
-                                    </span>
-
-                                </div>
-                                @if (Model.Kurumlar.KurumResim.Count() > 0)
-                                {
-                                    foreach (var resim in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1))
-                                    {
-
-                                        <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
-                                            <span class="thumb-info thumb-info-lighten thumb-info-bottom-info thumb-info-centered-icons" style="border:none;">
-
-                                                <span class="img-thumbnail thumb-info-wrapper">
-
-                                                    <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive"  style="width:100%;height:250px;">
-                                                    <span class="thumb-info-action">
-
-                                                        <a title="@Model.Kurumlar.KurumAdi" href="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="lightbox-portfolio">
-                                                            <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-search-plus"></i></span>
-                                                        </a>
-                                                    </span>
-                                                </span>
-                                            </span>
-
-                                        </div>
-
-
-                                    }
-                                }
-                            </div>
-                            <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
-
-                                @if (Model.Kurumlar.Resim.Count() > 0)
-                                {
-                                    <div>
-                                        <span class="img-thumbnail cur-pointer">
-                                            <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" style="height:70px;" class="img-responsive">
-                                        </span>
-                                    </div>
-
-                                    foreach (var resim in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1))
-                                    {
-                                        <div>
-                                            <span class="img-thumbnail cur-pointer">
-                                                <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" style="height:70px;" class="img-responsive">
-                                            </span>
-                                        </div>
-                                    }
-                                }
-                            </div>
-                        </div>
-
-
-                        @*<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
-                                <div>
-                                    <div class="thumbnail">
-                                        <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="max-height:345px;" class="img-responsive img-rounded" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim">
-                                    </div>
-
-                                </div>
-                                @if (Model.Resim != null)
-                                {
-                                    foreach (var resim in Model.Resim)
-                                    {
-                                        <div>
-                                            <div class="thumbnail">
-                                                <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="max-height:345px;" class="img-responsive img-rounded" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim">
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                            </div>*@
-
-                    </div>
-
-                    <div class="col-md-3">
-                        <aside class="sidebar">
-
-                            <h4 class="heading-primary">Mesaj Gönderin</h4>
-                            @Html.Partial("/Views/_Partial/_kurumMesajGonder.cshtml", Model.Kurumlar)
-
-
-
-                        </aside>
-
-
-                    </div>
-
-                    <div class="col-md-12">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="tabs tabs-product">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#detay" data-toggle="tab">Detay</a></li>
+                                        <li class="active"><a href="#slayt" data-toggle="tab">Slayt</a></li>
+                                        <li><a href="#detay" data-toggle="tab">Detay</a></li>
                                         <li><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
@@ -170,7 +65,77 @@
 
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="detay">
+                                        <div class="tab-pane active" id="slayt">
+                                            <div class="thumb-gallery">
+
+                                                <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail">
+
+                                                    <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
+                                                        <span class="thumb-info thumb-info-lighten thumb-info-bottom-info thumb-info-centered-icons" style="border:none;">
+
+                                                            <span class="img-thumbnail thumb-info-wrapper">
+
+                                                                <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" class="img-responsive" style="width:100%;height:400px;">
+                                                                <span class="thumb-info-action">
+
+                                                                    <a title="@Model.Kurumlar.KurumAdi" href="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" class="lightbox-portfolio">
+                                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-search-plus"></i></span>
+                                                                    </a>
+                                                                </span>
+                                                            </span>
+                                                        </span>
+
+                                                    </div>
+                                                    @if (Model.Kurumlar.KurumResim.Count() > 0)
+                                                    {
+                                                        foreach (var resim in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1))
+                                                        {
+
+                                                            <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio", "type": "image", "gallery": {"enabled": true}}'>
+                                                                <span class="thumb-info thumb-info-lighten thumb-info-bottom-info thumb-info-centered-icons" style="border:none;">
+
+                                                                    <span class="img-thumbnail thumb-info-wrapper">
+
+                                                                        <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" style="width:100%;height:400px;">
+                                                                        <span class="thumb-info-action">
+
+                                                                            <a title="@Model.Kurumlar.KurumAdi" href="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="lightbox-portfolio">
+                                                                                <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-search-plus"></i></span>
+                                                                            </a>
+                                                                        </span>
+                                                                    </span>
+                                                                </span>
+
+                                                            </div>
+
+
+                                                        }
+                                                    }
+                                                </div>
+                                                <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
+
+                                                    @if (Model.Kurumlar.Resim.Count() > 0)
+                                                    {
+                                                        <div>
+                                                            <span class="img-thumbnail cur-pointer">
+                                                                <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" style="height:70px;" class="img-responsive">
+                                                            </span>
+                                                        </div>
+
+                                                        foreach (var resim in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1))
+                                                        {
+                                                            <div>
+                                                                <span class="img-thumbnail cur-pointer">
+                                                                    <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" style="height:70px;" class="img-responsive">
+                                                                </span>
+                                                            </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="tab-pane" id="detay">
                                             <p class="taller">
                                                 <dl>
                                                     <dt>Kurum Müdürü</dt>
@@ -200,12 +165,12 @@
                                                     <dd><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></dd>
 
                                                     <dt>Adres</dt>
-                                                        <dd>@Model.Kurumlar.Adres</dd>
+                                                    <dd>@Model.Kurumlar.Adres</dd>
                                                 </dl>
                                             </p>
                                         </div>
 
-                                        <div class="tab-pane active" id="aciklama">
+                                        <div class="tab-pane" id="aciklama">
                                             <p>
                                                 @Html.Raw(Model.Kurumlar.Aciklama)
                                             </p>
@@ -272,7 +237,44 @@
                                 </div>
                             </div>
                         </div>
+
+                        
+
+
+                        @*<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
+                                <div>
+                                    <div class="thumbnail">
+                                        <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="max-height:345px;" class="img-responsive img-rounded" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim">
+                                    </div>
+
+                                </div>
+                                @if (Model.Resim != null)
+                                {
+                                    foreach (var resim in Model.Resim)
+                                    {
+                                        <div>
+                                            <div class="thumbnail">
+                                                <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="max-height:345px;" class="img-responsive img-rounded" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim">
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                            </div>*@
+
                     </div>
+
+                    <div class="col-md-3">
+                        <aside class="sidebar">
+                            <br />
+                            <h4 class="heading-primary">Mesaj Gönderin</h4>
+                            @Html.Partial("/Views/_Partial/_kurumMesajGonder.cshtml", Model.Kurumlar)
+
+
+
+                        </aside>
+
+
+                    </div> 
                 </div>
 
 

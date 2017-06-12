@@ -39,6 +39,15 @@ namespace Mobit.Controllers
             model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
             model.iller = db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
 
+            var meta = db.MetaTag.FirstOrDefault();
+
+            ViewBag.Facebook = meta.Facebook;
+            ViewBag.Twitter = meta.Twitter;
+            ViewBag.GooglePlus = meta.GooglePlus;
+            ViewBag.Linkedin = meta.Linkedin;
+            ViewBag.Youtube = meta.Youtube;
+            ViewBag.Diger = meta.Diger;
+
             return PartialView("~/Views/_Partial/_Menu.cshtml", model);
 
         }
