@@ -1,18 +1,7 @@
 ﻿@model Mobit.Models.BodyModel
-
-<hr class="solid tall">
-<div class="col-md-12">
-
-
-    <div class="col-md-8">
-        @Html.Partial("/Views/_Partial/_HaberArama.cshtml")
-    </div>
-    <div class="col-md-4">
-
-    </div>
-</div>
 @* alt haberler *@
-<div class="row">
+<div class="row" style="padding-top:7px;">
+    @Html.Partial("/Views/_Partial/_HaberArama.cshtml") 
     @{
         foreach (var item in Model.Haberler)
         {
@@ -29,7 +18,7 @@
                                 <div class="post-image">
                                     <div class="img-thumbnail">
                                         <a href="/Haber/@haberler.Slug">
-                                            <img src="~/Upload/haber/@haberler.Resim" width="100px" height="100px" alt="">
+                                            <img src="~/Upload/haber/@haberler.Resim" style="width:100px;height:100px;">
                                         </a>
                                     </div>
                                 </div>
@@ -52,75 +41,79 @@
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary">En İyi Okullar</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
             </div>
 
 
-            <div class="heading heading-primary heading-border heading-bottom-border">
+            <div class="heading heading-primary heading-border heading-bottom-border" style="padding-top:-50px">
                 <h1 class="heading-primary">En İyi Yöneticiler</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
             </div>
 
-            <div class="heading heading-primary heading-border heading-bottom-border">
-                <h1 class="heading-primary"></h1>
+            <div class="heading heading-primary heading-border heading-bottom-border" style="padding-top:-50px">
+                <h1 class="heading-primary">En İyi Eğitmenler</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": false, "dots": true,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
                 <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg">
+                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
                 </div>
             </div>
 
         </aside>
         <br />
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).OrderBy(s => s.Sira))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(11).OrderBy(s => s.Sira))
             {
                 <div class="col-md-12" style="padding:7px;">
                     <a href="@item.Url" target="@item.Target">
-                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="height:125px;width:100%" alt="@item.Baslik">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="height:125px;width:100%" alt="@item.Baslik">
+                            </span>
+                        </span>
                     </a>
                 </div>
             }
@@ -137,13 +130,13 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/anaokulu.png" class="img-responsive" alt="">
+                        <img src="~/Upload/slide/anaokulu.png" class="img-responsive" alt="" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Anaokulu</span>
                             <span class="thumb-info-type">İstanbul</span>
                         </span>
                         <span class="thumb-info-action">
-                            <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                            @*<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>*@
                         </span>
                     </span>
                 </span>
@@ -158,13 +151,13 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/Eniyikoleji.png" class="img-responsive" alt="">
+                        <img src="~/Upload/slide/Eniyikoleji.png" class="img-responsive" alt="" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Kolej</span>
                             <span class="thumb-info-type">İstanbul</span>
                         </span>
                         <span class="thumb-info-action">
-                            <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                            @*<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>*@
                         </span>
                     </span>
                 </span>
@@ -179,13 +172,79 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/Eniyiuniversitesi.png" class="img-responsive" alt="">
+                        <img src="~/Upload/slide/Eniyiuniversitesi.png" class="img-responsive" alt="" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Üniversitesi</span>
                             <span class="thumb-info-type">İstanbul</span>
                         </span>
                         <span class="thumb-info-action">
-                            <span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>
+                            @*<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>*@
+                        </span>
+                    </span>
+                </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4" style="padding:7px;">
+        <div class="heading heading-primary heading-border heading-bottom-border">
+            <h4 class="heading-primary">Ayın En İyi Kursu</h4>
+        </div>
+        <div class="portfolio-item">
+            <a href="portfolio-single-small-slider.html">
+                <span class="thumb-info thumb-info-lighten">
+                    <span class="thumb-info-wrapper">
+                        <img src="~/Upload/slide/eniyikurs.jpg" class="img-responsive" alt="" style="height:250px;">
+                        <span class="thumb-info-title">
+                            <span class="thumb-info-inner">En İyi Kursu</span>
+                            <span class="thumb-info-type">İstanbul</span>
+                        </span>
+                        <span class="thumb-info-action">
+                            @*<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>*@
+                        </span>
+                    </span>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4" style="padding:7px;">
+        <div class="heading heading-primary heading-border heading-bottom-border">
+            <h4 class="heading-primary">Ayın En İyi Tedarikçisi</h4>
+        </div>
+        <div class="portfolio-item">
+            <a href="portfolio-single-small-slider.html">
+                <span class="thumb-info thumb-info-lighten">
+                    <span class="thumb-info-wrapper">
+                        <img src="~/Upload/slide/eniyiidareci.jpg" class="img-responsive" alt="" style="height:250px;">
+                        <span class="thumb-info-title">
+                            <span class="thumb-info-inner">En İyi Tedarikçisi</span>
+                            <span class="thumb-info-type">İstanbul</span>
+                        </span>
+                        <span class="thumb-info-action">
+                            @*<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>*@
+                        </span>
+                    </span>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="col-md-4" style="padding:7px;">
+        <div class="heading heading-primary heading-border heading-bottom-border">
+            <h4 class="heading-primary">Ayın En İyi Okul Servisi</h4>
+        </div>
+        <div class="portfolio-item">
+            <a href="portfolio-single-small-slider.html">
+                <span class="thumb-info thumb-info-lighten">
+                    <span class="thumb-info-wrapper">
+                        <img src="~/Upload/slide/eniyiokulservisi.jpg" class="img-responsive" alt="" style="height:250px;">
+                        <span class="thumb-info-title">
+                            <span class="thumb-info-inner">En İyi Okul Servisi</span>
+                            <span class="thumb-info-type">İstanbul</span>
+                        </span>
+                        <span class="thumb-info-action">
+                            @*<span class="thumb-info-action-icon"><i class="fa fa-link"></i></span>*@
                         </span>
                     </span>
                 </span>

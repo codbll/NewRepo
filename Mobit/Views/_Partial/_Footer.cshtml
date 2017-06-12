@@ -1,61 +1,29 @@
 ﻿@using Mobit.Helpers
 <div class="container">
-    <div class="row">
-
-      
-        <div class="col-md-3">
-            <div class="contact-details">
-                <h4>İletişim</h4>
-                <ul class="contact">
-                    <li><p><i class="fa fa-phone"></i> <strong>Telefon:</strong> @ViewBag.Telefon</p></li>
-                    <li><p><i class="fa fa-fax"></i> <strong>Faks:</strong> @ViewBag.Faks</p></li>
-                    <li><p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:@ViewBag.Mail">@ViewBag.Mail</a></p></li>
-
-                </ul>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <h4>Sosyal Medya Hesaplarımız</h4>
-            <ul class="social-icons">
-                <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                <li class="social-icons-twitter"><a href="@ViewBag.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                <li class="social-icons-linkedin"><a href="@ViewBag.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-
-                <li class="social-icons-googleplus"><a href="@ViewBag.GooglePlus" target="_blank" title="GooglePlus"><i class="fa fa-google-plus"></i></a></li>
-                <li class="social-icons-youtube"><a href="@ViewBag.Youtube" target="_blank" title="Youtube"><i class="fa fa-youtube"></i></a></li>
-                <li class="social-icons-instagram"><a href="@ViewBag.Diger" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
-
+    <div class="col-md-8">
+        <div class="contact-details">
+            <ul class="contact">
+                <span class="phone">@ViewBag.Telefon</span>
+                <li><p class="fa fa-fax"><strong>Faks:</strong> @ViewBag.Faks</p></li>
+                <li><p class="fa fa-envelope"><strong>Email:</strong><a href="mailto:@ViewBag.Mail"> @ViewBag.Mail</a></p></li>
 
             </ul>
         </div>
-
-
-        @*<div class="col-md-3">
-                <h4>Latest Tweets</h4>
-                <div id="tweet" class="twitter" data-plugin-tweets data-plugin-options='{"username": "", "count": 2}'>
-                    <p>Please wait...</p>
-                </div>
-            </div>*@
     </div>
-</div>
-<div class="footer-copyright">
-    <div class="container">
-        <div class="row">
-           
-            <div class="col-md-6 ">
-                <p>® 2017 Her Hakkı Saklıdır</p>
-            </div>
-            <div class="col-md-6 pull-right">
-                <nav id="sub-menu">
-                    <ul>
-                        @*<li><a href="/Sayfa/Hakkimizda">Hakkımızda</a></li>
-                        <li><a href="/iletisim">İletişim</a></li>*@
-                    </ul>
-                </nav>
-            </div>
-        </div>
+
+    <div class="col-md-4">
+        
+        <h5>Sosyal Medya Hesaplarımız</h5>
+        <ul class="social-icons">
+            <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+            <li class="social-icons-twitter"><a href="@ViewBag.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+            <li class="social-icons-linkedin"><a href="@ViewBag.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+
+            <li class="social-icons-googleplus"><a href="@ViewBag.GooglePlus" target="_blank" title="GooglePlus"><i class="fa fa-google-plus"></i></a></li>
+            <li class="social-icons-youtube"><a href="@ViewBag.Youtube" target="_blank" title="Youtube"><i class="fa fa-youtube"></i></a></li>
+            <li class="social-icons-instagram"><a href="@ViewBag.Diger" target="_blank" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+        </ul>
     </div>
-</div>
+</div> 
 
 
