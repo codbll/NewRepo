@@ -14,7 +14,7 @@
                 </a>
             </li>
             <li>
-                <a href="/Haberler">
+                <a href="/Roportajlar">
                     ROPÖRTAJLAR
                 </a>
             </li>
@@ -53,7 +53,7 @@
                                             {
 
                                                 <li>
-                                                    <a href="/kategori/@kategori.Slug/@altKategori.Slug/@Kontrol.ToSlug(iller.ilAdi)" title="@iller.ilAdi">@iller.ilAdi</a>
+                                                    <a href="/kategori/@kategori.Slug/@altKategori.Slug/@iller.ilId" title="@iller.ilAdi">@iller.ilAdi</a>
 
                                                 </li>
 
@@ -76,7 +76,7 @@
                                     foreach (var iller in Model.iller)
                                     {
                                     <li>
-                                        <a href="/kategori/@kategori.Slug/@Kontrol.ToSlug(iller.ilAdi)" title="@iller.ilAdi">@iller.ilAdi</a>
+                                        <a href="/kategori/@kategori.Slug/@iller.ilId" title="@iller.ilAdi">@iller.ilAdi</a>
 
                                         @*<ul class="dropdown-menu">
                                                 @foreach (var ilce in iller.ilceler)

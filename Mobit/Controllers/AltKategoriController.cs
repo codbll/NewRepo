@@ -14,7 +14,7 @@ namespace Mobit.Controllers
         Entities db = new Entities();
 
 
-        public ActionResult Index(int? Sayfa, string kategori, string altkategori)
+        public ActionResult Index(int? Sayfa, string kategori, string altkategori, int illerkategori)
         {
             db.Configuration.LazyLoadingEnabled = false;
 
@@ -44,16 +44,21 @@ namespace Mobit.Controllers
 
             if (altKategori == null)
             {
-                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
+
+            }
+            else if (illerkategori != null)
+            {
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori && u.ilId == illerkategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
 
             }
             else
             {
-                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
 
             }
 
-            //kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            //kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
 
             var kat = db.Kategoriler.Where(k => k.Slug == kategori && k.Aktif == true).Select(k => new { k.KategoriId, k.KategoriAdi }).FirstOrDefault();
 

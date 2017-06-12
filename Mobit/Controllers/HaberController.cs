@@ -48,7 +48,7 @@ namespace Mobit.Controllers
             ViewBag.bilgi = title;
 
 
-            var haberler = db.Haberler.Where(h =>  h.Aktif == true).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+            var haberler = db.Haberler.Where(h =>  h.Aktif == true && h.KategoriId == 4).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
 
             if (haberler.Count <= 0)
             {
@@ -57,6 +57,30 @@ namespace Mobit.Controllers
             return View(haberler);
 
         }
+
+        [Route("Roportajlar")]
+        public ActionResult Roportajlar(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Ropörtajlar";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId==3).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Ropörtaj bulunamadı";
+            }
+            return View(haberler);
+
+        }
+
 
         public PartialViewResult SonHaberler()// son 10 haber
         {
