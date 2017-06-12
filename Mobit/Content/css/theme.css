@@ -1937,6 +1937,8 @@ aside ul.nav-list > li > a {
 	overflow: hidden;
 	width: 100%;
 	direction: ltr;
+    z-index:2000;
+
 }
 
 .slider-container .tparrows {

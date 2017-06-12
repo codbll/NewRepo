@@ -1,25 +1,33 @@
 ﻿@model List<Mobit.Data.Context.Slider>
 
 <style>
-    .portfolio_description {
-        position: absolute;
-        width: 40%;
-        height: 50%;
-        bottom: 50%;
-        right: 0;
+ 
+    .sliderSearch {
+      
+        float:right;
         top: 0;
         margin: 30px;
-        padding: 10px;
+        position: relative;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 1000;
     }
 </style>
 
-<div class="slider-container rev_slider_wrapper">
-    <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 850, "gridheight": 400}'>
-        <ul>
-            @foreach (var item in Model)
+<div>
+
+        <div class="col-md-4 sliderSearch" style="margin-top:15px">
+            @{var aramaModel = new Mobit.Models.GelismisAramaModel(); }
+            @Html.Partial("/Views/_Partial/_GelismisArama.cshtml", aramaModel)
+        </div>
+
+
+    <div class="slider-container rev_slider_wrapper">
+        <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 9000, "gridwidth": 850, "gridheight": 400}'>
+            <ul>
+                @foreach (var item in Model)
             {
-                <li data-transition="fade">
-                    <a href="@item.Url" target="@item.Target">
+                    <li data-transition="fade">
+                        @*<a href="@item.Url" target="@item.Target">*@
                         <img src="~/Upload/slide/@item.Resim"
                              alt="@item.Baslik"
                              title="@item.Baslik"
@@ -27,23 +35,22 @@
                              data-bgfit="cover"
                              data-bgrepeat="no-repeat"
                              class="rev-slidebg" style="width:100%; height:100%">
-                    </a>
+                        @*</a>*@
 
 
-                    <div class="portfolio_description" style="margin-top:3px">
-                        <div class="col-md-12">
-                            @{var aramaModel = new Mobit.Models.GelismisAramaModel(); }
-                            @Html.Partial("/Views/_Partial/_GelismisArama.cshtml",aramaModel)
-                        </div>
+                    </li>
+                }
 
-                    </div>
-                </li>
-            }
-        </ul>
+
+            </ul>
+
+        </div>
 
     </div>
+
+
 </div>
-<div class="row"  style="padding-top:7px;padding-left:40px;padding-right:40px;">
+<div class="row" style="padding-top:7px;padding-left:40px;padding-right:40px;">
     @{Html.RenderAction("Body1", "Home"); }
     @{Html.RenderAction("Body2", "Home"); }
 
