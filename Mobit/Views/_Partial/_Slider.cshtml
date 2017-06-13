@@ -1,9 +1,10 @@
 ﻿﻿@model List<Mobit.Data.Context.Slider>
 
+
 <div>
 
 
-    <div class="col-md-4 sliderSearch">
+    <div class="col-md-4 sliderSearch" style="margin-top:5px;width:300px">
         @{var aramaModel = new Mobit.Models.GelismisAramaModel(); }
         @Html.Partial("/Views/_Partial/_GelismisArama.cshtml", aramaModel)
     </div>
@@ -27,7 +28,7 @@
 
                         <div class="tp-caption main-label"
                              data-x="bottom" data-hoffset="0"
-                             data-y="center" data-voffset="-45"
+                             data-y="center" data-voffset="-30"
                              data-start="1500"
                              data-whitespace="nowrap"
                              data-transform_in="y:[100%];s:500;"
@@ -36,7 +37,7 @@
                              data-mask_in="x:0px;y:0px;"><img src="~/Upload/images/okul34logosu.fw.png"></div>
                         <div class="tp-caption main-label"
                              data-x="bottom" data-hoffset="0"
-                             data-y="center" data-voffset="30"
+                             data-y="center" data-voffset="80"
                              data-start="2000"
                              data-whitespace="word-wrap"
                              data-transform_in="y:[100%];s:500;"
