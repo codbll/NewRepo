@@ -1,7 +1,6 @@
-﻿@model List<Mobit.Data.Context.Slider>
+﻿﻿@model List<Mobit.Data.Context.Slider>
 
 <style>
-
     .sliderSearch {
         float: right;
         top: 10px;
@@ -36,7 +35,7 @@
                              data-bgfit="cover"
                              data-bgrepeat="no-repeat"
                              class="rev-slidebg" style="width:100%; height:100%">
-                        @*</a>*@  
+                        @*</a>*@
 
 
                         <div class="tp-caption main-label"
@@ -52,14 +51,14 @@
                              data-x="bottom" data-hoffset="0"
                              data-y="center" data-voffset="30"
                              data-start="2000"
-                             data-whitespace="nowrap"
+                             data-whitespace="word-wrap"
                              data-transform_in="y:[100%];s:500;"
                              data-transform_out="opacity:0;s:500;"
-                             style="z-index: 5;color:white;margin-left:10px;"
+                             style="z-index: 5;color:white;margin-left:10px;word-wrap: break-word;font-size:21px "
                              data-mask_in="x:0px;y:0px;">@item.Baslik</div>
 
 
-                    </li>
+                        </li>
                 }
 
 
