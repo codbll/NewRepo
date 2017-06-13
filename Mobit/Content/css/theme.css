@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background-color: #000;
+	background-color:#FC8C2C;
 	color: #777;
 	font-family: "Open Sans", Arial, sans-serif;
 	font-size: 14px;
@@ -39,7 +39,7 @@ li {
 }
 
     #header .header-body {
-        background-color: #000;
+        background-color:#FC8C2C;
         border-top: 1px solid #EDEDED;
         border-bottom: 1px solid transparent;
         padding: 1px 0;
@@ -447,6 +447,51 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	background: transparent !important;
 }
 
+@media (max-width: 479px) {
+    .SourcePasif {
+       display: none;
+    }
+    .SmallSlayt {
+        padding-top:20px;
+    }
+}
+@media (max-width: 479px) {
+    .sliderSearch {
+        float: right;
+        top: -20px;
+        margin: 1px;
+        position: relative;
+        border: 1px solid black;
+        background: #7f7f7f;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+        margin-top:-10px;
+        width:200px;
+    }
+
+    
+}
+
+@media (min-width: 479px) {
+    .sliderSearch {
+        float: right;
+        top: 10px;
+        margin: 5px;
+        position: relative;
+        border: 1px solid black;
+        background: #7f7f7f;
+        background: rgba(0,0,0,0.5);
+        z-index: 1;
+        margin-top:5px;
+        width:300px;
+    }
+
+    .SmallSlayt {
+        padding-top:6px;
+    }
+}
+    
+
 /* Header Nav Main */
 @media (min-width: 992px) {
 	#header .header-nav-main {
@@ -493,7 +538,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
         #header .header-nav-main nav > ul > li.dropdown .dropdown-menu {
-            background-color: #0088cc;
+            background-color: #FC8C2C;
             top: -10000px;
             display: block;
             opacity: 0;
@@ -518,7 +563,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
             }
 
             #header .header-nav-main nav > ul > li.dropdown .dropdown-menu li.dropdown-submenu {
-                background-color: #0088cc;
+                background-color: ##FC8C2C;
                 position: relative;
             }
 
@@ -527,7 +572,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
 	#header .header-nav-main nav > ul > li.dropdown .dropdown-menu li.dropdown-submenu > a:after {
-        background-color:#000;
+        background-color:#FC8C2C;
 		border-color: transparent transparent transparent #CCC;
 		border-style: solid;
 		border-width: 5px 0 5px 5px;

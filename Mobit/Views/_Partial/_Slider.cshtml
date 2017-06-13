@@ -1,22 +1,9 @@
 ﻿﻿@model List<Mobit.Data.Context.Slider>
 
-<style>
-    .sliderSearch {
-        float: right;
-        top: 10px;
-        margin: 5px;
-        position: relative;
-        border: 1px solid black;
-        background: #7f7f7f;
-        background: rgba(0,0,0,0.5);
-        z-index: 1;
-    }
-</style>
-
 <div>
 
 
-    <div class="col-md-4 sliderSearch" style="margin-top:5px;width:300px">
+    <div class="col-md-4 sliderSearch">
         @{var aramaModel = new Mobit.Models.GelismisAramaModel(); }
         @Html.Partial("/Views/_Partial/_GelismisArama.cshtml", aramaModel)
     </div>
