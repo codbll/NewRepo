@@ -11,23 +11,24 @@
         <div id="searchForm">
             <form id="myform" method="post" action="/Arama" enctype="multipart/form-data">
                 @Html.AntiForgeryToken()
+                <br />
                 <div class="form-group">
                     <div class="col-md-12">
-                        <label class="control-label">Kategori:</label><br />
+                        @*<label class="control-label">KATEGORİ</label><br />*@
                         @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
                         @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <label class="control-label">İl:</label><br />
+                        @*<label class="control-label">İL</label><br />*@
                         @Html.DropDownList("ilId", null, "İl Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
                         @Html.ValidationMessageFor(model => model.ilId, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="col-md-12">
-                        <label class="control-label">İlçe:</label><br />
+                        @*<label class="control-label">İLÇE</label><br />*@
                         @Html.DropDownList("ilceId", Enumerable.Empty<SelectListItem>(), "İlçe Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
 
                         @Html.ValidationMessageFor(model => model.ilceId, "", new { @class = "text-danger" })
@@ -38,7 +39,7 @@
 
                 <div class="form-group">
                     <div class="col-md-12">
-                        <label class="control-label">Ara:</label><br />
+                        @*<label class="control-label">ARA</label><br />*@
                         @*<input type="text" id="txtSearch" class="form-control" name="q" placeholder="Ara..." required>*@
                         @Html.EditorFor(model => model.SearchKey, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ara..." } })
                         @Html.ValidationMessageFor(model => model.SearchKey, "", new { @class = "text-danger" })
@@ -48,7 +49,7 @@
                 <div class="form-group">
                     <div class="col-md-12">
                         @*<button type="button" class="btn btn-default mr-xs mb-sm"><i class="fa fa-search"></i> Ara</button>*@
-                        <input type="submit" class="btn btn-default mr-xs mb-sm" value="Ara" />
+                        <input type="submit" class="btn btn-lg btn-primary" data-appear-animation="bounceIn" value="Ara" style="width:100%"/> 
                     </div>
                 </div>
             </form>

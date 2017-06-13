@@ -87,20 +87,21 @@
                 }
             </ul>
         </div>
-        <div class="col-md-12" style="height:32px;background-color:red;vertical-align:bottom;color:white;margin-top:-28px;padding-top:-10px">
-            <div class="col-md-2"><h4><strong style="background-color:red;vertical-align:bottom;color:white;">SON HABERLER</strong></h4></div>
-            <div class="col-md-10" style="vertical-align:bottom;text-align:justify;">
-                <marquee direction=left>
-                    <h4>
-                        @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
-                        {
-                            <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"> <i class="fa-paper-plane-o"></i> @item.Ad</a>
-                        }
-                    </h4>
-                </marquee>
-            </div>
+        
+    </div>
+    <div class="col-md-12" style="height:32px;background-color:red;vertical-align:bottom;color:white;margin-top:-28px;padding-top:-10px">
+        <div class="col-md-2"><h4><strong style="background-color:red;vertical-align:bottom;color:white;">SON HABERLER</strong></h4></div>
+        <div class="col-md-10" style="vertical-align:bottom;text-align:justify;">
+            <marquee direction=left>
+                <h4>
+                    @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
+                    {
+                        <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"> <i class="fa-paper-plane-o"></i> @item.Ad</a>
+                    }
+                </h4>
+            </marquee>
         </div>
     </div>
-    
+
 </div>
 
