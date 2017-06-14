@@ -1,9 +1,9 @@
 ﻿﻿@model Mobit.Models.HeaderModel
-<div class="header-top header-top-style-2">
+<div class="header-top header-top-style-2" style="margin-top:-40px;">
     <div class="col-md-12">
         @*üst kayan reklam*@
-        <div class="row" style="padding-left:15px;padding-right:15px;padding-top:15px;">
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 10, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
+        <div class="row" style="padding-left:15px;padding-right:15px;margin-top:0px">
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
 
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
                 {

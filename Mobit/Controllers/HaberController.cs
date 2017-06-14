@@ -81,6 +81,139 @@ namespace Mobit.Controllers
 
         }
 
+        [Route("Sponsor1")]
+        public ActionResult Sponsor1(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Sponsor 1";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 5).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Sponsor-1 bulunamadı";
+            }
+            return View(haberler);
+
+        }
+
+        [Route("Sponsor2")]
+        public ActionResult Sponsor2(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Sponsor 2";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 6).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Sponsor-2 bulunamadı";
+            }
+            return View(haberler);
+
+        }
+        [Route("Sponsor3")]
+        public ActionResult Sponsor3(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Sponsor 3";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 7).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Sponsor-3 bulunamadı";
+            }
+            return View(haberler);
+
+        }
+        [Route("Sponsor4")]
+        public ActionResult Sponsor4(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Sponsor 4";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 8).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Sponsor-4 bulunamadı";
+            }
+            return View(haberler);
+
+        }
+        [Route("Sponsor5")]
+        public ActionResult Sponsor5(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Sponsor 5";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 9).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Sponsor-5 bulunamadı";
+            }
+            return View(haberler);
+
+        }
+        [Route("Sponsor6")]
+        public ActionResult Sponsor6(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Sponsor 6";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 10).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Sponsor-6 bulunamadı";
+            }
+            return View(haberler);
+
+        }
 
         public PartialViewResult SonHaberler()// son 10 haber
         {

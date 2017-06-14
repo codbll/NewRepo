@@ -2626,6 +2626,12 @@
     <Content Include="Views\_Partial\_GelismisArama.cshtml" />
     <Content Include="Views\Home\Arama.cshtml" />
     <Content Include="Views\Haber\Roportajlar.cshtml" />
+    <Content Include="Views\Haber\Sponsor1.cshtml" />
+    <Content Include="Views\Haber\Sponsor5.cshtml" />
+    <Content Include="Views\Haber\Sponsor4.cshtml" />
+    <Content Include="Views\Haber\Sponsor3.cshtml" />
+    <Content Include="Views\Haber\Sponsor2.cshtml" />
+    <Content Include="Views\Haber\Sponsor6.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
