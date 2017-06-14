@@ -10,7 +10,7 @@ html {
 }
 
 body {
-	background-color:#FC8C2C;
+	background-color:#EEE8AA;
 	color: #777;
 	font-family: "Open Sans", Arial, sans-serif;
 	font-size: 14px;
@@ -39,7 +39,7 @@ li {
 }
 
     #header .header-body {
-        background-color:#FC8C2C;
+        background-color:#EEE8AA;
         border-top: 1px solid #EDEDED;
         border-bottom: 1px solid transparent;
         padding: 1px 0;
@@ -538,7 +538,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
         #header .header-nav-main nav > ul > li.dropdown .dropdown-menu {
-            background-color: #FC8C2C;
+            background-color: #EEE8AA;
             top: -10000px;
             display: block;
             opacity: 0;
@@ -563,7 +563,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
             }
 
             #header .header-nav-main nav > ul > li.dropdown .dropdown-menu li.dropdown-submenu {
-                background-color: ##FC8C2C;
+                background-color: ##EEE8AA;
                 position: relative;
             }
 
@@ -572,7 +572,7 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	}
 
 	#header .header-nav-main nav > ul > li.dropdown .dropdown-menu li.dropdown-submenu > a:after {
-        background-color:#FC8C2C;
+        background-color:#EEE8AA;
 		border-color: transparent transparent transparent #CCC;
 		border-style: solid;
 		border-width: 5px 0 5px 5px;
