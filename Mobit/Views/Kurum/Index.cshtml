@@ -19,25 +19,23 @@
 }
 
 <div role="main" class="main shop">
-
     <div class="container">
-
-
+        <div class="row">
+            <div class="col-md-12 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:7px;">
+                <div class="col-md-2">
+                    <img class="img-responsive img-thumbnail" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
+                </div>
+                <div class="col-md-10" >
+                    <br />
+                   <span style="font-size:70px;vertical-align:bottom;text-align: center;">@Model.Kurumlar.KurumAdi</span> 
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                @*A1 reklam alanı*@
-                <div class="row">
-                    @foreach (var item in Model.Slider.Where(s => s.SliderId == 15))
-                    {
-                        <div class="col-md-12" style="padding:7px;margin-top:-10px">
-                            <a href="@item.Url" target="@item.Target">
-                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:150px;" alt="@item.Baslik">
-                            </a>
-                        </div>
-                    }
-
-                </div>
-
                 <div class="row">
                     <div class="col-md-9">
                         <div class="row">
@@ -238,9 +236,6 @@
                             </div>
                         </div>
 
-                        
-
-
                         @*<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
                                 <div>
                                     <div class="thumbnail">
@@ -268,22 +263,10 @@
                             <br />
                             <h4 class="heading-primary">Mesaj Gönderin</h4>
                             @Html.Partial("/Views/_Partial/_kurumMesajGonder.cshtml", Model.Kurumlar)
-
-
-
                         </aside>
-
-
                     </div> 
                 </div>
-
-
-
-
-
             </div>
-
-
         </div>
         <div class="row" style="padding:5px;">
             <ul class="image-gallery sort-destination full-width">
