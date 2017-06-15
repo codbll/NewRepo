@@ -272,7 +272,7 @@ namespace Mobit.Controllers
         {
             ViewBag.KategoriId = new SelectList(db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList(), "KategoriId", "KategoriAdi");
             ViewBag.ilId = new SelectList(db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList(), "ilId", "ilAdi");
-           // ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82), "ilceId", "ilceAdi");
+            // ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82), "ilceId", "ilceAdi");
 
         }
 
@@ -294,15 +294,17 @@ namespace Mobit.Controllers
             int _sayfaNo = Sayfa ?? 1;
             IPagedList<Kurumlar> kurumlar;
 
-            if (string.IsNullOrEmpty(arama.SearchKey))
+            if (arama.KategoriId != null && arama.ilId != null && arama.ilceId != null && string.IsNullOrEmpty(arama.SearchKey))
             {
-                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId==arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+
             }
             else
             {
-                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Where(k => k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
 
             }
+
 
             if (kurumlar.Count == 0)
             {

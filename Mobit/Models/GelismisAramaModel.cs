@@ -8,13 +8,13 @@ namespace Mobit.Models
 {
     public class GelismisAramaModel
     {
-        [Required(ErrorMessage = "Lütfen kategori seçiniz")]
+        //[Required(ErrorMessage = "Lütfen kategori seçiniz")]
         public int KategoriId { get; set; }
 
-        [Required(ErrorMessage = "Lütfen ilçe seçiniz")]
+        //[Required(ErrorMessage = "Lütfen ilçe seçiniz")]
         public int ilId { get; set; }
 
-        [Required(ErrorMessage = "Lütfen ilçe seçiniz")]
+        //[Required(ErrorMessage = "Lütfen ilçe seçiniz")]
         public int ilceId { get; set; }
 
         //[Required(ErrorMessage = "Lütfen arama kriterini yazınız")]
