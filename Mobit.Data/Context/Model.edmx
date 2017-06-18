@@ -212,6 +212,8 @@
           <Property Name="Email" Type="nvarchar" MaxLength="100" />
           <Property Name="Adres" Type="nvarchar" MaxLength="250" />
           <Property Name="Durum" Type="bit" Nullable="false" />
+          <Property Name="Subeler" Type="nvarchar" MaxLength="250" />
+          <Property Name="Kurucusu" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -221,6 +223,7 @@
           <Property Name="KurumId" Type="int" Nullable="false" />
           <Property Name="Resim" Type="nvarchar" MaxLength="50" />
           <Property Name="ResimTipi" Type="int" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="Markalar">
           <Key>
@@ -891,6 +894,8 @@
           <NavigationProperty Name="iller" Relationship="Model.FK_Kurumlar_iller" FromRole="Kurumlar" ToRole="iller" />
           <NavigationProperty Name="Kategoriler" Relationship="Model.FK_Kurumlar_Kategoriler" FromRole="Kurumlar" ToRole="Kategoriler" />
           <NavigationProperty Name="KurumResim" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="Kurumlar" ToRole="KurumResim" />
+          <Property Name="Subeler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Kurucusu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -901,6 +906,7 @@
           <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ResimTipi" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Kurumlar" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="KurumResim" ToRole="Kurumlar" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Markalar">
           <Key>
@@ -1377,6 +1383,8 @@
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Kurucusu" ColumnName="Kurucusu" />
+                <ScalarProperty Name="Subeler" ColumnName="Subeler" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="Adres" ColumnName="Adres" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
@@ -1405,6 +1413,7 @@
           <EntitySetMapping Name="KurumResim">
             <EntityTypeMapping TypeName="Model.KurumResim">
               <MappingFragment StoreEntitySet="KurumResim">
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="ResimTipi" ColumnName="ResimTipi" />
                 <ScalarProperty Name="Resim" ColumnName="Resim" />
                 <ScalarProperty Name="KurumId" ColumnName="KurumId" />

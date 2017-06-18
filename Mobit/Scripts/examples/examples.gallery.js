@@ -55,6 +55,54 @@ Theme Version:	4.7.0
 			}
 		});
 
+    /*
+	Thumb Gallery
+	*/
+    var $thumbGalleryDetail3 = $('#thumbGalleryDetail3'),
+        $thumbGalleryThumbs3 = $('#thumbGalleryThumbs3'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetail3
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbs3.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbs3
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetail3.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetail3.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
 	/*
 	Thumb Gallery 2
 	*/

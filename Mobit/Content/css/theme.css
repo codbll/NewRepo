@@ -461,9 +461,9 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
         top: -20px;
         margin: 1px;
         position: relative;
-        border: 1px solid black;
+        border: 1px solid white;
         background: #7f7f7f;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.2);
         z-index: 1;
         margin-top:-10px;
         width:200px;
@@ -478,12 +478,12 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
         top: 10px;
         margin: 5px;
         position: relative;
-        border: 1px solid black;
+        border: 1px solid white;
         background: #7f7f7f;
-        background: rgba(0,0,0,0.5);
+        background: rgba(0,0,0,0.2);
         z-index: 1;
-        margin-top:5px;
-        width:300px;
+        margin-top: 5px;
+        width: 300px;
     }
 
     .SmallSlayt {
@@ -2020,13 +2020,15 @@ aside ul.nav-list > li > a {
 	font-weight: 300;
 }
 
-.slider-container .main-label {
-	color: #282d36;
-	font-size: 62px;
-	line-height: 62px;
-	font-weight: 800;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
-}
+    .slider-container .main-label {
+        color: #FFF;
+        font-size: 62px;
+        line-height: 90px;
+        font-weight: 800;
+        text-shadow: 3px 3px 5px blue;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: #000;
+    }
 
 .slider-container .featured-label {
 	color: #282d36;

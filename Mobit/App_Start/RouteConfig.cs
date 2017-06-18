@@ -36,6 +36,14 @@ namespace Mobit
              );
 
             routes.MapRoute(
+            "kategori2",
+            "Kategori/{kategori}/{AltKategori}",
+            new { controller = "AltKategori", action = "Index", },
+            new[] { "Mobit.Controllers" }
+             );
+
+
+            routes.MapRoute(
               "kurumDetay",
                "{kategoriSlug}/{kurumSlug}",
                new { controller = "Kurum", action = "Index", },

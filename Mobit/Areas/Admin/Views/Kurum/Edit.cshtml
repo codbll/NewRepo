@@ -90,6 +90,21 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(model => model.Subeler, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Subeler, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Subeler, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Kurucusu, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Kurucusu, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Kurucusu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
                     @Html.LabelFor(model => model.Aktiviteler, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-8">
                         @Html.TextAreaFor(model => model.Aktiviteler, new { @class = "form-control", @rows = "3", @cols = "4" })
@@ -249,10 +264,14 @@
                                     <select name="ResimTipi" class="form-control ">
                                         <option value="1">Resim</option>
                                         <option value="2">3D Resim</option>
+                                        <option value="3">Eğitimciler</option>
+                                        <option value="4">Aktiviteler</option>
                                     </select>
                                     <br /><br />
                                 </div>
-
+                                <div class="col-md-6">
+                                    <input type="text" name="Aciklama" id="Aciklama" />
+                                </div>
                                 <div class="col-md-12">
                                     <input type="file" name="galeriResim" id="galeriResim" accept="image/*" multiple /> <br />
                                 </div>
@@ -283,9 +302,7 @@
                                                 <a href="~/Upload/kurum/@Model.UploadYolu/@item.Resim" target="_blank"> <img src="~/Upload/kurum/@Model.UploadYolu/@item.Resim" width="70" class="img-responsive" /></a>
                                             </td>
                                             <td>
-
-                                                @(item.ResimTipi == 1 ? "Resim" : "3D Resim")
-
+                                                @(item.ResimTipi == 100 ? "Eğitimciler" : item.ResimTipi.ToString())
                                             </td>
                                             <td>
                                                 <a href="/Admin/Kurum/DeleteFile/@Model.KurumId?kurumResim=@item.ResimId" onclick="return confirm('Dikkat: Bu dosyayı istediğinizden emin misiniz?')" class="btn btn-warning btn-circle " title="Sil">
@@ -297,8 +314,9 @@
                                 }
 
 
+                                </
                             </tbody>
-                        </table>
+</table>
 
                     </div>
 

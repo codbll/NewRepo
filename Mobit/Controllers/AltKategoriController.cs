@@ -14,7 +14,7 @@ namespace Mobit.Controllers
         Entities db = new Entities();
 
 
-        public ActionResult Index(int? Sayfa, string kategori, string altkategori, int illerkategori)
+        public ActionResult Index(int? Sayfa, string kategori, string altkategori, int illerkategori=0)
         {
             db.Configuration.LazyLoadingEnabled = false;
 
@@ -47,7 +47,7 @@ namespace Mobit.Controllers
                 kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
 
             }
-            else if (illerkategori != null)
+            else if (illerkategori != 0)
             {
                 kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori && u.ilId == illerkategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
 
