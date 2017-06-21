@@ -1,7 +1,7 @@
 ﻿﻿@model List<Mobit.Data.Context.Slider>
 
 
-<div style="margin-top:-20px">
+<div style="margin-top:-20px;padding-left:0px;padding-right:0px;">
 
 
     <div class="col-md-4 sliderSearch" style="margin-top:5px;width:300px">
@@ -41,16 +41,32 @@
                             for (int i = 0; i < fullName.Length; i++)
                             {
                                 sayi = sayi + 50;
-                                     <div class="tp-caption main-label"
-                                     data-x="top" data-hoffset="0"
-                                     data-y="top" data-voffset=@sayi
-                                     data-start="2000"
-                                     data-whitespace="word-wrap"
-                                     data-transform_in="y:[100%];s:500;"
-                                     data-transform_out="opacity:0;s:500;"
-                                     style="z-index: 5;color:white;margin-left:10px;font-size:45px;text-align:center;"
-                                     data-mask_in="x:0px;y:0px;">@fullName[i]</div>
-                            } 
+                                if (sayi==130)
+                                {
+                                    <div class="tp-caption main-label"
+                                         data-x="top" data-hoffset="0"
+                                         data-y="top" data-voffset=@sayi
+                                         data-start="2000"
+                                         data-whitespace="word-wrap"
+                                         data-transform_in="y:[100%];s:500;"
+                                         data-transform_out="opacity:0;s:500;"
+                                         style="z-index: 5;color:white;margin-left:10px;font-size:55px;text-align:center;"
+                                         data-mask_in="x:0px;y:0px;">@fullName[i]</div>
+                                }
+                                else
+                                {
+                                    <div class="tp-caption main-label"
+                                         data-x="top" data-hoffset="0"
+                                         data-y="top" data-voffset=@sayi
+                                         data-start="2000"
+                                         data-whitespace="word-wrap"
+                                         data-transform_in="y:[100%];s:500;"
+                                         data-transform_out="opacity:0;s:500;"
+                                         style="z-index: 5;color:white;margin-left:10px;font-size:40px;text-align:center;"
+                                         data-mask_in="x:0px;y:0px;">@fullName[i]</div>
+                                }
+
+                            }
                         }
 
                         
@@ -76,7 +92,7 @@
 
 
 <div class="row">
-    <div style="z-index: 5;color:white;margin-left:150px;margin-top:-180px;font-size:45px;text-align:center;">
+    <div style="z-index: 5;color:white;margin-left:70px;margin-top:-180px;font-size:45px;text-align:center;">
         <div class="col-md-12">
             <div class="col-md-2">
                 <a href="/Sponsor1">

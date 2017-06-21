@@ -87,6 +87,9 @@ namespace Mobit.Controllers
             var slider = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 1).OrderBy(sld => sld.Sira).ToList();
             TempData["slider"] = slider;
 
+            var popup = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 18).OrderBy(sld => sld.Sira).ToList();
+            TempData["popup"] = popup;
+
         }
 
         public void TitleGetir()

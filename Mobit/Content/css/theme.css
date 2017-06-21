@@ -1472,7 +1472,7 @@ html.side-header #header {
 	html.side-header .main .container, html.side-header #footer .container {
 		padding: 0 35px;
 		width: auto !important;
-		max-width: 1210px;
+		max-width: 1132px;
 	}
 
 	html.side-header body > .body {
@@ -2969,7 +2969,7 @@ html.dark .text-muted {
 	}
 }
 
-@media (min-width: 1210px) {
+@media (min-width: 1132px) {
     .col-lg-1-5 {
         width: 20%;
         float: left;
@@ -4293,7 +4293,7 @@ html.boxed .body {
     border-top: 5px solid #CCC;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     margin: 25px auto;
-    max-width: 1210px;
+    max-width: 1132px;
     height: auto;
     overflow: hidden;
 }

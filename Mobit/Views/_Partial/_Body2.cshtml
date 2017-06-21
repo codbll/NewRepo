@@ -1,6 +1,6 @@
 ﻿@model Mobit.Models.BodyModel
 @* alt haberler *@
-<div class="row" style="padding-top:7px;">
+<div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;">
     @Html.Partial("/Views/_Partial/_HaberArama.cshtml") 
     @{
         foreach (var item in Model.Haberler)
@@ -121,7 +121,7 @@
     </div>
     
 </div>
-<div class="row">
+<div class="row" style="margin-left:20px;margin-right:20px;">
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ayın En İyi Anaokulu</h4>
@@ -187,7 +187,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" style="margin-left:20px;margin-right:20px;">
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
             <h4 class="heading-primary">Ayın En İyi Kursu</h4>
