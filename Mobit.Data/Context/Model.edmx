@@ -214,6 +214,8 @@
           <Property Name="Durum" Type="bit" Nullable="false" />
           <Property Name="Subeler" Type="nvarchar" MaxLength="250" />
           <Property Name="Kurucusu" Type="nvarchar" MaxLength="250" />
+          <Property Name="Egitimciler" Type="nvarchar" MaxLength="500" />
+          <Property Name="Panoroma" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -896,6 +898,8 @@
           <NavigationProperty Name="KurumResim" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="Kurumlar" ToRole="KurumResim" />
           <Property Name="Subeler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Kurucusu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Egitimciler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Panoroma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1383,6 +1387,8 @@
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Panoroma" ColumnName="Panoroma" />
+                <ScalarProperty Name="Egitimciler" ColumnName="Egitimciler" />
                 <ScalarProperty Name="Kurucusu" ColumnName="Kurucusu" />
                 <ScalarProperty Name="Subeler" ColumnName="Subeler" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />

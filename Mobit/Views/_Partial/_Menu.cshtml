@@ -22,7 +22,7 @@
             @foreach (var kategori in Model.Kategoriler)
             {
                 <li @(kategori.Area == true ? " class=dropdown" : "")>
-                    <a @(kategori.Area == true ? " class=dropdown-toggle" : "") href="#.">
+                    <a @(kategori.Area == true ? " class=dropdown-toggle" : "") href="/Kategori/@kategori.Slug/">
                         @kategori.KategoriAdi
                     </a>
                     <ul @(kategori.Area == true ? " class=dropdown-menu" : "")>

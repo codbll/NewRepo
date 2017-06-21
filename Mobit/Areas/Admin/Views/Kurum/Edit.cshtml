@@ -90,6 +90,13 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    @Html.LabelFor(model => model.Egitimciler, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Egitimciler, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Egitimciler, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
                     @Html.LabelFor(model => model.Subeler, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-8">
                         @Html.TextAreaFor(model => model.Subeler, new { @class = "form-control", @rows = "3", @cols = "4" })
@@ -160,6 +167,13 @@
                     <div class="col-md-6">
                         @Html.TextAreaFor(model => model.Harita, new { @class = "form-control", @rows = "3", @cols = "4" })
                         @Html.ValidationMessageFor(model => model.Harita, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Panoroma, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Panoroma, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Panoroma, "", new { @class = "text-danger" })
                     </div>
                 </div>
                 <div class="form-group">

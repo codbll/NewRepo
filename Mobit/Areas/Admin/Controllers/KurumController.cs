@@ -128,6 +128,7 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.Durum = kurum.Durum;
             kurumlar.Subeler = kurum.Subeler;
             kurumlar.Kurucusu = kurum.Kurucusu;
+            kurumlar.Egitimciler = kurum.Egitimciler;
             db.SaveChanges();
 
             return RedirectToAction("Index");

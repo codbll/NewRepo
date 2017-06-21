@@ -20,10 +20,10 @@ namespace Mobit.Controllers
 
             int _sayfaNo = Sayfa ?? 1;
 
-            if (altkategori == null || altkategori == "")
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
-            }
+            //if (altkategori == null || altkategori == "")
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            //}
             var ilceler = db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
 
             int ilceId = 0;
@@ -42,20 +42,21 @@ namespace Mobit.Controllers
 
             // kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altKategori.Slug && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 18);
 
-            if (altKategori == null)
+            if (altKategori == null && illerkategori==0)
+            {
+                kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
+            }
+            else if(altKategori == null)
             {
                 kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.ilceId == ilceId && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
-
             }
             else if (illerkategori != 0)
             {
                 kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori && u.ilId == illerkategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
-
             }
             else
             {
                 kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.AltKategoriler.Slug == altkategori && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);
-
             }
 
             //kurumlar = db.Kurumlar.Include("Kategoriler").Where(u => u.Durum == true && u.Kategoriler.Slug == kategori).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 15);

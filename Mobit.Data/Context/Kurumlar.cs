@@ -44,6 +44,8 @@ namespace Mobit.Data.Context
         public bool Durum { get; set; }
         public string Subeler { get; set; }
         public string Kurucusu { get; set; }
+        public string Egitimciler { get; set; }
+        public string Panoroma { get; set; }
     
         public virtual AltKategoriler AltKategoriler { get; set; }
         public virtual ilceler ilceler { get; set; }

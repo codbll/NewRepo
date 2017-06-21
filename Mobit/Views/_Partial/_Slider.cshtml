@@ -29,36 +29,30 @@
                             <div class="tp-caption main-label"  
                                  data-x="top" data-hoffset="0"
                                  data-y="top" data-voffset="30"
-                                 data-start="1500"
                                  data-whitespace="word-wrap"
-                                 data-transform_in="y:[100%];s:500;"
-                                 data-transform_out="opacity:0;s:500;"
                                  style="z-index: 5;color:white;margin-left:10px;font-size:21px;"
-                                 data-mask_in="x:0px;y:0px;"><img src="~/Upload/images/okul34logosu.fw.png"></div>
+                                 ><img src="~/Upload/images/okul34logosu.fw.png"></div>
 
                             string[] fullName = item.Baslik.Trim().Split(';');
-                            int sayi = 80;
+                            int sayi = 100;
                             for (int i = 0; i < fullName.Length; i++)
                             {
-                                sayi = sayi + 50;
-                                if (sayi==130)
+                                sayi = sayi + 60;
+                                if (sayi==160)
                                 {
                                     <div class="tp-caption main-label"
                                          data-x="top" data-hoffset="0"
                                          data-y="top" data-voffset=@sayi
-                                         data-start="2000"
                                          data-whitespace="word-wrap"
-                                         data-transform_in="y:[100%];s:500;"
-                                         data-transform_out="opacity:0;s:500;"
                                          style="z-index: 5;color:white;margin-left:10px;font-size:55px;text-align:center;"
-                                         data-mask_in="x:0px;y:0px;">@fullName[i]</div>
+                                         >@fullName[i]</div>
                                 }
                                 else
                                 {
                                     <div class="tp-caption main-label"
                                          data-x="top" data-hoffset="0"
                                          data-y="top" data-voffset=@sayi
-                                         data-start="2000"
+                                         data-start="1500"
                                          data-whitespace="word-wrap"
                                          data-transform_in="y:[100%];s:500;"
                                          data-transform_out="opacity:0;s:500;"
