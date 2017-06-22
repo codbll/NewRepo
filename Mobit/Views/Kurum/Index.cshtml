@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-10">
                     <br />
-                    <span style="font-size:70px;vertical-align:bottom;text-align: center;">@Model.Kurumlar.KurumAdi</span>
+                    <span style="font-size:60px;vertical-align:bottom;text-align: center;" class="heading-primary">@Model.Kurumlar.KurumAdi</span>
                 </div>
             </div>
         </div>
@@ -40,37 +40,37 @@
                     <div class="col-md-9">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="tabs tabs-bottom tabs-center tabs-simple">
+                                <div class="tabs tabs-tertiary tabs-center nav-tabs-justified">
                                     <ul class="nav nav-tabs">
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1).Count() >= 1)
                                         {
-                                            <li class="active"><a href="#slayt" data-toggle="tab">Slayt</a></li>
+                                            <li class="active" ><a href="#slayt" data-toggle="tab">Slayt</a></li>
                                         }
 
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 4).Count() >= 1)
                                         {
-                                            <li><a href="#aktiviteler" data-toggle="tab">Aktiviteler</a></li>
+                                            <li ><a href="#aktiviteler" data-toggle="tab">Aktiviteler</a></li>
                                         }
 
                                         <li><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
-                                            <li><a href="#video" data-toggle="tab">Video</a></li>
+                                            <li ><a href="#video" data-toggle="tab">Video</a></li>
 
                                         }
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Harita.Length > 20)
                                         {
-                                            <li><a href="#harita" data-toggle="tab">Harita</a></li>
+                                            <li ><a href="#harita" data-toggle="tab">Harita</a></li>
 
                                         }
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 2).Count() >= 1)
                                         {
-                                            <li><a href="#3d" data-toggle="tab">3D Boyut</a></li>
+                                            <li ><a href="#3d" data-toggle="tab">3D Boyut</a></li>
 
                                         }
                                         @if (Model.Kurumlar.Panoroma != null && Model.Kurumlar.Panoroma.Length > 10)
                                         {
-                                            <li><a href="#panoroma" data-toggle="tab">Panoroma</a></li>
+                                            <li ><a href="#panoroma" data-toggle="tab">Panoroma</a></li>
                                         }
                                     </ul>
                                     <div class="tab-content">
@@ -238,7 +238,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <div class="tabs tabs-bottom tabs-center tabs-simple">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#egitimciler" data-toggle="tab">EĞİTİMCİLER</a></li>
@@ -290,7 +290,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="tabs tabs-bottom tabs-center tabs-simple">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Kurumadi" data-toggle="tab" style="font-size:16px;">@Model.Kurumlar.KurumAdi</a></li>
