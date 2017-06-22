@@ -12,7 +12,7 @@
     <div class="slider-container rev_slider_wrapper">
         <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 5000, "gridwidth": 850, "gridheight": 560}'>
             <ul>
-                @foreach (var item in Model)
+                @foreach (var item in Model.Where(s => s.SliderId == 1).Take(5).OrderBy(s => s.Sira))
                 {
                     <li data-transition="fade">
                         @*<a href="@item.Url" target="@item.Target">*@
@@ -26,26 +26,24 @@
                         @*</a>*@
                         @if (item.Baslik.Trim() != null)
                         {
-                            <div class="tp-caption main-label"  
+                            <div class="tp-caption main-label"
                                  data-x="top" data-hoffset="0"
                                  data-y="top" data-voffset="30"
                                  data-whitespace="word-wrap"
-                                 style="z-index: 5;color:white;margin-left:10px;font-size:21px;"
-                                 ><img src="~/Upload/images/okul34logosu.fw.png"></div>
+                                 style="z-index: 5;color:white;margin-left:10px;font-size:21px;"><img src="~/Upload/images/okul34logosu.fw.png"></div>
 
                             string[] fullName = item.Baslik.Trim().Split(';');
                             int sayi = 100;
                             for (int i = 0; i < fullName.Length; i++)
                             {
                                 sayi = sayi + 60;
-                                if (sayi==160)
+                                if (sayi == 160)
                                 {
                                     <div class="tp-caption main-label"
                                          data-x="top" data-hoffset="0"
                                          data-y="top" data-voffset=@sayi
                                          data-whitespace="word-wrap"
-                                         style="z-index: 5;color:white;margin-left:10px;font-size:55px;text-align:center;"
-                                         >@fullName[i]</div>
+                                         style="z-index: 5;color:white;margin-left:10px;font-size:55px;text-align:center;">@fullName[i]</div>
                                 }
                                 else
                                 {
@@ -63,81 +61,33 @@
                             }
                         }
 
-                        
 
-                        
 
-                        </li>
+
+
+                    </li>
                 }
 
-                    
+
             </ul>
-            
         </div>
-
-        
     </div>
-        
-     
-
 </div>
-
-
-
-
 <div class="row">
-    <div style="z-index: 5;color:white;margin-left:70px;margin-top:-180px;font-size:45px;text-align:center;">
+    <div style="margin-top:-165px;">
         <div class="col-md-12">
-            <div class="col-md-2">
-                <a href="/Sponsor1">
-                    <div class="circular-bar">
-                        <div class="circular-bar-chart" data-percent="100" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 0 }'>
-                            <strong style="font-size:70px;color:white;margin-left:10px">S1</strong>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a href="/Sponsor2">
-                    <div class="circular-bar">
-                        <div class="circular-bar-chart" data-percent="100" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 0 }'>
-                            <strong style="font-size:70px;color:white;margin-left:10px;">S2</strong>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a href="/Sponsor3">
-                    <div class="circular-bar">
-                        <div class="circular-bar-chart" data-percent="100" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 0 }'>
-                            <strong style="font-size:70px;color:white;margin-left:10px;">S3</strong>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a href="/Sponsor4">
-                    <div class="circular-bar">
-                        <div class="circular-bar-chart" data-percent="100" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 0 }'>
-                            <strong style="font-size:70px;color:white;margin-left:10px;">S4</strong>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-2">
-                <a href="/Sponsor5">
-                    <div class="circular-bar">
-                        <div class="circular-bar-chart" data-percent="100" data-plugin-options='{ "barColor": "#2BAAB1", "delay": 0 }'>
-                            <strong style="font-size:70px;color:white;margin-left:10px;">S5</strong>
-                        </div>
-                    </div>
-                </a>
-            </div>
+            @foreach (var item in Model.Where(s => s.SliderId == 19).Take(6).OrderBy(s => s.Sira))
+            {
+                <div class="col-md-2" onmouseover="this.style.opacity = 0.6; this.filters.alpha.opacity = 60" onmouseout="this.style.opacity = 1; this.filters.alpha.opacity = 100">
+                            <a href="/@item.Url" target="@item.Target">
+                                <img class="img-responsive img-circle" title="@item.Baslik" src="~/Upload/slide/@item.Resim" alt="@item.Baslik" data-appear-animation="rotateIn" data-appear-animation-delay="0" data-appear-animation-duration="1s" style="width:200px;height:160px;border:double;border-width:10px;border-color:#FFF;">
+                            </a>
+                </div>
+            }
         </div>
     </div>
-
+</div>
+<div class="row" style="margin-top:7px;">
     @{Html.RenderAction("Body1", "Home"); }
     @{Html.RenderAction("Body2", "Home"); }
-
-
 </div>

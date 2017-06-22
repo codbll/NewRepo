@@ -169,9 +169,7 @@
         ga('send', 'pageview');
 
     </script>
-    
-    @Html.Partial("/Views/_Partial/_Popup.cshtml", TempData["slider"])
-    
-    
+       
+    @RenderSection("Popup", required: false)
 </body>
 </html>
