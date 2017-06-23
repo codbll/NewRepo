@@ -30,6 +30,11 @@ namespace Mobit.Controllers
 
 
             model.Slider = db.Slider.Where(s => (s.SliderId == 14 || s.SliderId == 15) && (s.Aktif == true)).OrderBy(s => s.Sira).Take(5).ToList();
+
+            var reklam = db.Slider.Where(s => s.SliderId == 13 || s.SliderId == 16).OrderBy(s => s.Sira).ToList();
+            ViewData["detayReklam"] = reklam.Where(r => r.SliderId == 13).Take(5).ToList();
+            ViewData["ustTekReklam"] = reklam.Where(r => r.SliderId == 16).OrderBy(s => s.Sira).Take(1).ToList();
+
             return View(model);
 
         }

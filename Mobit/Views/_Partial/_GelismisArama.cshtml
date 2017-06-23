@@ -13,8 +13,8 @@
         0850 532 
             <span class="word-rotate" data-plugin-options='{"delay": 2000, "animDelay": 300}'>
                 <span class="word-rotate-items">
-                    <span style="width:90px;color:red;font-size:32px;">OKUL</span>
-                    <span style="width:90px;color:red;font-size:32px;">6585</span>
+                    <span style="width:90px;color:red;font-size:30px;">OKUL</span>
+                    <span style="width:90px;color:red;font-size:30px;">6585</span>
                 </span>
             </span>
         </span>
@@ -38,6 +38,14 @@
                 @*@Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })*@
             </div>
         </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                @*<label class="control-label">ALT KATEGORİ</label><br />*@
+                @Html.DropDownList("AltKategoriId", Enumerable.Empty<SelectListItem>(), "Önce Kategori Seçiniz", new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-12">
                 @*<label class="control-label">İL</label><br />*@
@@ -74,16 +82,17 @@
 
     $('#ilId').change(function () {
         var ilId = $(this).val();
-
+        var dropdown = $('#ilceId');
+        dropdown.empty();
         if (ilId != null && ilId != '') {
+           
             $.ajax({
                 type: "post",
                 url: "/Home/ilceGetir",
                 data: { ilId: ilId },
                 success: function (kategoriler) {
 
-                    var dropdown = $('#ilceId');
-                    dropdown.empty();
+                    
 
                     $.each(kategoriler, function (index, kategori) {
                         $('#ilceId').append($('<option/>', {
@@ -98,6 +107,42 @@
                 error: function (kategoriler) {
 
                     alert("Hata: İlçeler listelenemedi.");
+                },
+                beforeSend: function () {
+
+                },
+                complete: function () {
+
+                }
+            });
+
+        }
+    });
+
+    $('#KategoriId').change(function () {
+        var KategoriId = $(this).val();
+        var dropdown = $('#AltKategoriId');
+        dropdown.empty();
+        if (KategoriId != null && KategoriId != '') {
+            
+            $.ajax({
+                type: "post",
+                url: "/Home/AltKategoriGetir",
+                data: { KategoriId: KategoriId },
+                success: function (kategoriler) {
+                    $.each(kategoriler, function (index, kategori) {
+                        $('#AltKategoriId').append($('<option/>', {
+                            value: kategori.AltKategoriId,
+                            text: kategori.AltKategoriAdi
+
+                        }));
+
+                    });
+
+                },
+                error: function (kategoriler) {
+
+                    alert("Hata: Alt Kategoriler listelenemedi.");
                 },
                 beforeSend: function () {
 

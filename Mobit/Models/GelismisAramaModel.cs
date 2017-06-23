@@ -11,6 +11,10 @@ namespace Mobit.Models
         //[Required(ErrorMessage = "Lütfen kategori seçiniz")]
         public int KategoriId { get; set; }
 
+
+        //[Required(ErrorMessage = "Lütfen Alt kategori seçiniz")]
+        public int AltKategoriId { get; set; }
+
         //[Required(ErrorMessage = "Lütfen ilçe seçiniz")]
         public int ilId { get; set; }
 

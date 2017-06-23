@@ -287,6 +287,13 @@ namespace Mobit.Controllers
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
 
+        [Route("Home/AltKategoriGetir")]
+        public ActionResult AltKategoriGetir(int KategoriId)
+        {
+            var kategoriler = db.AltKategoriler.Where(k => k.KategoriId == KategoriId).Select(k => new { k.AltKategoriAdi, k.AltKategoriId }).ToList();
+
+            return Json(kategoriler, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -297,17 +304,30 @@ namespace Mobit.Controllers
             int _sayfaNo = Sayfa ?? 1;
             IPagedList<Kurumlar> kurumlar;
 
-            if (arama.KategoriId != null && arama.ilId != null && arama.ilceId != null && string.IsNullOrEmpty(arama.SearchKey))
+            if (arama.KategoriId != 0 && arama.AltKategoriId != 0 && arama.ilId != 0 && arama.ilceId != 0 && string.IsNullOrEmpty(arama.SearchKey))
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.AltKategoriId == arama.AltKategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            }
+            else if (arama.KategoriId != 0 && arama.ilId != 0 && arama.ilceId != 0 && string.IsNullOrEmpty(arama.SearchKey))
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
-
+            }
+            else if (arama.KategoriId != 0 && arama.ilId != 0  && string.IsNullOrEmpty(arama.SearchKey))
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            }
+            else if (arama.KategoriId != 0 && string.IsNullOrEmpty(arama.SearchKey))
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            }
+            else if (string.IsNullOrEmpty(arama.SearchKey)==true)
+            {
+                kurumlar = db.Kurumlar.OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
             else
             {
                 kurumlar = db.Kurumlar.Where(k => k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
-
             }
-
 
             if (kurumlar.Count == 0)
             {
