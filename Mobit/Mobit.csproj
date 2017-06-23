@@ -2632,6 +2632,9 @@
     <Content Include="Views\Haber\Sponsor3.cshtml" />
     <Content Include="Views\Haber\Sponsor2.cshtml" />
     <Content Include="Views\Haber\Sponsor6.cshtml" />
+    <Content Include="Views\_Partial\_AltMenu.cshtml" />
+    <Content Include="Views\_Partial\_HaberlerPopup.cshtml" />
+    <Content Include="Views\_Partial\_Anketler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

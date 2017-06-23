@@ -96,14 +96,12 @@
                 </div>
 
             </div>
-
-
-
-
+            @{Html.RenderAction("AltMenu", "Home");}
         </div>
-
+        
         <footer id="footer">
             @{Html.RenderAction("footerBilgi", "Home");}
+            
         </footer>
     </div>
 
@@ -169,7 +167,6 @@
         ga('send', 'pageview');
 
     </script>
-       
     @RenderSection("Popup", required: false)
 </body>
 </html>

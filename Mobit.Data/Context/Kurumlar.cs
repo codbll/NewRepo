@@ -18,6 +18,7 @@ namespace Mobit.Data.Context
         public Kurumlar()
         {
             this.KurumResim = new HashSet<KurumResim>();
+            this.KurumEgitimciler = new HashSet<KurumEgitimciler>();
         }
     
         public int KurumId { get; set; }
@@ -53,5 +54,7 @@ namespace Mobit.Data.Context
         public virtual Kategoriler Kategoriler { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KurumResim> KurumResim { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KurumEgitimciler> KurumEgitimciler { get; set; }
     }
 }

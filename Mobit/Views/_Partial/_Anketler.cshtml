@@ -1,0 +1,176 @@
+﻿@model Mobit.Data.Context.Anketler
+@using Mobit.Helpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>KURUM ADI *</label>
+                        @Html.DropDownList("KurumId", null, "Kurum Seçiniz", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>ÖĞRENCİNİN ADI * </label>
+                        @Html.EditorFor(model => model.OgrencininAdi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.OgrencininAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>SINIFI *</label>
+                        @Html.EditorFor(model => model.OgrencininSinifi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.OgrencininSinifi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>EN SEVDİĞİNİZ ÖĞRETMEN VE BRANŞI  *</label>
+                        @Html.EditorFor(model => model.EnSevdiginizOgretmenveBransi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.EnSevdiginizOgretmenveBransi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>NEDENİ  *</label>
+                        @Html.EditorFor(model => model.EnSevdiginizOgretmenvNedeni, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.EnSevdiginizOgretmenvNedeni, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>EN SEVDİĞİNİZ YÖNETİCİ MÜDÜR-MÜDÜR YARDIMCISI *</label>
+                        @Html.EditorFor(model => model.EnSevdiginizYonetici, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.EnSevdiginizYonetici, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <label>NEDENİ *</label>
+                        @Html.EditorFor(model => model.EnSevdiginizYoneticiNedeni, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.EnSevdiginizYoneticiNedeni, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" value="Mesajı Gönder" onclick="formSend()" class="btn btn-primary btn-lg mb-xlg" id="btnGonder" data-loading-text="Loading...">
+
+                </div>
+
+                <div class="alert alert-success hidden mt-lg" id="bilgiMesaj">
+                    <strong>Başarılı!</strong> Anketiniz başarıyla gönderildi.
+                </div>
+
+                <div class="alert alert-danger hidden mt-lg" id="hataMesaj">
+                    <strong>Hata!</strong> İşlem sırasında bir hata oluştu, tekrar deneyiniz.
+                    <span class="font-size-xs mt-sm display-block" id="mailErrorMessage"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+            
+            <script>
+
+                $('#KurumId').ready(function () {
+                    var KategoriId = $(this).val();
+                    var dropdown = $('#KurumId');
+                    dropdown.empty();
+                        $.ajax({
+                            type: "post",
+                            url: "/Home/KategoriGetir",
+                            success: function (kategoriler) {
+                                $.each(kategoriler, function (index, kategori) {
+                                    $('#KurumId').append($('<option/>', {
+                                        value: kategori.KategoriId,
+                                        text: kategori.KategoriAdi
+
+                                    }));
+
+                                });
+
+                            },
+                            error: function (kategoriler) {
+
+                                alert("Hata: Alt Kategoriler listelenemedi.");
+                            },
+                            beforeSend: function () {
+
+                            },
+                            complete: function () {
+
+                            }
+                        });
+                });
+
+                function formSend() {
+                    $(document).ready(function () {
+
+                        var url = window.location.href;
+                        $.ajax({
+                            type: "post",
+                            url: "/Home/AnketGonder",
+                            data: { adSoyad: $("#AdSoyad").val(), mail: $("#email").val(), telefon: $("#telefon").val(), kurum: $("#kurum").val(), mesaj: $("#mesaj").val(), url: url,@Html.AntiForgeryTokenForAjaxPost() },
+                            success: function (response) {
+
+                                if (response != null && response.success) {
+
+                                    $("#bilgiMesaj").removeClass("hidden");
+                                    $("#hataMesaj").addClass("hidden");
+                                    //alert("Mesajınız başarıyla gönderildi.");
+                                    alert(response.responseText);
+
+                                    $("#AdSoyad").val(""); $("#email").val(""); $("#telefon").val(""); $("#konu").val(""); $("#mesaj").val("");
+                                    $("#btnGonder").removeClass("disabled");
+
+                                } else {
+                                    // DoSomethingElse()
+                                    alert(response.responseText);
+                                }
+                                $("#btnGonder").removeClass("disabled");
+                            },
+                            error: function (response) {
+                                $("#btnGonder").removeClass("disabled");
+
+                                $("#hataMesaj").removeClass("hidden");
+                                $("#bilgiMesaj").addClass("hidden");
+
+                                alert("İşlem sırasında bir hata oluştu, tekrar deneyiniz.");
+                            },
+                            beforeSend: function () {
+                                $("#btnGonder").addClass("disabled");
+
+                            },
+                            complate: function () {
+
+
+
+                            },
+
+                        });
+                    });
+                }
+
+
+
+            </script>

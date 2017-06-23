@@ -132,6 +132,19 @@ namespace Mobit.Controllers
             return PartialView("~/Views/_Partial/_Header.cshtml");
 
         }
+        public PartialViewResult AltMenu()
+        {
+
+            var bilgi = db.iletisim.OrderBy(b => new { b.Telefon }).FirstOrDefault();
+            var meta = db.MetaTag.OrderBy(m => m.SiteLogo).FirstOrDefault();
+
+            ViewBag.Telefon = bilgi.Telefon;
+            ViewBag.Logo = meta.SiteLogo;
+
+            return PartialView("~/Views/_Partial/_AltMenu.cshtml");
+
+        }
+
         [Route("Home/Arama")]
         [HttpPost]
         public async Task<PartialViewResult> Arama(string searchKey)
@@ -279,6 +292,12 @@ namespace Mobit.Controllers
 
         }
 
+        public void AnketlerBilgi()
+        {
+            ViewBag.KategoriId = new SelectList(db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList(), "KategoriId", "KategoriAdi");
+
+        }
+
         [Route("Home/ilceGetir")]
         public ActionResult ilceGetir(int ilId)
         {
@@ -291,6 +310,15 @@ namespace Mobit.Controllers
         public ActionResult AltKategoriGetir(int KategoriId)
         {
             var kategoriler = db.AltKategoriler.Where(k => k.KategoriId == KategoriId).Select(k => new { k.AltKategoriAdi, k.AltKategoriId }).ToList();
+
+            return Json(kategoriler, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [Route("Home/KategoriGetir")]
+        public ActionResult KategoriGetir(int KategoriId)
+        {
+            var kategoriler = db.Kategoriler.Select(k => new { k.KategoriAdi, k.KategoriId }).ToList();
 
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
@@ -336,22 +364,40 @@ namespace Mobit.Controllers
             }
             return View(kurumlar);
         }
-        [Route("Home/MesajGonder")]
+        [Route("Home/AnketGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult MailGonder(string adSoyad, string mail, string telefon, int kurum, string mesaj, string url)
+        public ActionResult AnketGonder(string KurumId, string OgrencininAdi, string OgrencininSinifi, string EnSevdiginizOgretmenveBransi, string EnSevdiginizOgretmenvNedeni, string EnSevdiginizYonetici, string EnSevdiginizYoneticiNedeni)
+        {
+
+            if (KurumId != null && OgrencininAdi != null && OgrencininSinifi != null && OgrencininSinifi != null && EnSevdiginizOgretmenveBransi != null && EnSevdiginizOgretmenvNedeni != null && EnSevdiginizYonetici != null && EnSevdiginizYoneticiNedeni != null)
+            {
+
+               
+
+                return Json(new { success = true, responseText = "Mesajınız başarıyla gönderildi." });
+
+            }
+            else
+            {
+                return Json(new { success = false, responseText = "Lütfen bilgilerinizi kontrol edip tekrar deneyiniz." });
+            }
+
+        }
+
+
+        [Route("Home/AnketGonder")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AnketGonder(string adSoyad, string mail, string telefon, int kurum, string mesaj, string url)
         {
 
             if (adSoyad != null && mail != null && mesaj != null && kurum > 0 && Kontrol.mailValidation(mail) == true)
             {
 
-                var mailler = db.Kurumlar.Where(k => k.KurumId == kurum).Select(m => new { m.Email }).FirstOrDefault();
+               
 
-                string icerik = "<b>Okul34 iletişim formu mesajı.</b> <br/> <b>Gönderen:</b>  " + adSoyad + "<br/> <b>Telefon: </b>" + telefon + "<br/> <b>Mail: </b>" + mail + "<br/> <b>Mesaj: </b>" + mesaj + " <br/> <b>Kaynak Url: </b> " + url;
-
-                Helpers.SendMail.Mail("Okul34 Mesaj", icerik, mailler.Email);
-
-                return Json(new { success = true, responseText = "Mesajınız başarıyla gönderildi." });
+                return Json(new { success = true, responseText = "Anketiniz başarıyla gönderildi." });
 
             }
             else

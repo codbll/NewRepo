@@ -1,0 +1,12 @@
+﻿﻿<header id="header" data-plugin-options='{"stickyEnabled": false, "stickyEnableOnBoxed": false, "stickyEnableOnMobile": true, "stickyStartAt": 1, "stickySetTop": "1", "stickyChangeLogo": false}'>
+    <div class="header-body">
+        <div class="header-row">
+            <div class="header-nav">
+                <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
+                    <i class="fa fa-bars"></i>
+                </button>
+                @{Html.RenderAction("Menu", "Home"); }
+            </div>
+        </div>
+    </div>
+</header>
