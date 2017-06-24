@@ -45,6 +45,9 @@
         <AssociationConnector Association="Model.FK_Kurumlar_Kategoriler" />
         <AssociationConnector Association="Model.FK_KurumResim_Kurumlar" />
         <AssociationConnector Association="Model.FK_Slider_SliderKategori" />
+        <EntityTypeShape EntityType="Model.Anketler" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Model.KurumEgitimciler" Width="1.5" PointX="7.5" PointY="1.125" />
+        <AssociationConnector Association="Model.FK_KurumEgitimciler_Kurumlar" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

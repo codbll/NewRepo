@@ -51,5 +51,7 @@ namespace Mobit.Data.Context
         public virtual DbSet<Slider> Slider { get; set; }
         public virtual DbSet<SliderKategori> SliderKategori { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Anketler> Anketler { get; set; }
+        public virtual DbSet<KurumEgitimciler> KurumEgitimciler { get; set; }
     }
 }

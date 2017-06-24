@@ -215,6 +215,34 @@ namespace Mobit.Areas.Admin.Controllers
             return Redirect("/Admin/Kurum/Edit/" + id);
         }
 
+        public ActionResult DeleteFileEgitimciler(int id, string fileName, int? EgitimciId)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Kurumlar kurum = db.Kurumlar.Find(id);
+
+            if (EgitimciId != null) // ürün tablosu değilde ürün resim tablosundan bir resim silinirse
+            {
+                KurumEgitimciler rsm = db.KurumEgitimciler.Find(EgitimciId);
+                db.KurumEgitimciler.Remove(rsm);
+            }
+            db.SaveChanges();
+
+            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/kurum/" + kurum.UploadYolu + "/" + fileName));
+
+            if (System.IO.File.Exists(fi.ToString()))
+            {
+                fi.Delete();
+            }
+
+
+            return Redirect("/Admin/Kurum/Edit/" + id);
+        }
+
         public ActionResult Delete(int id)
         {
 
@@ -297,5 +325,42 @@ namespace Mobit.Areas.Admin.Controllers
 
             return Redirect("/Admin/Kurum/Edit/" + kurumId);
         }
+    public ActionResult FileUploadEgitimciYonetici(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol,string ResimTipi, string aciklama)
+        {
+            if (galeriResim == null)
+            {
+                return Redirect("/Admin/Kurum/Edit/" + kurumId);
+            }
+
+            Kurumlar kurum = db.Kurumlar.Find(kurumId);
+
+            List<KurumEgitimciler> kurumResim = new List<KurumEgitimciler>();
+
+            foreach (var file in galeriResim)
+            {
+                if (file.ContentLength > 0)
+                {
+                    Random rnd = new Random();
+                    string dosyaAdi = Path.GetFileNameWithoutExtension(file.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(file.FileName);
+                    var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/kurum/" + uploadYol), dosyaAdi);
+                    file.SaveAs(yuklemeYeri);
+
+                    KurumEgitimciler resimler = new KurumEgitimciler()
+                    {
+                        Resim = dosyaAdi,
+                        KurumId = kurumId,
+                        Aciklama = aciklama,
+                        Tip = Convert.ToInt32(ResimTipi)
+                    };
+
+                    kurumResim.Add(resimler);
+                }
+            }
+            kurum.KurumEgitimciler = kurumResim;
+            db.SaveChanges();
+
+            return Redirect("/Admin/Kurum/Edit/" + kurumId);
+        }
+
     }
 }

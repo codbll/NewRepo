@@ -1470,7 +1470,7 @@ html.side-header #header {
 
 @media (min-width: 991px) {
 	html.side-header .main .container, html.side-header #footer .container {
-		padding: 0 35px;
+		padding: 0 2px;
 		width: auto !important;
 		max-width: 1132px;
 	}
@@ -1959,7 +1959,7 @@ section.section.section-with-divider .divider {
 }
 
 section.section.section-footer {
-	margin-bottom: -50px;
+	margin-bottom: -5px;
 }
 
 section.section.section-with-mockup {
@@ -3001,14 +3001,14 @@ html.dark .text-muted {
 	background: #0e0e0e;
 	border-top: 4px solid #0e0e0e;
 	font-size: 0.9em;
-	margin-top: 50px;
-	padding: 70px 0 0;
+	margin-top: 2px;
+	padding: 10px 0 0;
 	position: relative;
 	clear: both;
 }
 
 #footer .container .row > div {
-	margin-bottom: 25px;
+	margin-bottom: 7px;
 }
 
 #footer .container input:focus {
@@ -3130,7 +3130,7 @@ html.dark .text-muted {
 }
 
 #footer .twitter ul li {
-	padding-bottom: 20px;
+	padding-bottom: 7px;
 }
 
 #footer .twitter ul li:last-child {
@@ -3273,7 +3273,7 @@ html.dark .text-muted {
 }
 
 #footer.short {
-	padding-top: 50px;
+	padding-top: 7px;
 }
 
 #footer.short .footer-copyright {
@@ -3314,7 +3314,7 @@ html.dark .text-muted {
 }
 
 #footer.narrow {
-	padding-top: 30px;
+	padding-top: 7px;
 }
 
 #footer.narrow .footer-copyright {

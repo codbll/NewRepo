@@ -67,6 +67,9 @@
     <Compile Include="Context\AltKategoriler.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\Anketler.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Bulten.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -101,6 +104,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Kategoriler.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\KurumEgitimciler.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Kurumlar.cs">

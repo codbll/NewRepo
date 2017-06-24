@@ -243,7 +243,7 @@
 
         <div class="row">
             <div class="col-md-12">
-                <div class="col-md-8">
+                <div class="col-md-7">
                     <div class="tabs tabs-bottom tabs-center tabs-simple">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#egitimciler" data-toggle="tab">EĞİTİMCİLER</a></li>
@@ -254,14 +254,14 @@
 
                                     <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail2">
 
-                                        @if (Model.Kurumlar.KurumResim.Count() > 0)
+                                        @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
                                         {
-                                            foreach (var resim in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 3))
+                                            foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1))
                                             {
                                                 <div class="image-gallery-item">
                                                     <span class="thumb-info thumb-info-lighten">
                                                         <span class="thumb-info-wrapper">
-                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
                                                             <span class="thumb-info-title">
                                                                 <span class="thumb-info-inner">@resim.Aciklama</span>
                                                                 <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
@@ -274,16 +274,16 @@
                                     </div>
 
                                     <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs2">
-                                        @if (Model.Kurumlar.Resim.Count() > 0)
+                                        @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
                                         {
-                                            foreach (var resim in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 3))
+                                            foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip== 1))
                                             {
                                                 <div class="image-gallery-item">
                                                     <span class="thumb-info thumb-info-lighten">
                                                         <span class="thumb-info-wrapper">
                                                             <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:175px;">
                                                             <span class="thumb-info-title">
-                                                                <span class="thumb-info-inner" style="font-size:15px;">@resim.Aciklama</span>
+                                                                <span class="thumb-info-inner" style="font-size:12px;">@resim.Aciklama</span>
                                                             </span>
                                                         </span>
                                                     </span>
@@ -296,7 +296,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-5">
                     <div class="tabs tabs-bottom tabs-center tabs-simple">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Kurumadi" data-toggle="tab" style="font-size:16px;">@Model.Kurumlar.KurumAdi</a></li>
