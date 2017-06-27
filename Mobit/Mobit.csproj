@@ -257,6 +257,7 @@
     <Content Include="Areas\Admin\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="Areas\Admin\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Content\css\themeBanner.css" />
+    <Content Include="Upload\images\anketlogo.jpg" />
     <Content Include="Upload\slide\2505624-bogazda-martilar-116.jpg" />
     <Content Include="Yapılacaklar.txt" />
     <None Include="Areas\Admin\Scripts\jquery-2.1.1.intellisense.js" />

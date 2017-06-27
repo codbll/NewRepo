@@ -30,6 +30,16 @@ namespace Mobit.Controllers
             return View();
 
         }
+        [Route("Anketler")]
+        public PartialViewResult Anketler()
+        {
+            ViewBag.KurumId = new SelectList(db.Kurumlar.ToList(), "KurumId", "KurumAdi");
+            ViewBag.EnSevdiginizOgretmenveBransi = new SelectList(db.KurumEgitimciler.Where(h => h.Tip == 1).OrderBy(h => h.Aciklama).ToList(), "EgitimciId", "Aciklama");//Eğitimci
+            ViewBag.EnSevdiginizYonetici = new SelectList(db.KurumEgitimciler.Where(h => h.Tip == 2).OrderBy(h => h.Aciklama).ToList(), "EgitimciId", "Aciklama");//Yönetici
+
+            return PartialView("~/Views/_Partial/_Anketler.cshtml");
+
+        }
 
 
         public PartialViewResult Menu()
@@ -314,6 +324,22 @@ namespace Mobit.Controllers
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
 
+        [Route("Home/EnSevdiginizOgretmenveBransiGetir")]
+        public ActionResult EnSevdiginizOgretmenveBransiGetir(int KurumId)
+        {
+            var kurumEgitimciler = db.KurumEgitimciler.Where(k => k.KurumId == KurumId && k.Tip == 1).Select(k => new { k.Aciklama, k.EgitimciId }).ToList();
+
+            return Json(kurumEgitimciler, JsonRequestBehavior.AllowGet);
+        }
+
+        [Route("Home/EnSevdiginizYoneticiGetir")]
+        public ActionResult EnSevdiginizYoneticiGetir(int KurumId)
+        {
+            var kurumEgitimciler2 = db.KurumEgitimciler.Where(k => k.KurumId == KurumId && k.Tip == 2).Select(k => new { k.Aciklama, k.EgitimciId }).ToList();
+
+            return Json(kurumEgitimciler2, JsonRequestBehavior.AllowGet);
+        }
+
 
         [Route("Home/KategoriGetir")]
         public ActionResult KategoriGetir(int KategoriId)
@@ -364,24 +390,46 @@ namespace Mobit.Controllers
             }
             return View(kurumlar);
         }
-        [Route("Home/AnketGonder")]
+        [Route("AnketGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AnketGonder(string KurumId, string OgrencininAdi, string OgrencininSinifi, string EnSevdiginizOgretmenveBransi, string EnSevdiginizOgretmenvNedeni, string EnSevdiginizYonetici, string EnSevdiginizYoneticiNedeni)
         {
+            string IpAdresi = Kontrol.IpAdresi();
+            Int32 KurumIdKontol = Convert.ToInt32(KurumId);
+            Int32 IpAdresiCheck = db.Anketler.Where(b => b.Ay == DateTime.Now.Month && b.Yil == DateTime.Now.Year && b.ip == IpAdresi && b.KurumId == KurumIdKontol).Count();
 
-            if (KurumId != null && OgrencininAdi != null && OgrencininSinifi != null && OgrencininSinifi != null && EnSevdiginizOgretmenveBransi != null && EnSevdiginizOgretmenvNedeni != null && EnSevdiginizYonetici != null && EnSevdiginizYoneticiNedeni != null)
+            if (IpAdresiCheck == 0)
             {
+                if (KurumId != "" && OgrencininAdi != "" && OgrencininSinifi != "" && OgrencininSinifi != "" && EnSevdiginizOgretmenveBransi != "" && EnSevdiginizOgretmenvNedeni != "" && EnSevdiginizYonetici != "" && EnSevdiginizYoneticiNedeni != "")
+                {
+                    Anketler anketler = new Anketler();
+                    anketler.Ay = DateTime.Now.Month;
+                    anketler.Yil = DateTime.Now.Year;
+                    anketler.KurumId = Convert.ToInt32(KurumId);
+                    anketler.OgrencininAdi = OgrencininAdi;
+                    anketler.OgrencininSinifi = OgrencininSinifi;
+                    anketler.EnSevdiginizOgretmenveBransi = Convert.ToInt32(EnSevdiginizOgretmenveBransi);
+                    anketler.EnSevdiginizOgretmenvNedeni = EnSevdiginizOgretmenvNedeni;
+                    anketler.EnSevdiginizYonetici = Convert.ToInt32(EnSevdiginizYonetici);
+                    anketler.EnSevdiginizYoneticiNedeni = EnSevdiginizYoneticiNedeni;
+                    anketler.Tarih = DateTime.Now;
+                    anketler.ip = Kontrol.IpAdresi();
+                    db.Anketler.Add(anketler);
+                    db.SaveChanges();
 
-               
-
-                return Json(new { success = true, responseText = "Mesajınız başarıyla gönderildi." });
-
+                    return Json(new { success = true, responseText = "Anketiniz başarıyla gönderildi." });
+                }
+                else
+                {
+                    return Json(new { success = false, responseText = "Lütfen bilgilerinizi kontrol edip tekrar deneyiniz." });
+                }
             }
             else
             {
-                return Json(new { success = false, responseText = "Lütfen bilgilerinizi kontrol edip tekrar deneyiniz." });
+                return Json(new { success = false, responseText = "HER ÖĞRENCİNİN VELİNİN AYNI IP DEN TEK KATILIM HAKKI VARDIR." });
             }
+            
 
         }
 
@@ -511,7 +559,6 @@ namespace Mobit.Controllers
 
         }
 
-
-
+ 
     }
 }

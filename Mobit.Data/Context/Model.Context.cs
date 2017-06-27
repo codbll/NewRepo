@@ -12,6 +12,8 @@ namespace Mobit.Data.Context
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class Entities : DbContext
     {
@@ -53,5 +55,285 @@ namespace Mobit.Data.Context
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Anketler> Anketler { get; set; }
         public virtual DbSet<KurumEgitimciler> KurumEgitimciler { get; set; }
+        public virtual DbSet<VW_Anketler> VW_Anketler { get; set; }
+    
+        public virtual ObjectResult<spEniyiEgitimci_Result> spEniyiEgitimci()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEniyiEgitimci_Result>("spEniyiEgitimci");
+        }
+    
+        public virtual ObjectResult<spEniyikurum_Result> spEniyikurum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEniyikurum_Result>("spEniyikurum");
+        }
+    
+        public virtual ObjectResult<spEniyiYonetici_Result> spEniyiYonetici()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEniyiYonetici_Result>("spEniyiYonetici");
+        }
+    
+        public virtual ObjectResult<string> ELMAH_GetErrorsXml(string application, Nullable<int> pageIndex, Nullable<int> pageSize, ObjectParameter totalCount)
+        {
+            var applicationParameter = application != null ?
+                new ObjectParameter("Application", application) :
+                new ObjectParameter("Application", typeof(string));
+    
+            var pageIndexParameter = pageIndex.HasValue ?
+                new ObjectParameter("PageIndex", pageIndex) :
+                new ObjectParameter("PageIndex", typeof(int));
+    
+            var pageSizeParameter = pageSize.HasValue ?
+                new ObjectParameter("PageSize", pageSize) :
+                new ObjectParameter("PageSize", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ELMAH_GetErrorsXml", applicationParameter, pageIndexParameter, pageSizeParameter, totalCount);
+        }
+    
+        public virtual ObjectResult<string> ELMAH_GetErrorXml(string application, Nullable<System.Guid> errorId)
+        {
+            var applicationParameter = application != null ?
+                new ObjectParameter("Application", application) :
+                new ObjectParameter("Application", typeof(string));
+    
+            var errorIdParameter = errorId.HasValue ?
+                new ObjectParameter("ErrorId", errorId) :
+                new ObjectParameter("ErrorId", typeof(System.Guid));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ELMAH_GetErrorXml", applicationParameter, errorIdParameter);
+        }
+    
+        public virtual int ELMAH_LogError(Nullable<System.Guid> errorId, string application, string host, string type, string source, string message, string user, string allXml, Nullable<int> statusCode, Nullable<System.DateTime> timeUtc)
+        {
+            var errorIdParameter = errorId.HasValue ?
+                new ObjectParameter("ErrorId", errorId) :
+                new ObjectParameter("ErrorId", typeof(System.Guid));
+    
+            var applicationParameter = application != null ?
+                new ObjectParameter("Application", application) :
+                new ObjectParameter("Application", typeof(string));
+    
+            var hostParameter = host != null ?
+                new ObjectParameter("Host", host) :
+                new ObjectParameter("Host", typeof(string));
+    
+            var typeParameter = type != null ?
+                new ObjectParameter("Type", type) :
+                new ObjectParameter("Type", typeof(string));
+    
+            var sourceParameter = source != null ?
+                new ObjectParameter("Source", source) :
+                new ObjectParameter("Source", typeof(string));
+    
+            var messageParameter = message != null ?
+                new ObjectParameter("Message", message) :
+                new ObjectParameter("Message", typeof(string));
+    
+            var userParameter = user != null ?
+                new ObjectParameter("User", user) :
+                new ObjectParameter("User", typeof(string));
+    
+            var allXmlParameter = allXml != null ?
+                new ObjectParameter("AllXml", allXml) :
+                new ObjectParameter("AllXml", typeof(string));
+    
+            var statusCodeParameter = statusCode.HasValue ?
+                new ObjectParameter("StatusCode", statusCode) :
+                new ObjectParameter("StatusCode", typeof(int));
+    
+            var timeUtcParameter = timeUtc.HasValue ?
+                new ObjectParameter("TimeUtc", timeUtc) :
+                new ObjectParameter("TimeUtc", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ELMAH_LogError", errorIdParameter, applicationParameter, hostParameter, typeParameter, sourceParameter, messageParameter, userParameter, allXmlParameter, statusCodeParameter, timeUtcParameter);
+        }
+    
+        public virtual int Logger(string logType, string message, string urlReferrer, string iPAddress)
+        {
+            var logTypeParameter = logType != null ?
+                new ObjectParameter("LogType", logType) :
+                new ObjectParameter("LogType", typeof(string));
+    
+            var messageParameter = message != null ?
+                new ObjectParameter("Message", message) :
+                new ObjectParameter("Message", typeof(string));
+    
+            var urlReferrerParameter = urlReferrer != null ?
+                new ObjectParameter("UrlReferrer", urlReferrer) :
+                new ObjectParameter("UrlReferrer", typeof(string));
+    
+            var iPAddressParameter = iPAddress != null ?
+                new ObjectParameter("IPAddress", iPAddress) :
+                new ObjectParameter("IPAddress", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Logger", logTypeParameter, messageParameter, urlReferrerParameter, iPAddressParameter);
+        }
+    
+        public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_alterdiagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_creatediagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var versionParameter = version.HasValue ?
+                new ObjectParameter("version", version) :
+                new ObjectParameter("version", typeof(int));
+    
+            var definitionParameter = definition != null ?
+                new ObjectParameter("definition", definition) :
+                new ObjectParameter("definition", typeof(byte[]));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_creatediagram", diagramnameParameter, owner_idParameter, versionParameter, definitionParameter);
+        }
+    
+        public virtual int sp_dropdiagram(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_dropdiagram", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagramdefinition_Result> sp_helpdiagramdefinition(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagramdefinition_Result>("sp_helpdiagramdefinition", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual ObjectResult<sp_helpdiagrams_Result> sp_helpdiagrams(string diagramname, Nullable<int> owner_id)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_helpdiagrams_Result>("sp_helpdiagrams", diagramnameParameter, owner_idParameter);
+        }
+    
+        public virtual int sp_renamediagram(string diagramname, Nullable<int> owner_id, string new_diagramname)
+        {
+            var diagramnameParameter = diagramname != null ?
+                new ObjectParameter("diagramname", diagramname) :
+                new ObjectParameter("diagramname", typeof(string));
+    
+            var owner_idParameter = owner_id.HasValue ?
+                new ObjectParameter("owner_id", owner_id) :
+                new ObjectParameter("owner_id", typeof(int));
+    
+            var new_diagramnameParameter = new_diagramname != null ?
+                new ObjectParameter("new_diagramname", new_diagramname) :
+                new ObjectParameter("new_diagramname", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_renamediagram", diagramnameParameter, owner_idParameter, new_diagramnameParameter);
+        }
+    
+        public virtual int sp_upgraddiagrams()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual ObjectResult<spEnSevdiginizEgitimciAdiSoyadi_Result> spEnSevdiginizEgitimciAdiSoyadi()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spEnSevdiginizEgitimciAdiSoyadi_Result>("spEnSevdiginizEgitimciAdiSoyadi");
+        }
+    
+        public virtual ObjectResult<spVW_Eniyikurum_Result> spVW_Eniyikurum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spVW_Eniyikurum_Result>("spVW_Eniyikurum");
+        }
+    
+        public virtual ObjectResult<sp_EniyiEgitimci_Result> sp_EniyiEgitimci()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiEgitimci_Result>("sp_EniyiEgitimci");
+        }
+    
+        public virtual ObjectResult<sp_Eniyikurum_Result> sp_Eniyikurum()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Eniyikurum_Result>("sp_Eniyikurum");
+        }
+    
+        public virtual ObjectResult<sp_EniyiYonetici_Result> sp_EniyiYonetici()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiYonetici_Result>("sp_EniyiYonetici");
+        }
+    
+        public virtual ObjectResult<sp_EniyiEgitimci1_Result> sp_EniyiEgitimci1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiEgitimci1_Result>("sp_EniyiEgitimci1");
+        }
+    
+        public virtual ObjectResult<sp_EniyiEgitimci2_Result> sp_EniyiEgitimci2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiEgitimci2_Result>("sp_EniyiEgitimci2");
+        }
+    
+        public virtual ObjectResult<sp_EniyiEgitimciler_Result> sp_EniyiEgitimciler()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiEgitimciler_Result>("sp_EniyiEgitimciler");
+        }
+    
+        public virtual ObjectResult<sp_Eniyikurumlar_Result> sp_Eniyikurumlar()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Eniyikurumlar_Result>("sp_Eniyikurumlar");
+        }
+    
+        public virtual ObjectResult<sp_EniyiYoneticiler_Result> sp_EniyiYoneticiler()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiYoneticiler_Result>("sp_EniyiYoneticiler");
+        }
+    
+        public virtual ObjectResult<sp_EniyiEgitimciler1_Result> sp_EniyiEgitimciler1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiEgitimciler1_Result>("sp_EniyiEgitimciler1");
+        }
+    
+        public virtual ObjectResult<sp_EniyiYoneticiler1_Result> sp_EniyiYoneticiler1()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiYoneticiler1_Result>("sp_EniyiYoneticiler1");
+        }
+    
+        public virtual ObjectResult<sp_EniyiEgitimciler2_Result> sp_EniyiEgitimciler2()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_EniyiEgitimciler2_Result>("sp_EniyiEgitimciler2");
+        }
     }
 }

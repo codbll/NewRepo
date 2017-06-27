@@ -11,7 +11,7 @@
 <div class="container">
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-11">
             <div class="blog-posts">
 
                 @foreach (var haber in Model)
@@ -35,41 +35,42 @@
                             else
                             {
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="post-image">
                                         <div class="owl-carousel owl-theme" data-plugin-options='{"items":1}'>
                                             <div>
                                                 <div class="img-thumbnail">
-                                                    <a href="/haber/@haber.Slug">  <img class="img-responsive" src="~/Upload/haber/@haber.Resim" title="@haber.Ad" alt="@haber.Ad" style="width:100%;height:150px;"></a>
+                                                    <a href="/haber/@haber.Slug">  <img class="img-responsive" src="~/Upload/haber/@haber.Resim" title="@haber.Ad" alt="@haber.Ad" style="width:80px;height:60px;"></a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-9">
+                                <div class="col-md-10">
 
                                     <div class="post-image">
 
-                                        <h2><a href="/haber/@haber.Slug" title="@haber.Ad">@haber.Ad</a></h2>
+                                        <h4><a href="/haber/@haber.Slug" title="@haber.Ad">@haber.Ad</a></h4>
 
                                     </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="post-meta">
+                                                <span><i class="fa fa-calendar"></i>@haber.Tarih.ToString("d") </span>
+
+                                                <a href="/haber/@haber.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
+                                
 
                             }
 
 
 
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="post-meta">
-                                    <span><i class="fa fa-calendar"></i>@haber.Tarih.ToString("d") </span>
-
-                                    <a href="/haber/@haber.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
-                                </div>
-                            </div>
-                        </div>
-
+                        
                     </article>
 
                 }

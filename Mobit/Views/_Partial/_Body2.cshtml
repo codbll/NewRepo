@@ -1,4 +1,5 @@
 ﻿@model Mobit.Models.BodyModel
+
 @* alt haberler *@
 <div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;">
     @Html.Partial("/Views/_Partial/_HaberArama.cshtml") 
@@ -47,65 +48,74 @@
             <div class="heading heading-primary heading-border heading-bottom-border">
                 <h1 class="heading-primary">En İyi Okullar</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
+            <div class="owl-carousel owl-theme show-nav-hover">
+                @{
+                    Int32 l = 0;
+                    Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
+                    foreach (var item in db.sp_Eniyikurumlar())
+                    {
+                        l = l + 1;
+                            <div title="@item.KurumAdi">
+                                <span class="thumb-info thumb-info-lighten">
+                                    <span class="thumb-info-wrapper">
+                                        <img src="~/Upload/kurum/@item.UploadYolu/@item.Resim" class="img-responsive" alt="@item.KurumAdi" title="@item.KurumAdi" style="height:125px;">
+                                        <span class="thumb-info-title">
+                                            <span class="thumb-info-inner" style="font-size:12px;">Puan(@item.sayi)</span>
+                                        </span>
+                                    </span>
+                                </span>
+                            </div>
+                    }
+
+                }
+                
             </div>
 
 
             <div class="heading heading-primary heading-border heading-bottom-border" style="padding-top:-50px">
                 <h1 class="heading-primary">En İyi Yöneticiler</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
+            <div class="owl-carousel owl-theme show-nav-hover" >
+                @{
+                    foreach (var item in db.sp_EniyiYoneticiler1())
+                    {
+                        <div title="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)">
+                            <span class="thumb-info thumb-info-lighten">
+                                <span class="thumb-info-wrapper">
+                                    <img src="~/Upload/kurum/@item.UploadYolu/@item.EnSevdiginizYoneticiAdiSoyadiResim" class="img-responsive" alt="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)" title="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)" style="height:125px;">
+                                    <span class="thumb-info-title">
+                                        <span class="thumb-info-inner" style="font-size:12px;">Puan(@item.sayi)</span>
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                    }
+
+                }
             </div>
 
             <div class="heading heading-primary heading-border heading-bottom-border" style="padding-top:-50px">
                 <h1 class="heading-primary">En İyi Eğitmenler</h1>
             </div>
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 2, "margin": 5, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
-                <div>
-                    <img alt="" class="img-responsive img-thumbnail" src="~/Upload/images/project.jpg" style="width:100%;height:125px">
-                </div>
+            <div class="owl-carousel owl-theme show-nav-hover" >
+                @{
+                    Int32 k = 0;
+                    foreach (var item in db.sp_EniyiEgitimciler2())
+                    {
+                        k = k + 1;
+                        <div title="@item.EnSevdiginizEgitimciAdiSoyadi (@item.KurumAdi)">
+                            <span class="thumb-info thumb-info-lighten">
+                                <span class="thumb-info-wrapper">
+                                    <img src="~/Upload/kurum/@item.UploadYolu/@item.EnSevdiginizEgitimciAdiSoyadiResim" class="img-responsive" alt="@item.EnSevdiginizEgitimciAdiSoyadi (@item.KurumAdi)" title="@item.EnSevdiginizEgitimciAdiSoyadi (@item.KurumAdi)" style="height:125px;">
+                                    <span class="thumb-info-title">
+                                        <span class="thumb-info-inner" style="font-size:12px;">Puan(@item.sayi)</span>
+                                    </span>
+                                </span>
+                            </span>
+                        </div>
+                    }
+
+                }
             </div>
 
         </aside>
