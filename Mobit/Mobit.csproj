@@ -2636,6 +2636,7 @@
     <Content Include="Views\_Partial\_AltMenu.cshtml" />
     <Content Include="Views\_Partial\_HaberlerPopup.cshtml" />
     <Content Include="Views\_Partial\_Anketler.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2675,7 +2676,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>6988</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:6988/</IISUrl>
+          <IISUrl>http://localhost:6989/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

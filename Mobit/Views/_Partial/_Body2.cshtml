@@ -7,7 +7,6 @@
         foreach (var item in Model.Haberler)
         {
             <div class="col-md-4" style="padding:7px;">
-                
                 <div class="heading heading-primary heading-border heading-bottom-border">
                     <h1 class="heading-primary">@item.Ad</h1>
                 </div>
@@ -55,7 +54,9 @@
                     foreach (var item in db.sp_Eniyikurumlar())
                     {
                         l = l + 1;
+                            
                             <div title="@item.KurumAdi">
+
                                 <span class="thumb-info thumb-info-lighten">
                                     <span class="thumb-info-wrapper">
                                         <img src="~/Upload/kurum/@item.UploadYolu/@item.Resim" class="img-responsive" alt="@item.KurumAdi" title="@item.KurumAdi" style="height:125px;">
@@ -79,6 +80,7 @@
                 @{
                     foreach (var item in db.sp_EniyiYoneticiler1())
                     {
+                        
                         <div title="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)">
                             <span class="thumb-info thumb-info-lighten">
                                 <span class="thumb-info-wrapper">
@@ -88,7 +90,9 @@
                                     </span>
                                 </span>
                             </span>
+                            <div style="font-size:10px;">@item.EnSevdiginizYoneticiAdiSoyadi</div>
                         </div>
+                        
                     }
 
                 }
@@ -112,6 +116,7 @@
                                     </span>
                                 </span>
                             </span>
+                            <div style="font-size:10px;">@item.EnSevdiginizEgitimciAdiSoyadi</div>
                         </div>
                     }
 
@@ -121,7 +126,7 @@
         </aside>
         <br />
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(11).OrderBy(s => s.Sira))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(12).OrderBy(s => s.Sira))
             {
                 <div class="col-md-12" style="padding:7px;">
                     <a href="@item.Url" target="@item.Target">
