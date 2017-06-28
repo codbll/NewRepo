@@ -26,6 +26,8 @@ namespace Mobit.Controllers
 
             GelismisAramaBilgi();
 
+            ViewData["HaberlerPopup"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 4).ToList();
+            ViewData["RoportajlarPopup"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 3).ToList();
 
             return View();
 

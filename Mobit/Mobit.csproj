@@ -2637,6 +2637,7 @@
     <Content Include="Views\_Partial\_HaberlerPopup.cshtml" />
     <Content Include="Views\_Partial\_Anketler.cshtml" />
     <Content Include="Views\_Partial\_HaberPopup.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupRoportajlar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
