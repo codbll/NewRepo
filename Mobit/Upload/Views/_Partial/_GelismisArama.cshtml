@@ -1,0 +1,161 @@
+﻿﻿@model Mobit.Models.GelismisAramaModel
+@using Mobit.Helpers
+<style>
+    .control-label {
+        color: white;
+    }
+</style>
+
+        
+<div class="form-group">
+    <div class="col-md-12" style="text-align:center;">
+        <span style="color:white;font-size:29px;font-weight:bold;text-align:center;vertical-align:central;" >
+        0850 532 
+            <span class="word-rotate" data-plugin-options='{"delay": 2000, "animDelay": 300}'>
+                <span class="word-rotate-items">
+                    <span style="width:90px;color:red;font-size:30px;">OKUL</span>
+                    <span style="width:90px;color:red;font-size:30px;">6585</span>
+                </span>
+            </span>
+        </span>
+    </div>
+</div>
+<div id="searchForm">
+    <form id="myform" method="post" action="/Arama" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <div class="form-group SourcePasif">
+            <div class="col-md-12">
+                @*<label class="control-label">ARA</label><br />*@
+                @*<input type="text" id="txtSearch" class="form-control" name="q" placeholder="Ara..." required>*@
+                @Html.EditorFor(model => model.SearchKey, new { htmlAttributes = new { @class = "form-control", @placeholder = "Ara..." } })
+                @*@Html.ValidationMessageFor(model => model.SearchKey, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                @*<label class="control-label">KATEGORİ</label><br />*@
+                @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control"  })
+                @*@Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                @*<label class="control-label">ALT KATEGORİ</label><br />*@
+                @Html.DropDownList("AltKategoriId", Enumerable.Empty<SelectListItem>(), "Önce Kategori Seçiniz", new { @class = "form-control" })
+                @*@Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @*<label class="control-label">İL</label><br />*@
+                @Html.DropDownList("ilId", null, "İl Seçiniz", htmlAttributes: new { @class = "form-control"  })
+                @*@Html.ValidationMessageFor(model => model.ilId, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-12">
+                @*<label class="control-label">İLÇE</label><br />*@
+                @Html.DropDownList("ilceId", Enumerable.Empty<SelectListItem>(), "İlçe Seçiniz", htmlAttributes: new { @class = "form-control"  })
+
+                @*@Html.ValidationMessageFor(model => model.ilceId, "", new { @class = "text-danger" })*@
+
+            </div>
+        </div> 
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @*<button type="button" class="btn btn-default mr-xs mb-sm"><i class="fa fa-search"></i> Ara</button>*@
+                <input type="submit" class="btn btn-lg btn-primary" data-appear-animation="bounceIn" value="Ara" style="width:100%" />
+            </div>
+        </div>
+    </form>
+
+</div>
+
+
+<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/vendor/jquery.validation/jquery.validation.min.js"></script>
+
+
+<script>
+
+    $('#ilId').change(function () {
+        var ilId = $(this).val();
+        var dropdown = $('#ilceId');
+        dropdown.empty();
+        if (ilId != null && ilId != '') {
+           
+            $.ajax({
+                type: "post",
+                url: "/Home/ilceGetir",
+                data: { ilId: ilId },
+                success: function (kategoriler) {
+
+                    
+
+                    $.each(kategoriler, function (index, kategori) {
+                        $('#ilceId').append($('<option/>', {
+                            value: kategori.ilceId,
+                            text: kategori.ilceAdi
+
+                        }));
+
+                    });
+
+                },
+                error: function (kategoriler) {
+
+                    alert("Hata: İlçeler listelenemedi.");
+                },
+                beforeSend: function () {
+
+                },
+                complete: function () {
+
+                }
+            });
+
+        }
+    });
+
+    $('#KategoriId').change(function () {
+        var KategoriId = $(this).val();
+        var dropdown = $('#AltKategoriId');
+        dropdown.empty();
+        if (KategoriId != null && KategoriId != '') {
+            
+            $.ajax({
+                type: "post",
+                url: "/Home/AltKategoriGetir",
+                data: { KategoriId: KategoriId },
+                success: function (kategoriler) {
+                    $.each(kategoriler, function (index, kategori) {
+                        $('#AltKategoriId').append($('<option/>', {
+                            value: kategori.AltKategoriId,
+                            text: kategori.AltKategoriAdi
+
+                        }));
+
+                    });
+
+                },
+                error: function (kategoriler) {
+
+                    alert("Hata: Alt Kategoriler listelenemedi.");
+                },
+                beforeSend: function () {
+
+                },
+                complete: function () {
+
+                }
+            });
+
+        }
+    });
+
+</script>
+
+
+

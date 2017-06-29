@@ -1,0 +1,48 @@
+﻿﻿
+@model PagedList.IPagedList<Mobit.Data.Context.Haberler>
+
+<div role="main" class="main shop">
+    <div class="container">
+        <div class="row">
+                    <ul class="products product-thumb-info-list" data-plugin-masonry data-plugin-options='{"layoutMode": "fitRows"}'>
+                        @foreach (var haber in Model)
+                        {
+
+                            <li class="col-md-4 col-sm-6 col-xs-12 product">
+                                @*<a href="shop-product-sidebar.html">
+                                        <span class="onsale">Sale!</span>
+                                    </a>*@
+                                <span class="product-thumb-info">
+                                    @*<a href="shop-cart.html" class="add-to-cart-product">
+                                            <span><i class="fa fa-shopping-cart"></i> Sepete Ekle</span>
+                                        </a>*@
+                                    <span class="product-thumb-info-content" style="text-align:center;background-color: #4C9ED9;color: white;height:50px;">
+                                        <span style="text-align:center;background-color: #4C9ED9;color: white;font-size:20px;font-weight:bold;">@haber.Ad</span>
+                                    </span>
+                                    <a href="/haber/@haber.Slug" title="@haber.Ad">
+                                        <span class="thumb-info thumb-info-lighten">
+                                            <span class="thumb-info-wrapper" style="margin-top:5px;margin-bottom:0px;">
+                                                <img alt="@haber.Ad" title="@haber.Ad" style="width:100%;height:280px;" class="img-responsive" src="~/Upload/haber/@haber.Resim">
+                                            </span>
+                                        </span>
+                                    </a>
+                                    <span class="product-thumb-info-content" style="text-align:center;background-color: #4C9ED9;color: white;height:50px;">
+                                        <a href="/haber/@haber.Slug">
+                                            @*<h4 class="heading-primary">@kurum.KurumAdi</h4>*@
+                                            <span class="price">
+                                                <ins class="pull-left"><span style="text-align:center;background-color: #4C9ED9;color: white;font-size:large;font-weight:bold;">@(haber.Ad == null ? "" : haber.Ad)</span></ins>
+                                            </span>
+                                        </a>
+                                    </span>
+                                </span>
+                            </li>
+                        }
+                    </ul>
+        </div>
+    </div>
+</div>
+
+
+@section styles{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}

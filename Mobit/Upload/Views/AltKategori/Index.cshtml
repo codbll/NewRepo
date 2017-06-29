@@ -1,0 +1,96 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model  PagedList.IPagedList<Mobit.Data.Context.Kurumlar>
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@*@Html.Action("KategorilerSticky", "Kategori")*@
+
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-12">
+
+            @*<h2> <strong>@ViewBag.bilgi</strong> </h2> _urunler partialinde kullandım.*@
+         
+
+            <div class="row" style="padding-left:15px;padding-right:15px;">
+                <div class="col-md-12" style="padding:7px;margin-top:-10px">
+                    @*A1 reklam alanı*@
+                    <div class="row">
+                        @foreach (var item in ViewData["ustTekReklam"] as List<Mobit.Data.Context.Slider>)
+                        {
+                            <div class="col-md-12" style="padding:7px;margin-top:-10px">
+                                <a href="@item.Url" target="@item.Target">
+                                    <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                                </a>
+                            </div>
+                        }
+                        
+                    </div>
+                    @Html.Partial("/Views/_Partial/_Kurumlar.cshtml", Model)
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <ul class="pagination pull-left">
+                                @*<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#"><i class="fa fa-chevron-right"></i></a></li>*@
+
+                                @Html.PagedListPager(Model, _sayfaNo => Url.Action("Index", "AltKategori", new { Sayfa = _sayfaNo }))
+
+                            </ul>
+                        </div>
+                    </div>
+
+                    <hr />
+                    @if (ViewData["detayReklam"] != null)
+                    {
+                        @*foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                            {
+                                <div class="col-md-12">
+                                    <a href="@item.Url" target="@item.Target">
+                                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                                    </a>
+                                </div>
+                            }*@
+
+                        <div class="row" style="padding:5px;">
+                            <ul class="image-gallery sort-destination full-width">
+
+                                @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                               {
+                                    <li class="isotope-item">
+                                        <div class="image-gallery-item" style="padding:5px;">
+                                            <a href="@item.Url" target="@item.Target">
+                                                <span class="thumb-info thumb-info-centered-info">
+                                                    <span class="thumb-info-wrapper">
+                                                        <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="">
+                                                    </span>
+                                                </span>
+                                            </a>
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+
+                    }
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+@section styles{
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}

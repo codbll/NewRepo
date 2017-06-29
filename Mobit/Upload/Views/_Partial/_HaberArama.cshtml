@@ -1,0 +1,128 @@
+﻿@using Mobit.Helpers
+<div id="searchForm">
+    <div class="input-group">
+
+        <input type="text" id="txtNewSearch" class="form-control" name="q" placeholder="Haber ve Ropörtaj Ara..." required>
+        @*<input type="text" class="form-control" name="q" id="txtSearch" placeholder="Ara..." required>*@
+        <span class="input-group-btn">
+            <button class="btn btn-default" id="srcNewsButton" type="submit"><i class="fa fa-search"></i></button>
+        </span>
+    </div>
+
+
+    <div class="divResult" id="newSearchDiv"></div>
+
+</div>
+
+
+<style>
+    .divResult {
+        width: 95%;
+        background-color: #ffffff;
+        -moz-box-shadow: 0 0 5px #888;
+        -webkit-box-shadow: 0 0 5px#888;
+        box-shadow: 0 0 5px #888;
+        position: absolute;
+        z-index: 2;
+    }
+</style>
+
+
+
+<script src="/Scripts/vendor/jquery/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var searchboxID = "#txtNewSearch";
+        $('#srcNewsButton').click(function () {
+            $(searchboxID).keyup();
+        });
+        $(searchboxID).keyup(function (event) {
+            if (event.keyCode != 13 && event.keyCode != 37 && event.keyCode != 39) {
+                if ($.trim($(searchboxID).val()).length > 2) {
+
+                    delay(function () {
+
+                        var options = {};
+                        options.url = '/Home/HaberAra',
+                options.type = "POST";
+                        options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
+                        options.contentType = "application/json; charset=utf-8",
+                        options.success = function (result) {
+                            $("#newSearchDiv").html(result);
+                            $("#newSearchDiv").show();
+                        };
+                        options.error = function (err) {
+                            if (err.status == 500) {
+                                //window.location.href = "/Home";
+                            } else {
+                                if (err.status != 0) {
+                                    alert(err.statusText);
+                                }
+                            }
+                        };
+                        $.ajax(options);
+                    }, 500);
+                } else {
+                    $("#newSearchDiv").hide();
+                }
+            }
+        });
+    });
+
+    var delay = (function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
+    function DidYouMean() {
+        var text = $("#Did").text();
+        $("#txtSearch").val(text);
+
+        var searchboxID = "#txtSearch";
+
+        delay(function () {
+
+            var options = {};
+            options.url = '/Arama/Search',
+    options.type = "POST";
+            options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
+            options.contentType = "application/json; charset=utf-8",
+            options.success = function (result) {
+                $("#searchDiv").html(result);
+                $("#searchDiv").show();
+            };
+            options.error = function (err) {
+                if (err.status == 500) {
+                    window.location.href = "/Home";
+                } else {
+                    if (err.status != 0) {
+                        alert(err.statusText);
+                    }
+                }
+            };
+            $.ajax(options);
+        }, 500);
+    }
+
+    //$(function () {
+    //    $("#txtSearch").click(function () {
+    //        if ($("#txtSearch").val() == "Detaylı ara?") {
+    //            $("#txtSearch").val("");
+    //        }
+    //    });
+    //    $("#txtSearch").blur(function () {
+    //        if ($("#txtSearch").val().trim() == "") {
+    //            $("#txtSearch").val("Detaylı ara?");
+    //        }
+    //    });
+    //});
+
+    $(".body").click(function () {
+        $("#newSearchDiv").hide();
+    });
+
+</script>

@@ -1,0 +1,64 @@
+﻿
+    <script>
+        var sure = 11;   //  Geri sayım sayacının başlayacağı rakam
+        function Kontrol() {
+            sure = sure - 1;
+            $("#span1").text(sure); // <span id="1"> </span> olan yerde geri sayım yapacaktır
+            if (sure > 0) setTimeout("Kontrol()", 1000);
+        }
+
+        jQuery(document).ready(function () {
+            kapat = (sure - 1) * 1000;
+            Kontrol();
+            setTimeout(function () {
+                $("#defaultModal").modal('hide');
+                $("#gazze").modal('hide');
+            }, kapat); // Popup burda kapanıyor
+        });
+        window.setTimeout("Kontrol()", 10000);
+    </script> 
+
+        @*<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#defaultModal">
+                Launch Default Modal
+            </button>*@
+    
+        <div class="modal fade" name="defaultModal" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true" style="display: none;">
+            <div class="modal-dialog" style="width:700px; height:350px; ">
+                <div class="modal-content" >
+                    
+                    <div id=gazze name=gazze style="position:absolute;width:700px; height:350px; text-align:center;">
+                        <strong style="font-size:30px;color: #FFFFFF;"> <span id="span1" style="color: #ff0000;font-size:30px;"> </span> Saniye sonra Kapanacaktır</strong>
+                        <div class="slider-container rev_slider_wrapper">
+                            <div id="revolutionSlider" class="slider rev_slider" data-plugin-revolution-slider data-plugin-options='{"delay": 4000, "gridwidth": 700, "gridheight": 350}'>
+                                <ul>
+                                        <li data-transition="fade">
+                                            <img src="~/Upload/slide/sponsor--2375.jpg"
+                                                 data-bgposition="center center"
+                                                 data-bgfit="cover"
+                                                 data-bgrepeat="no-repeat"
+                                                 class="rev-slidebg" style="width:700px; height:350px">
+                                        </li>
+                                        <li data-transition="fade">
+                                            <img src="~/Upload/slide/sponsor-okul-7080.jpg"
+                                                 data-bgposition="center center"
+                                                 data-bgfit="cover"
+                                                 data-bgrepeat="no-repeat"
+                                                 class="rev-slidebg" style="width:700px; height:350px">
+                                        </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <script>
+        $(document).ready(function () {
+            $('#defaultModal').modal('show');
+        });
+    </script>
+
+
+
+

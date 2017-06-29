@@ -1,0 +1,107 @@
+﻿﻿@model Mobit.Models.HeaderModel
+<div class="header-top header-top-style-2" style="margin-top:-40px;">
+    <div class="col-md-12">
+        @*üst kayan reklam*@
+        <div class="row" style="padding-left:15px;padding-right:15px;margin-top:0px">
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
+
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
+                {
+                    <div>
+                        <a href="@item.Url" target="@item.Target">
+                            <span class="thumb-info thumb-info-lighten">
+                                <span class="thumb-info-wrapper">
+                                    <img alt="@item.Baslik" class="img-responsive" src="~/Upload/slide/@item.Resim" style="width:100%; height:150px">
+                                </span>
+                            </span>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+
+        @*A1 reklam alanı*@
+        <div class="row" style="padding-left:7px;padding-right:7px;">
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 4).Take(1).OrderBy(s => s.Sira))
+            {
+                <div class="col-md-12" style="padding:7px;margin-top:-19px">
+                    <a href="@item.Url" target="@item.Target">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:150px;" alt="@item.Baslik">
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+
+        @*A2 A-B reklam alanı*@
+        <div class="row" style="padding-left:7px;padding-right:7px;">
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 5).Take(2).OrderBy(s => s.Sira))
+            {
+                <div class="col-md-6" style="padding:7px;">
+                    <a href="@item.Url" target="@item.Target">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%; height:150px" alt="@item.Baslik">
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+
+        @*A2-3 Reklam A-B-C reklam alanı*@
+        <div class="row" style="padding-left:7px;padding-right:7px;">
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 17).Take(3).OrderBy(s => s.Sira))
+            {
+                <div class="col-md-4" style="padding:7px;">
+                    <a href="@item.Url" target="@item.Target">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:150px" alt="@item.Baslik">
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+
+        @*A3 5 reklam alanı*@
+        <div class="row" style="padding-left:7px;padding-right:7px;">
+            <ul class="image-gallery sort-destination full-width">
+                @foreach (var item in Model.Slider.Where(s => s.SliderId == 6).Take(5).OrderBy(s => s.Sira))
+                {
+                    <li class="isotope-item">
+                        <div class="image-gallery-item" style="padding:7px;">
+                            <a href="@item.Url" target="@item.Target">
+                                <span class="thumb-info thumb-info-lighten">
+                                    <span class="thumb-info-wrapper">
+                                        <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Baslik" style="height:300px">
+                                    </span>
+                                </span>
+                            </a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+
+    </div>
+    <div class="col-md-12" style="height:32px;background-color:red;vertical-align:bottom;color:white;margin-top:-28px;padding-top:-10px">
+        <div class="col-md-2 SourcePasif"><h4><strong style="background-color:red;vertical-align:bottom;color:white;font-size:18px;">SON HABERLER</strong></h4></div>
+        <div class="col-md-10" style="vertical-align:bottom;text-align:justify;">
+            <marquee direction=left>
+                <h4>
+                    @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
+                    {
+                        <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"> <i class="fa-paper-plane-o"></i> @item.Ad</a>
+                    }
+                </h4>
+            </marquee>
+        </div>
+    </div>
+
+</div>
+

@@ -1,0 +1,26 @@
+﻿
+@{
+    //ViewBag.title = "Ana Sayfa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+@section slider{
+    @Html.Partial("/Views/_Partial/_Slider.cshtml", TempData["slider"])
+    
+    
+}
+
+@section Popup{
+   @Html.Partial("/Views/_Partial/_Popup.cshtml", TempData["slider"])
+}
+
+@*@Html.Action("KategorilerSticky", "Kategori")
+
+
+@Html.Partial("/Views/_Partial/_Markalar.cshtml", TempData["markalar"])*@
+
+
+ 
+

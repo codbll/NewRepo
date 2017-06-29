@@ -1,0 +1,68 @@
+﻿
+@model Tuple<List<Mobit.Data.Context.Driver>, List<Mobit.Data.Context.DriverKategori>>
+
+
+@if (Model.Item1.Count >= 1)
+{
+    foreach (var kategori in Model.Item2.Where(k => k.Driver.Count >= 1))
+    {
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="featured-box featured-box-primary align-left mt-sm" style="">
+
+                    <h4>@kategori.KategoriAdi</h4>
+                    <div class="box-content">
+
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Ad</th>
+                                    <th>Açıklama</th>
+                                    <th>Boyut</th>
+                                    <th>İndir</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+
+
+                                @foreach (var item in Model.Item1.Where(k => k.DriverKatId == kategori.DriverKatId))
+                                {
+
+
+                                    <tr>
+                                        <td>
+                                            @item.DriverAdi
+                                        </td>
+                                        <td>
+
+                                            @if (!String.IsNullOrEmpty(item.Aciklama))
+                                            {
+                                                <a data-plugin-tooltip="" href="#" data-original-title="@item.Aciklama">Açıklama</a>
+                                            }
+
+                                        </td>
+                                        <td>@item.Boyut</td>
+                                        <td><a href="@item.Link" target="_blank">İndir</a></td>
+                                    </tr>
+
+
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+}
+else
+{
+    <label>Bu ürüne ait yükleme bulunamadı.</label>
+}
+

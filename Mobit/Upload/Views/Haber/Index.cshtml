@@ -1,0 +1,86 @@
+﻿@model Mobit.Data.Context.Haberler
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-9">
+            @*A1 reklam alanı*@
+            <div class="row">
+                @foreach (var item in ViewData["ustTekReklam"] as List<Mobit.Data.Context.Slider>)
+                {
+                    <div class="col-md-12" style="padding:7px;margin-top:-10px">
+                        <a href="@item.Url" target="@item.Target">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                        </a>
+                    </div>
+                }
+
+            </div>
+
+            <div class="blog-posts">
+
+                <article class="post post-large">
+
+                    <div class="post-content">
+
+                        @{
+                            ViewBag.bilgi = Model.Ad;
+                        }
+                        <h2>@Model.Ad</h2>
+                        <p>
+                            @Html.Raw(Model.Detay)
+                        </p>
+                        <p>
+                            @if (Model.GaleriId != null && ViewData["GaleriResim"] != null)
+                            {
+                                @Html.Partial("/Views/_Partial/_Galeri.cshtml", ViewData["GaleriResim"])
+                            }
+                        </p>
+                        
+                    </div>
+                </article>
+
+
+            </div>
+            <hr />
+            @if (ViewData["detayReklam"] != null)
+            {
+                <div class="row" style="padding:5px;">
+                    <ul class="image-gallery sort-destination full-width">
+                        @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                        {
+                            <li class="isotope-item">
+                                <div class="image-gallery-item" style="padding:5px;">
+                                    <a href="@item.Url" target="@item.Target">
+                                        <span class="thumb-info thumb-info-centered-info">
+                                            <span class="thumb-info-wrapper">
+                                                <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="">
+                                            </span>
+                                        </span>
+                                    </a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+
+            }
+        </div>
+
+        <div class="col-md-3">
+            <aside class="sidebar">
+
+                @{Html.RenderAction("SonHaberler", "Haber");}
+
+            </aside>
+        </div>
+    </div>
+
+</div>
+

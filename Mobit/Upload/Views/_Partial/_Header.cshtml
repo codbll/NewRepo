@@ -1,0 +1,30 @@
+﻿﻿<header id="header" data-plugin-options='{"stickyEnabled": false, "stickyEnableOnBoxed": true, "stickyEnableOnMobile": true, "stickyStartAt": 1, "stickySetTop": "1", "stickyChangeLogo": true}'>
+    <div>
+        @{Html.RenderAction("HeaderReklam", "Home"); }
+    </div>
+    <div class="header-body">
+        
+            <div class="header-row">
+                <div class="header-column">
+                    <div class="header-nav">
+                        <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        @{Html.RenderAction("Menu", "Home"); }
+
+                    </div>
+                </div>
+                <div class="header-column SourcePasif" style="padding-left:10px;">
+                    <ul class="social-icons SourcePasif">
+                        <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li class="social-icons-twitter"><a href="@ViewBag.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li class="social-icons-linkedin"><a href="@ViewBag.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                </div>
+
+            </div>
+       
+            
+
+        </div>
+</header>

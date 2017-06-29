@@ -1,0 +1,225 @@
+﻿@model Mobit.Data.Context.Anketler
+@using Mobit.Helpers
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="col-md-12">
+    <img src="~/Upload/images/anketlogo.jpg" style="width:100%;margin-left:-20px;" />
+</div>
+     <div class="container" style="background-color:#ffeb98;">
+        <div class="row">
+            @Html.AntiForgeryToken()
+            <div class="col-md-11">
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>KURUM ADI *</label>
+                            @Html.DropDownList("KurumId", null, "Kurum Seçiniz", htmlAttributes: new { @class = "form-control" })
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>ÖĞRENCİNİN ADI * </label>
+                            @Html.EditorFor(model => model.OgrencininAdi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.OgrencininAdi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>SINIFI *</label>
+                            @Html.EditorFor(model => model.OgrencininSinifi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.OgrencininSinifi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>EN SEVDİĞİNİZ ÖĞRETMEN VE BRANŞI  *</label>
+                            @Html.DropDownList("EnSevdiginizOgretmenveBransi", Enumerable.Empty<SelectListItem>(), "Önce Kurum Seçiniz", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EnSevdiginizOgretmenveBransi, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>NEDENİ  *</label>
+                            @Html.EditorFor(model => model.EnSevdiginizOgretmenvNedeni, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.EnSevdiginizOgretmenvNedeni, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>EN SEVDİĞİNİZ YÖNETİCİ MÜDÜR-MÜDÜR YARDIMCISI *</label>
+                            @Html.DropDownList("EnSevdiginizYonetici", Enumerable.Empty<SelectListItem>(), "Önce Kurum Seçiniz", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(model => model.EnSevdiginizYonetici, "", new { @class = "text-danger" })
+                        </div>            
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <label>NEDENİ *</label>
+                            @Html.EditorFor(model => model.EnSevdiginizYoneticiNedeni, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                            @Html.ValidationMessageFor(model => model.EnSevdiginizYoneticiNedeni, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <img src="~/Upload/images/anketkatilim.jpg" style="width:100%;margin-left:-20px;" />
+            </div>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <center>
+                        <input type="submit" value="Anketi Gönder" onclick="formSend()" class="btn btn-primary btn-lg mb-xlg" id="btnGonder" data-loading-text="Loading...">
+                    </center>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success hidden mt-lg" id="bilgiMesaj">
+                        <strong>Başarılı!</strong> Anketiniz başarıyla gönderildi.
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-danger hidden mt-lg" id="hataMesaj">
+                        <strong>Hata!</strong> İşlem sırasında bir hata oluştu, tekrar deneyiniz.
+                        <span class="font-size-xs mt-sm display-block" id="mailErrorMessage"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="~/Scripts/vendor/jquery/jquery.min.js"></script>
+<script src="~/Scripts/vendor/jquery.validation/jquery.validation.min.js"></script>
+
+     <script>
+         $('#KurumId').change(function () {
+             var kurumId = $(this).val();
+             var dropdown = $('#EnSevdiginizOgretmenveBransi');
+             var dropdown2 = $('#EnSevdiginizYonetici');
+             dropdown2.empty();
+             dropdown.empty();
+             if (kurumId != null && kurumId != '') {
+
+                 $.ajax({
+                     type: "post",
+                     url: "/Home/EnSevdiginizOgretmenveBransiGetir",
+                     data: { KurumId: kurumId },
+                     success: function (kategoriler) {
+                         $.each(kategoriler, function (index, kategori) {
+                             $('#EnSevdiginizOgretmenveBransi').append($('<option/>', {
+                                 value: kategori.EgitimciId,
+                                 text: kategori.Aciklama
+
+                             }));
+
+                         });
+
+                     },
+                     error: function (kategoriler) {
+
+                         alert("Hata: EnSevdiginizOgretmenveBransi listelenemedi.");
+                     },
+                     beforeSend: function () {
+
+                     },
+                     complete: function () {
+
+                     }
+                 });
+
+                 $.ajax({
+                     type: "post",
+                     url: "/Home/EnSevdiginizYoneticiGetir",
+                     data: { KurumId: kurumId },
+                     success: function (kategoriler) {
+                         $.each(kategoriler, function (index, kategori) {
+                             $('#EnSevdiginizYonetici').append($('<option/>', {
+                                 value: kategori.EgitimciId,
+                                 text: kategori.Aciklama
+
+                             }));
+
+                         });
+
+                     },
+                     error: function (kategoriler) {
+
+                         alert("Hata: EnSevdiginizOgretmenveBransi listelenemedi.");
+                     },
+                     beforeSend: function () {
+
+                     },
+                     complete: function () {
+
+                     }
+                 });
+
+             }
+         });
+          
+
+                function formSend() {
+                    $(document).ready(function () {
+                        $.ajax({
+                            type: "post",
+                            url: "AnketGonder",
+                            data: { KurumId: $("#KurumId").val(), OgrencininAdi: $("#OgrencininAdi").val(), OgrencininSinifi: $("#OgrencininSinifi").val(), EnSevdiginizOgretmenveBransi: $("#EnSevdiginizOgretmenveBransi").val(), EnSevdiginizOgretmenvNedeni: $("#EnSevdiginizOgretmenvNedeni").val(), EnSevdiginizYonetici: $("#EnSevdiginizYonetici").val(), EnSevdiginizYoneticiNedeni: $("#EnSevdiginizYoneticiNedeni").val(),@Html.AntiForgeryTokenForAjaxPost() },
+                            success: function (response) {
+                                if (response != null && response.success) {
+
+                                    $("#bilgiMesaj").removeClass("hidden");
+                                    $("#hataMesaj").addClass("hidden");
+                                    //alert("Mesajınız başarıyla gönderildi.");
+                                    alert(response.responseText);
+
+                                    $("#KurumId").val("");
+                                    $("#OgrencininAdi").val("");
+                                    $("#OgrencininSinifi").val("");
+                                    $("#EnSevdiginizOgretmenveBransi").val("");
+                                    $("#EnSevdiginizOgretmenvNedeni").val("");
+                                    $("#EnSevdiginizYonetici").val("");
+                                    $("#EnSevdiginizYoneticiNedeni").val("");
+                                    $("#btnGonder").removeClass("disabled");
+                                } else {
+                                    // DoSomethingElse()
+                                    alert(response.responseText);
+                                }
+                                $("#btnGonder").removeClass("disabled");
+                            },
+                            error: function (response) {
+                                $("#btnGonder").removeClass("disabled");
+
+                                $("#hataMesaj").removeClass("hidden");
+                                $("#bilgiMesaj").addClass("hidden");
+
+                                alert("İşlem sırasında bir hata oluştu, tekrar deneyiniz.");
+                            },
+                            beforeSend: function () {
+                                $("#btnGonder").addClass("disabled");
+
+                            },
+                            complate: function () {
+
+                            },
+
+                        });
+                    });
+                }
+    </script>

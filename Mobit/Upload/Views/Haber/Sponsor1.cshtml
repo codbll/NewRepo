@@ -1,0 +1,88 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@model PagedList.PagedList<Mobit.Data.Context.Haberler>
+@{
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-11">
+            <div class="blog-posts">
+
+                @foreach (var haber in Model)
+                {
+
+                    <article class="post post-medium">
+                        <div class="row">
+
+
+                            @if (haber.Resim == null)
+                            {
+                                <div class="col-md-12">
+
+                                    <div class="post-image">
+
+                                        <h2><a href="/haber/@haber.Slug" title="@haber.Ad">@haber.Ad</a></h2>
+
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+
+                                <div class="col-md-2">
+                                    <div class="post-image">
+                                        <div class="owl-carousel owl-theme" data-plugin-options='{"items":1}'>
+                                            <div>
+                                                <div class="img-thumbnail">
+                                                    <a href="/haber/@haber.Slug">  <img class="img-responsive" src="~/Upload/haber/@haber.Resim" title="@haber.Ad" alt="@haber.Ad" style="width:80px;height:60px;"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+
+                                    <div class="post-image">
+
+                                        <h4><a href="/haber/@haber.Slug" title="@haber.Ad">@haber.Ad</a></h4>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="post-meta">
+                                                <span><i class="fa fa-calendar"></i>@haber.Tarih.ToString("d") </span>
+
+                                                <a href="/haber/@haber.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                            }
+
+
+
+                        </div>
+                        
+                    </article>
+
+                }
+                <ul class="pagination pagination-lg pull-right">
+
+                    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Haberler", "Haber", new { Sayfa = _sayfaNo }))
+
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>

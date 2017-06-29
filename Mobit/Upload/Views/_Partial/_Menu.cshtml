@@ -1,0 +1,113 @@
+﻿@model Mobit.Models.MenuModel
+
+<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1 collapse" style="z-index:-1000;">
+    <nav>
+        <ul class="nav nav-pills" id="mainNav">
+            <li>
+                <a href="/">
+                    Ana Sayfa
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="modal" data-target="#largeModal">
+                    HABERLER
+                </a>
+            </li>
+            <li>
+                <a href="#" data-toggle="modal" data-target="#largeModal1">
+                    ROPÖRTAJLAR
+                </a>
+            </li>
+
+            @foreach (var kategori in Model.Kategoriler)
+            {
+                <li @(kategori.Area == true ? " class=dropdown" : "")>
+                    <a @(kategori.Area == true ? " class=dropdown-toggle" : "") href="/Kategori/@kategori.Slug/">
+                        @kategori.KategoriAdi
+                    </a>
+                    <ul @(kategori.Area == true ? " class=dropdown-menu" : "")>
+
+                        @if (kategori.Area == true)// açılır menü ise
+                    {
+
+
+                    if (kategori.AltKategoriler.Count() >= 1)
+                    {
+
+                            foreach (var altKategori in kategori.AltKategoriler.Where(a => a.Aktif == true))
+                            {
+
+                                    @*string katUrl = "/Kategori/" + kategori.Slug + "/" + altKategori.Slug;
+
+                                        <li>
+                                            <a href="@(altKategori.Url==""? katUrl : altKategori.Url)" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a>
+                                        </li>*@
+
+                                if (string.IsNullOrEmpty(altKategori.Url))
+                                {
+
+                                    <li class="dropdown-submenu">
+                                        <a href="/Kategori/@kategori.Slug/@altKategori.Slug" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a>
+                                        <ul class="dropdown-menu">
+                                            @foreach (var iller in Model.iller)
+                                            {
+
+                                                <li>
+                                                    <a href="/kategori/@kategori.Slug/@altKategori.Slug/@iller.ilId" title="@iller.ilAdi">@iller.ilAdi</a>
+
+                                                </li>
+
+                                            }
+                                        </ul>
+
+</li>
+
+                                        }
+                                        else
+                                        {
+                                            <li><a href="@altKategori.Url" target="_blank" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a></li>
+                                        }
+
+                                    }
+                                }
+                                else
+                                {
+
+                                    foreach (var iller in Model.iller)
+                                    {
+                                    <li>
+                                        <a href="/kategori/@kategori.Slug/@iller.ilId" title="@iller.ilAdi">@iller.ilAdi</a>
+
+                                        @*<ul class="dropdown-menu">
+                                                @foreach (var ilce in iller.ilceler)
+                                                {
+
+                                                    <li>
+                                                        <a href="/kategori/@kategori.Slug/@Kontrol.ToSlug(ilce.ilceAdi)"><b>@ilce.ilceAdi </b></a>
+                                                    </li>
+                                                }
+                                            </ul>*@
+                                    </li>
+                                    }
+
+                            }
+                        }
+
+                    </ul>
+
+                </li>
+            }
+
+            @*<li>
+                    <a href="/">
+                        İletişim
+                    </a>
+                </li>*@
+
+
+        </ul>
+
+    </nav>
+</div> 
+
+ 

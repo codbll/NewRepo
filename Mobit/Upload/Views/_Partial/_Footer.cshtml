@@ -1,0 +1,89 @@
+﻿@using Mobit.Helpers
+<div class="container">
+    <div class="row">
+        <div class="col-md-7">
+            <h4><center>İLETİŞİM BİLGİLERİ</center></h4>
+            <hr />
+            <div class="row">
+                <div class="col-md-12">
+                    <span style="font-size:18px;font-weight:bold;color:#ffffff;">BASIN BÜLTENİ & OKUL34.COM <span style="font-size:12px;color:beige;">(HABER YAYIN TALEPLERİNİZ İÇİN)</span></span>
+                </div>
+                <div class="col-md-12">
+                    <span style="font-size:18px;font-weight:bold;color:#ffffff;">REKLAM & OKUL34.COM <span style="font-size:12px;color:beige;">(WEB TANITIM VE REKLAM TALEPLERİNİZ İÇİN)</span></span>
+                </div>
+                <div class="col-md-12">
+                    <span style="font-size:18px;font-weight:bold;color:#ffffff;">EDİTÖR & OKUL34.COM <span style="font-size:12px;color:beige;">(TÜM YAZI VE ROPÖRTAJ TALEPLERİNİZ İÇİN)</span></span>
+                </div>
+                <div class="col-md-12">
+                    <span style="font-size:18px;font-weight:bold;color:#ffffff;">ŞİKAYET & OKUL34.COM <span style="font-size:12px;color:beige;">(ŞİKAYET VE DİLEKLERİNİZ İÇİN)</span></span>
+                </div>
+            </div>
+       </div>
+
+       <div class="col-md-5">
+            <h4><center>SOSYAL MEDYA</center></h4>
+            <hr />
+               <center>
+                   <ul class="social-icons">
+                       <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                       <li class="social-icons-twitter"><a href="@ViewBag.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                       <li class="social-icons-linkedin"><a href="@ViewBag.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                   </ul> 
+               </center>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-6">
+                <span style="font-size:30px;font-weight:bold;color:#ffffff;"><center>(0507) 910 41 40</center></span>
+            </div>
+            <div class="col-md-6">
+                <span style="font-size:30px;font-weight:bold;color:#ffffff;"><center>(0850) 532 65 85</center></span>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4 center">
+                <a href="http://www.powertechsoft.com/" target="_blank">
+                    <p style="font-size:12px;color:#ffffff;">By Dizayn & Developer : Power Tech Soft</p>
+                </a>
+            </div>
+            <div class="col-md-4">
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="largeModal" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("/Views/_Partial/_HaberPopup.cshtml", ViewData["HaberlerPopup"])
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="largeModal1" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("/Views/_Partial/_HaberPopupRoportajlar.cshtml", ViewData["HaberlerPopup"])
+            </div>
+        </div>
+    </div>
+</div>

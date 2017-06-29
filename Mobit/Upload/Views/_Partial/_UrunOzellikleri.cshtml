@@ -1,0 +1,42 @@
+﻿@using Mobit.Data.Context
+@model List<Mobit.Data.Context.UrunAnaOzellikleri>
+
+@{
+    List<UrunAltOzellikleri> altOzellik = new List<UrunAltOzellikleri>();
+    altOzellik = (dynamic)TempData["altOzellikler"];
+}
+
+@{
+
+    foreach (var item in Model)
+    {
+        if (item.UrunAltOzellikleri != null && item.UrunAltOzellikleri.Count != 0)
+        {
+
+            <h4 class="heading-primary"><strong>@item.OzellikAdi</strong> </h4>
+
+            if (TempData["tumFiltreler"] != null)
+            {
+                string[] filtre = (dynamic)TempData["tumFiltreler"];
+
+                foreach (var alt in altOzellik.Where(a => a.AnaOzellikId == item.OzellikId))
+                {
+                    <input type="checkbox" @((filtre.Contains(alt.Slug) ? "checked" : "")) value="@alt.Slug" id="ozlk-@alt.AltOzellikId" onclick="ozellikUrun('@alt.AltOzellikId')" />
+                    @alt.OzellikAdi
+                    <br />
+                }
+            }
+            else
+            {
+                foreach (var alt in altOzellik.Where(a => a.AnaOzellikId == item.OzellikId))
+                {
+
+                    <input type="checkbox" value="@alt.Slug" id="ozlk-@alt.AltOzellikId" onclick="ozellikUrun('@alt.AltOzellikId')" />
+                    @alt.OzellikAdi
+                    <br />
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,38 @@
+﻿@model List<Mobit.Data.Model.KategoriMarkalar>
+
+@if (Model.Count() > 1) 
+{
+    if (TempData["seciliMarkalar"] != null)
+    {
+        <h4 class="heading-primary"><strong>Markalar</strong> </h4>
+
+        string[] ls = (dynamic)TempData["seciliMarkalar"];
+
+        foreach (var item in Model)
+        {
+            string markaSlug = Kontrol.ToSlug(item.MarkaAdi);
+
+            <input type="checkbox" @((ls.Contains(markaSlug.ToString()) ? "checked" : "")) id="@markaSlug" onclick="markaUrun('@markaSlug')" /> @item.MarkaAdi @:(@item.UrunAdet)<br />
+
+        }
+    }
+    else
+    {
+        <h4 class="heading-primary"><strong>Markalar</strong> </h4>
+        foreach (var item in Model)
+        {
+            string markaSlug = Kontrol.ToSlug(item.MarkaAdi);
+
+
+            <input type="checkbox" value="@markaSlug" id="@markaSlug" onclick="markaUrun('@markaSlug')" /> @item.MarkaAdi @:(@item.UrunAdet)<br />
+
+
+        }
+    }
+
+}
+
+
+
+
+

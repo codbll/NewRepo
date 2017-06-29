@@ -79,9 +79,9 @@
             @foreach (var item in Model.Where(s => s.SliderId == 19).Take(6).OrderBy(s => s.Sira))
             {
                 <div class="col-md-2" onmouseover="this.style.opacity = 0.6; this.filters.alpha.opacity = 60" onmouseout="this.style.opacity = 1; this.filters.alpha.opacity = 100">
-                    <a href="#" data-toggle="modal" data-target="#@item.Url">
-                        <img class="img-responsive img-circle" title="@item.Baslik" src="~/Upload/slide/@item.Resim" alt="@item.Baslik" data-appear-animation="rotateIn" data-appear-animation-delay="0" data-appear-animation-duration="1s" style="width:200px;height:160px;border:double;border-width:10px;border-color:#FFF;">
-                    </a>
+                            <a href="/@item.Url" target="@item.Target">
+                                <img class="img-responsive img-circle" title="@item.Baslik" src="~/Upload/slide/@item.Resim" alt="@item.Baslik" data-appear-animation="rotateIn" data-appear-animation-delay="0" data-appear-animation-duration="1s" style="width:200px;height:160px;border:double;border-width:10px;border-color:#FFF;">
+                            </a>
                 </div>
             }
         </div>

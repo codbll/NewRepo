@@ -2638,6 +2638,12 @@
     <Content Include="Views\_Partial\_Anketler.cshtml" />
     <Content Include="Views\_Partial\_HaberPopup.cshtml" />
     <Content Include="Views\_Partial\_HaberPopupRoportajlar.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupSponsor1.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupSponsor6.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupSponsor5.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupSponsor4.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupSponsor3.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupSponsor2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

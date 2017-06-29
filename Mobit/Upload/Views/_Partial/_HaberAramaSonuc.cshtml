@@ -1,0 +1,48 @@
+﻿
+@model Mobit.Data.Model.HaberAramaModel
+@using Mobit.Data.Model;
+
+
+<div class="panel-body" style="height: 200px;  overflow-y: scroll;">
+
+    @if (Model.Haberler.Count <= 0)
+    {
+
+        if (Model.DidYouMean == null)
+        {
+            @:Arama sorgunuza uygun sonuç bulunamadı.
+        }
+        else
+        {
+            <p style="color:#dd4b39;"> Bunu mu demek istediniz? </p><a style="cursor:pointer;" onclick="DidYouMean()" id="Did" >@Model.DidYouMean</a>
+        }
+
+    }
+
+    @if (Model.Haberler.Count > 0)
+    {
+        <h6>Haberler</h6>
+        <div>
+            <ul class='SearchResultItemHead'>
+                @foreach (var item in Model.Haberler)
+                {
+                   
+                    <a href="/haber/@item.Slug" title="@item.Ad">
+                        <li class='SearchResultItem'>
+                            @Html.Raw(item.Ad.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+                                             .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+                                             .Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+                                             .Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+                                             .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+                                             .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+                                           )
+                        </li>
+                    </a>
+                }
+            </ul>
+        </div>
+    }
+
+</div>
+
+

@@ -1,0 +1,174 @@
+﻿
+<!DOCTYPE html>
+<html class="boxed">
+<head>
+
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>@ViewBag.title</title>
+
+    <meta name="description" content="@Html.Raw(ViewBag.desc)">
+    <meta name="keywords" content="@Html.Raw(ViewBag.keywords)" />
+
+    <!-- Favicon -->
+    @*<link rel="shortcut icon" href="Content/img/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="Content/img/apple-touch-icon.png">*@
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <!-- Web Fonts  -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="/Scripts/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/Scripts/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/Scripts/vendor/simple-line-icons/css/simple-line-icons.min.css">
+    <link rel="stylesheet" href="/Scripts/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/Scripts/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/Scripts/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/Content/css/theme.css">
+    <link rel="stylesheet" href="/Content/css/theme-elements.css">
+    <link rel="stylesheet" href="/Content/css/theme-blog.css">
+    <link rel="stylesheet" href="/Content/css/theme-shop.css">
+    <link rel="stylesheet" href="/Content/css/theme-animate.css">
+
+    <!-- Current Page CSS -->
+    <link rel="stylesheet" href="/Scripts/vendor/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="/Scripts/vendor/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="/Scripts/vendor/rs-plugin/css/navigation.css">
+    <link rel="stylesheet" href="/Scripts/vendor/circle-flip-slideshow/css/component.css">
+
+    <!-- Skin CSS -->
+    <link rel="stylesheet" href="/Content/css/skins/default.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="/Content/css/custom.css">
+
+    <!-- Head Libs -->
+    <script src="/Scripts/vendor/modernizr/modernizr.min.js"></script>
+
+    @RenderSection("styles", required: false)
+
+</head>
+<body>
+    <div class="body">
+        @{Html.RenderAction("headerBilgi", "Home");}
+        <div role="main" class="main">
+            @RenderSection("slider", false)
+            @if (ViewBag.bilgi != null)
+            {
+                <section class="page-header">
+                    <div class="container">
+                        @*<div class="row">
+                                <div class="col-md-12">
+                                    <ul class="breadcrumb">
+                                        <li><a href="#">Home</a></li>
+                                        <li class="active">Blog</li>
+                                    </ul>
+                                </div>
+                            </div>*@
+
+                        @RenderSection("baslikAlan", required: false)
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>@ViewBag.bilgi</h1>
+
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+
+
+
+
+            <div class="container">
+
+                <div class="row">
+                    @RenderBody()
+
+
+                </div>
+
+            </div>
+            @{Html.RenderAction("AltMenu", "Home");}
+        </div>
+        
+        <footer id="footer">
+            @{Html.RenderAction("footerBilgi", "Home");}
+            
+        </footer>
+    </div>
+
+    <!-- Vendor -->
+    <script src="/Scripts/vendor/jquery/jquery.min.js"></script>
+    <script src="/Scripts/vendor/jquery.appear/jquery.appear.min.js"></script>
+    <script src="/Scripts/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="/Scripts/vendor/jquery-cookie/jquery-cookie.min.js"></script>
+    <script src="/Scripts/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/Scripts/vendor/common/common.min.js"></script>
+    <script src="/Scripts/vendor/jquery.validation/jquery.validation.min.js"></script>
+    <script src="/Scripts/vendor/jquery.stellar/jquery.stellar.min.js"></script>
+    <script src="/Scripts/vendor/jquery.easy-pie-chart/jquery.easy-pie-chart.min.js"></script>
+    <script src="/Scripts/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="/Scripts/vendor/jquery.lazyload/jquery.lazyload.min.js"></script>
+    <script src="/Scripts/vendor/isotope/jquery.isotope.min.js"></script>
+    <script src="/Scripts/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="/Scripts/vendor/owl.carousel/assets/owl.theme.default.min.css">
+
+    <script src="/Scripts/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/Scripts/vendor/vide/vide.min.js"></script>
+    <script src="/Scripts/js/examples/examples.lightboxes.js"></script>
+    <script src="~/Scripts/examples/examples.gallery.js"></script>
+    @*<script src="~/Scripts/examples.carousels.js"></script>*@
+
+    <!-- Theme Base, Components and Settings -->
+    <script src="/Scripts/js/theme.js"></script>
+
+    <!-- Current Page Vendor and Views -->
+    <script src="/Scripts/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/Scripts/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+    <script src="/Scripts/vendor/circle-flip-slideshow/js/jquery.flipshow.min.js"></script>
+    <script src="/Scripts/js/views/view.home.js"></script>
+
+    <!-- Theme Custom -->
+    <script src="/Scripts/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="/Scripts/js/theme.init.js"></script>
+
+    @RenderSection("scripts", required: false)
+    <!-- Google Analytics: Change UA-XXXXX-X to be your site's ID. Go to http://www.google.com/analytics/ for more information.
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-12345678-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+     -->
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-6722445-4', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    @RenderSection("Popup", required: false)
+
+    
+</body>
+</html>

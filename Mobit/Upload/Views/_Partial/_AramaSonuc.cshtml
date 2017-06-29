@@ -1,0 +1,71 @@
+﻿
+@model Mobit.Data.Model.AramaModel
+@using Mobit.Data.Model;
+
+
+<div class="panel-body" style="height: 200px;  overflow-y: scroll;">
+
+    @if (Model.Kurumlar.Count <= 0 && Model.Kategoriler.Count <= 0)
+    {
+
+        if (Model.DidYouMean == null)
+        {
+            @:Arama sorgunuza uygun sonuç bulunamadı.
+        }
+        else
+        {
+            <p style="color:#dd4b39;"> Bunu mu demek istediniz? </p><a style="cursor:pointer;" onclick="DidYouMean()" id="Did" >@Model.DidYouMean</a>
+        }
+
+    }
+
+    @if (Model.Kurumlar.Count > 0)
+    {
+        <h6>Kurumlar</h6>
+        <div>
+            <ul class='SearchResultItemHead'>
+                @foreach (var item in Model.Kurumlar)
+                {
+                    <a href="/@item.Kategoriler.Slug/@item.Slug" title="@item.KurumAdi">
+                        <li class='SearchResultItem'>
+                            @Html.Raw(item.KurumAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+                                             .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+                                             .Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+                                             .Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+                                             .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+                                             .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+                                           )
+                        </li>
+                    </a>
+                }
+            </ul>
+        </div>
+    }
+
+    @if (Model.Kategoriler.Count > 0)
+    {
+        <h6>Kategoriler</h6>
+        <div>
+            <ul class='SearchResultItemHead'>
+                @foreach (var item in Model.Kategoriler)
+                {
+
+                    <a href="/Kategori/@item.Slug" title="@item.KategoriAdi">
+                        <li class='SearchResultItem'>
+                            @Html.Raw(item.KategoriAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
+                                .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
+                                .Replace(Model.SearchKey.ToLower(), "<b><font color='#990066'>" + Model.SearchKey.ToLower() + "</font></b>")
+                                .Replace(Model.SearchKey.ToUpper(), "<b><font color='#990066'>" + Model.SearchKey.ToUpper() + "</font></b>")
+                                .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToLower()) + "</font></b>")
+                                .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey.ToUpper()) + "</font></b>")
+                              )
+                        </li>
+                    </a>
+                }
+            </ul>
+        </div>
+    }
+
+</div>
+
+
