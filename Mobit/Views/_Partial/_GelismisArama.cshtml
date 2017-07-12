@@ -34,7 +34,7 @@
         <div class="form-group">
             <div class="col-md-12">
                 @*<label class="control-label">KATEGORİ</label><br />*@
-                @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control"  })
+                @Html.DropDownList("KategoriId", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control populate" })
                 @*@Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })*@
             </div>
         </div>

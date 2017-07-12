@@ -301,73 +301,73 @@
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#Kurumadi" data-toggle="tab" style="font-size:16px;">@Model.Kurumlar.KurumAdi</a></li>
                         </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="Kurumadi">
+                        <div class="tab-content" style="background-color:#FFEB98;">
+                            <div class="tab-pane active" id="Kurumadi" style="background-color:#FFEB98;">
                                 <dl>
                                     @if (Model.Kurumlar.Adres != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">ADRESİ :</span></dt>
-                                            <dd>@Model.Kurumlar.Adres</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ADRESİ :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Adres</span></dt>
                                     }
                                     @if (Model.Kurumlar.ilceler.ilceAdi != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">İLÇE :</span></dt>
-                                            <dd>@Model.Kurumlar.ilceler.ilceAdi</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">İLÇE :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.ilceler.ilceAdi</span></dt>
                                     }
                                     @if (Model.Kurumlar.Tel != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">TELEFON NO :</span></dt>
-                                            <dd>@Model.Kurumlar.Tel</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Tel</span></dt>
                                     }
                                     @if (Model.Kurumlar.Subeler != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">ŞUBELER :</span></dt>
-                                            <dd>@Model.Kurumlar.Subeler</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ŞUBELER :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Subeler</span></dt>
                                     }
                                     @if (Model.Kurumlar.KurulusTarih != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">AÇILIŞ YILI :</span></dt>
-                                            <dd>@Model.Kurumlar.KurulusTarih</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AÇILIŞ YILI :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurulusTarih</span></dt>
                                     }
                                     @if (Model.Kurumlar.Kurucusu != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
-                                            <dd>@Model.Kurumlar.Kurucusu</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kurucusu</span></dt>
                                     }
                                     @if (Model.Kurumlar.KurumMuduru != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">MÜDÜR :</span></dt>
-                                            <dd>@Model.Kurumlar.KurumMuduru</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dt>
                                     }
                                     @if (Model.Kurumlar.KurumMuduru != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">MÜDÜR YARDIMCILARI :</span></dt>
-                                            <dd>@Model.Kurumlar.KurumMuduru</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR YARDIMCILARI :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dt>
                                     }
                                     @if (Model.Kurumlar.Egitimciler != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">EĞİTİMCİLER :</span></dt>
-                                            <dd>@Model.Kurumlar.Egitimciler</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİMCİLER :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Egitimciler</span></dt>
                                     }
                                     @if (Model.Kurumlar.Aktiviteler != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">AKTİVİTELER :</span></dt>
-                                            <dd>@Model.Kurumlar.Aktiviteler</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AKTİVİTELER :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Aktiviteler</span></dt>
                                     }
                                     @if (Model.Kurumlar.Fax != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">FAKS :</span></dt>
-                                            <dd>@Model.Kurumlar.Fax</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">FAKS :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Fax</span></dt>
                                     }
                                     @if (Model.Kurumlar.Email != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">E-MAİL :</span></dt>
-                                            <dd>@Model.Kurumlar.Email</dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">E-MAİL :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Email</span></dt>
                                     }
                                     @if (Model.Kurumlar.WebSitesi != null)
                                     {
-                                        <dt><span style="color:red;font-weight:bold;">WEB ADRESİ :</span></dt>
-                                            <dd><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></dd>
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">WEB ADRESİ :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></span></dt>
                                     }
                                 </dl>
                             </div>
