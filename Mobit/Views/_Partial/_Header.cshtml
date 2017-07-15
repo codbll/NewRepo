@@ -15,11 +15,17 @@
                     </div>
                 </div>
                 <div class="header-column SourcePasif" style="padding-left:10px;">
-                    <ul class="social-icons SourcePasif">
-                        <li class="social-icons-facebook"><a href="@ViewBag.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                        <li class="social-icons-twitter"><a href="@ViewBag.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                        <li class="social-icons-linkedin"><a href="@ViewBag.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                    </ul>
+                    @{
+                        Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
+                        foreach (var item in db.MetaTag)
+                        {
+                            <ul class="social-icons SourcePasif">
+                                <li class="social-icons-facebook"><a href="@item.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                <li class="social-icons-twitter"><a href="@item.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                <li class="social-icons-linkedin"><a href="@item.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        }
+                    }
                 </div>
 
             </div>

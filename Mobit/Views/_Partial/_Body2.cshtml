@@ -30,9 +30,15 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="/Haber/@haberler.Slug">@haberler.Ad</a>
+                                    @{
+                                        string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay).ToString().Split().Take(6).ToArray());
+                                        Write(Html.Raw(firstTwoWords.ToLowerInvariant() + "...") );
+                                    }
                                     <div class="post-meta">
-                                        @haberler.Tarih.ToShortDateString()
+                                        <span><i class="fa fa-calendar"></i>@haberler.Tarih.ToShortDateString() </span>
+                                        <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
                                     </div>
+
                                 </div>
                             </li>
                         }
@@ -133,7 +139,7 @@
         </aside>
         <br />
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(11).OrderBy(s => s.Sira))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(14).OrderBy(s => s.Sira))
             {
                 <div class="col-md-12" style="padding:7px;">
                     <a href="@item.Url" target="@item.Target">

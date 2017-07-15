@@ -344,7 +344,7 @@ html #header.header-transparent .header-body:before {
 	bottom: 0;
 	background: #282d36;
 	opacity: 0;
-	border-bottom: 1px solid #f1f1f1;
+	border-bottom: 0px solid #f1f1f1;
 	-webkit-transition: opacity 0.3s ease;
 	-moz-transition: opacity 0.3s ease;
 	transition: opacity 0.3s ease;
@@ -451,6 +451,9 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
     .SourcePasif {
        display: none;
     }
+    .HaberlerPasif {
+        display: none;
+    }
     .SmallSlayt {
         padding-top:20px;
     }
@@ -467,6 +470,10 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
         z-index: 1;
         margin-top:-10px;
         width:200px;
+    }
+
+    .HaberlerPasif {
+        display: none;
     }
 
     
@@ -1083,7 +1090,9 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 		clear: both;
 		float: none;
 	}
-
+    .HaberlerPasif {
+        display: none;
+    }
 	#header .header-nav-main nav {
 		margin: 0 0 6px;
 	}
@@ -1361,7 +1370,9 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
 	#header .header-nav-main nav > ul > li.dropdown-mega.dropdown-mega-signin {
 		margin-right: 0;
 	}
-
+    .HaberlerPasif {
+        display: none;
+    }
 	#header .header-nav-main nav > ul > li.dropdown-mega.dropdown-mega-signin .dropdown-toggle {
 		display: none;
 	}

@@ -48,19 +48,22 @@
 
                                     <li class="dropdown-submenu">
                                         <a href="/Kategori/@kategori.Slug/@altKategori.Slug" title="@altKategori.AltKategoriAdi">@altKategori.AltKategoriAdi</a>
-                                        <ul class="dropdown-menu">
-                                            @foreach (var iller in Model.iller)
-                                            {
+                                        @if (kategori.KategoriAdi != "TEDARİKÇİLER")
+                                        {
+                                            <ul class="dropdown-menu">
+                                                @foreach (var iller in Model.iller)
+                                                {
 
-                                                <li>
-                                                    <a href="/kategori/@kategori.Slug/@altKategori.Slug/@iller.ilId" title="@iller.ilAdi">@iller.ilAdi</a>
+                                                    <li>
+                                                        <a href="/kategori/@kategori.Slug/@altKategori.Slug/@iller.ilId" title="@iller.ilAdi">@iller.ilAdi</a>
 
-                                                </li>
+                                                    </li>
 
-                                            }
-                                        </ul>
+                                                }
+                                            </ul>
+                                        }                                        
 
-</li>
+                                        </li>
 
                                         }
                                         else
