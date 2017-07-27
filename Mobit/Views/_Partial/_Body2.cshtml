@@ -2,7 +2,7 @@
 
 @* alt haberler *@
 <div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;">
-    @Html.Partial("/Views/_Partial/_HaberArama.cshtml") 
+    @Html.Partial("/Views/_Partial/_HaberArama.cshtml")
     @{
         foreach (var item in Model.Haberler)
         {
@@ -30,16 +30,22 @@
                                 </div>
                                 <div class="post-info">
                                     <a href="/Haber/@haberler.Slug">@haberler.Ad</a>
+                                    @{
+                                        string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay).ToString().Split().Take(6).ToArray());
+                                        Write(Html.Raw(firstTwoWords.ToLowerInvariant() + "..."));
+                                    }
                                     <div class="post-meta">
-                                        @haberler.Tarih.ToShortDateString()
+                                        <span><i class="fa fa-calendar"></i>@haberler.Tarih.ToShortDateString() </span>
+                                        <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
                                     </div>
+
                                 </div>
                             </li>
-                        }
+                                        }
                     </ul>
                 </aside>
             </div>
-        }
+                                        }
 
     }
     <div class="col-md-4" style="padding:7px;">
@@ -55,11 +61,11 @@
                     {
                         l = l + 1;
 
-                        <div title="@item.KurumAdi" >
+                        <div title="@item.KurumAdi">
 
                             <span class="thumb-info thumb-info-lighten" style="height:125px;width:150px;">
-                                <span class="thumb-info-wrapper" >
-                                    <img src="~/Upload/kurum/@item.UploadYolu/@item.Resim" class="img-responsive" alt="@item.KurumAdi" title="@item.KurumAdi"  style="height:125px;width:150px;">
+                                <span class="thumb-info-wrapper">
+                                    <img src="~/Upload/kurum/@item.UploadYolu/@item.Resim" class="img-responsive" alt="@item.KurumAdi" title="@item.KurumAdi" style="height:125px;width:150px;">
                                     <span class="thumb-info-title">
                                         <span class="thumb-info-inner" style="font-size:12px;">Puan(@item.sayi)</span>
                                     </span>
@@ -94,7 +100,6 @@
                                     </span>
                                 </span>
                             </span>
-                            <div style="font-size:10px;">@item.EnSevdiginizYoneticiAdiSoyadi</div>
                         </div>
 
                     }
@@ -123,7 +128,6 @@
                                     </span>
                                 </span>
                             </span>
-                            <div style="font-size:10px;">@item.EnSevdiginizEgitimciAdiSoyadi</div>
                         </div>
                     }
 
@@ -133,7 +137,7 @@
         </aside>
         <br />
         <div class="row">
-            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(11).OrderBy(s => s.Sira))
+            @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(15).OrderBy(s => s.Sira))
             {
                 <div class="col-md-12" style="padding:7px;">
                     <a href="@item.Url" target="@item.Target">
@@ -147,7 +151,7 @@
             }
         </div>
     </div>
-    
+
 </div>
 <div class="row" style="margin-left:20px;margin-right:20px;">
     <div class="col-md-4" style="padding:7px;">
