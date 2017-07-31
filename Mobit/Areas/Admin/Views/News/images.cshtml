@@ -1,0 +1,86 @@
+﻿@model List<Mobit.Data.Context.HaberlerResim>
+@{
+    ViewBag.Title = "Resim Yükle";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Yeni Resim Ekle - <a href="/Admin/News">Geri Dön</a></h2> 
+
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="col-md-12">
+
+        <div class="form-group col-md-6">
+            <label class="control-label col-md-2">Resim </label>
+            <form method="post" action="/Admin/News/images" enctype="multipart/form-data">
+
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="HaberlerId" value="@ViewBag.haberlerId">
+                <div>
+                    <input type="file" name="HaberlerResim" id="HaberlerResim" accept="image/*" multiple=""> <br>
+                    <input type="submit" class="btn btn-primary hidden" id="btnYukle" value="Resim Yükle">
+                </div>
+            </form>
+        </div>
+    </div>
+    
+        <div class="row">
+
+            @foreach (var item in Model)
+            {
+                
+                <div class="file-box">
+                    <div class="file">
+                        <a href="#.">
+                            <span class="corner"></span>
+                           
+                            <img alt="image"  width="250" height="200" src="~/Upload/galeri/@item.Resim">
+                            <div class="file-name">
+                               <a onclick="return confirm('Bu kaydı silmek istediğinizden emin misiniz?')" href="/Admin/News/DeleteFile/@item.ResimId?galeri=@item.HaberlerId">Resmi Sil</a>
+                                                              
+                            </div>
+                        </a>
+                    </div>
+
+                </div>
+            }
+           
+
+
+
+        </div>
+
+
+
+
+    </div>
+@Scripts.Render("~/admin/bundles/jquery")
+
+
+<script>
+        $("document").ready(function () {
+
+            $("#HaberlerResim").change(function () {
+
+                var ext = $('#HaberlerResim').val().split('.').pop().toLowerCase();
+                if ($.inArray(ext, ['png', 'jpeg', 'jpg', 'gif', 'bmp']) == -1) {
+                    alert('Sadece resim dosyaları seçebilirsiniz.');
+
+                    fileTypeControl($("#HaberlerResim"));
+
+                    $("#btnYukle").addClass("hidden");
+                }
+                else {
+                    $("#btnYukle").removeClass("hidden");
+                }
+
+            });
+
+        });
+
+
+        function fileTypeControl(dosya) {
+            var fileopen = dosya,
+            clone = fileopen.clone(true);
+            fileopen.replaceWith(clone);
+        }
+</script>

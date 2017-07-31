@@ -3,7 +3,7 @@
             Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
             <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetailS1">
 
-                @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 5).ToList()) 
+                @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 5).OrderByDescending(u => u.Id).ToList()) 
                 {
                     <a href="/haber/@item.Slug" >
                         <div class="image-gallery-item">
@@ -22,7 +22,7 @@
 
 </div>
             <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbsS1">
-                @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 5).ToList())
+                @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 5).OrderByDescending(u => u.Id).ToList())
             {
                     <div class="image-gallery-item">
                         <span class="thumb-info thumb-info-lighten">

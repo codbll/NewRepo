@@ -36,9 +36,9 @@
                             @Html.Raw(Model.Detay)
                         </p>
                         <p>
-                            @if (Model.GaleriId != null && ViewData["GaleriResim"] != null)
+                            @if (Model.Id != null && ViewData["HaberlerResim"] != null)
                             {
-                                @Html.Partial("/Views/_Partial/_Galeri.cshtml", ViewData["GaleriResim"])
+                                @Html.Partial("/Views/_Partial/_HaberlerGaleri.cshtml", ViewData["HaberlerResim"])
                             }
                         </p>
                         

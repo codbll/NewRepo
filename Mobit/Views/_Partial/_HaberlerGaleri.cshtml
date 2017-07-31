@@ -1,0 +1,24 @@
+﻿@model List<Mobit.Data.Context.HaberlerResim>
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <div class="owl-carousel owl-theme show-nav-hover mt-none" data-plugin-options='{"items": 1, "margin": 10, "loop": true, "nav": true, "animateOut": "fadeOut"}'>
+
+                @foreach (var item in Model)
+                {
+                    <div class="lightbox" data-plugin-options="{&quot;delegate&quot;: &quot;a&quot;, &quot;type&quot;: &quot;image&quot;, &quot;gallery&quot;: {&quot;enabled&quot;: true}, &quot;mainClass&quot;: &quot;mfp-with-zoom&quot;, &quot;zoom&quot;: {&quot;enabled&quot;: true, &quot;duration&quot;: 300}}">
+                        <a href="~/Upload/galeri/@item.Resim" class="lightbox-portfolio">
+                                <img src="~/Upload/galeri/@item.Resim" width="800" height="600" alt="@item.Haberler.Ad" title="@item.Haberler.Ad">
+                        </a>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
