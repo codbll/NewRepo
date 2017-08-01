@@ -451,11 +451,6 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
     .SourcePasif {
         display: none;
     }
-
-    .HaberlerPasif {
-        display: none;
-    }
-
     .SmallSlayt {
         padding-top: 20px;
     }
