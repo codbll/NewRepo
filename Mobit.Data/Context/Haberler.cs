@@ -14,6 +14,12 @@ namespace Mobit.Data.Context
     
     public partial class Haberler
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Haberler()
+        {
+            this.HaberlerResim = new HashSet<HaberlerResim>();
+        }
+    
         public int Id { get; set; }
         public string Ad { get; set; }
         public string Resim { get; set; }
@@ -27,5 +33,7 @@ namespace Mobit.Data.Context
     
         public virtual Galeri Galeri { get; set; }
         public virtual HaberKategorileri HaberKategorileri { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HaberlerResim> HaberlerResim { get; set; }
     }
 }

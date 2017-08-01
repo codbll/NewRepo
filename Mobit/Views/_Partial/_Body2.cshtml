@@ -14,7 +14,7 @@
                     <ul class="simple-post-list">
                         @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
                         {
-                            <li>
+                            <li style="margin:0px;padding:0px">
                                 <div class="post-image">
                                     <a href="/Haber/@haberler.Slug">
                                         <div class="img-thumbnail">

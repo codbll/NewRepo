@@ -32,7 +32,6 @@ namespace Mobit.Data.Context
         public virtual DbSet<AdminRolleri> AdminRolleri { get; set; }
         public virtual DbSet<AltKategoriler> AltKategoriler { get; set; }
         public virtual DbSet<Bulten> Bulten { get; set; }
-        public virtual DbSet<Cozumler> Cozumler { get; set; }
         public virtual DbSet<DosyaYoneticisi> DosyaYoneticisi { get; set; }
         public virtual DbSet<ELMAH_Error> ELMAH_Error { get; set; }
         public virtual DbSet<Galeri> Galeri { get; set; }
@@ -52,10 +51,10 @@ namespace Mobit.Data.Context
         public virtual DbSet<Sayfalar> Sayfalar { get; set; }
         public virtual DbSet<Slider> Slider { get; set; }
         public virtual DbSet<SliderKategori> SliderKategori { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Anketler> Anketler { get; set; }
         public virtual DbSet<KurumEgitimciler> KurumEgitimciler { get; set; }
         public virtual DbSet<VW_Anketler> VW_Anketler { get; set; }
+        public virtual DbSet<HaberlerResim> HaberlerResim { get; set; }
     
         public virtual ObjectResult<spEniyiEgitimci_Result> spEniyiEgitimci()
         {

@@ -96,7 +96,7 @@
                 <h4>
                     @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
                     {
-                        <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"> <i class="fa-paper-plane-o"></i> @item.Ad</a>
+                        <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"><img src="~/Upload/images/right-arrow.png" /> @item.Ad</a>
                     }
                 </h4>
             </marquee>

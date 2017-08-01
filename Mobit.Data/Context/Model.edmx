@@ -72,18 +72,6 @@
           <Property Name="Ip" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Tarih" Type="datetime" Nullable="false" />
         </EntityType>
-        <EntityType Name="Cozumler">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Detay" Type="nvarchar(max)" />
-          <Property Name="Url" Type="nvarchar" MaxLength="100" />
-          <Property Name="Aktif" Type="bit" Nullable="false" />
-          <Property Name="KategoriId" Type="tinyint" Nullable="false" />
-        </EntityType>
         <EntityType Name="DosyaYoneticisi">
           <Key>
             <PropertyRef Name="DosyaId" />
@@ -153,6 +141,14 @@
           <Property Name="GaleriId" Type="int" />
           <Property Name="Tarih" Type="datetime" Nullable="false" />
           <Property Name="Hit" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HaberlerResim">
+          <Key>
+            <PropertyRef Name="ResimId" />
+          </Key>
+          <Property Name="ResimId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HaberlerId" Type="int" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="ilceler">
           <Key>
@@ -243,6 +239,7 @@
           <Property Name="Kurucusu" Type="nvarchar" MaxLength="250" />
           <Property Name="Egitimciler" Type="nvarchar" MaxLength="500" />
           <Property Name="Panoroma" Type="nvarchar(max)" />
+          <Property Name="Eniyiler" Type="int" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -342,18 +339,8 @@
           <Property Name="Durum" Type="bit" Nullable="false" />
           <Property Name="Kod" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
-        </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VW_Anketler">
           <Key>
             <PropertyRef Name="AnketId" />
@@ -482,6 +469,18 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_HaberlerResim_Galeriler">
+          <End Role="Haberler" Type="Self.Haberler" Multiplicity="1" />
+          <End Role="HaberlerResim" Type="Self.HaberlerResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HaberlerResim">
+              <PropertyRef Name="HaberlerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_KurumEgitimciler_Kurumlar">
           <End Role="Kurumlar" Type="Self.Kurumlar" Multiplicity="1" />
           <End Role="KurumEgitimciler" Type="Self.KurumEgitimciler" Multiplicity="*" />
@@ -600,46 +599,15 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <Parameter Name="StatusCode" Type="int" Mode="In" />
           <Parameter Name="TimeUtc" Type="datetime" Mode="In" />
         </Function>
-        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
         <Function Name="Logger" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="LogType" Type="nvarchar" Mode="In" />
           <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
           <Parameter Name="UrlReferrer" Type="nvarchar" Mode="In" />
           <Parameter Name="IPAddress" Type="nvarchar" Mode="In" />
         </Function>
-        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="version" Type="int" Mode="In" />
-          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
-        </Function>
-        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
         <Function Name="sp_EniyiEgitimciler2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_Eniyikurumlar" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="sp_EniyiYoneticiler1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-        </Function>
-        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
-          <Parameter Name="owner_id" Type="int" Mode="In" />
-          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
-        </Function>
-        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spEnSevdiginizEgitimciAdiSoyadi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spVW_Eniyikurum" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="ModelStoreContainer">
@@ -649,13 +617,13 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <EntitySet Name="AltKategoriler" EntityType="Self.AltKategoriler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Anketler" EntityType="Self.Anketler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Bulten" EntityType="Self.Bulten" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cozumler" EntityType="Self.Cozumler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DosyaYoneticisi" EntityType="Self.DosyaYoneticisi" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ELMAH_Error" EntityType="Self.ELMAH_Error" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Galeri" EntityType="Self.Galeri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="GaleriResim" EntityType="Self.GaleriResim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HaberKategorileri" EntityType="Self.HaberKategorileri" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Haberler" EntityType="Self.Haberler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HaberlerResim" EntityType="Self.HaberlerResim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ilceler" EntityType="Self.ilceler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iletisim" EntityType="Self.iletisim" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="iller" EntityType="Self.iller" Schema="dbo" store:Type="Tables" />
@@ -670,7 +638,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <EntitySet Name="Sayfalar" EntityType="Self.Sayfalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Slider" EntityType="Self.Slider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SliderKategori" EntityType="Self.SliderKategori" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VW_Anketler" EntityType="Self.VW_Anketler" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [VW_Anketler].[AnketId] AS [AnketId], 
@@ -742,6 +709,10 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
             <End Role="HaberKategorileri" EntitySet="HaberKategorileri" />
             <End Role="Haberler" EntitySet="Haberler" />
           </AssociationSet>
+          <AssociationSet Name="FK_HaberlerResim_Galeriler" Association="Self.FK_HaberlerResim_Galeriler">
+            <End Role="Haberler" EntitySet="Haberler" />
+            <End Role="HaberlerResim" EntitySet="HaberlerResim" />
+          </AssociationSet>
           <AssociationSet Name="FK_KurumEgitimciler_Kurumlar" Association="Self.FK_KurumEgitimciler_Kurumlar">
             <End Role="Kurumlar" EntitySet="Kurumlar" />
             <End Role="KurumEgitimciler" EntitySet="KurumEgitimciler" />
@@ -785,7 +756,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <EntitySet Name="AdminRolleri" EntityType="Model.AdminRolleri" />
           <EntitySet Name="AltKategoriler" EntityType="Model.AltKategoriler" />
           <EntitySet Name="Bulten" EntityType="Model.Bulten" />
-          <EntitySet Name="Cozumler" EntityType="Model.Cozumler" />
           <EntitySet Name="DosyaYoneticisi" EntityType="Model.DosyaYoneticisi" />
           <EntitySet Name="ELMAH_Error" EntityType="Model.ELMAH_Error" />
           <EntitySet Name="Galeri" EntityType="Model.Galeri" />
@@ -805,7 +775,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <EntitySet Name="Sayfalar" EntityType="Model.Sayfalar" />
           <EntitySet Name="Slider" EntityType="Model.Slider" />
           <EntitySet Name="SliderKategori" EntityType="Model.SliderKategori" />
-          <EntitySet Name="sysdiagrams" EntityType="Model.sysdiagrams" />
           <AssociationSet Name="FK_AdminRolIliski_Adminler" Association="Model.FK_AdminRolIliski_Adminler">
             <End Role="Adminler" EntitySet="Adminler" />
             <End Role="AdminRolIliski" EntitySet="AdminRolIliski" />
@@ -943,6 +912,11 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <FunctionImport Name="sp_EniyiEgitimciler1" ReturnType="Collection(Model.sp_EniyiEgitimciler1_Result)" />
           <FunctionImport Name="sp_EniyiYoneticiler1" ReturnType="Collection(Model.sp_EniyiYoneticiler1_Result)" />
           <FunctionImport Name="sp_EniyiEgitimciler2" ReturnType="Collection(Model.sp_EniyiEgitimciler2_Result)" />
+          <EntitySet Name="HaberlerResim" EntityType="Model.HaberlerResim" />
+          <AssociationSet Name="FK_HaberlerResim_Galeriler" Association="Model.FK_HaberlerResim_Galeriler">
+            <End Role="Haberler" EntitySet="Haberler" />
+            <End Role="HaberlerResim" EntitySet="HaberlerResim" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Adminler">
           <Key>
@@ -999,18 +973,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <Property Name="Mail" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Ip" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Tarih" Type="DateTime" Nullable="false" Precision="3" />
-        </EntityType>
-        <EntityType Name="Cozumler">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Slug" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Aktif" Type="Boolean" Nullable="false" />
-          <Property Name="KategoriId" Type="Byte" Nullable="false" />
         </EntityType>
         <EntityType Name="DosyaYoneticisi">
           <Key>
@@ -1088,6 +1050,7 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <Property Name="Hit" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Galeri" Relationship="Model.FK_Haberler_Galeri" FromRole="Haberler" ToRole="Galeri" />
           <NavigationProperty Name="HaberKategorileri" Relationship="Model.FK_Haberler_HaberKategorileri" FromRole="Haberler" ToRole="HaberKategorileri" />
+          <NavigationProperty Name="HaberlerResim" Relationship="Model.FK_HaberlerResim_Galeriler" FromRole="Haberler" ToRole="HaberlerResim" />
         </EntityType>
         <EntityType Name="ilceler">
           <Key>
@@ -1180,6 +1143,7 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <Property Name="Egitimciler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Panoroma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KurumEgitimciler" Relationship="Model.FK_KurumEgitimciler_Kurumlar" FromRole="Kurumlar" ToRole="KurumEgitimciler" />
+          <Property Name="Eniyiler" Type="Int32" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1282,16 +1246,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <Property Name="Durum" Type="Boolean" Nullable="false" />
           <Property Name="Kod" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Slider" Relationship="Model.FK_Slider_SliderKategori" FromRole="SliderKategori" ToRole="Slider" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_AdminRolIliski_Adminler">
           <End Type="Model.Adminler" Role="Adminler" Multiplicity="0..1" />
@@ -1653,6 +1607,27 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <Property Type="String" Name="UploadYolu" Nullable="true" MaxLength="150" />
           <Property Type="Int32" Name="sayi" Nullable="true" />
         </ComplexType>
+        <EntityType Name="HaberlerResim">
+          <Key>
+            <PropertyRef Name="ResimId" />
+          </Key>
+          <Property Name="ResimId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HaberlerId" Type="Int32" Nullable="false" />
+          <Property Name="Resim" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Haberler" Relationship="Model.FK_HaberlerResim_Galeriler" FromRole="HaberlerResim" ToRole="Haberler" />
+        </EntityType>
+        <Association Name="FK_HaberlerResim_Galeriler">
+          <End Type="Model.Haberler" Role="Haberler" Multiplicity="1" />
+          <End Type="Model.HaberlerResim" Role="HaberlerResim" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Haberler">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HaberlerResim">
+              <PropertyRef Name="HaberlerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1710,19 +1685,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
                 <ScalarProperty Name="Tarih" ColumnName="Tarih" />
                 <ScalarProperty Name="Ip" ColumnName="Ip" />
                 <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Cozumler">
-            <EntityTypeMapping TypeName="Model.Cozumler">
-              <MappingFragment StoreEntitySet="Cozumler">
-                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
-                <ScalarProperty Name="Aktif" ColumnName="Aktif" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Detay" ColumnName="Detay" />
-                <ScalarProperty Name="Slug" ColumnName="Slug" />
-                <ScalarProperty Name="Ad" ColumnName="Ad" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1859,6 +1821,7 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Eniyiler" ColumnName="Eniyiler" />
                 <ScalarProperty Name="Panoroma" ColumnName="Panoroma" />
                 <ScalarProperty Name="Egitimciler" ColumnName="Egitimciler" />
                 <ScalarProperty Name="Kurucusu" ColumnName="Kurucusu" />
@@ -1994,17 +1957,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagrams">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Anketler">
             <EntityTypeMapping TypeName="Model.Anketler">
               <MappingFragment StoreEntitySet="Anketler">
@@ -2083,30 +2035,6 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
           <FunctionImportMapping FunctionImportName="ELMAH_GetErrorXml" FunctionName="Model.Store.ELMAH_GetErrorXml" />
           <FunctionImportMapping FunctionImportName="ELMAH_LogError" FunctionName="Model.Store.ELMAH_LogError" />
           <FunctionImportMapping FunctionImportName="Logger" FunctionName="Model.Store.Logger" />
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Model.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Model.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Model.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Model.Store.sp_helpdiagramdefinition">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Model.Store.sp_helpdiagrams">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
-                <ScalarProperty Name="Database" ColumnName="Database" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Owner" ColumnName="Owner" />
-                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Model.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Model.Store.sp_upgraddiagrams" />
           <FunctionImportMapping FunctionImportName="spEnSevdiginizEgitimciAdiSoyadi" FunctionName="Model.Store.spEnSevdiginizEgitimciAdiSoyadi">
             <ResultMapping>
               <ComplexTypeMapping TypeName="Model.spEnSevdiginizEgitimciAdiSoyadi_Result">
@@ -2158,6 +2086,15 @@ warning 6002: The table/view 'db3FE6E78582.dbo.VW_Anketler' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="HaberlerResim">
+            <EntityTypeMapping TypeName="Model.HaberlerResim">
+              <MappingFragment StoreEntitySet="HaberlerResim">
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="HaberlerId" ColumnName="HaberlerId" />
+                <ScalarProperty Name="ResimId" ColumnName="ResimId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,0 +1,34 @@
+{
+    "name": "shiner",
+    "title": "jQuery shiner",
+    "description": "jQuery plugin for a simple slide show by using visibility and css3 transitions",
+    "keywords": [
+        "slideshow",
+        "crossfade"
+    ],
+    "version": "1.0.1",
+    "author": {
+        "name": "Dan Kolz @ Emergent Ideas",
+        "url": "https://github.com/EmergentIdeas/shiner"
+    },
+    "maintainers": [
+        {
+            "name": "Dan Kolz",
+            "email": "dan@emergentideas.com",
+            "url": "http://emergentideas.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://raw.github.com/EmergentIdeas/shiner/master/LICENSE"
+        }
+    ],
+    "bugs": "https://github.com/EmergentIdeas/shiner/issues",
+    "homepage": "https://github.com/EmergentIdeas/shiner",
+    "docs": "https://github.com/EmergentIdeas/shiner",
+    "download": "://github.com/EmergentIdeas/shiner/archive/v1.0.1.zip",
+    "dependencies": {
+        "jquery": ">=1.5"
+    }
+}

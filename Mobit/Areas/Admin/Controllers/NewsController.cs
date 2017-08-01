@@ -39,7 +39,7 @@ namespace Mobit.Areas.Admin.Controllers
                 return View();
             }
 
-           // resim seçmeden haber eklenebilsin
+            // resim seçmeden haber eklenebilsin
             if (yuklenecekDosya == null)
             {
                 //TempData["bilgi"] = "Haber resmi seçilmedi";
@@ -318,5 +318,88 @@ namespace Mobit.Areas.Admin.Controllers
             return RedirectToAction("Category");
 
         }
+
+        public ActionResult images(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var galeri = db.HaberlerResim.Where(r => r.HaberlerId == id).ToList();
+            if (galeri == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.HaberlerId = id;
+            return View(galeri);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult images(List<HttpPostedFileBase> HaberlerResim, int haberlerId)
+        {
+            if (HaberlerResim == null)
+            {
+                return Redirect("/Admin/News/images/" + haberlerId);
+            }
+
+            Haberler galeri = db.Haberler.Find(haberlerId);
+            List<HaberlerResim> gResimler = new List<HaberlerResim>();
+
+            foreach (var file in HaberlerResim)
+            {
+                if (file.ContentLength > 0)
+                {
+                    Random rnd = new Random();
+                    string dosyaAdi = Path.GetFileNameWithoutExtension(file.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(file.FileName);
+                    var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/galeri/"), dosyaAdi);
+                    file.SaveAs(yuklemeYeri);
+
+                    HaberlerResim resimler = new HaberlerResim()
+                    {
+                        HaberlerId = haberlerId,
+                        Resim = dosyaAdi,
+
+                    };
+
+                    gResimler.Add(resimler);
+                }
+            }
+
+            galeri.HaberlerResim = gResimler;
+            db.SaveChanges();
+
+            return Redirect("/Admin/News/images");
+        }
+
+        public ActionResult DeleteFile(int id, int galeri)
+        {
+            if (id == null || galeri == null)
+            {
+                return Redirect("/Admin/News/");
+            }
+            HaberlerResim res = db.HaberlerResim.Where(r => r.ResimId == id).FirstOrDefault();
+
+            Haberler galeriBilgi = db.Haberler.Find(galeri);
+
+            if (res == null)
+            {
+                return Redirect("/Admin/News/images/" + galeri);
+            }
+
+            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/galeri/" + res.Resim));
+
+            db.HaberlerResim.Remove(res);
+            db.SaveChanges();
+            if (System.IO.File.Exists(fi.ToString()))
+            {
+                fi.Delete();
+            }
+
+            return Redirect("/Admin/News/images/" + galeri);
+        }
+
     }
 }

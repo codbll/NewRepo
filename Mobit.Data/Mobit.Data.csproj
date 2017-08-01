@@ -73,9 +73,6 @@
     <Compile Include="Context\Bulten.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Cozumler.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="Context\DosyaYoneticisi.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -92,6 +89,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Haberler.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\HaberlerResim.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\ilceler.cs">
@@ -203,9 +203,6 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Context\sysdiagrams.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\VW_Anketler.cs">

@@ -12,14 +12,12 @@ namespace Mobit.Data.Context
     using System;
     using System.Collections.Generic;
     
-    public partial class Cozumler
+    public partial class HaberlerResim
     {
-        public int Id { get; set; }
-        public string Ad { get; set; }
-        public string Slug { get; set; }
-        public string Detay { get; set; }
-        public string Url { get; set; }
-        public bool Aktif { get; set; }
-        public byte KategoriId { get; set; }
+        public int ResimId { get; set; }
+        public int HaberlerId { get; set; }
+        public string Resim { get; set; }
+    
+        public virtual Haberler Haberler { get; set; }
     }
 }
