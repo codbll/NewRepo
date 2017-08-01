@@ -61,10 +61,14 @@
                             </div>
                             <div class="col-md-9">
 
-                                <div class="post-image">
-
-                                    <h2><a href="/haber/@haber.Slug" title="@haber.Ad">@haber.Ad</a></h2>
-
+                                <div class="col-md-9">
+                                    <div class="post-info">
+                                        <h4><a href="/Haber/@haber.Slug">@haber.Ad</a></h4>
+                                        @{
+                                            string firstTwoWords = string.Join(" ", Html.Raw(haber.Detay).ToString().Split().Take(40).ToArray());
+                                            Write(Html.Raw(firstTwoWords));
+                                        }
+                                    </div>
                                 </div>
                             </div>
 
@@ -88,7 +92,7 @@
                 }
                 <ul class="pagination pagination-lg pull-right">
 
-                    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Haberler", "Haber", new { Sayfa = _sayfaNo }))
+                    @Html.PagedListPager(Model, _sayfaNo => Url.Action("Roportajlar", "Haber", new { Sayfa = _sayfaNo }))
 
                 </ul>
 

@@ -40,37 +40,31 @@ namespace Mobit.Controllers
 
 
         [Route("Haberler")]
-        public PartialViewResult Haberler(int? Sayfa)
+        public ActionResult Haberler(int? Sayfa)
         {
-            
-            //int _sayfaNo = Sayfa ?? 1;
 
-            //string title = "Haberler";
-            //ViewBag.title = title;
-            //ViewBag.desc = title;
-            //ViewBag.keywords = title;
-            //ViewBag.bilgi = title;
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Haberler";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
 
 
-            var haberler = db.Haberler.Where(h =>  h.Aktif == true && h.KategoriId == 4).OrderByDescending(h => h.Tarih).ToList();
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 4).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
 
-            //if (haberler.Count <= 0)
-            //{
-            //    ViewBag.bilgi = "Haber bulunamadı";
-            //}
-            //var reklam = db.Slider.Where(s => s.SliderId == 13 || s.SliderId == 16).OrderBy(s => s.Sira).ToList();
-            //ViewData["detayReklam"] = reklam.Where(r => r.SliderId == 13).Take(5).ToList();
-            //ViewData["ustTekReklam"] = reklam.Where(r => r.SliderId == 16).OrderBy(s => s.Sira).Take(1).ToList();
-
-            if (Request.Cookies["hPopup"] == null)
+            if (haberler.Count <= 0)
             {
-                // eğer daha önce günlük veya saatlik cookie varsa ve popup sonradan anlık gösterim olarak değiştirilmişse cookie varsa sil
-                Request.Cookies.Remove("hPopup");
+                ViewBag.bilgi = "Haberler bulunamadı";
             }
-
-            return PartialView("~/Views/_Partial/_HaberPopup.cshtml", haberler);
+            var reklam = db.Slider.Where(s => s.SliderId == 13 || s.SliderId == 16).OrderBy(s => s.Sira).ToList();
+            ViewData["detayReklam"] = reklam.Where(r => r.SliderId == 13).Take(5).ToList();
+            ViewData["ustTekReklam"] = reklam.Where(r => r.SliderId == 16).OrderBy(s => s.Sira).Take(1).ToList();
+            return View(haberler);
         }
-
+ 
+ 
         [Route("Roportajlar")]
         public ActionResult Roportajlar(int? Sayfa)
         {

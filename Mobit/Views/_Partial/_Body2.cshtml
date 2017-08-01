@@ -8,7 +8,7 @@
         {
             <div class="col-md-4" style="padding:7px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
-                    <h1 class="heading-primary">@item.Ad</h1>
+                    <h1 class="heading-primary">@item.Ad (<a href="@item.Ad.Replace("ö","o")" class="btn btn-xl btn-primary">Tüm @item.Ad</a>)</h1>
                 </div>
                 <aside class="sidebar">
                     <ul class="simple-post-list">
@@ -20,9 +20,8 @@
                                         <div class="img-thumbnail">
                                             <span class="thumb-info thumb-info-lighten">
                                                 <span class="thumb-info-wrapper">
-
-                                                    <img src="~/Upload/haber/@haberler.Resim" style="width:100px;height:100px;">
-
+                                                    <img src="~/Upload/haber/@haberler.Resim" style="width:100px;height:100px;" />
+                                                    <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary" style="width:100%;">Devamını Oku</a>
                                                 </span>
                                             </span>
                                         </div>
@@ -31,14 +30,9 @@
                                 <div class="post-info">
                                     <a href="/Haber/@haberler.Slug">@haberler.Ad</a>
                                     @{
-                                        string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay).ToString().Split().Take(6).ToArray());
-                                        Write(Html.Raw(firstTwoWords.ToLowerInvariant() + "..."));
+                                        string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay).ToString().Split().Take(9).ToArray());
+                                        Write(Html.Raw(firstTwoWords));
                                     }
-                                    <div class="post-meta">
-                                        <span><i class="fa fa-calendar"></i>@haberler.Tarih.ToShortDateString() </span>
-                                        <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
-                                    </div>
-
                                 </div>
                             </li>
                                         }
@@ -91,7 +85,7 @@
                     {
 
                         <div title="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)">
-                            <div style="font-size:10px;">@item.KurumAdi</div>
+                            @*<div style="font-size:10px;">@item.KurumAdi</div>*@
                             <span class="thumb-info thumb-info-lighten">
                                 <span class="thumb-info-wrapper">
                                     <img src="~/Upload/kurum/@item.UploadYolu/@item.EnSevdiginizYoneticiAdiSoyadiResim" class="img-responsive" alt="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)" title="@item.EnSevdiginizYoneticiAdiSoyadi (@item.KurumAdi)" style="height:125px;">
@@ -119,7 +113,7 @@
                     {
                         k = k + 1;
                         <div title="@item.EnSevdiginizEgitimciAdiSoyadi (@item.KurumAdi)">
-                            <div style="font-size:10px;">@item.KurumAdi</div>
+                            @*<div style="font-size:10px;">@item.KurumAdi</div>*@
                             <span class="thumb-info thumb-info-lighten">
                                 <span class="thumb-info-wrapper">
                                     <img src="~/Upload/kurum/@item.UploadYolu/@item.EnSevdiginizEgitimciAdiSoyadiResim" class="img-responsive" alt="@item.EnSevdiginizEgitimciAdiSoyadi (@item.KurumAdi)" title="@item.EnSevdiginizEgitimciAdiSoyadi (@item.KurumAdi)" style="height:125px;">
