@@ -26,12 +26,12 @@ namespace Mobit.Controllers
             ViewBag.desc = title;
             ViewBag.keywords = title;
 
-            if (haber.GaleriId != null)
+            if (haber.Id != null)
             {
-                ViewData["GaleriResim"] = db.GaleriResim.Where(g => g.GaleriId == haber.GaleriId && g.Galeri.Aktif == true).ToList();
+                ViewData["HaberlerResim"] = db.HaberlerResim.Where(g => g.HaberlerId == haber.Id).ToList();
             }
 
-            
+
             var reklam = db.Slider.Where(s => s.SliderId == 13 || s.SliderId == 16).OrderBy(s => s.Sira).ToList();
             ViewData["detayReklam"] = reklam.Where(r => r.SliderId == 13).Take(5).ToList();
             ViewData["ustTekReklam"] = reklam.Where(r => r.SliderId == 16).OrderBy(s => s.Sira).Take(1).ToList();
