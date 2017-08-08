@@ -132,9 +132,9 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Ad" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Resim" Type="nvarchar" MaxLength="50" />
-          <Property Name="Slug" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="500" />
+          <Property Name="Slug" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="Detay" Type="nvarchar(max)" />
           <Property Name="Aktif" Type="bit" Nullable="false" />
           <Property Name="KategoriId" Type="int" Nullable="false" />
@@ -1039,9 +1039,9 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Ad" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Slug" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Slug" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Detay" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Aktif" Type="Boolean" Nullable="false" />
           <Property Name="KategoriId" Type="Int32" Nullable="false" />

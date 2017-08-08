@@ -1,24 +1,5 @@
 ﻿
-<script>
-        var sure = 11;   //  Geri sayım sayacının başlayacağı rakam
-        function Kontrol() {
-            sure = sure - 1;
-            $("#span1").text(sure); // <span id="1"> </span> olan yerde geri sayım yapacaktır
-            if (sure > 0) setTimeout("Kontrol()", 1000);
-        }
 
-        jQuery(document).ready(function () {
-            kapat = (sure - 1) * 1000;
-            Kontrol();
-            setTimeout(function () {
-                $("#defaultModal").modal('hide');
-                $("#gazze").modal('hide');
-            }, kapat); // Popup burda kapanıyor
-        });
-        window.setTimeout("Kontrol()", 10000);
-</script>
-<script src="~/Scripts/shiner.js"></script>
-<script src="~/Scripts/shiner.min.js"></script>
 <style type="text/css">
     .holder {
         position: relative;
@@ -95,7 +76,7 @@
         -o-transition: opacity .2s;
         transition: opacity .2s;
     }
-</style>	
+</style>
 
 @*<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#defaultModal">
         Launch Default Modal
@@ -113,7 +94,7 @@
                     <div class="slideshow2">
                         @foreach (var item in Model.Where(s => s.SliderId == 18).OrderBy(s => s.Sira))
                         {
-                            <img src="~/Upload/slide/@item.Resim"
+                            <img src="~/Upload/slide/@item.Resim" alt="@item.Resim"
                                  data-bgposition="center center"
                                  data-bgfit="cover"
                                  data-bgrepeat="no-repeat"
@@ -125,7 +106,26 @@
         </div>
     </div>
 </div>
+<script>
+        var sure = 11;   //  Geri sayım sayacının başlayacağı rakam
+        function Kontrol() {
+            sure = sure - 1;
+            $("#span1").text(sure); // <span id="1"> </span> olan yerde geri sayım yapacaktır
+            if (sure > 0) setTimeout("Kontrol()", 1000);
+        }
 
+        jQuery(document).ready(function () {
+            kapat = (sure - 1) * 1000;
+            Kontrol();
+            setTimeout(function () {
+                $("#defaultModal").modal('hide');
+                $("#gazze").modal('hide');
+            }, kapat); // Popup burda kapanıyor
+        });
+        window.setTimeout("Kontrol()", 10000);
+</script>
+<script src="~/Scripts/shiner.js"></script>
+<script src="~/Scripts/shiner.min.js"></script>
 <script>
         $(document).ready(function () {
             $('#defaultModal').modal('show');

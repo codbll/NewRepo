@@ -14,13 +14,13 @@
                     <ul class="simple-post-list">
                         @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
                         {
-                            <li style="margin:0px;padding:0px">
+                            <li style="margin:0px;padding:0px;height:162px;" >
                                 <div class="post-image">
                                     <a href="/Haber/@haberler.Slug">
                                         <div class="img-thumbnail">
                                             <span class="thumb-info thumb-info-lighten">
                                                 <span class="thumb-info-wrapper">
-                                                    <img src="~/Upload/haber/@haberler.Resim" style="width:100px;height:100px;" />
+                                                    <img src="~/Upload/haber/@haberler.Resim" style="width:100px;height:100px;" alt="@haberler.Slug" />
                                                     <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary" style="width:100%;">Devamını Oku</a>
                                                 </span>
                                             </span>
@@ -156,7 +156,7 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/anaokulu.png" class="img-responsive" alt="" style="height:250px;">
+                        <img src="~/Upload/slide/anaokulu.png" class="img-responsive" alt="En İyi Anaokulu" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Anaokulu</span>
                             <span class="thumb-info-type">İstanbul</span>
@@ -174,7 +174,7 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/Eniyikoleji.png" class="img-responsive" alt="" style="height:250px;">
+                        <img src="~/Upload/slide/Eniyikoleji.png" class="img-responsive" alt="En İyi Kolej" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Kolej</span>
                             <span class="thumb-info-type">İstanbul</span>
@@ -195,7 +195,7 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/Eniyiuniversitesi.png" class="img-responsive" alt="" style="height:250px;">
+                        <img src="~/Upload/slide/Eniyiuniversitesi.png" class="img-responsive" alt="En İyi Üniversitesi" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Üniversitesi</span>
                             <span class="thumb-info-type">İstanbul</span>
@@ -219,7 +219,7 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/eniyikurs.jpg" class="img-responsive" alt="" style="height:250px;">
+                        <img src="~/Upload/slide/eniyikurs.jpg" class="img-responsive" alt="En İyi Kursu" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Kursu</span>
                             <span class="thumb-info-type">İstanbul</span>
@@ -240,7 +240,7 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/eniyiidareci.jpg" class="img-responsive" alt="" style="height:250px;">
+                        <img src="~/Upload/slide/eniyiidareci.jpg" class="img-responsive" alt="En İyi Tedarikçisi" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Tedarikçisi</span>
                             <span class="thumb-info-type">İstanbul</span>
@@ -261,7 +261,7 @@
             <a href="portfolio-single-small-slider.html">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/eniyiokulservisi.jpg" class="img-responsive" alt="" style="height:250px;">
+                        <img src="~/Upload/slide/eniyiokulservisi.jpg" class="img-responsive" alt="En İyi Okul Servisi" style="height:250px;">
                         <span class="thumb-info-title">
                             <span class="thumb-info-inner">En İyi Okul Servisi</span>
                             <span class="thumb-info-type">İstanbul</span>
@@ -275,3 +275,5 @@
         </div>
     </div>
 </div>
+
+ 

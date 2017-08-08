@@ -3,7 +3,7 @@
     <div class="col-md-12">
         @*üst kayan reklam*@
         <div class="row" style="padding-left:15px;padding-right:15px;margin-top:0px">
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 3000}'>
+            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 700,"autoplayHoverPause": true}'>
 
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
                 {
@@ -96,7 +96,7 @@
                 <h4>
                     @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
                     {
-                        <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"><img src="~/Upload/images/right-arrow.png" /> @item.Ad</a>
+                        <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"><img src="~/Upload/images/right-arrow.png" alt="@item.Ad" /> @item.Ad</a>
                     }
                 </h4>
             </marquee>

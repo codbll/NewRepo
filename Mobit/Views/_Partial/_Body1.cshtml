@@ -6,21 +6,20 @@
     <div class="col-md-12">
         <div class="col-md-6 SmallSlayt" style="padding-left:5px;padding-right:3px;">
 
-            <div class="owl-carousel owl-theme show-nav-hover mt-none owl-loaded owl-drag owl-carousel-init" data-plugin-options="{&quot;items&quot;: 1, &quot;margin&quot;: 20, &quot;loop&quot;: true, &quot;nav&quot;: true,&quot;dots&quot;: false, &quot;animateOut&quot;: &quot;fadeOut&quot;}">
-
-                @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 2))
+            <div class="owl-carousel owl-theme show-nav-hover"  data-plugin-options='{"items": 1, "margin": 20, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 1000,"autoplayHoverPause": true}'>
+                    @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 2))
             {
-                    <div>
-                        <a href="@item.Url" target="@item.Target">
-                            <span class="thumb-info thumb-info-lighten">
-                                <span class="thumb-info-wrapper">
-                                    <img alt="@item.Baslik" title="@item.Baslik" class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:400px;">
+                        <div>
+                            <a href="@item.Url" target="@item.Target">
+                                <span class="thumb-info thumb-info-lighten">
+                                    <span class="thumb-info-wrapper">
+                                        <img alt="@item.Baslik" title="@item.Baslik" class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:400px;">
+                                    </span>
                                 </span>
-                            </span>
-                        </a>
-                    </div>
-                }
-            </div>
+                            </a>
+                        </div>
+                    }
+                </div>
         </div>
         @* sağ reklam alanı *@
         <div class="col-md-6">

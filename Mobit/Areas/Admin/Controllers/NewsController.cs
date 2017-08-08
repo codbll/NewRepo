@@ -56,7 +56,15 @@ namespace Mobit.Areas.Admin.Controllers
 
 
             haberler.Hit = 1;
-            haberler.Slug = GetSlug(Kontrol.ToSlug(haberler.Ad), null);
+            try
+            {
+                haberler.Slug = GetSlug(Kontrol.ToSlug(haberler.Ad), null);
+            }
+            catch (Exception)
+            {
+                haberler.Slug = haberler.Ad;
+            }
+            
             haberler.Tarih = DateTime.Now;
             db.Haberler.Add(haberler);
             db.SaveChanges();
