@@ -136,7 +136,7 @@
                         options.url = '/Home/Arama',
                 options.type = "POST";
                         options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
-                        options.contentType = "application/json; charset=utf-8",
+                        options.contentType = "application/json",
                         options.success = function (result) {
                             $("#searchDiv").html(result);
                             $("#searchDiv").show();
@@ -179,7 +179,7 @@
             options.url = '/Home/Arama',
     options.type = "POST";
             options.data = "{searchKey:'" + $(searchboxID).val() + "'}",
-            options.contentType = "application/json; charset=utf-8",
+            options.contentType = "application/json",
             options.success = function (result) {
                 $("#searchDiv").html(result);
                 $("#searchDiv").show();

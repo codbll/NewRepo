@@ -1,20 +1,20 @@
 ﻿@model Mobit.Models.BodyModel
 
 @* alt haberler *@
-<div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;">
+<div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;font-size:12px;font-family: Arial, sans-serif;">
     @Html.Partial("/Views/_Partial/_HaberArama.cshtml")
     @{
         foreach (var item in Model.Haberler)
         {
             <div class="col-md-4" style="padding:7px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
-                    <h1 class="heading-primary">@item.Ad (<a href="@item.Ad.Replace("ö","o")" class="btn btn-xl btn-primary">Tüm @item.Ad</a>)</h1>
+                    <h3 class="heading-primary">@item.Ad (<a href="@item.Ad.Replace("ö","o")" class="btn btn-xl btn-primary">Tüm @item.Ad</a>)</h3>
                 </div>
                 <aside class="sidebar">
                     <ul class="simple-post-list">
                         @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
                         {
-                            <li style="margin:0px;padding:0px;height:162px;" >
+                            <li style="margin:0px;padding:0px;height:162px;font-size:12px;font-family: Arial, sans-serif;">
                                 <div class="post-image">
                                     <a href="/Haber/@haberler.Slug">
                                         <div class="img-thumbnail">
@@ -28,24 +28,31 @@
                                     </a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="/Haber/@haberler.Slug">@haberler.Ad</a>
-                                    @{
-                                        string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay).ToString().Split().Take(9).ToArray());
-                                        Write(Html.Raw(firstTwoWords));
-                                    }
+                                    <a href="/Haber/@haberler.Slug" style="font-size:13px;font-family: Arial, sans-serif;font-weight: bold;">
+                                        @{
+                                            string firstTwoWords2 = string.Join(" ", Html.Raw(haberler.Ad.ToString().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")).ToString().Split().Take(9).ToArray());
+                                            Write(Html.Raw(firstTwoWords2.ToUpper().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")));
+                                        }
+                                    </a>
+                                    <div style="font-size:12px;font-family: Arial, sans-serif;font-weight: normal;">
+                                        @{
+                                            string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay.ToString().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")).ToString().Split().Take(9).ToArray());
+                                            Write(Html.Raw(firstTwoWords.Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")));
+                                        }
+                                    </div>
                                 </div>
                             </li>
-                                        }
+                                            }
                     </ul>
                 </aside>
             </div>
-                                        }
+                                            }
 
     }
     <div class="col-md-4" style="padding:7px;">
         <aside class="sidebar">
             <div class="heading heading-primary heading-border heading-bottom-border">
-                <h1 class="heading-primary">En İyi Okullar</h1>
+                <h3 class="heading-primary">En İyi Okullar</h3>
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 3, "margin": 1, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 2000}'>
                 @{
@@ -77,7 +84,7 @@
 
 
             <div class="heading heading-primary heading-border heading-bottom-border" style="padding-top:-50px">
-                <h1 class="heading-primary">En İyi Yöneticiler</h1>
+                <h2 class="heading-primary">En İyi Yöneticiler</h2>
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 3, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 2000}'>
                 @{
@@ -104,7 +111,7 @@
 
 
             <div class="heading heading-primary heading-border heading-bottom-border" style="padding-top:-50px">
-                <h1 class="heading-primary">En İyi Eğitmenler</h1>
+                <h2 class="heading-primary">En İyi Eğitmenler</h2>
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 3, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 2000}'>
                 @{
@@ -150,7 +157,7 @@
 <div class="row" style="margin-left:20px;margin-right:20px;">
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
-            <h4 class="heading-primary">Ayın En İyi Anaokulu</h4>
+            <span class="heading-primary">Ayın En İyi Anaokulu</span>
         </div>
         <div class="portfolio-item">
             <a href="portfolio-single-small-slider.html">
@@ -168,7 +175,7 @@
     </div>
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
-            <h4 class="heading-primary">Ayın En İyi Koleji</h4>
+            <span class="heading-primary">Ayın En İyi Koleji</span>
         </div>
         <div class="portfolio-item">
             <a href="portfolio-single-small-slider.html">
@@ -189,7 +196,7 @@
     </div>
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
-            <h4 class="heading-primary">Ayın En İyi Üniversitesi</h4>
+            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Üniversitesi</span>
         </div>
         <div class="portfolio-item">
             <a href="portfolio-single-small-slider.html">
@@ -213,7 +220,7 @@
 <div class="row" style="margin-left:20px;margin-right:20px;">
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
-            <h4 class="heading-primary">Ayın En İyi Kursu</h4>
+            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Kursu</span>
         </div>
         <div class="portfolio-item">
             <a href="portfolio-single-small-slider.html">
@@ -234,7 +241,7 @@
     </div>
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
-            <h4 class="heading-primary">Ayın En İyi Tedarikçisi</h4>
+            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Tedarikçisi</span>
         </div>
         <div class="portfolio-item">
             <a href="portfolio-single-small-slider.html">
@@ -255,7 +262,7 @@
     </div>
     <div class="col-md-4" style="padding:7px;">
         <div class="heading heading-primary heading-border heading-bottom-border">
-            <h4 class="heading-primary">Ayın En İyi Okul Servisi</h4>
+            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Okul Servisi</span>
         </div>
         <div class="portfolio-item">
             <a href="portfolio-single-small-slider.html">
@@ -276,4 +283,3 @@
     </div>
 </div>
 
- 
