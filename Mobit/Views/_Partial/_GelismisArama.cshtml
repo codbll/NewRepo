@@ -9,6 +9,21 @@
         
 <div class="form-group">
     <div class="col-md-12" style="text-align:center;">
+        <div class="header-column SourcePasif" style="padding-left:10px;">
+            @{
+                Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
+                foreach (var item in db.MetaTag)
+                {
+                    <ul class="social-icons SourcePasif">
+                        <li class="social-icons-facebook"><a href="@item.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li class="social-icons-twitter"><a href="@item.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                        <li class="social-icons-linkedin"><a href="@item.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
+                }
+            }
+        </div>
+
+
         <span style="color:white;font-size:29px;font-weight:bold;text-align:center;vertical-align:central;" >
         0850 532 
             <span class="word-rotate" data-plugin-options='{"delay": 2000, "animDelay": 300}'>
