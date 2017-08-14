@@ -58,7 +58,7 @@ namespace Mobit.Areas.Admin.Controllers
             haberler.Hit = 1;
             try
             {
-                haberler.Slug = GetSlug(Kontrol.ToSlug(haberler.Ad), null);
+                haberler.Slug = Kontrol.ToSlug(haberler.Ad);
             }
             catch (Exception)
             {
@@ -117,7 +117,7 @@ namespace Mobit.Areas.Admin.Controllers
             }
 
             haber.Ad = haberler.Ad;
-            haber.Slug = GetSlug(Kontrol.ToSlug(haberler.Slug), haberler.Id);
+            haber.Slug = Kontrol.ToSlug(haberler.Slug);
             haber.GaleriId = haberler.GaleriId;
             haber.Detay = haberler.Detay;
             haber.Aktif = haberler.Aktif;

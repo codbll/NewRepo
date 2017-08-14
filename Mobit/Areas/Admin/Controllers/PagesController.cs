@@ -38,7 +38,7 @@ namespace Mobit.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
-            sayfa.Slug = GetSlug(Kontrol.ToSlug(sayfa.Ad), null);
+            sayfa.Slug = Kontrol.ToSlug(sayfa.Ad);
 
             db.Sayfalar.Add(sayfa);
             db.SaveChanges();
@@ -79,7 +79,7 @@ namespace Mobit.Areas.Admin.Controllers
             sayfaGuncelle.Menu = sayfa.Menu;
             sayfaGuncelle.Url = sayfa.Url;
             sayfaGuncelle.iletisimFormu = sayfa.iletisimFormu;
-            sayfaGuncelle.Slug = GetSlug(Kontrol.ToSlug(sayfa.Slug), sayfa.Id);
+            sayfaGuncelle.Slug = Kontrol.ToSlug(sayfa.Slug);
 
             db.SaveChanges();
             return RedirectToAction("Index");

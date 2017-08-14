@@ -35,7 +35,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             #region  resim ve pdf upload işlemleri
             // resim yüklenmese bile klasörü oluştur
-            string folderName = GetSlug(Kontrol.ToSlug(kurum.KurumAdi));
+            string folderName = Kontrol.ToSlug(kurum.KurumAdi);
             var folder = Server.MapPath("~/Upload/kurum/" + folderName);
             if (!Directory.Exists(folder))
             {

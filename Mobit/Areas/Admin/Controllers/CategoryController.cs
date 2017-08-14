@@ -45,7 +45,7 @@ namespace Mobit.Areas.Admin.Controllers
                 kategori.Ikon = dosyaAdi;
             }
 
-            kategori.Slug = GetSlug(Kontrol.ToSlug(kategori.KategoriAdi));
+            kategori.Slug = Kontrol.ToSlug(kategori.KategoriAdi);
             db.Kategoriler.Add(kategori);
             db.SaveChanges();
 
@@ -94,7 +94,7 @@ namespace Mobit.Areas.Admin.Controllers
             }
             if (cbSlug == true)
             {
-                kat.Slug = GetSlug(Kontrol.ToSlug(kategori.Slug));
+                kat.Slug = Kontrol.ToSlug(kategori.Slug);
             }
 
 
@@ -149,7 +149,7 @@ namespace Mobit.Areas.Admin.Controllers
                 altKategori.Ikon = dosyaAdi;
             }
 
-            altKategori.Slug = GetSlug(Kontrol.ToSlug(altKategori.AltKategoriAdi));
+            altKategori.Slug = Kontrol.ToSlug(altKategori.AltKategoriAdi);
             db.AltKategoriler.Add(altKategori);
             db.SaveChanges();
 
@@ -200,7 +200,7 @@ namespace Mobit.Areas.Admin.Controllers
             }
             if (cbSlug == true)
             {
-                kat.Slug = GetSlug(Kontrol.ToSlug(altKategori.Slug));
+                kat.Slug = Kontrol.ToSlug(altKategori.Slug);
             }
 
             kat.KategoriId = altKategori.KategoriId;

@@ -32,7 +32,7 @@ namespace Mobit.Areas.Admin.Controllers
                 return View();
             }
 
-            string folderName = GetSlug(Kontrol.ToSlug(galeri.GaleriAdi));
+            string folderName = Kontrol.ToSlug(galeri.GaleriAdi);
             var folder = Server.MapPath("~/Upload/galeri/" + folderName);
 
             if (!Directory.Exists(folder))
