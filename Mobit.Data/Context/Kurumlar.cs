@@ -49,6 +49,12 @@ namespace Mobit.Data.Context
         public string Panoroma { get; set; }
         public Nullable<int> Eniyiler { get; set; }
         public string Kordinatorler { get; set; }
+        public string EgitimDili { get; set; }
+        public string OgrenciSayisi { get; set; }
+        public string YurticiUniversiteBasariOrani { get; set; }
+        public string YurtDisiUniversiteBasariOrani { get; set; }
+        public string BursOlanakları { get; set; }
+        public string Ucreti { get; set; }
     
         public virtual AltKategoriler AltKategoriler { get; set; }
         public virtual ilceler ilceler { get; set; }

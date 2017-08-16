@@ -129,8 +129,13 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.Kurucusu = kurum.Kurucusu;
             kurumlar.Egitimciler = kurum.Egitimciler;
             kurumlar.Kordinatorler = kurum.Kordinatorler;
+            kurumlar.EgitimDili = kurum.EgitimDili;
+            kurumlar.OgrenciSayisi = kurum.OgrenciSayisi;
+            kurumlar.YurticiUniversiteBasariOrani = kurum.YurticiUniversiteBasariOrani;
+            kurumlar.YurtDisiUniversiteBasariOrani = kurum.YurtDisiUniversiteBasariOrani;
+            kurumlar.BursOlanakları = kurum.BursOlanakları;
+            kurumlar.Ucreti = kurum.Ucreti;
             db.SaveChanges();
-
             return RedirectToAction("Index");
         }
 

@@ -241,6 +241,12 @@
           <Property Name="Panoroma" Type="nvarchar(max)" />
           <Property Name="Eniyiler" Type="int" />
           <Property Name="Kordinatorler" Type="nvarchar(max)" />
+          <Property Name="EgitimDili" Type="varchar" MaxLength="500" />
+          <Property Name="OgrenciSayisi" Type="varchar" MaxLength="500" />
+          <Property Name="YurticiUniversiteBasariOrani" Type="varchar" MaxLength="500" />
+          <Property Name="YurtDisiUniversiteBasariOrani" Type="varchar" MaxLength="500" />
+          <Property Name="BursOlanakları" Type="varchar" MaxLength="500" />
+          <Property Name="Ucreti" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1146,6 +1152,12 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <NavigationProperty Name="KurumEgitimciler" Relationship="Model.FK_KurumEgitimciler_Kurumlar" FromRole="Kurumlar" ToRole="KurumEgitimciler" />
           <Property Name="Eniyiler" Type="Int32" />
           <Property Name="Kordinatorler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EgitimDili" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OgrenciSayisi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="YurticiUniversiteBasariOrani" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="YurtDisiUniversiteBasariOrani" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="BursOlanakları" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Ucreti" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1823,6 +1835,12 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Ucreti" ColumnName="Ucreti" />
+                <ScalarProperty Name="BursOlanakları" ColumnName="BursOlanakları" />
+                <ScalarProperty Name="YurtDisiUniversiteBasariOrani" ColumnName="YurtDisiUniversiteBasariOrani" />
+                <ScalarProperty Name="YurticiUniversiteBasariOrani" ColumnName="YurticiUniversiteBasariOrani" />
+                <ScalarProperty Name="OgrenciSayisi" ColumnName="OgrenciSayisi" />
+                <ScalarProperty Name="EgitimDili" ColumnName="EgitimDili" />
                 <ScalarProperty Name="Kordinatorler" ColumnName="Kordinatorler" />
                 <ScalarProperty Name="Eniyiler" ColumnName="Eniyiler" />
                 <ScalarProperty Name="Panoroma" ColumnName="Panoroma" />

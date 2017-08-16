@@ -364,6 +364,39 @@
                                         <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">WEB ADRESİ :</span></dt>
                                         <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></span></dd>
                                     }
+
+                                    @if (Model.Kurumlar.EgitimDili != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.EgitimDili" target="_blank">@Model.Kurumlar.EgitimDili</a></span></dd>
+                                    }
+                                    @if (Model.Kurumlar.OgrenciSayisi != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.OgrenciSayisi" target="_blank">@Model.Kurumlar.OgrenciSayisi</a></span></dd>
+                                    }
+                                    @if (Model.Kurumlar.YurticiUniversiteBasariOrani != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.YurticiUniversiteBasariOrani" target="_blank">@Model.Kurumlar.YurticiUniversiteBasariOrani</a></span></dd>
+                                    }
+                                    @if (Model.Kurumlar.YurtDisiUniversiteBasariOrani != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.YurtDisiUniversiteBasariOrani" target="_blank">@Model.Kurumlar.YurtDisiUniversiteBasariOrani</a></span></dd>
+                                    }
+                                    @if (Model.Kurumlar.BursOlanakları != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.BursOlanakları" target="_blank">@Model.Kurumlar.BursOlanakları</a></span></dd>
+                                    }
+                                    @if (Model.Kurumlar.Ucreti != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.Ucreti" target="_blank">@Model.Kurumlar.Ucreti</a></span></dd>
+                                    }
+
+
                                 </dl>
                             </div>
                         </div>
