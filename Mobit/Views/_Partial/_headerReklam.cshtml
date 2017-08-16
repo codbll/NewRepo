@@ -1,24 +1,55 @@
 ﻿﻿@model Mobit.Models.HeaderModel
+
+@section styles
+{
+<style>
+        .imgBorder{
+             -webkit-border-image: url(border.png) 30 round; /* Safari 3.1-5 */
+    -o-border-image: url(border.png) 30 round; /* Opera 11-12.1 */
+    border-image: url(border.png) 30 round;
+        }
+    </style>
+}
 <div class="header-top header-top-style-2" style="margin-top:-40px;">
     <div class="col-md-12">
         @*üst kayan reklam*@
         <div class="row" style="padding-left:15px;padding-right:15px;margin-top:0px">
-            <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 700,"autoplayHoverPause": true}'>
+            @* <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 5, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 0,"autoplayHoverPause": true}'>
 
-                @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
-                {
-                    <div>
-                        <a href="@item.Url" target="@item.Target">
-                            <span class="thumb-info thumb-info-lighten">
-                                <span class="thumb-info-wrapper">
-                                    <img alt="@item.Baslik" class="img-responsive" src="~/Upload/slide/@item.Resim" style="width:100%; height:150px">
+                    @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
+                    {
+                        <div>
+                            <a href="@item.Url" target="@item.Target">
+                                <span class="thumb-info thumb-info-lighten">
+                                    <span class="thumb-info-wrapper">
+                                        <img alt="@item.Baslik" class="img-responsive" src="~/Upload/slide/@item.Resim" style="width:100%; height:150px">
+                                    </span>
                                 </span>
+                            </a>
+                        </div>
+                    }
+                </div>*@
+
+            <div>
+                <marquee behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" direction="left">
+                    @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
+                    {
+                        <a href="@item.Url" target="@item.Target">
+                            <span class="thumb-info-wrapper">
+                                <img  alt="@item.Baslik" src="~/Upload/slide/@item.Resim" style="width:200px; height:200px;border:5px Double white " class="imgBorder" />
                             </span>
+
                         </a>
-                    </div>
-                }
+                    }
+                </marquee>
+
             </div>
+            <br />
         </div>
+
+
+
+
 
         @*A1 reklam alanı*@
         <div class="row" style="padding-left:7px;padding-right:7px;">
@@ -104,4 +135,3 @@
     </div>
 
 </div>
-
