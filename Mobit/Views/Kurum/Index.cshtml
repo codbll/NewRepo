@@ -44,7 +44,7 @@
                                     <ul class="nav nav-tabs">
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1).Count() >= 1)
                                         {
-                                            <li class="active" ><a href="#slayt" data-toggle="tab">Slayt</a></li>
+                                            <li class="active" ><a href="#slayt" data-toggle="tab">Tanıtım Slaytları</a></li>
                                         }
 
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 4).Count() >= 1)
@@ -52,26 +52,22 @@
                                             <li ><a href="#aktiviteler" data-toggle="tab">Aktiviteler</a></li>
                                         }
 
-                                        <li><a href="#aciklama" data-toggle="tab">Açıklamalar</a></li>
+                                        <li><a href="#aciklama" data-toggle="tab">Hakkında</a></li>
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
-                                            <li ><a href="#video" data-toggle="tab">Video</a></li>
+                                            <li ><a href="#video" data-toggle="tab">Tanıtım Videosu</a></li>
 
                                         }
-                                        @if (Model.Kurumlar.Video != null && Model.Kurumlar.Harita.Length > 20)
+                                        @if (Model.Kurumlar.Harita != null && Model.Kurumlar.Harita.Length > 20)
                                         {
                                             <li ><a href="#harita" data-toggle="tab">Harita</a></li>
-
-                                        }
-                                        @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 2).Count() >= 1)
-                                        {
-                                            <li ><a href="#3d" data-toggle="tab">3D Boyut</a></li>
 
                                         }
                                         @if (Model.Kurumlar.Panoroma != null && Model.Kurumlar.Panoroma.Length > 10)
                                         {
                                             <li ><a href="#panoroma" data-toggle="tab">Panoroma</a></li>
                                         }
+                                        <li><a href="#3d" data-toggle="tab">3D Tanıtım</a></li>
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="slayt">
@@ -165,14 +161,10 @@
                                             </p>
                                         </div>
                                         <div class="tab-pane" id="video">
-                                            <p>
-                                                @Html.Raw(Model.Kurumlar.Video)
-                                            </p>
+                                            <iframe src='@Html.Raw(Model.Kurumlar.Video)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
                                         </div>
                                         <div class="tab-pane" id="harita">
-                                            <p>
-                                                @Html.Raw(Model.Kurumlar.Harita)
-                                            </p>
+                                            <iframe src='@Html.Raw(Model.Kurumlar.Harita)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>                                          
                                         </div>
                                         <div class="tab-pane" id="3d">
                                             @if (Model.Kurumlar.KurumResim.Count() > 0)
@@ -199,9 +191,7 @@
                                             }
                                         </div>
                                         <div class="tab-pane" id="panoroma">
-                                            <p>
-                                                @Html.Raw(Model.Kurumlar.Panoroma)
-                                            </p>
+                                            <iframe src='@Html.Raw(Model.Kurumlar.Panoroma)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -382,7 +372,7 @@
 
         </div>
 
-        <div class="col-md-11" style="padding:5px;">
+        <div class="col-md-11" style="padding:10px;">
             <ul class="image-gallery sort-destination full-width">
                 @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
                 {
@@ -391,7 +381,7 @@
                             <a href="@item.Url" target="@item.Target">
                                 <span class="thumb-info thumb-info-centered-info">
                                     <span class="thumb-info-wrapper">
-                                        <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim">
+                                        <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim" style="height:300px;">
                                     </span>
                                 </span>
                             </a>

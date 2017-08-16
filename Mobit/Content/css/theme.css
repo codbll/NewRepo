@@ -463,8 +463,8 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
         margin: 1px;
         position: relative;
         border: 1px solid white;
-        background: #7f7f7f;
-        background: rgba(0,0,0,0.2);
+        background: #fff;
+        background: rgba(255, 255, 255, 0.3);
         z-index: 1;
         margin-top: -10px;
         width: 200px;
@@ -482,8 +482,8 @@ html:not(.sticky-header-active) #header.header-transparent-sticky-deactive .head
         margin: 5px;
         position: relative;
         border: 1px solid white;
-        background: #7f7f7f;
-        background: rgba(0,0,0,0.2);
+        background: #fff;
+        background: rgba(255, 255, 255, 0.3);
         z-index: 1;
         margin-top: 5px;
         width: 300px;

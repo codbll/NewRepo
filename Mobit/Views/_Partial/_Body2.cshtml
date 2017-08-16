@@ -36,7 +36,7 @@
                                     </a>
                                     <div style="font-size:12px;font-family: Arial, sans-serif;font-weight: normal;">
                                         @{
-                                            string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay.ToString().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")).ToString().Split().Take(9).ToArray());
+                                            string firstTwoWords = string.Join(" ", Html.Raw(haberler.Detay.ToString().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")).ToString().Split().Take(12).ToArray());
                                             Write(Html.Raw(firstTwoWords.Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")));
                                         }
                                     </div>

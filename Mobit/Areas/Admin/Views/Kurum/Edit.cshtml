@@ -179,7 +179,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.Video, new { @class = "form-control ckeditor" })
+                        @Html.TextAreaFor(model => model.Video, new { @class = "form-control" })
                         @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
                     </div>
                 </div>
