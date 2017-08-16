@@ -324,6 +324,11 @@
                                         <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
                                         <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kurucusu</span></dd>
                                     }
+                                    @if (Model.Kurumlar.Kordinatorler != null)
+                                    {
+                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KORDİNATÖRLER :</span></dt>
+                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kordinatorler</span></dd>
+                                    }
                                     @if (Model.Kurumlar.KurumMuduru != null)
                                     {
                                         <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
@@ -391,10 +396,6 @@
             </ul>
         </div>
 
-
-
-
-        
     </div>
 
 </div>

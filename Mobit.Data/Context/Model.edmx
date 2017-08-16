@@ -240,6 +240,7 @@
           <Property Name="Egitimciler" Type="nvarchar" MaxLength="500" />
           <Property Name="Panoroma" Type="nvarchar(max)" />
           <Property Name="Eniyiler" Type="int" />
+          <Property Name="Kordinatorler" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1144,6 +1145,7 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <Property Name="Panoroma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KurumEgitimciler" Relationship="Model.FK_KurumEgitimciler_Kurumlar" FromRole="Kurumlar" ToRole="KurumEgitimciler" />
           <Property Name="Eniyiler" Type="Int32" />
+          <Property Name="Kordinatorler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1821,6 +1823,7 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Kordinatorler" ColumnName="Kordinatorler" />
                 <ScalarProperty Name="Eniyiler" ColumnName="Eniyiler" />
                 <ScalarProperty Name="Panoroma" ColumnName="Panoroma" />
                 <ScalarProperty Name="Egitimciler" ColumnName="Egitimciler" />

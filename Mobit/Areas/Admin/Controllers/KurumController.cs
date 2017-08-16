@@ -55,7 +55,6 @@ namespace Mobit.Areas.Admin.Controllers
             kurum.UploadYolu = folderName;
             kurum.Slug = folderName;
             kurum.Durum = true;
-
             db.Kurumlar.Add(kurum);
             db.SaveChanges();
 
@@ -129,6 +128,7 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.Subeler = kurum.Subeler;
             kurumlar.Kurucusu = kurum.Kurucusu;
             kurumlar.Egitimciler = kurum.Egitimciler;
+            kurumlar.Kordinatorler = kurum.Kordinatorler;
             db.SaveChanges();
 
             return RedirectToAction("Index");
