@@ -368,7 +368,7 @@ namespace Mobit.Controllers
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
-            else if (arama.KategoriId != 0 && arama.ilId != 0  && string.IsNullOrEmpty(arama.SearchKey))
+            else if (arama.KategoriId != 0 && arama.ilId != 0 && string.IsNullOrEmpty(arama.SearchKey))
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
@@ -376,7 +376,7 @@ namespace Mobit.Controllers
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
-            else if (string.IsNullOrEmpty(arama.SearchKey)==true)
+            else if (string.IsNullOrEmpty(arama.SearchKey) == true)
             {
                 kurumlar = db.Kurumlar.OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
@@ -431,7 +431,7 @@ namespace Mobit.Controllers
             {
                 return Json(new { success = false, responseText = "HER ÖĞRENCİNİN VELİNİN AYNI IP DEN TEK KATILIM HAKKI VARDIR." });
             }
-            
+
 
         }
 
@@ -445,7 +445,7 @@ namespace Mobit.Controllers
             if (adSoyad != null && mail != null && mesaj != null && kurum > 0 && Kontrol.mailValidation(mail) == true)
             {
 
-               
+
 
                 return Json(new { success = true, responseText = "Anketiniz başarıyla gönderildi." });
 
@@ -457,6 +457,32 @@ namespace Mobit.Controllers
 
         }
 
+        [Route("Home/MesajGonder")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MesajGonder(string adSoyad, string mail, string telefon, int kurum, string mesaj, string url)
+        {
+
+            if (adSoyad != null && mail != null && mesaj != null && kurum > 0 && Kontrol.mailValidation(mail) == true)
+            {
+
+                var kurumMail = db.Kurumlar.Where(k => k.KurumId == kurum).Select(k => k.Email).FirstOrDefault();
+
+                string icerik = "<b>Kurum detay sayfanızdan bir mesaj aldınız.</b> <br/> <b>Gönderen:</b>  " + adSoyad + "<br/>" + " <b>Telefon: </b>" + telefon + "<br/> <b>Mail: </b>" + mail + "<br/> <b>Mesaj: </b>" + mesaj + " <br/> <b>Kaynak Url: </b> " + url;
+
+                Helpers.SendMail.Mail("İletişim Formu Mesajı", icerik, kurumMail);
+
+
+
+                return Json(new { success = true, responseText = "Mesajınız başarıyla gönderildi." });
+
+            }
+            else
+            {
+                return Json(new { success = false, responseText = "Lütfen bilgilerinizi kontrol edip tekrar deneyiniz." });
+            }
+
+        }
         [Route("Home/BultenKayit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -482,7 +508,7 @@ namespace Mobit.Controllers
                     db.Bulten.Add(bulten);
                     db.SaveChanges();
 
-                    string icerik = "<b>Mobit Email Bültenine yeni bir kayıt eklendi</b> " + "<br/> <b>Mail: </b>" + bulten.Mail + "<br/> <b>Ip Adresi: </b>" + bulten.Ip;
+                    string icerik = "<b>Email Bültenine yeni bir kayıt eklendi</b> " + "<br/> <b>Mail: </b>" + bulten.Mail + "<br/> <b>Ip Adresi: </b>" + bulten.Ip;
 
                     var gidecekMailler = db.iletisim.Select(m => m.Mailler).FirstOrDefault();
                     Helpers.SendMail.Mail("Bültene Yeni Kayıt Eklendi", icerik, gidecekMailler.ToString());
@@ -561,6 +587,6 @@ namespace Mobit.Controllers
 
         }
 
- 
+
     }
 }

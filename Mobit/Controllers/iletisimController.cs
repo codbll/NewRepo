@@ -36,7 +36,7 @@ namespace Mobit.Controllers
 
                 var mailler = db.iletisim.Select(m => new { m.Mailler }).FirstOrDefault();
 
-                string icerik = "<b>Mobit iletişim formu mesajı.</b> <br/> <b>Gönderen:</b>  " + adSoyad + "<br/> <b>Konu: </b>" + konu + "<br/> <b>Telefon: </b>" + telefon + "<br/> <b>Mail: </b>" + mail + "<br/> <b>Mesaj: </b>" + mesaj + " <br/> <b>Kaynak Url: </b> " + url;
+                string icerik = "<b>İletişim formu mesajı.</b> <br/> <b>Gönderen:</b>  " + adSoyad + "<br/> <b>Konu: </b>" + konu + "<br/> <b>Telefon: </b>" + telefon + "<br/> <b>Mail: </b>" + mail + "<br/> <b>Mesaj: </b>" + mesaj + " <br/> <b>Kaynak Url: </b> " + url;
 
                 Helpers.SendMail.Mail(konu, icerik, mailler.Mailler);
 
