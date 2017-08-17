@@ -44,28 +44,28 @@
                                     <ul class="nav nav-tabs">
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1).Count() >= 1)
                                         {
-                                            <li class="active" ><a href="#slayt" data-toggle="tab">Tanıtım Slaytları</a></li>
+                                            <li class="active"><a href="#slayt" data-toggle="tab">Tanıtım Slaytları</a></li>
                                         }
 
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 4).Count() >= 1)
                                         {
-                                            <li ><a href="#aktiviteler" data-toggle="tab">Aktiviteler</a></li>
+                                            <li><a href="#aktiviteler" data-toggle="tab">Aktiviteler</a></li>
                                         }
 
                                         <li><a href="#aciklama" data-toggle="tab">Hakkında</a></li>
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
-                                            <li ><a href="#video" data-toggle="tab">Tanıtım Videosu</a></li>
+                                            <li><a href="#video" data-toggle="tab">Tanıtım Videosu</a></li>
 
                                         }
                                         @if (Model.Kurumlar.Harita != null && Model.Kurumlar.Harita.Length > 20)
                                         {
-                                            <li ><a href="#harita" data-toggle="tab">Harita</a></li>
+                                            <li><a href="#harita" data-toggle="tab">Harita</a></li>
 
                                         }
                                         @if (Model.Kurumlar.Panoroma != null && Model.Kurumlar.Panoroma.Length > 10)
                                         {
-                                            <li ><a href="#panoroma" data-toggle="tab">Panoroma</a></li>
+                                            <li><a href="#panoroma" data-toggle="tab">Panoroma</a></li>
                                         }
                                         <li><a href="#3d" data-toggle="tab">3D Tanıtım</a></li>
                                     </ul>
@@ -164,7 +164,7 @@
                                             <iframe src='@Html.Raw(Model.Kurumlar.Video)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
                                         </div>
                                         <div class="tab-pane" id="harita">
-                                            <iframe src='@Html.Raw(Model.Kurumlar.Harita)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>                                          
+                                            <iframe src='@Html.Raw(Model.Kurumlar.Harita)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
                                         </div>
                                         <div class="tab-pane" id="3d">
                                             @if (Model.Kurumlar.KurumResim.Count() > 0)
@@ -191,7 +191,9 @@
                                             }
                                         </div>
                                         <div class="tab-pane" id="panoroma">
-                                            <iframe src='@Html.Raw(Model.Kurumlar.Panoroma)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
+                                            
+                                          
+                                              <iframe src="@Html.Raw(Model.Kurumlar.Panoroma)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                                         </div>
                                     </div>
                                 </div>
@@ -266,7 +268,7 @@
                                     <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs2">
                                         @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
                                         {
-                                            foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip== 1))
+                                            foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1))
                                             {
                                                 <div class="image-gallery-item">
                                                     <span class="thumb-info thumb-info-lighten">
@@ -405,7 +407,7 @@
 
                 </div>
 
-                
+
             </div>
 
         </div>

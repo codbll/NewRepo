@@ -52,7 +52,7 @@ namespace Mobit
 
             routes.MapRoute(
               "kurumDetay",
-               "{kategoriSlug}/{kurumSlug}",
+               "{kategoriSlug}/{kurumSlug}/{Id}",
                new { controller = "Kurum", action = "Index", },
                new[] { "Mobit.Controllers" }
             );

@@ -124,6 +124,7 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.Adres = kurum.Adres;
             kurumlar.Harita = kurum.Harita;
             kurumlar.Video = kurum.Video;
+            kurumlar.Panoroma = kurum.Panoroma;
             kurumlar.Durum = kurum.Durum;
             kurumlar.Subeler = kurum.Subeler;
             kurumlar.Kurucusu = kurum.Kurucusu;
@@ -276,12 +277,12 @@ namespace Mobit.Areas.Admin.Controllers
                 db.Kurumlar.Remove(kurum);
                 db.SaveChanges();
 
-    
+
                 string klasorYolu = Server.MapPath("~/Upload/kurum/" + kurum.UploadYolu);
 
                 if (System.IO.Directory.Exists(klasorYolu))
                 {
-                    Directory.Delete(klasorYolu,true);
+                    Directory.Delete(klasorYolu, true);
                 }
             }
             catch (Exception)
@@ -293,7 +294,7 @@ namespace Mobit.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult FileUpload(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol,string ResimTipi, string aciklama)
+        public ActionResult FileUpload(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol, string ResimTipi, string aciklama)
         {
             if (galeriResim == null)
             {
@@ -330,7 +331,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             return Redirect("/Admin/Kurum/Edit/" + kurumId);
         }
-    public ActionResult FileUploadEgitimciYonetici(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol,string ResimTipi, string aciklama)
+        public ActionResult FileUploadEgitimciYonetici(List<HttpPostedFileBase> galeriResim, int kurumId, string uploadYol, string ResimTipi, string aciklama)
         {
             if (galeriResim == null)
             {

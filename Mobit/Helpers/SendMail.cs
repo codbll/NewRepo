@@ -28,7 +28,7 @@ namespace Mobit.Helpers
             }
         
             WebMail.SmtpServer = config.Network.Host;
-            WebMail.EnableSsl = true;
+            WebMail.EnableSsl = config.Network.EnableSsl;
             WebMail.UserName = gonderenMail;
             WebMail.Password = config.Network.Password;
             WebMail.SmtpPort = config.Network.Port;
