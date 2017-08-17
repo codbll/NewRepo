@@ -13,7 +13,7 @@
                         {
                         <a href="@item.Url" target="@item.Target">
                             <span class="thumb-info-wrapper">
-                                <img alt="@item.Baslik" src="~/Upload/slide/@item.Resim" style="width:200px; height:200px;border:5px Double white " />
+                                <img alt="@item.Baslik" src="~/Upload/slide/@item.Resim" style="width:200px; height:150px;border:5px Double white " />
                             </span>
 
                         </a>
@@ -102,7 +102,7 @@
             <div class="col-md-10" style="vertical-align:bottom;text-align:justify;">
                 <marquee direction=left>
                     <h4>
-                        @foreach (var item in Model.Haberler.OrderByDescending(s => s.Id))
+                        @foreach (var item in Model.Haberler.Where(s => s.KategoriId == 12).OrderByDescending(s => s.Id))
                         {
                         <a href="/haber/@item.Slug" title="@item.Ad" style="color:white;vertical-align:middle;"><img src="~/Upload/images/right-arrow.png" alt="@item.Ad" /> @item.Ad</a>
                         }

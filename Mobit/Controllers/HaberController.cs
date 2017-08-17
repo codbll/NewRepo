@@ -202,29 +202,144 @@ namespace Mobit.Controllers
             return View(haberler);
 
         }
-        [Route("Sponsor6")]
-        public ActionResult Sponsor6(int? Sayfa)
+        [Route("HaberPopupEniyiAnaokulu")]
+        public ActionResult HaberPopupEniyiAnaokulu(int? Sayfa)
         {
 
             int _sayfaNo = Sayfa ?? 1;
 
-            string title = "Sponsor 6";
+            string title = "En iyi Anaokulu";
             ViewBag.title = title;
             ViewBag.desc = title;
             ViewBag.keywords = title;
             ViewBag.bilgi = title;
 
 
-            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 10).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 13).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
 
             if (haberler.Count <= 0)
             {
-                ViewBag.bilgi = "Sponsor-6 bulunamadı";
+                ViewBag.bilgi = "HaberPopupEniyiAnaokulu bulunamadı";
             }
             return View(haberler);
 
         }
 
+        [Route("HaberPopupEniyiKoleji")]
+        public ActionResult HaberPopupEniyiKoleji(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Ayın En İyi Anaokulu";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Ayın En İyi Anaokulu bulunamadı";
+            }
+            return View(haberler);
+
+        }
+
+
+        [Route("HaberPopupEniyiUniversitesi")]
+        public ActionResult HaberPopupEniyiUniversitesi(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Ayın En İyi Üniversitesi";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 15).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Ayın En İyi Üniversitesi bulunamadı";
+            }
+            return View(haberler);
+
+        }
+
+        [Route("HaberPopupEniyiKursu")]
+        public ActionResult HaberPopupEniyiKursu(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Ayın En İyi Kursu";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 16).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Ayın En İyi Kursu bulunamadı";
+            }
+            return View(haberler);
+
+        }
+
+        [Route("HaberPopupEniyiTedarikcisi")]
+        public ActionResult HaberPopupEniyiTedarikcisi(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Ayın En İyi Tedarikçisi";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 17).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Ayın En İyi Tedarikçisi bulunamadı";
+            }
+            return View(haberler);
+
+        }
+
+        [Route("HaberPopupEniyiOkulServisi")]
+        public ActionResult HaberPopupEniyiOkulServisi(int? Sayfa)
+        {
+
+            int _sayfaNo = Sayfa ?? 1;
+
+            string title = "Ayın En İyi Okul Servisi";
+            ViewBag.title = title;
+            ViewBag.desc = title;
+            ViewBag.keywords = title;
+            ViewBag.bilgi = title;
+
+
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 18).OrderByDescending(h => h.Tarih).ToPagedList<Haberler>(_sayfaNo, 10);
+
+            if (haberler.Count <= 0)
+            {
+                ViewBag.bilgi = "Ayın En İyi Okul Servisi bulunamadı";
+            }
+            return View(haberler);
+
+        } 
         public PartialViewResult SonHaberler()// son 10 haber
         {
             var haberler = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h => h.Tarih).Take(10).ToList();

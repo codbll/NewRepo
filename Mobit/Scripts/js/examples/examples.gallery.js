@@ -342,6 +342,299 @@ Theme Version:	4.7.0
         });
 
 
+
+    /*
+ Thumb Gallery - S13
+ */
+    var $thumbGalleryDetailS13 = $('#thumbGalleryDetailS13'),
+        $thumbGalleryThumbsS1 = $('#thumbGalleryThumbsS13'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetailS13
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbsS13.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbsS13
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetailS13.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetailS13.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+
+    /*
+   Thumb Gallery - S14
+   */
+    var $thumbGalleryDetailS14 = $('#thumbGalleryDetailS14'),
+        $thumbGalleryThumbsS14 = $('#thumbGalleryThumbsS14'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetailS14
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbsS14.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbsS14
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetailS14.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetailS14.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    /*
+Thumb Gallery - S15
+*/
+    var $thumbGalleryDetailS15 = $('#thumbGalleryDetailS15'),
+        $thumbGalleryThumbsS15 = $('#thumbGalleryThumbsS15'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetailS15
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbsS15.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbsS15
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetailS15.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetailS15.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    /*
+Thumb Gallery - S16
+*/
+    var $thumbGalleryDetailS16 = $('#thumbGalleryDetailS16'),
+        $thumbGalleryThumbsS16 = $('#thumbGalleryThumbsS16'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetailS16
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbsS16.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbsS16
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetailS16.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetailS16.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    /*
+Thumb Gallery - S17
+*/
+    var $thumbGalleryDetailS17 = $('#thumbGalleryDetailS17'),
+        $thumbGalleryThumbsS17 = $('#thumbGalleryThumbsS17'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetailS17
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbsS17.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbsS17
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetailS17.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetailS17.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    /*
+Thumb Gallery - S18
+*/
+    var $thumbGalleryDetailS18 = $('#thumbGalleryDetailS18'),
+        $thumbGalleryThumbsS18 = $('#thumbGalleryThumbsS18'),
+        flag = false,
+        duration = 300;
+
+    $thumbGalleryDetailS18
+        .owlCarousel({
+            items: 1,
+            margin: 10,
+            nav: true,
+            dots: false,
+            loop: true,
+            navText: []
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryThumbsS18.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+    $thumbGalleryThumbsS18
+        .owlCarousel({
+            margin: 15,
+            items: 4,
+            nav: false,
+            center: false,
+            dots: false
+        })
+        .on('click', '.owl-item', function () {
+            $thumbGalleryDetailS18.trigger('to.owl.carousel', [$(this).index(), duration, true]);
+
+        })
+        .on('changed.owl.carousel', function (e) {
+            console.log(e);
+        })
+        .on('changed.owl.carousel', function (e) {
+            if (!flag) {
+                flag = true;
+                $thumbGalleryDetailS18.trigger('to.owl.carousel', [e.item.index, duration, true]);
+                flag = false;
+            }
+        });
+
+
+
+
     /*
  Thumb Gallery - S6
  */

@@ -4,7 +4,7 @@
 <div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;font-size:12px;font-family: Arial, sans-serif;">
     @Html.Partial("/Views/_Partial/_HaberArama.cshtml")
     @{
-        foreach (var item in Model.Haberler)
+        foreach (var item in Model.Haberler.OrderBy(h => h.KategoriId).Take(2))
         {
             <div class="col-md-4" style="padding:7px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
@@ -162,7 +162,7 @@
         @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 20).Take(1).OrderBy(s => s.Sira))
         {
                 <div class="portfolio-item">
-                    <a href="@item.Url">
+                    <a href="#" data-toggle="modal" data-target="#@item.Url">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
@@ -183,7 +183,7 @@
         @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 21).Take(1).OrderBy(s => s.Sira))
         {
             <div class="portfolio-item">
-                <a href="@item.Url">
+                <a href="#" data-toggle="modal" data-target="#@item.Url">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
@@ -204,7 +204,7 @@
         @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 22).Take(1).OrderBy(s => s.Sira))
         {
             <div class="portfolio-item">
-                <a href="@item.Url">
+                <a href="#" data-toggle="modal" data-target="#@item.Url">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
@@ -228,7 +228,7 @@
         @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 23).Take(1).OrderBy(s => s.Sira))
         {
             <div class="portfolio-item">
-                <a href="@item.Url">
+                <a href="#" data-toggle="modal" data-target="#@item.Url">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
@@ -249,7 +249,7 @@
         @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 24).Take(1).OrderBy(s => s.Sira))
         {
             <div class="portfolio-item">
-                <a href="@item.Url">
+                <a href="#" data-toggle="modal" data-target="#@item.Url">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
@@ -270,7 +270,7 @@
        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 25).Take(1).OrderBy(s => s.Sira))
        {
         <div class="portfolio-item">
-            <a href="@item.Url">
+            <a href="#" data-toggle="modal" data-target="#@item.Url">
                 <span class="thumb-info thumb-info-lighten">
                     <span class="thumb-info-wrapper">
                         <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">

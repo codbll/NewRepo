@@ -2652,6 +2652,12 @@
     <Content Include="Views\_Partial\_HaberPopupSponsor3.cshtml" />
     <Content Include="Views\_Partial\_HaberPopupSponsor2.cshtml" />
     <Content Include="Scripts\shiner.jquery.json" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiAnaokulu.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiKoleji.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiOkulServisi.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiTedarikcisi.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiKursu.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiUniversitesi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

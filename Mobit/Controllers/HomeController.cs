@@ -29,6 +29,13 @@ namespace Mobit.Controllers
             ViewData["HaberlerPopup"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 4).ToList();
             ViewData["RoportajlarPopup"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 3).ToList();
 
+            ViewData["HaberPopupEniyiAnaokulu"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 13).ToList();
+            ViewData["HaberPopupEniyiKoleji"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).ToList();
+            ViewData["HaberPopupEniyiUniversitesi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 15).ToList();
+            ViewData["HaberPopupEniyiKursu"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 16).ToList();
+            ViewData["HaberPopupEniyiTedarikcisi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 17).ToList();
+            ViewData["HaberPopupEniyiOkulServisi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 18).ToList();
+
             return View();
 
         }
