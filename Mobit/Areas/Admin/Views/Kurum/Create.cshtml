@@ -212,6 +212,13 @@
             </div>
         </div>
         <div class="form-group">
+            3 Boyutlu
+            <div class="col-md-6">
+                @Html.TextAreaFor(model => model.D3Boyutlu, new { @class = "form-control", @rows = "3", @cols = "4" })
+                @Html.ValidationMessageFor(model => model.D3Boyutlu, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-8">
                 @Html.TextAreaFor(model => model.Video, new { @class = "form-control" })

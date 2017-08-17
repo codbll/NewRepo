@@ -136,6 +136,7 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.YurtDisiUniversiteBasariOrani = kurum.YurtDisiUniversiteBasariOrani;
             kurumlar.BursOlanakları = kurum.BursOlanakları;
             kurumlar.Ucreti = kurum.Ucreti;
+            kurumlar.D3Boyutlu = kurum.D3Boyutlu;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

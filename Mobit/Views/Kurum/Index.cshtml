@@ -167,28 +167,7 @@
                                             <iframe src='@Html.Raw(Model.Kurumlar.Harita)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
                                         </div>
                                         <div class="tab-pane" id="3d">
-                                            @if (Model.Kurumlar.KurumResim.Count() > 0)
-                                            {
-                                                foreach (var resim3 in Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 2))
-                                                {
-                                                    <div class="portfolio-list sort-destination lightbox" data-sort-id="portfolio" data-plugin-options='{"delegate": "a.lightbox-portfolio","autoplay":true, "type": "image", "gallery": {"enabled": true}}'>
-                                                        <span class="thumb-info thumb-info-lighten thumb-info-bottom-info thumb-info-centered-icons" style="border:none;">
-
-                                                            <span class="img-thumbnail thumb-info-wrapper">
-
-                                                                <img alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim3.Resim" class="img-responsive">
-                                                                <span class="thumb-info-action">
-
-                                                                    <a title="@Model.Kurumlar.KurumAdi" href="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim3.Resim" class="lightbox-portfolio">
-                                                                        <span class="thumb-info-action-icon thumb-info-action-icon-light"><i class="fa fa-search-plus"></i></span>
-                                                                    </a>
-                                                                </span>
-                                                            </span>
-                                                        </span>
-                                                    </div>
-
-                                                }
-                                            }
+                                            <iframe src='@Html.Raw(Model.Kurumlar.D3Boyutlu)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>
                                         </div>
                                         <div class="tab-pane" id="panoroma">
                                             
