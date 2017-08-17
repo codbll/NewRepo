@@ -8,7 +8,7 @@
             <div class="row" style="padding-left:15px;padding-right:15px;margin-top:0px">
              
                 <div>
-                    <marquee behavior="scroll" onmouseover="this.stop()" onmouseout="this.start()" direction="left">
+                    <marquee behavior="alternate" onmouseover="this.stop()" onmouseout="this.start()" direction="left">
                         @foreach (var item in Model.Slider.Where(s => s.SliderId == 3).OrderBy(s => s.Sira))
                         {
                         <a href="@item.Url" target="@item.Target">
