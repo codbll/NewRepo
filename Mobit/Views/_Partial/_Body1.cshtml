@@ -8,7 +8,7 @@
 
             <div class="owl-carousel owl-theme show-nav-hover"  data-plugin-options='{"items": 1, "margin": 20, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 1000,"autoplayHoverPause": true}'>
                     @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 2))
-            {
+                    {
                         <div>
                             <a href="@item.Url" target="@item.Target">
                                 <span class="thumb-info thumb-info-lighten">

@@ -9,19 +9,19 @@ using System.Web.Mvc;
 namespace Mobit.Areas.Admin.Controllers
 {
     [_Yetki(Roles = "Admin")]
-    public class SliderController : Controller
+    public class EniyilerController : Controller
     {
         Entities db = new Entities();
         // GET: Admin/Slider
         public ActionResult Index()
         {
-            var slider = db.Slider.OrderBy(s=>s.SliderKategori.SliderId).OrderBy(k => k.SliderId).ToList();
+            var slider = db.Slider.Where(s => s.SliderId > 19).OrderBy(s=>s.SliderKategori.SliderId).ToList();
             return View(slider);
         }
 
         public ActionResult Create()
         {
-            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi");
+            ViewBag.SliderId = new SelectList(db.SliderKategori.Where(s => s.SliderId > 19).ToList(), "SliderId", "SliderAdi");
 
             return View();
         }
@@ -30,7 +30,7 @@ namespace Mobit.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Slider Slider, HttpPostedFileBase Resim)
         {
-            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi");
+            ViewBag.SliderId = new SelectList(db.SliderKategori.Where(s => s.SliderId > 19).ToList(), "SliderId", "SliderAdi");
 
             if (Slider.Baslik == null)
             {
@@ -78,7 +78,7 @@ namespace Mobit.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.Target = slider.Target;
-            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi", slider.SliderId);
+            ViewBag.SliderId = new SelectList(db.SliderKategori.Where(s => s.SliderId > 19).ToList(), "SliderId", "SliderAdi", slider.SliderId);
 
             return View(slider);
         }
@@ -87,7 +87,7 @@ namespace Mobit.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Slider Slider, HttpPostedFileBase Resim)
         {
-            ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi", Slider.SliderId);
+            ViewBag.SliderId = new SelectList(db.SliderKategori.Where(s => s.SliderId > 19).ToList(), "SliderId", "SliderAdi", Slider.SliderId);
 
             if (Slider.Baslik == null)
             {
