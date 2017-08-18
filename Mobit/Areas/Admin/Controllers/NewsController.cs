@@ -118,6 +118,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             haber.Ad = haberler.Ad;
             haber.Slug = Kontrol.ToSlug(haberler.Slug);
+            haber.KategoriId = haberler.KategoriId;
             haber.GaleriId = haberler.GaleriId;
             haber.Detay = haberler.Detay;
             haber.Aktif = haberler.Aktif;
