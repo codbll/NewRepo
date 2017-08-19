@@ -4,12 +4,13 @@
 <div class="row" style="padding-top:7px;margin-left:20px;margin-right:20px;font-size:12px;font-family: Arial, sans-serif;">
     @Html.Partial("/Views/_Partial/_HaberArama.cshtml")
     @{
-        foreach (var item in Model.Haberler.OrderBy(h => h.KategoriId).Take(2))
+        var tumHaberler = Model.Haberler.OrderBy(h => h.KategoriId).Take(2).ToList();
+        foreach (var item in tumHaberler.OrderByDescending(h => h.KategoriId))
         {
             <div class="col-md-4" style="padding:7px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
                     <h3 class="heading-primary">@item.Ad (<a href="@item.Ad.Replace("ö","o")" class="btn btn-xl btn-primary">Tüm @item.Ad</a>)</h3>
-                </div>
+                </div>s
                 <aside class="sidebar">
                     <ul class="simple-post-list">
                         @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
@@ -161,19 +162,19 @@
         </div>
         @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 20).Take(1).OrderBy(s => s.Sira))
         {
-                <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Url">
-                        <span class="thumb-info thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner">@item.Baslik</span>
-                                    <span class="thumb-info-type">İstanbul</span>
-                                </span>
+            <div class="portfolio-item">
+                <a href="#" data-toggle="modal" data-target="#@item.Url">
+                    <span class="thumb-info thumb-info-lighten">
+                        <span class="thumb-info-wrapper">
+                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-inner">@item.Baslik</span>
+                                <span class="thumb-info-type">İstanbul</span>
                             </span>
                         </span>
-                    </a>
-                </div>
+                    </span>
+                </a>
+            </div>
         }
     </div>
     <div class="col-md-4" style="padding:7px;">
@@ -267,22 +268,21 @@
         <div class="heading heading-primary heading-border heading-bottom-border">
             <span class="heading-primary" style="font-size:18px;">Ayın En İyi Okul Servisi</span>
         </div>
-       @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 25).Take(1).OrderBy(s => s.Sira))
-       {
-        <div class="portfolio-item">
-            <a href="#" data-toggle="modal" data-target="#@item.Url">
-                <span class="thumb-info thumb-info-lighten">
-                    <span class="thumb-info-wrapper">
-                        <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                        <span class="thumb-info-title">
-                            <span class="thumb-info-inner">@item.Baslik</span>
-                            <span class="thumb-info-type">İstanbul</span>
+        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 25).Take(1).OrderBy(s => s.Sira))
+        {
+            <div class="portfolio-item">
+                <a href="#" data-toggle="modal" data-target="#@item.Url">
+                    <span class="thumb-info thumb-info-lighten">
+                        <span class="thumb-info-wrapper">
+                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
+                            <span class="thumb-info-title">
+                                <span class="thumb-info-inner">@item.Baslik</span>
+                                <span class="thumb-info-type">İstanbul</span>
+                            </span>
                         </span>
                     </span>
-                </span>
-            </a>
-        </div>
-       }
+                </a>
+            </div>
+        }
     </div>
 </div>
-
