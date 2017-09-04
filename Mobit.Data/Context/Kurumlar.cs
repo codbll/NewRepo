@@ -56,6 +56,7 @@ namespace Mobit.Data.Context
         public string BursOlanakları { get; set; }
         public string Ucreti { get; set; }
         public string D3Boyutlu { get; set; }
+        public string Sponsorlar { get; set; }
     
         public virtual AltKategoriler AltKategoriler { get; set; }
         public virtual ilceler ilceler { get; set; }

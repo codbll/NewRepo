@@ -1,43 +1,440 @@
-﻿    <div class="thumb-gallery">
-        @{
-            Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
-            <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetailS14">
-
-                @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).OrderByDescending(u => u.Id).ToList()) 
-                {
-                    <a href="/haber/@item.Slug" >
-                        <div class="image-gallery-item">
-                            <span class="thumb-info thumb-info-lighten">
-                                <span class="thumb-info-wrapper">
-                                    <img src="~/Upload/haber/@item.Resim" class="img-responsive" alt="@item.Slug" title="@item.Ad" style="width:100%;height:550px;">
-                                    <span class="thumb-info-title">
-                                        <span class="thumb-info-inner">@item.Ad</span>
-                                        <span class="thumb-info-type">@item.HaberKategorileri.Ad</span>
-                                    </span>
-                                </span>
-                            </span>
+﻿
+<div style="background-color: #FFEB98;">
+    <br />
+    <br />
+    @{
+        Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
+        foreach (var Model in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Koleji").Take(1).ToList())
+        {
+            <div role="main" class="main shop" style="padding-left:2px;padding-right:25px;margin-left:7px;">
+                <div class="container">
+                    <div class="row" style="padding-left:2px;padding-right:25px;">
+                        <div class="col-md-12 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:20px;">
+                            <div class="col-md-2">
+                                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@Model.Resim" style="height:150px;" alt="@Model.KurumAdi">
+                            </div>
+                            <div class="col-md-10">
+                                <br />
+                                <span style="font-size:60px;vertical-align:bottom;text-align: center;" class="heading-primary">@Model.KurumAdi</span>
+                            </div>
                         </div>
-                    </a>
-                }
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="tabs tabs-tertiary tabs-center nav-tabs-justified">
+                                                <ul class="nav nav-tabs">
+                                                    <li><a href="#haberler" data-toggle="tab" style="color:blue;">Haberler</a></li>
+                                                    @if (Model.KurumResim.Where(r => r.ResimTipi == 1).Count() >= 1)
+                                                    {
+                                                        <li class="active"><a href="#slayt" data-toggle="tab" style="color:blue;">Tanıtım Slaytları</a></li>
+                                                    }
+
+                                                    @if (Model.KurumResim.Where(r => r.ResimTipi == 4).Count() >= 1)
+                                                    {
+                                                        <li><a href="#aktiviteler" data-toggle="tab" style="color:blue;">Aktiviteler</a></li>
+                                                    }
+                                                    @if (Model.Aciklama != null && Model.Aciklama.Length > 10)
+                                                    {
+                                                        <li><a href="#aciklama" data-toggle="tab" style="color:blue;">Hakkında</a></li>
+                                                    }
+                                                    @if (Model.Video != null && Model.Video.Length > 20)
+                                                    {
+                                                        <li><a href="#video" data-toggle="tab" style="color:blue;">Tanıtım Videosu</a></li>
+
+                                                    }
+                                                    @if (Model.Harita != null && Model.Harita.Length > 20)
+                                                    {
+                                                        <li><a href="#harita" data-toggle="tab" style="color:blue;">Harita</a></li>
+
+                                                    }
+                                                    @if (Model.Panoroma != null && Model.Panoroma.Length > 10)
+                                                    {
+                                                        <li><a href="#panoroma" data-toggle="tab" style="color:blue;">Panoroma</a></li>
+                                                    }
+                                                    @if (Model.D3Boyutlu != null && Model.D3Boyutlu.Length > 10)
+                                                    {
+                                                        <li><a href="#3d" data-toggle="tab" style="color:blue;">3D Tanıtım</a></li>
+                                                    }
+                                                    <li><a href="#Resimler" data-toggle="tab" style="color:blue;">Resimler</a></li>
+                                                    <li><a href="#Detaylar" data-toggle="tab" style="color:blue;">Detaylar</a></li>
+                                                </ul>
+                                                <div class="tab-content">
+                                                    <div class="tab-pane active" id="haberler">
+                                                        <div class="thumb-gallery">
+                                                            <div class="thumb-gallery">
+                                                                @{
+                                                                    <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetailS1">
+
+                                                                        @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).OrderByDescending(u => u.Id).ToList())
+                {
+                                                                            <a href="/haber/@item.Slug">
+                                                                                <div class="image-gallery-item">
+                                                                                    <span class="thumb-info thumb-info-lighten">
+                                                                                        <span class="thumb-info-wrapper">
+                                                                                            <img src="~/Upload/haber/@item.Resim" class="img-responsive" alt="@item.Slug" title="@item.Ad" style="width:100%;height:300px;">
+                                                                                            <span class="thumb-info-title">
+                                                                                                <span class="thumb-info-inner">@item.Ad</span>
+                                                                                                <span class="thumb-info-type">@item.HaberKategorileri.Ad</span>
+                                                                                            </span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </div>
+                                                                            </a>
+                                                                        }
+
+                                                                    </div>
+                                                                    <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbsS1">
+                                                                        @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).OrderByDescending(u => u.Id).ToList())
+                                                                        {
+                                                                            <div class="image-gallery-item">
+                                                                                <span cğlass="thumb-info thumb-info-lighten">
+                                                                                    <span class="thumb-info-wrapper">
+                                                                                        <img src="~/Upload/haber/@item.Resim" class="img-responsive" alt="@item.Slug" title="@item.Ad" style="height:100px;width:100px;font-size:12px;">
+                                                                                        <span class="thumb-info-title">
+                                                                                            <span class="thumb-info-inner" style="font-size:12px;">@item.Ad</span>
+                                                                                            <span class="thumb-info-type">@item.HaberKategorileri.Ad</span>
+                                                                                        </span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                }
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="slayt">
+                                                        <div class="thumb-gallery">
+
+                                                            <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail">
+                                                                @if (Model.KurumResim.Count() > 0)
+                                                                {
+                                                                    foreach (var resim in Model.KurumResim.Where(r => r.ResimTipi == 1))
+                                                                    {
+                                                                        <div class="image-gallery-item">
+                                                                            <span class="thumb-info thumb-info-lighten">
+                                                                                <span class="thumb-info-wrapper">
+                                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="width:100%;height:400px;">
+                                                                                    <span class="thumb-info-title">
+                                                                                        <span class="thumb-info-inner">@resim.Aciklama</span>
+                                                                                        <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            </div>
+                                                            <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs">
+
+                                                                @if (Model.Resim.Count() > 0)
+                                                                {
+                                                                    foreach (var resim in Model.KurumResim.Where(r => r.ResimTipi == 1))
+                                                                    {
+                                                                        <div class="image-gallery-item">
+                                                                            <span class="thumb-info thumb-info-lighten">
+                                                                                <span class="thumb-info-wrapper">
+                                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="height:150px;">
+                                                                                    <span class="thumb-info-title">
+                                                                                        <span class="thumb-info-inner" style="font-size:15px;">@resim.Aciklama</span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="aktiviteler">
+                                                        <div class="thumb-gallery">
+                                                            <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail3">
+                                                                @if (Model.KurumResim.Count() > 0)
+                                                                {
+                                                                    foreach (var resim in Model.KurumResim.Where(r => r.ResimTipi == 4))
+                                                                    {
+                                                                        <div class="image-gallery-item">
+                                                                            <span class="thumb-info thumb-info-lighten">
+                                                                                <span class="thumb-info-wrapper">
+                                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="width:100%;height:400px;">
+                                                                                    <span class="thumb-info-title">
+                                                                                        <span class="thumb-info-inner">@resim.Aciklama</span>
+                                                                                        <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            </div>
+
+                                                            <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs3">
+                                                                @if (Model.Resim.Count() > 0)
+                                                                {
+                                                                    foreach (var resim in Model.KurumResim.Where(r => r.ResimTipi == 4))
+                                                                    {
+                                                                        <div class="image-gallery-item">
+                                                                            <span class="thumb-info thumb-info-lighten">
+                                                                                <span class="thumb-info-wrapper">
+                                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="height:150px;">
+                                                                                    <span class="thumb-info-title">
+                                                                                        <span class="thumb-info-inner" style="font-size:15px;">@resim.Aciklama</span>
+                                                                                    </span>
+                                                                                </span>
+                                                                            </span>
+                                                                        </div>
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="tab-pane" id="aciklama">
+                                                        <p>
+                                                            @Html.Raw(Model.Aciklama)
+                                                        </p>
+                                                    </div>
+                                                    <div class="tab-pane" id="video">
+                                                        @*<iframe src='@Html.Raw(Model.Video)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>*@
+                                                        @Html.Raw(Model.Video)
+                                                    </div>
+                                                    <div class="tab-pane" id="harita">
+                                                        @*<iframe src='@Html.Raw(Model.Harita)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>*@
+                                                        @Html.Raw(Model.Harita)
+
+
+                                                    </div>
+                                                    <div class="tab-pane" id="3d">
+                                                        @*<iframe src='@Html.Raw(Model.D3Boyutlu)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>*@
+                                                        @Html.Raw(Model.D3Boyutlu)
+
+
+                                                    </div>
+                                                    <div class="tab-pane" id="panoroma">
+
+                                                        @Html.Raw(Model.Panoroma)
+
+
+                                                        @*<iframe src="@Html.Raw(Model.Panoroma)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>*@
+                                                    </div>
+                                                    <div class="tab-pane" id="Resimler">
+                                                        <div class="col-md-12">
+                                                            <div class="tabs tabs-bottom tabs-center tabs-simple">
+                                                                <div class="tab-content">
+                                                                    <div class="tab-pane active" id="egitimciler">
+                                                                        <div class="thumb-gallery">
+
+                                                                            <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail2">
+
+                                                                                @if (Model.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
+                                                                                {
+                                                                                    foreach (var resim in Model.KurumEgitimciler.Where(r => r.Tip == 1))
+                                                                                    {
+                                                                                        <div class="image-gallery-item">
+                                                                                            <span class="thumb-info thumb-info-lighten">
+                                                                                                <span class="thumb-info-wrapper">
+                                                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="width:100%;height:500px;">
+                                                                                                    <span class="thumb-info-title">
+                                                                                                        <span class="thumb-info-inner">@resim.Aciklama</span>
+                                                                                                        <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+
+                                                                            <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs2">
+                                                                                @if (Model.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
+                                                                                {
+                                                                                    foreach (var resim in Model.KurumEgitimciler.Where(r => r.Tip == 1))
+                                                                                    {
+                                                                                        <div class="image-gallery-item">
+                                                                                            <span class="thumb-info thumb-info-lighten">
+                                                                                                <span class="thumb-info-wrapper">
+                                                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="height:175px;">
+                                                                                                    <span class="thumb-info-title">
+                                                                                                        <span class="thumb-info-inner" style="font-size:12px;">@resim.Aciklama</span>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    }
+                                                                                }
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="tab-pane" id="Detaylar">
+                                                        <div class="col-md-5">
+                                                            <div class="tabs tabs-bottom tabs-center tabs-simple">
+                                                                <div class="tab-content" style="background-color:#FFEB98;">
+                                                                    <div class="tab-pane active" id="Kurumadi" style="background-color:#FFEB98;">
+                                                                        <dl>
+                                                                            @if (Model.Adres != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ADRESİ :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Adres</span></dd>
+                                                                            }
+
+                                                                            @if (Model.Tel != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Tel</span></dd>
+                                                                            }
+                                                                            @if (Model.Subeler != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ŞUBELER :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Subeler</span></dd>
+                                                                            }
+                                                                            @if (Model.KurulusTarih != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AÇILIŞ YILI :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurulusTarih</span></dd>
+                                                                            }
+                                                                            @if (Model.Kurucusu != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurucusu</span></dd>
+                                                                            }
+                                                                            @if (Model.Kordinatorler != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KORDİNATÖRLER :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kordinatorler</span></dd>
+                                                                            }
+                                                                            @if (Model.KurumMuduru != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
+                                                                            }
+                                                                            @if (Model.KurumMuduru != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR YARDIMCILARI :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
+                                                                            }
+                                                                            @if (Model.Egitimciler != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİMCİLER :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Egitimciler</span></dd>
+                                                                            }
+                                                                            @if (Model.Aktiviteler != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AKTİVİTELER :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Aktiviteler</span></dd>
+                                                                            }
+                                                                            @if (Model.Fax != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">FAKS :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Fax</span></dd>
+                                                                            }
+                                                                            @if (Model.Email != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">E-MAİL :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Email</span></dd>
+                                                                            }
+
+                                                                            @if (Model.EgitimDili != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.EgitimDili" target="_blank">@Model.EgitimDili</a></span></dd>
+                                                                            }
+                                                                            @if (Model.OgrenciSayisi != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.OgrenciSayisi" target="_blank">@Model.OgrenciSayisi</a></span></dd>
+                                                                            }
+                                                                            @if (Model.YurticiUniversiteBasariOrani != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurticiUniversiteBasariOrani" target="_blank">@Model.YurticiUniversiteBasariOrani</a></span></dd>
+                                                                            }
+                                                                            @if (Model.YurtDisiUniversiteBasariOrani != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurtDisiUniversiteBasariOrani" target="_blank">@Model.YurtDisiUniversiteBasariOrani</a></span></dd>
+                                                                            }
+                                                                            @if (Model.BursOlanakları != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.BursOlanakları" target="_blank">@Model.BursOlanakları</a></span></dd>
+                                                                            }
+                                                                            @if (Model.Ucreti != null)
+                                                                            {
+                                                                                <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
+                                                                                <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Ucreti" target="_blank">@Model.Ucreti</a></span></dd>
+                                                                            }
+
+
+                                                                        </dl>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="owl-carousel owl-theme" data-plugin-options='{"items": 1, "margin": 10}'>
+                                            <div>
+                                                <div class="thumbnail">
+                                                    <img alt="@Model.KurumAdi" title="@Model.KurumAdi" style="max-height:345px;" class="img-responsive img-rounded" src="~/Upload/slide/@Model.Resim">
+                                                </div>
+
+                                            </div>
+                                            @if (Model.Resim != null)
+                                            {
+                                                foreach (var resim in Model.Resim)
+                                                {
+                                                    <div>
+                                                        <div class="thumbnail">
+                                                            <img alt="@Model.KurumAdi" title="@Model.KurumAdi" style="max-height:345px;" class="img-responsive img-rounded" src="~/Upload/slide/@resim.Resim">
+                                                        </div>
+                                                    </div>
+                                                }
+                                            }
+                                        </div>*@
+
+                                </div>
+
+                                <div class="col-md-3">
+                                    <aside class="sidebar">
+                                        <br />
+                                        <h4 class="heading-primary">Mesaj Gönderin</h4>
+                                        @Html.Partial("/Views/_Partial/_kurumMesajGonder.cshtml", Model)
+                                    </aside>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+
+                </div>
+
+            </div>
+                        }
+
+    }
+
+
+
+
 
 </div>
-            <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbsS14">
-                @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).OrderByDescending(u => u.Id).ToList())
-            {
-                    <div class="image-gallery-item">
-                        <span class="thumb-info thumb-info-lighten">
-                            <span class="thumb-info-wrapper">
-                                <img src="~/Upload/haber/@item.Resim" class="img-responsive" alt="@item.Slug" title="@item.Ad" style="height:200px;font-size:12px;">
-                                <span class="thumb-info-title">
-                                    <span class="thumb-info-inner" style="font-size:12px;">@item.Ad</span>
-                                    <span class="thumb-info-type">@item.HaberKategorileri.Ad</span>
-                                </span>
-                            </span>
-                        </span>
-                    </div>
-                }
-            </div>
-        }
 
-    </div>
- 
+

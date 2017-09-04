@@ -1,0 +1,625 @@
+﻿@model Mobit.Data.Context.Kurumlar
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sponsor Güncelle</h2>
+<div>
+    @Html.ActionLink("Listeye Dön", "Index")
+</div>
+<div class="row">
+
+    <div class="col-lg-8">
+        <form id="myform" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(Model => Model.KurumId)
+
+                <div class="form-group">
+                    @*@Html.LabelFor(model => model.Aktif, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                    <label class="control-label col-md-2">Durum</label>
+                    <div class="col-md-1">
+                        <b>Aktif</b>
+                        @Html.CheckBoxFor(model => model.Durum, htmlAttributes: new { @checked = "checked" })
+
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KategoriId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.DropDownList("Sponsorlar", null, "Kategori Seçiniz", htmlAttributes: new { @class = "form-control", @required = "required" })
+                        @Html.ValidationMessageFor(model => model.KategoriId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Resim, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        <input type="file" name="resimYukle" id="resimYukle" accept="image/*" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KurumAdi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KurumAdi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
+                        @Html.ValidationMessageFor(model => model.KurumAdi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KurumMuduru, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KurumMuduru, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KurumMuduru, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MudurYardimcilari, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.MudurYardimcilari, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.MudurYardimcilari, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Egitimciler, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Egitimciler, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Egitimciler, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Subeler, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Subeler, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Subeler, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Kurucusu, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Kurucusu, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Kurucusu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Kordinatorler, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Kordinatorler, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Kordinatorler, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Aktiviteler, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Aktiviteler, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Aktiviteler, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KurulusTarih, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KurulusTarih, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KurulusTarih, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.WebSitesi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.WebSitesi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.WebSitesi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Tel, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Tel, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Tel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Adres, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.TextAreaFor(model => model.Adres, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Adres, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.EgitimDili, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.EgitimDili, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.EgitimDili, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.OgrenciSayisi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.OgrenciSayisi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.OgrenciSayisi, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.YurticiUniversiteBasariOrani, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.YurticiUniversiteBasariOrani, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.YurticiUniversiteBasariOrani, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.YurtDisiUniversiteBasariOrani, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.YurtDisiUniversiteBasariOrani, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.YurtDisiUniversiteBasariOrani, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.BursOlanakları, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.BursOlanakları, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.BursOlanakları, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Ucreti, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.EditorFor(model => model.Ucreti, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Ucreti, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Harita, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Harita, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Harita, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Panoroma, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.Panoroma, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.Panoroma, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-2">3 Boyutlu </label>
+
+                    <div class="col-md-6">
+                        @Html.TextAreaFor(model => model.D3Boyutlu, new { @class = "form-control", @rows = "3", @cols = "4" })
+                        @Html.ValidationMessageFor(model => model.D3Boyutlu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Video, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Video, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Video, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Aciklama, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control ckeditor" })
+                        @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input id="btnGonder" type="submit" value="Güncelle" class="btn btn-primary" />
+                        <a href="/Admin/Sponsorlar/Delete/@Model.KurumId" onclick="return confirm('Dikkat: Bu kurumu silmek istediğinizden emin misiniz?')" class="btn btn-danger pull-right">Kurumu Sil</a>
+
+                        <br />
+                        <br />
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    <div class="col-lg-4">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Kurum İçerikleri</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    <div class="table-responsive">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model.Resim != null)
+                                {
+                                    <tr>
+
+                                        <td>
+                                            <a href="~/Upload/slide/@Model.Resim" target="_blank"> <img src="~/Upload/slide/@Model.Resim" width="70" class="img-responsive" /></a>
+
+                                        </td>
+                                        <td>
+                                            <a href="/Admin/Sponsorlar/DeleteFile/@Model.KurumId?fileName=@Model.Resim" onclick="return confirm('Dikkat: Bu dosyayı istediğinizden emin misiniz?')" class="btn btn-warning btn-circle " title="Sil">
+                                                <i class="fa fa-times"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Kurum Galerisi</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    <div class="table-responsive">
+                        <form method="post" action="/Admin/Kurum/FileUpload" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="kurumId" value="@Model.KurumId" />
+                            <input type="hidden" name="uploadYol" value="@Model.UploadYolu" />
+
+                            <div>
+                                <div class="col-md-5">
+                                    <select name="ResimTipi" class="form-control ">
+                                        <option value="1">Resim</option>
+                                        <option value="2">3D Resim</option>
+                                        <option value="3">Eğitimciler</option>
+                                        <option value="4">Aktiviteler</option>
+                                    </select>
+                                    <br /><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="Aciklama" id="Aciklama" />
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="file" name="galeriResim" id="galeriResim" accept="image/*" multiple /> <br />
+                                </div>
+
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-primary" value="Resim Yükle" />
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tip</th>
+                                    <th>Açıklama</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                @if (Model.KurumResim != null)
+                                {
+                                    foreach (var item in Model.KurumResim)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                <a href="~/Upload/slide/@item.Resim" target="_blank"> <img src="~/Upload/slide/@item.Resim" width="70" class="img-responsive" /></a>
+                                            </td>
+                                            <td>
+                                                @(item.ResimTipi == 100 ? "Eğitimciler" : item.ResimTipi.ToString())
+                                            </td>
+                                            <td>
+                                                @item.Aciklama
+                                            </td>
+                                            <td>
+                                                <a href="/Admin/Kurum/DeleteFile/@Model.KurumId?kurumResim=@item.ResimId" onclick="return confirm('Dikkat: Bu dosyayı istediğinizden emin misiniz?')" class="btn btn-warning btn-circle " title="Sil">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                }
+
+
+                             
+                            </tbody>
+</table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Kurum Eğitimci ve Yöneticileri</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="ibox-content" style="display: block;">
+                <div class="row">
+                    <div class="table-responsive">
+                        <form method="post" action="/Admin/Kurum/FileUploadEgitimciYonetici" enctype="multipart/form-data">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="kurumId" value="@Model.KurumId" />
+                            <input type="hidden" name="uploadYol" value="@Model.UploadYolu" />
+
+                            <div>
+                                <div class="col-md-5">
+                                    <select name="ResimTipi" class="form-control ">
+                                        <option value="1">Eğitimci</option>
+                                        <option value="2">Yönetici</option>
+                                    </select>
+                                    <br /><br />
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" name="Aciklama" id="Aciklama" />
+                                </div>
+                                <div class="col-md-12">
+                                    <input type="file" name="galeriResim" id="galeriResim" accept="image/*" multiple /> <br />
+                                </div>
+
+                                <br />
+                                <div class="col-md-12">
+                                    <input type="submit" class="btn btn-primary" value="Resim Yükle" />
+                                </div>
+                            </div>
+                        </form>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Tip</th>
+                                    <th>Açıklama</th>
+                                    <th>İşlem</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                               
+                                    @foreach (var item in Model.KurumEgitimciler)
+                                    {
+                                        <tr>
+
+                                            <td>
+                                                <a href="~/Upload/slide/@item.Resim" target="_blank"> <img src="~/Upload/slide/@item.Resim" width="70" class="img-responsive" /></a>
+                                            </td>
+                                            <td>
+                                                @(item.Tip == 1 ? "Eğitimciler" : "Yöneticiler")
+                                            </td>
+                                            <td>
+                                                @item.Aciklama
+                                            </td>
+                                            <td>
+                                                <a href="/Admin/Kurum/DeleteFileEgitimciler/@Model.KurumId?EgitimciId=@item.EgitimciId" onclick="return confirm('Dikkat: Bu dosyayı istediğinizden emin misiniz?')" class="btn btn-warning btn-circle " title="Sil">
+                                                    <i class="fa fa-times"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="small-chat">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Kurum İşlemi</h5>
+                <div class="ibox-tools">
+
+                    <a href="#" id="back-to-top" title="Back to top">
+                        <i class="fa fa-arrow-up fa-3" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="display: block;">
+
+                <a id="btnKisaSubmit" class="btn btn-primary center-block"><i class="fa fa-check"></i>Güncelle</a>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</div>
+<div>
+    @Html.ActionLink("Listeye Dön", "Index")
+</div>
+<br /><br />
+@section Styles {
+
+    @Styles.Render("~/admin/plugins/summernoteStyles")
+
+}
+
+@section Scripts {
+
+    <script>
+        $("#btnKisaSubmit").click(function () {
+            $("#btnGonder").trigger("click");
+        });
+    </script>
+
+
+    <script>
+        $("document").ready(function () {
+
+            $("#resimYukle").change(function () {
+
+                var ext = $('#resimYukle').val().split('.').pop().toLowerCase();
+                if ($.inArray(ext, ['png', 'jpeg', 'jpg', 'gif', 'bmp']) == -1) {
+                    alert('Sadece resim dosyaları seçebilirsiniz.');
+
+                    fileTypeControl($("#resimYukle"));
+                }
+
+            });
+
+
+
+        });
+
+
+        function fileTypeControl(dosya) {
+            var fileopen = dosya,
+            clone = fileopen.clone(true);
+            fileopen.replaceWith(clone);
+        }
+    </script>
+    @Scripts.Render("~/admin/bundles/jqueryval")
+
+    <script>
+
+        $('#KategoriId').change(function () {
+            var KategoriId = $(this).val();
+
+            if (KategoriId != null && KategoriId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Kurum/AltKategoriGetir",
+                    data: { KategoriId: KategoriId },
+                    success: function (kategoriler) {
+
+                        var dropdown = $('#AltKategoriId');
+                        dropdown.empty();
+
+                        $.each(kategoriler, function (index, kategori) {
+                            $('#AltKategoriId').append($('<option/>', {
+                                value: kategori.AltKategoriId,
+                                text: kategori.AltKategoriAdi
+
+                            }));
+
+                        });
+
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: Kategoriler listelenemedi.");
+                    },
+                    beforeSend: function () {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            }
+        });
+
+    </script>
+
+    <script>
+
+        $('#ilId').change(function () {
+            var ilId = $(this).val();
+
+            if (ilId != null && ilId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Kurum/ilceGetir",
+                    data: { ilId: ilId },
+                    success: function (kategoriler) {
+
+                        var dropdown = $('#ilceId');
+                        dropdown.empty();
+
+                        $.each(kategoriler, function (index, kategori) {
+                            $('#ilceId').append($('<option/>', {
+                                value: kategori.ilceId,
+                                text: kategori.ilceAdi
+
+                            }));
+
+                        });
+
+                    },
+                    error: function (kategoriler) {
+
+                        alert("Hata: İlçeler listelenemedi.");
+                    },
+                    beforeSend: function () {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            }
+        });
+
+    </script>
+
+}
+
+

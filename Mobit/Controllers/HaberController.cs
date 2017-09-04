@@ -71,7 +71,7 @@ namespace Mobit.Controllers
 
             int _sayfaNo = Sayfa ?? 1;
 
-            string title = "Ropörtajlar";
+            string title = "Biyografiler";
             ViewBag.title = title;
             ViewBag.desc = title;
             ViewBag.keywords = title;
@@ -82,7 +82,7 @@ namespace Mobit.Controllers
 
             if (haberler.Count <= 0)
             {
-                ViewBag.bilgi = "Ropörtaj bulunamadı";
+                ViewBag.bilgi = "Biyografi bulunamadı";
             }
             var reklam = db.Slider.Where(s => s.SliderId == 13 || s.SliderId == 16).OrderBy(s => s.Sira).ToList();
             ViewData["detayReklam"] = reklam.Where(r => r.SliderId == 13).Take(5).ToList();
@@ -231,7 +231,7 @@ namespace Mobit.Controllers
 
             int _sayfaNo = Sayfa ?? 1;
 
-            string title = "Ayın En İyi Anaokulu";
+            string title = "Ayın En İyi Koleji";
             ViewBag.title = title;
             ViewBag.desc = title;
             ViewBag.keywords = title;
@@ -242,7 +242,7 @@ namespace Mobit.Controllers
 
             if (haberler.Count <= 0)
             {
-                ViewBag.bilgi = "Ayın En İyi Anaokulu bulunamadı";
+                ViewBag.bilgi = "Ayın En İyi Koleji bulunamadı";
             }
             return View(haberler);
 
@@ -342,10 +342,15 @@ namespace Mobit.Controllers
         } 
         public PartialViewResult SonHaberler()// son 10 haber
         {
-            var haberler = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h => h.Tarih).Take(10).ToList();
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 4).OrderByDescending(h => h.Tarih).Take(5).ToList();
 
             return PartialView("~/Views/_Partial/_SonHaberler.cshtml", haberler);
         }
+        public PartialViewResult SonHaberlerRoportajlar()// son 10 haber
+        {
+            var haberler = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 3).OrderByDescending(h => h.Tarih).Take(5).ToList();
 
+            return PartialView("~/Views/_Partial/_SonHaberlerRoportajlar.cshtml", haberler);
+        }
     }
 }

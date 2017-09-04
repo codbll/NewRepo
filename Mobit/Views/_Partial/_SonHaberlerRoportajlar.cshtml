@@ -1,0 +1,29 @@
+﻿@model List<Mobit.Data.Context.Haberler>
+
+<h4 class="heading-primary">Son Biyografiler</h4>
+
+<ul class="simple-post-list">
+    @foreach (var haber in Model.Where(h => h.KategoriId == 3))
+    {
+        <li>
+            @*<div class="post-image">
+                <div class="img-thumbnail">
+                    <a href="/haber/@haber.Slug">
+                        <img src="~/Upload/haber/@haber.Resim" height="20" alt="">
+                    </a>
+                </div>
+            </div>*@
+            <div class="post-info">
+                <div class="col-md-4">
+                    <a href="/haber/@haber.Slug">  <img class="img-responsive" src="~/Upload/haber/@haber.Resim" title="@haber.Ad" alt="@haber.Ad" style="width:100%;height:75px;"></a>
+                </div>
+                <div class="col-md-8">
+                    <a href="/haber/@haber.Slug">@haber.Ad</a>
+                    <div class="post-meta">
+                        @haber.Tarih.ToString("d")
+                    </div>
+                </div>
+            </div>
+        </li>
+    }
+</ul>

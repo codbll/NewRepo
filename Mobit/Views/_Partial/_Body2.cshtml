@@ -9,8 +9,8 @@
         {
             <div class="col-md-4" style="padding:7px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
-                    <h3 class="heading-primary">@item.Ad (<a href="@item.Ad.Replace("ö","o")" class="btn btn-xl btn-primary">Tüm @item.Ad</a>)</h3>
-                </div>s
+                    <h3 class="heading-primary">@item.Ad <br /><a href="@item.Url" class="btn btn-xl btn-primary col-md-12">Tüm @item.Ad</a></h3>
+                </div>
                 <aside class="sidebar">
                     <ul class="simple-post-list">
                         @foreach (var haberler in item.Haberler.OrderByDescending(h => h.Id).Take(16))
@@ -48,12 +48,13 @@
                 </aside>
             </div>
                                             }
-
-    }
+   }
     <div class="col-md-4" style="padding:7px;">
         <aside class="sidebar">
             <div class="heading heading-primary heading-border heading-bottom-border">
-                <h3 class="heading-primary">En İyi Okullar</h3>
+                <br />
+                <h3 class="heading-primary">EN İYİ OKULLAR</h3>
+                
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 3, "margin": 1, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 2000}'>
                 @{
@@ -155,134 +156,137 @@
     </div>
 
 </div>
-<div class="row" style="margin-left:20px;margin-right:20px;">
-    <div class="col-md-4" style="padding:7px;">
-        <div class="heading heading-primary heading-border heading-bottom-border">
-            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Anaokulu</span>
-        </div>
-        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 20).Take(1).OrderBy(s => s.Sira))
-        {
-            <div class="portfolio-item">
-                <a href="#" data-toggle="modal" data-target="#@item.Url">
-                    <span class="thumb-info thumb-info-lighten">
-                        <span class="thumb-info-wrapper">
-                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                            <span class="thumb-info-title">
-                                <span class="thumb-info-inner">@item.Baslik</span>
-                                <span class="thumb-info-type">İstanbul</span>
-                            </span>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        }
-    </div>
-    <div class="col-md-4" style="padding:7px;">
-        <div class="heading heading-primary heading-border heading-bottom-border">
-            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Koleji</span>
-        </div>
-        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 21).Take(1).OrderBy(s => s.Sira))
-        {
-            <div class="portfolio-item">
-                <a href="#" data-toggle="modal" data-target="#@item.Url">
-                    <span class="thumb-info thumb-info-lighten">
-                        <span class="thumb-info-wrapper">
-                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                            <span class="thumb-info-title">
-                                <span class="thumb-info-inner">@item.Baslik</span>
-                                <span class="thumb-info-type">İstanbul</span>
-                            </span>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        }
-    </div>
-    <div class="col-md-4" style="padding:7px;">
-        <div class="heading heading-primary heading-border heading-bottom-border">
-            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Üniversitesi</span>
-        </div>
-        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 22).Take(1).OrderBy(s => s.Sira))
-        {
-            <div class="portfolio-item">
-                <a href="#" data-toggle="modal" data-target="#@item.Url">
-                    <span class="thumb-info thumb-info-lighten">
-                        <span class="thumb-info-wrapper">
-                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                            <span class="thumb-info-title">
-                                <span class="thumb-info-inner">@item.Baslik</span>
-                                <span class="thumb-info-type">İstanbul</span>
-                            </span>
-                        </span>
-                    </span>
-                </a>
-            </div>
-        }
-    </div>
-</div>
 
-<div class="row" style="margin-left:20px;margin-right:20px;">
-    <div class="col-md-4" style="padding:7px;">
-        <div class="heading heading-primary heading-border heading-bottom-border">
-            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Kursu</span>
+@{
+    <div class="row" style="margin-left:20px;margin-right:20px;">
+        <div class="col-md-4" style="padding:7px;">
+            <div class="heading heading-primary heading-border heading-bottom-border">
+                <span class="heading-primary" style="font-size:18px;">Ayın En İyi Anaokulu</span>
+            </div>
+            @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Anaokulu").Take(1).OrderBy(s => s.Sponsorlar))
+            {
+                <div class="portfolio-item">
+                    <a href="#" data-toggle="modal" data-target="#@item.WebSitesi">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
+                                <span class="thumb-info-title">
+                                    <span class="thumb-info-inner">@item.KurumAdi</span>
+                                    <span class="thumb-info-type">İstanbul</span>
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            }
         </div>
-        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 23).Take(1).OrderBy(s => s.Sira))
-        {
+        <div class="col-md-4" style="padding:7px;">
+            <div class="heading heading-primary heading-border heading-bottom-border">
+                <span class="heading-primary" style="font-size:18px;">Ayın En İyi Koleji</span>
+            </div>
+            @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Koleji").Take(1).OrderBy(s => s.Sponsorlar))
+            {
+                <div class="portfolio-item">
+                    <a href="#" data-toggle="modal" data-target="#@item.WebSitesi">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
+                                <span class="thumb-info-title">
+                                    <span class="thumb-info-inner">@item.KurumAdi</span>
+                                    <span class="thumb-info-type">İstanbul</span>
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+        <div class="col-md-4" style="padding:7px;">
+            <div class="heading heading-primary heading-border heading-bottom-border">
+                <span class="heading-primary" style="font-size:18px;">Ayın En İyi Üniversitesi</span>
+            </div>
+            @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Üniversitesi").Take(1).OrderBy(s => s.Sponsorlar))
+            {
+                <div class="portfolio-item">
+                    <a href="#" data-toggle="modal" data-target="#@item.WebSitesi">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
+                                <span class="thumb-info-title">
+                                    <span class="thumb-info-inner">@item.KurumAdi</span>
+                                    <span class="thumb-info-type">İstanbul</span>
+                                </span>
+                            </span>
+                        </span>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row" style="margin-left:20px;margin-right:20px;">
+        <div class="col-md-4" style="padding:7px;">
+            <div class="heading heading-primary heading-border heading-bottom-border">
+                <span class="heading-primary" style="font-size:18px;">Ayın En İyi Kursu</span>
+            </div>
+           @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Kursu").Take(1).OrderBy(s => s.Sponsorlar))
+            {
             <div class="portfolio-item">
-                <a href="#" data-toggle="modal" data-target="#@item.Url">
+                <a href="#" data-toggle="modal" data-target="#@item.WebSitesi">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
-                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
+                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
                             <span class="thumb-info-title">
-                                <span class="thumb-info-inner">@item.Baslik</span>
+                                <span class="thumb-info-inner">@item.KurumAdi</span>
                                 <span class="thumb-info-type">İstanbul</span>
                             </span>
                         </span>
                     </span>
                 </a>
             </div>
-        }
-    </div>
-    <div class="col-md-4" style="padding:7px;">
-        <div class="heading heading-primary heading-border heading-bottom-border">
-            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Tedarikçisi</span>
+           }
         </div>
-        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 24).Take(1).OrderBy(s => s.Sira))
-        {
-            <div class="portfolio-item">
-                <a href="#" data-toggle="modal" data-target="#@item.Url">
-                    <span class="thumb-info thumb-info-lighten">
-                        <span class="thumb-info-wrapper">
-                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                            <span class="thumb-info-title">
-                                <span class="thumb-info-inner">@item.Baslik</span>
-                                <span class="thumb-info-type">İstanbul</span>
+        <div class="col-md-4" style="padding:7px;">
+            <div class="heading heading-primary heading-border heading-bottom-border">
+                <span class="heading-primary" style="font-size:18px;">Ayın En İyi Tedarikçisi</span>
+            </div>
+            @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Tedarikçisi").Take(1).OrderBy(s => s.Sponsorlar))
+            {
+                <div class="portfolio-item">
+                    <a href="#" data-toggle="modal" data-target="#@item.WebSitesi">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
+                                <span class="thumb-info-title">
+                                    <span class="thumb-info-inner">@item.KurumAdi</span>
+                                    <span class="thumb-info-type">İstanbul</span>
+                                </span>
                             </span>
                         </span>
-                    </span>
-                </a>
-            </div>
-        }
-    </div>
-    <div class="col-md-4" style="padding:7px;">
-        <div class="heading heading-primary heading-border heading-bottom-border">
-            <span class="heading-primary" style="font-size:18px;">Ayın En İyi Okul Servisi</span>
+                    </a>
+                </div>
+            }
         </div>
-        @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 25).Take(1).OrderBy(s => s.Sira))
-        {
-            <div class="portfolio-item">
-                <a href="#" data-toggle="modal" data-target="#@item.Url">
-                    <span class="thumb-info thumb-info-lighten">
-                        <span class="thumb-info-wrapper">
-                            <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.Baslik" style="height:250px;">
-                            <span class="thumb-info-title">
-                                <span class="thumb-info-inner">@item.Baslik</span>
-                                <span class="thumb-info-type">İstanbul</span>
+        <div class="col-md-4" style="padding:7px;">
+            <div class="heading heading-primary heading-border heading-bottom-border">
+                <span class="heading-primary" style="font-size:18px;">Ayın En İyi Okul Servisi</span>
+            </div>
+            @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Okul Servisi").Take(1).OrderBy(s => s.Sponsorlar))
+            {
+                <div class="portfolio-item">
+                    <a href="#" data-toggle="modal" data-target="#@item.WebSitesi">
+                        <span class="thumb-info thumb-info-lighten">
+                            <span class="thumb-info-wrapper">
+                                <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
+                                <span class="thumb-info-title">
+                                    <span class="thumb-info-inner">@item.KurumAdi</span>
+                                    <span class="thumb-info-type">İstanbul</span>
+                                </span>
                             </span>
                         </span>
-                    </span>
-                </a>
-            </div>
-        }
+                    </a>
+                </div>
+            }
+        </div>
     </div>
-</div>
+}

@@ -211,6 +211,7 @@
     <Compile Include="Model\Admins.cs" />
     <Compile Include="Model\AltKategori.cs" />
     <Compile Include="Model\AltKategoriGetir.cs" />
+    <Compile Include="Model\SliderModel.cs" />
     <Compile Include="Model\HaberAramaModel.cs" />
     <Compile Include="Model\AramaModel.cs" />
     <Compile Include="Model\KategoriMarkalar.cs" />

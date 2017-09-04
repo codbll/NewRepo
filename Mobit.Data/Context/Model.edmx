@@ -248,6 +248,7 @@
           <Property Name="BursOlanakları" Type="varchar" MaxLength="500" />
           <Property Name="Ucreti" Type="varchar" MaxLength="500" />
           <Property Name="D3Boyutlu" Type="varchar" MaxLength="500" />
+          <Property Name="Sponsorlar" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1160,6 +1161,7 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <Property Name="BursOlanakları" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="Ucreti" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="D3Boyutlu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Sponsorlar" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="KurumResim">
           <Key>
@@ -1837,6 +1839,7 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <EntitySetMapping Name="Kurumlar">
             <EntityTypeMapping TypeName="Model.Kurumlar">
               <MappingFragment StoreEntitySet="Kurumlar">
+                <ScalarProperty Name="Sponsorlar" ColumnName="Sponsorlar" />
                 <ScalarProperty Name="D3Boyutlu" ColumnName="D3Boyutlu" />
                 <ScalarProperty Name="Ucreti" ColumnName="Ucreti" />
                 <ScalarProperty Name="BursOlanakları" ColumnName="BursOlanakları" />

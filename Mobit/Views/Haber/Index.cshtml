@@ -15,7 +15,7 @@
                 {
                     <div class="col-md-12" style="padding:7px;margin-top:-10px">
                         <a href="@item.Url" target="@item.Target">
-                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim"  alt="@item.Baslik">
                         </a>
                     </div>
                 }
@@ -48,39 +48,57 @@
 
             </div>
 
-            @if (ViewData["detayReklam"] != null)
-            {
-                <div class="row" style="padding:5px;">
-                    <ul class="image-gallery sort-destination full-width">
-                        @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
-                        {
-                            <li class="isotope-item">
-                                <div class="image-gallery-item" style="padding:5px;">
-                                    <a href="@item.Url" target="@item.Target">
-                                        <span class="thumb-info thumb-info-centered-info">
-                                            <span class="thumb-info-wrapper">
-                                                <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim">
-                                            </span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                </div>
-
-
-            }
         </div>
 
         <div class="col-md-3">
             <aside class="sidebar">
-
-                @{Html.RenderAction("SonHaberler", "Haber");}
-
+                @if (Model.KategoriId == 4)
+                {
+                    Html.RenderAction("SonHaberler", "Haber");
+                }
+                else if (Model.KategoriId == 3)
+                {
+                    Html.RenderAction("SonHaberlerRoportajlar", "Haber");
+                }
             </aside>
         </div>
     </div>
 
+    <div class="col-md-12">
+        <hr />
+        @if (ViewData["detayReklam"] != null)
+            {
+            @*foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                {
+                    <div class="col-md-12">
+                        <a href="@item.Url" target="@item.Target">
+                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                        </a>
+                    </div>
+                }*@
+
+            <div class="col-md-12" style="margin-left:-28px;">
+                <ul class="image-gallery sort-destination full-width">
+
+                    @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                    {
+                        <li class="isotope-item">
+                            <div class="image-gallery-item" style="padding:5px;">
+                                <a href="@item.Url" target="@item.Target">
+                                    <span class="thumb-info thumb-info-centered-info">
+                                        <span class="thumb-info-wrapper">
+                                            <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim" style="height:300px;">
+                                        </span>
+                                    </span>
+                                </a>
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </div>
+
+
+        }
+    </div>
 </div>
 

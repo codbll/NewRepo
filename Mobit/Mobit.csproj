@@ -181,6 +181,7 @@
     <Compile Include="Areas\Admin\Controllers\DosyaYoneticisiController.cs" />
     <Compile Include="Areas\Admin\Controllers\GalleryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\SponsorlarController.cs" />
     <Compile Include="Areas\Admin\Controllers\KurumController.cs" />
     <Compile Include="Areas\Admin\Controllers\PagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\EniyilerController.cs" />
@@ -2610,6 +2611,9 @@
     <Content Include="Areas\Admin\Views\Eniyiler\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Eniyiler\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Eniyiler\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sponsorlar\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Sponsorlar\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Sponsorlar\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Mobit.pubxml" />
     <Content Include="Views\_Partial\_YuklemeUrunler.cshtml" />
     <Content Include="Views\_Partial\_YuklemeIndir.cshtml" />
@@ -2658,6 +2662,8 @@
     <Content Include="Views\_Partial\_HaberPopupEniyiTedarikcisi.cshtml" />
     <Content Include="Views\_Partial\_HaberPopupEniyiKursu.cshtml" />
     <Content Include="Views\_Partial\_HaberPopupEniyiUniversitesi.cshtml" />
+    <Content Include="Views\_Partial\_SonHaberlerRoportajlar.cshtml" />
+    <Content Include="Views\_Partial\_HaberlerGaleri.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

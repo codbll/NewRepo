@@ -3,7 +3,7 @@
 <h4 class="heading-primary">Son Haberler</h4>
 
 <ul class="simple-post-list">
-    @foreach (var haber in Model)
+    @foreach (var haber in Model.Where(h => h.KategoriId == 4))
     {
         <li>
             @*<div class="post-image">
@@ -20,7 +20,7 @@
                 <div class="col-md-8">
                     <a href="/haber/@haber.Slug">@haber.Ad</a>
                     <div class="post-meta">
-                        @haber.Tarih.ToString("d") - <a href="/Haberler/@haber.HaberKategorileri.Slug">@haber.HaberKategorileri.Ad</a>
+                        @haber.Tarih.ToString("d")
                     </div>
                 </div>
             </div>

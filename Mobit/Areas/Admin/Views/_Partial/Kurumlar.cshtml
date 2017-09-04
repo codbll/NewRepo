@@ -22,7 +22,6 @@
 
                             <th>No</th>
                             <th>Kurum Adı</th>
-                            <th>Kategori</th>
                             <th>Durum</th>
                             <th>Güncelle</th>
 
@@ -37,7 +36,6 @@
 
                                 <td>@item.KurumId</td>
                                 <td>@item.KurumAdi</td>
-                                <td>@item.Kategoriler.KategoriAdi</td>
                                 <td>@(item.Durum == true ? "Aktif" : "Pasif")</td>
                                 <td><a href="/Admin/Kurum/Edit/@item.KurumId">Güncelle</a></td>
 
