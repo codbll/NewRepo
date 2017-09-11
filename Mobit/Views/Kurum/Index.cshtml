@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <ul class="breadcrumb">
-                <li>@Model.Kurumlar.Kategoriler.KategoriAdi</li>
+                <li> @{ if (@Model.Kurumlar.Kategoriler != null) { @Model.Kurumlar.Kategoriler.KategoriAdi} }</li>
                 <li>@Model.Kurumlar.KurumAdi</li>
             </ul>
         </div>
@@ -24,7 +24,14 @@
         <div class="row" style="padding-left:2px;padding-right:25px;">
             <div class="col-md-12 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:20px;">
                 <div class="col-md-2">
-                    <img class="img-responsive img-thumbnail" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
+                    @if (@Model.Kurumlar.Sponsorlar != null)
+                    {
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
+                    }
+                    else
+                    {
+                        <img class="img-responsive img-thumbnail" src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
+                    }
                 </div>
                 <div class="col-md-10">
                     <br />
@@ -54,6 +61,7 @@
                                         }
 
                                         <li><a href="#aciklama" data-toggle="tab">Hakkında</a></li>
+
                                         @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
                                             <li><a href="#video" data-toggle="tab">Tanıtım Videosu</a></li>
@@ -68,7 +76,11 @@
                                         {
                                             <li><a href="#panoroma" data-toggle="tab">Panoroma</a></li>
                                         }
-                                        <li><a href="#3d" data-toggle="tab">3D Tanıtım</a></li>
+                                        @if (Model.Kurumlar.D3Boyutlu != null && Model.Kurumlar.D3Boyutlu.Length > 10)
+                                        {
+                                            <li><a href="#3d" data-toggle="tab">3D Tanıtım</a></li>
+                                        }
+                                        
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="slayt">
@@ -82,7 +94,16 @@
                                                             <div class="image-gallery-item">
                                                                 <span class="thumb-info thumb-info-lighten">
                                                                     <span class="thumb-info-wrapper">
-                                                                        <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+                                                                        @if (@Model.Kurumlar.Sponsorlar != null)
+                                                                        {
+                                                                            <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+                                                                        }
+                                                                        
                                                                         <span class="thumb-info-title">
                                                                             <span class="thumb-info-inner">@resim.Aciklama</span>
                                                                             <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
@@ -102,7 +123,14 @@
                                                             <div class="image-gallery-item">
                                                                 <span class="thumb-info thumb-info-lighten">
                                                                     <span class="thumb-info-wrapper">
-                                                                        <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:150px;">
+                                                                        @if (@Model.Kurumlar.Sponsorlar != null)
+                                                                        {
+                                                                            <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:150px;">
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:150px;">
+                                                                        }
                                                                         <span class="thumb-info-title">
                                                                             <span class="thumb-info-inner" style="font-size:15px;">@resim.Aciklama</span>
                                                                         </span>
@@ -124,7 +152,15 @@
                                                             <div class="image-gallery-item">
                                                                 <span class="thumb-info thumb-info-lighten">
                                                                     <span class="thumb-info-wrapper">
-                                                                        <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+                                                                        
+                                                                        @if (@Model.Kurumlar.Sponsorlar != null)
+                                                                        {
+                                                                            <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
+                                                                        }
                                                                         <span class="thumb-info-title">
                                                                             <span class="thumb-info-inner">@resim.Aciklama</span>
                                                                             <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
@@ -144,7 +180,14 @@
                                                             <div class="image-gallery-item">
                                                                 <span class="thumb-info thumb-info-lighten">
                                                                     <span class="thumb-info-wrapper">
-                                                                        <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:150px;">
+                                                                        @if (@Model.Kurumlar.Sponsorlar != null)
+                                                                        {
+                                                                            <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:150px;">
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:150px;">
+                                                                        }
                                                                         <span class="thumb-info-title">
                                                                             <span class="thumb-info-inner" style="font-size:15px;">@resim.Aciklama</span>
                                                                         </span>
@@ -226,171 +269,194 @@
             <div class="col-md-12">
                 <div class="col-md-7">
                     <div class="tabs tabs-bottom tabs-center tabs-simple">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#egitimciler" data-toggle="tab">EĞİTİMCİLER</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div class="tab-pane active" id="egitimciler">
-                                <div class="thumb-gallery">
+                        @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
+                        {
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#egitimciler" data-toggle="tab">EĞİTİMCİLER</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="egitimciler">
+                                    <div class="thumb-gallery">
 
-                                    <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail2">
+                                        <div class="owl-carousel owl-theme manual thumb-gallery-detail show-nav-hover" id="thumbGalleryDetail2">
 
-                                        @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
-                                        {
-                                            foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1))
+                                            @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
                                             {
-                                                <div class="image-gallery-item">
-                                                    <span class="thumb-info thumb-info-lighten">
-                                                        <span class="thumb-info-wrapper">
-                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
-                                                            <span class="thumb-info-title">
-                                                                <span class="thumb-info-inner">@resim.Aciklama</span>
-                                                                <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
+                                                foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1))
+                                                {
+                                                    <div class="image-gallery-item">
+                                                        <span class="thumb-info thumb-info-lighten">
+                                                            <span class="thumb-info-wrapper">
+                                                                @if (@Model.Kurumlar.Sponsorlar != null)
+                                                                {
+                                                                <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
+                                                                }
+                                                                else
+                                                                {
+                                                                <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
+                                                                }
+                                                                <span class="thumb-info-title">
+                                                                    <span class="thumb-info-inner">@resim.Aciklama</span>
+                                                                    <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
+                                                                </span>
                                                             </span>
                                                         </span>
-                                                    </span>
-                                                </div>
+                                                    </div>
+                                                }
                                             }
-                                        }
-                                    </div>
+                                        </div>
 
-                                    <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs2">
-                                        @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
-                                        {
-                                            foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1))
+                                        <div class="owl-carousel owl-theme manual thumb-gallery-thumbs mt" id="thumbGalleryThumbs2">
+                                            @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
                                             {
-                                                <div class="image-gallery-item">
-                                                    <span class="thumb-info thumb-info-lighten">
-                                                        <span class="thumb-info-wrapper">
-                                                            <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:175px;">
-                                                            <span class="thumb-info-title">
-                                                                <span class="thumb-info-inner" style="font-size:12px;">@resim.Aciklama</span>
+                                                foreach (var resim in Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1))
+                                                {
+                                                    <div class="image-gallery-item">
+                                                        <span class="thumb-info thumb-info-lighten">
+                                                            <span class="thumb-info-wrapper">
+                                                                @if (@Model.Kurumlar.Sponsorlar != null)
+                                                                {
+                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:175px;">
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/Upload/kurum/@Model.Kurumlar.UploadYolu/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="height:175px;">
+                                                                }
+                                                                <span class="thumb-info-title">
+                                                                    <span class="thumb-info-inner" style="font-size:12px;">@resim.Aciklama</span>
+                                                                </span>
                                                             </span>
                                                         </span>
-                                                    </span>
-                                                </div>
+                                                    </div>
+                                                }
                                             }
-                                        }
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
+                        
+                        
                     </div>
                 </div>
                 <div class="col-md-5">
                     <div class="tabs tabs-bottom tabs-center tabs-simple">
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a href="#Kurumadi" data-toggle="tab" style="font-size:16px;">@Model.Kurumlar.KurumAdi</a></li>
-                        </ul>
-                        <div class="tab-content" style="background-color:#FFEB98;">
-                            <div class="tab-pane active" id="Kurumadi" style="background-color:#FFEB98;">
-                                <dl>
-                                    @if (Model.Kurumlar.Adres != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ADRESİ :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Adres</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.ilceler.ilceAdi != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">İLÇE :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.ilceler.ilceAdi</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Tel != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Tel</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Subeler != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ŞUBELER :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Subeler</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.KurulusTarih != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AÇILIŞ YILI :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurulusTarih</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Kurucusu != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kurucusu</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Kordinatorler != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KORDİNATÖRLER :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kordinatorler</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.KurumMuduru != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.KurumMuduru != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR YARDIMCILARI :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Egitimciler != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİMCİLER :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Egitimciler</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Aktiviteler != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AKTİVİTELER :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Aktiviteler</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Fax != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">FAKS :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Fax</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Email != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">E-MAİL :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Email</span></dd>
-                                    }
-                                    @if (Model.Kurumlar.WebSitesi != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">WEB ADRESİ :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></span></dd>
-                                    }
+                        @if (Model.Kurumlar.KurumEgitimciler.Where(r => r.Tip == 1).Count() > 0)
+                        {
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Kurumadi" data-toggle="tab" style="font-size:16px;">@Model.Kurumlar.KurumAdi</a></li>
+                            </ul>
+                            <div class="tab-content" style="background-color:#FFEB98;">
+                                <div class="tab-pane active" id="Kurumadi" style="background-color:#FFEB98;">
+                                    <dl>
+                                        @if (Model.Kurumlar.Adres != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ADRESİ :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Adres</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.ilceler != null && Model.Kurumlar.ilceler.ilceAdi != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">İLÇE :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.ilceler.ilceAdi</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Tel != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Tel</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Subeler != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ŞUBELER :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Subeler</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.KurulusTarih != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AÇILIŞ YILI :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurulusTarih</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Kurucusu != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kurucusu</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Kordinatorler != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KORDİNATÖRLER :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kordinatorler</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.KurumMuduru != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.KurumMuduru != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR YARDIMCILARI :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Egitimciler != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİMCİLER :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Egitimciler</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Aktiviteler != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AKTİVİTELER :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Aktiviteler</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Fax != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">FAKS :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Fax</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Email != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">E-MAİL :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Email</span></dd>
+                                        }
+                                        @if (Model.Kurumlar.WebSitesi != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">WEB ADRESİ :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.WebSitesi" target="_blank">@Model.Kurumlar.WebSitesi</a></span></dd>
+                                        }
 
-                                    @if (Model.Kurumlar.EgitimDili != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.EgitimDili" target="_blank">@Model.Kurumlar.EgitimDili</a></span></dd>
-                                    }
-                                    @if (Model.Kurumlar.OgrenciSayisi != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.OgrenciSayisi" target="_blank">@Model.Kurumlar.OgrenciSayisi</a></span></dd>
-                                    }
-                                    @if (Model.Kurumlar.YurticiUniversiteBasariOrani != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.YurticiUniversiteBasariOrani" target="_blank">@Model.Kurumlar.YurticiUniversiteBasariOrani</a></span></dd>
-                                    }
-                                    @if (Model.Kurumlar.YurtDisiUniversiteBasariOrani != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.YurtDisiUniversiteBasariOrani" target="_blank">@Model.Kurumlar.YurtDisiUniversiteBasariOrani</a></span></dd>
-                                    }
-                                    @if (Model.Kurumlar.BursOlanakları != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.BursOlanakları" target="_blank">@Model.Kurumlar.BursOlanakları</a></span></dd>
-                                    }
-                                    @if (Model.Kurumlar.Ucreti != null)
-                                    {
-                                        <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
-                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.Ucreti" target="_blank">@Model.Kurumlar.Ucreti</a></span></dd>
-                                    }
+                                        @if (Model.Kurumlar.EgitimDili != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.EgitimDili" target="_blank">@Model.Kurumlar.EgitimDili</a></span></dd>
+                                        }
+                                        @if (Model.Kurumlar.OgrenciSayisi != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.OgrenciSayisi" target="_blank">@Model.Kurumlar.OgrenciSayisi</a></span></dd>
+                                        }
+                                        @if (Model.Kurumlar.YurticiUniversiteBasariOrani != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.YurticiUniversiteBasariOrani" target="_blank">@Model.Kurumlar.YurticiUniversiteBasariOrani</a></span></dd>
+                                        }
+                                        @if (Model.Kurumlar.YurtDisiUniversiteBasariOrani != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.YurtDisiUniversiteBasariOrani" target="_blank">@Model.Kurumlar.YurtDisiUniversiteBasariOrani</a></span></dd>
+                                        }
+                                        @if (Model.Kurumlar.BursOlanakları != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.BursOlanakları" target="_blank">@Model.Kurumlar.BursOlanakları</a></span></dd>
+                                        }
+                                        @if (Model.Kurumlar.Ucreti != null)
+                                        {
+                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
+                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Kurumlar.Ucreti" target="_blank">@Model.Kurumlar.Ucreti</a></span></dd>
+                                        }
 
 
-                                </dl>
+                                    </dl>
+                                </div>
                             </div>
-                        </div>
+                        }
+                        
                     </div>
 
 

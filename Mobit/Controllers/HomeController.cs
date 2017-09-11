@@ -36,10 +36,15 @@ namespace Mobit.Controllers
             ViewData["HaberPopupEniyiTedarikcisi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 17).ToList();
             ViewData["HaberPopupEniyiOkulServisi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 18).ToList();
 
+
+            ViewData["PopupEniyiOkullar"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 19).ToList();
+            ViewData["PopupEniyiYoneticiler"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 20).ToList();
+            ViewData["PopupEniyiEgitmenler"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 21).ToList();
+
             return View();
 
         }
-        [Route("Anketler")]
+        //[Route("Anketler")]
         public PartialViewResult Anketler()
         {
             ViewBag.KurumId = new SelectList(db.Kurumlar.ToList(), "KurumId", "KurumAdi");
@@ -164,7 +169,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("Home/Arama")]
+        //[Route("Home/Arama")]
         [HttpPost]
         public async Task<PartialViewResult> Arama(string searchKey)
         {
@@ -246,7 +251,7 @@ namespace Mobit.Controllers
             return Tasks;
         }
 
-        [Route("Home/HaberAra")]
+        //[Route("Home/HaberAra")]
         [HttpPost]
         public async Task<PartialViewResult> HaberAra(string searchKey)
         {
@@ -317,7 +322,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("Home/ilceGetir")]
+        //[Route("Home/ilceGetir")]
         public ActionResult ilceGetir(int ilId)
         {
             var kategoriler = db.ilceler.Where(k => k.ilId == ilId).Select(k => new { k.ilceAdi, k.ilceId }).ToList();
@@ -325,7 +330,7 @@ namespace Mobit.Controllers
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
 
-        [Route("Home/AltKategoriGetir")]
+        //[Route("Home/AltKategoriGetir")]
         public ActionResult AltKategoriGetir(int KategoriId)
         {
             var kategoriler = db.AltKategoriler.Where(k => k.KategoriId == KategoriId).Select(k => new { k.AltKategoriAdi, k.AltKategoriId }).ToList();
@@ -333,7 +338,7 @@ namespace Mobit.Controllers
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
 
-        [Route("Home/EnSevdiginizOgretmenveBransiGetir")]
+        //[Route("Home/EnSevdiginizOgretmenveBransiGetir")]
         public ActionResult EnSevdiginizOgretmenveBransiGetir(int KurumId)
         {
             var kurumEgitimciler = db.KurumEgitimciler.Where(k => k.KurumId == KurumId && k.Tip == 1).Select(k => new { k.Aciklama, k.EgitimciId }).ToList();
@@ -341,7 +346,7 @@ namespace Mobit.Controllers
             return Json(kurumEgitimciler, JsonRequestBehavior.AllowGet);
         }
 
-        [Route("Home/EnSevdiginizYoneticiGetir")]
+        //[Route("Home/EnSevdiginizYoneticiGetir")]
         public ActionResult EnSevdiginizYoneticiGetir(int KurumId)
         {
             var kurumEgitimciler2 = db.KurumEgitimciler.Where(k => k.KurumId == KurumId && k.Tip == 2).Select(k => new { k.Aciklama, k.EgitimciId }).ToList();
@@ -350,7 +355,7 @@ namespace Mobit.Controllers
         }
 
 
-        [Route("Home/KategoriGetir")]
+        //[Route("Home/KategoriGetir")]
         public ActionResult KategoriGetir(int KategoriId)
         {
             var kategoriler = db.Kategoriler.Select(k => new { k.KategoriAdi, k.KategoriId }).ToList();
@@ -360,7 +365,7 @@ namespace Mobit.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Arama")]
+        //[Route("Arama")]
         public ActionResult Arama(GelismisAramaModel arama, int? Sayfa)
         {
 
@@ -399,7 +404,7 @@ namespace Mobit.Controllers
             }
             return View(kurumlar);
         }
-        [Route("AnketGonder")]
+        //[Route("AnketGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AnketGonder(string KurumId, string OgrencininAdi, string OgrencininSinifi, string EnSevdiginizOgretmenveBransi, string EnSevdiginizOgretmenvNedeni, string EnSevdiginizYonetici, string EnSevdiginizYoneticiNedeni)
@@ -443,7 +448,7 @@ namespace Mobit.Controllers
         }
 
 
-        [Route("Home/AnketGonder")]
+        //[Route("Home/AnketGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult AnketGonder(string adSoyad, string mail, string telefon, int kurum, string mesaj, string url)
@@ -464,7 +469,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("Home/MesajGonder")]
+        //[Route("Home/MesajGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult MesajGonder(string adSoyad, string mail, string telefon, int kurum, string mesaj, string url)
@@ -490,7 +495,7 @@ namespace Mobit.Controllers
             }
 
         }
-        [Route("Home/BultenKayit")]
+        //[Route("Home/BultenKayit")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult BultenKayit(string mail)

@@ -19,7 +19,7 @@ namespace Mobit.Controllers
         }
 
         // mobit eski site urun url kontrolü
-        [Route("urunler/{KategoriSlug}/{urunSlug}")]
+        //[Route("urunler/{KategoriSlug}/{urunSlug}")]
         public ActionResult Urun(string KategoriSlug, string urunSlug)
         {
             //string urun = UrunKontrol(urunSlug);
@@ -64,7 +64,7 @@ namespace Mobit.Controllers
         }
 
        
-        [Route("Kategoriler/{KategoriSlug}/")]
+        //[Route("Kategoriler/{KategoriSlug}/")]
         public ActionResult Kategori(string KategoriSlug)
         {
             string kategori = KategoriKontrol(KategoriSlug);

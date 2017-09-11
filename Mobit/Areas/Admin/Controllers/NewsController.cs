@@ -404,7 +404,7 @@ namespace Mobit.Areas.Admin.Controllers
             db.SaveChanges();
             if (System.IO.File.Exists(fi.ToString()))
             {
-                fi.Delete();
+                //fi.Delete();
             }
 
             return Redirect("/Admin/News/images/" + galeri);

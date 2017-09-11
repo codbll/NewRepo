@@ -321,7 +321,7 @@
             if (KategoriId != null && KategoriId != '') {
                 $.ajax({
                     type: "post",
-                    url: "/Kurum/AltKategoriGetir",
+                    url: "/Admin/Kurum/AltKategoriGetir",
                     data: { KategoriId: KategoriId },
                     success: function (kategoriler) {
 
@@ -363,7 +363,7 @@
             if (ilId != null && ilId != '') {
                 $.ajax({
                     type: "post",
-                    url: "/Kurum/ilceGetir",
+                    url: "/Admin/Kurum/ilceGetir",
                     data: { ilId: ilId },
                     success: function (kategoriler) {
 

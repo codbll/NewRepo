@@ -25,7 +25,7 @@ namespace Mobit.Controllers
 
 
 
-        [Route("iletisim/MailGonder")]
+        //[Route("iletisim/MailGonder")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult MailGonder(string adSoyad, string mail, string telefon, string konu, string mesaj, string url)

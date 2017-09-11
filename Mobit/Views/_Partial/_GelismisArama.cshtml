@@ -102,14 +102,14 @@
         var dropdown = $('#ilceId');
         dropdown.empty();
         if (ilId != null && ilId != '') {
-           
+
             $.ajax({
                 type: "post",
-                url: "/Home/ilceGetir",
+                url: "/Admin/Home/ilceGetir",
                 data: { ilId: ilId },
                 success: function (kategoriler) {
 
-                    
+
 
                     $.each(kategoriler, function (index, kategori) {
                         $('#ilceId').append($('<option/>', {
@@ -141,10 +141,10 @@
         var dropdown = $('#AltKategoriId');
         dropdown.empty();
         if (KategoriId != null && KategoriId != '') {
-            
+
             $.ajax({
                 type: "post",
-                url: "/Home/AltKategoriGetir",
+                url: "/Admin/Home/AltKategoriGetir",
                 data: { KategoriId: KategoriId },
                 success: function (kategoriler) {
                     $.each(kategoriler, function (index, kategori) {

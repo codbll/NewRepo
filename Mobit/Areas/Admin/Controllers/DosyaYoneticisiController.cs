@@ -79,7 +79,7 @@ namespace Mobit.Areas.Admin.Controllers
             FileInfo sil = new FileInfo(Server.MapPath("/Upload/files/" + bilgi.Url));
             if (sil.Exists == true)
             {
-                sil.Delete();
+                //sil.Delete();
             }
 
             db.DosyaYoneticisi.Remove(bilgi);

@@ -39,7 +39,7 @@ namespace Mobit.Controllers
         }
 
 
-        [Route("Haberler")]
+        //[Route("Haberler")]
         public ActionResult Haberler(int? Sayfa)
         {
 
@@ -65,7 +65,7 @@ namespace Mobit.Controllers
         }
  
  
-        [Route("Roportajlar")]
+        //[Route("Roportajlar")]
         public ActionResult Roportajlar(int? Sayfa)
         {
 
@@ -91,7 +91,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("Sponsor1")]
+        //[Route("Sponsor1")]
         public ActionResult Sponsor1(int? Sayfa)
         {
 
@@ -114,7 +114,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("Sponsor2")]
+        //[Route("Sponsor2")]
         public ActionResult Sponsor2(int? Sayfa)
         {
 
@@ -136,7 +136,7 @@ namespace Mobit.Controllers
             return View(haberler);
 
         }
-        [Route("Sponsor3")]
+        //[Route("Sponsor3")]
         public ActionResult Sponsor3(int? Sayfa)
         {
 
@@ -158,7 +158,7 @@ namespace Mobit.Controllers
             return View(haberler);
 
         }
-        [Route("Sponsor4")]
+        //[Route("Sponsor4")]
         public ActionResult Sponsor4(int? Sayfa)
         {
 
@@ -180,7 +180,7 @@ namespace Mobit.Controllers
             return View(haberler);
 
         }
-        [Route("Sponsor5")]
+        //[Route("Sponsor5")]
         public ActionResult Sponsor5(int? Sayfa)
         {
 
@@ -202,7 +202,7 @@ namespace Mobit.Controllers
             return View(haberler);
 
         }
-        [Route("HaberPopupEniyiAnaokulu")]
+        //[Route("HaberPopupEniyiAnaokulu")]
         public ActionResult HaberPopupEniyiAnaokulu(int? Sayfa)
         {
 
@@ -225,7 +225,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("HaberPopupEniyiKoleji")]
+        //[Route("HaberPopupEniyiKoleji")]
         public ActionResult HaberPopupEniyiKoleji(int? Sayfa)
         {
 
@@ -249,7 +249,7 @@ namespace Mobit.Controllers
         }
 
 
-        [Route("HaberPopupEniyiUniversitesi")]
+        //[Route("HaberPopupEniyiUniversitesi")]
         public ActionResult HaberPopupEniyiUniversitesi(int? Sayfa)
         {
 
@@ -272,7 +272,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("HaberPopupEniyiKursu")]
+        //[Route("HaberPopupEniyiKursu")]
         public ActionResult HaberPopupEniyiKursu(int? Sayfa)
         {
 
@@ -295,7 +295,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("HaberPopupEniyiTedarikcisi")]
+        //[Route("HaberPopupEniyiTedarikcisi")]
         public ActionResult HaberPopupEniyiTedarikcisi(int? Sayfa)
         {
 
@@ -318,7 +318,7 @@ namespace Mobit.Controllers
 
         }
 
-        [Route("HaberPopupEniyiOkulServisi")]
+        //[Route("HaberPopupEniyiOkulServisi")]
         public ActionResult HaberPopupEniyiOkulServisi(int? Sayfa)
         {
 

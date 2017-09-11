@@ -47,7 +47,7 @@ namespace Mobit.Data.Context
         public string Kurucusu { get; set; }
         public string Egitimciler { get; set; }
         public string Panoroma { get; set; }
-        public Nullable<int> Eniyiler { get; set; }
+        public string Eniyiler { get; set; }
         public string Kordinatorler { get; set; }
         public string EgitimDili { get; set; }
         public string OgrenciSayisi { get; set; }

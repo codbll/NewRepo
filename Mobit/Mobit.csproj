@@ -2664,6 +2664,10 @@
     <Content Include="Views\_Partial\_HaberPopupEniyiUniversitesi.cshtml" />
     <Content Include="Views\_Partial\_SonHaberlerRoportajlar.cshtml" />
     <Content Include="Views\_Partial\_HaberlerGaleri.cshtml" />
+    <Content Include="Views\_Partial\_HaberPopupEniyiOkullar.cshtml" />
+    <Content Include="Views\_Partial\_PopupEniyiEgitmenler.cshtml" />
+    <Content Include="Views\_Partial\_PopupEniyiOkullar.cshtml" />
+    <Content Include="Views\_Partial\_PopupEniyiYoneticiler.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

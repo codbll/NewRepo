@@ -72,7 +72,7 @@ namespace Mobit.Areas.Admin.Controllers
             }
 
             ViewBag.KategoriId = new SelectList(db.Kategoriler.ToList(), "KategoriId", "KategoriAdi", kurum.KategoriId);
-            ViewBag.Sponsorlar = new SelectList(db.HaberKategorileri.ToList(), "Ad", "Ad", kurum.KategoriId);
+            ViewBag.Sponsorlar = new SelectList(db.HaberKategorileri.ToList(), "Ad", "Ad", kurum.Sponsorlar);
             ViewBag.AltKategoriId = new SelectList(db.AltKategoriler.Where(alt => alt.KategoriId == kurum.KategoriId).ToList(), "AltKategoriId", "AltKategoriAdi", kurum.AltKategoriId);
             ViewBag.ilId = new SelectList(db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList(), "ilId", "ilAdi", kurum.ilId);
             ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList(), "ilceId", "ilceAdi", kurum.ilceId);
@@ -163,14 +163,14 @@ namespace Mobit.Areas.Admin.Controllers
             ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList(), "ilceId", "ilceAdi");
 
         }
-        [Route("Kurum/AltKategoriGetir")]
+        //[Route("Kurum/AltKategoriGetir")]
         public ActionResult AltKategoriGetir(int KategoriId)
         {
             var kategoriler = db.AltKategoriler.Where(k => k.KategoriId == KategoriId).Select(k => new { k.AltKategoriAdi, k.AltKategoriId }).ToList();
 
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
-        [Route("Kurum/ilceGetir")]
+        //[Route("Kurum/ilceGetir")]
         public ActionResult ilceGetir(int ilId)
         {
             var kategoriler = db.ilceler.Where(k => k.ilId == ilId).Select(k => new { k.ilceAdi, k.ilceId }).ToList();
@@ -217,7 +217,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             if (System.IO.File.Exists(fi.ToString()))
             {
-                fi.Delete();
+                //fi.Delete();
             }
 
 
@@ -245,7 +245,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             if (System.IO.File.Exists(fi.ToString()))
             {
-                fi.Delete();
+                //fi.Delete();
             }
 
 
@@ -285,7 +285,7 @@ namespace Mobit.Areas.Admin.Controllers
 
                 if (System.IO.Directory.Exists(klasorYolu))
                 {
-                    Directory.Delete(klasorYolu, true);
+                    //Directory.Delete(klasorYolu, true);
                 }
             }
             catch (Exception)

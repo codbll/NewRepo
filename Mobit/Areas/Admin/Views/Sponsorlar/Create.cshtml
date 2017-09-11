@@ -300,7 +300,7 @@
             if (KategoriId != null && KategoriId != '') {
                 $.ajax({
                     type: "post",
-                    url: "/Sponsorlar/AltKategoriGetir",
+                    url: "/Admin/Sponsorlar/AltKategoriGetir",
                     data: { KategoriId: KategoriId },
                     success: function (kategoriler) {
 
@@ -342,7 +342,7 @@
             if (ilId != null && ilId != '') {
                 $.ajax({
                     type: "post",
-                    url: "/Sponsorlar/ilceGetir",
+                    url: "/Admin/Sponsorlar/ilceGetir",
                     data: { ilId: ilId },
                     success: function (kategoriler) {
 

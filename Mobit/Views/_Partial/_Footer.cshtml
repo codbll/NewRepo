@@ -6,16 +6,16 @@
             <hr />
             <div class="row">
                 <div class="col-md-12">
-                    <span style="font-size:16px;color:#ffffff;"><a href="mailto:basinbulteni@okul34.com">basinbulteni@okul34.com</a><span style="font-size:13px;color:beige;"> (HABER YAYIN TALEPLERİNİZ İÇİN)</span></span>
+                    <span style="font-size:12px;color:#ffffff;"><a href="mailto:basinbulteni@okul34.com">basinbulteni@okul34.com</a><span style="font-size:10px;color:beige;"> (HABER YAYIN TALEPLERİNİZ İÇİN)</span></span>
                 </div>
                 <div class="col-md-12">
-                    <span style="font-size:16px;color:#ffffff;"><a href="mailto:reklam@okul34.com">reklam@okul34.com</a><span style="font-size:13px;color:beige;"> (WEB TANITIM VE REKLAM TALEPLERİNİZ İÇİN)</span></span>
+                    <span style="font-size:12px;color:#ffffff;"><a href="mailto:reklam@okul34.com">reklam@okul34.com</a><span style="font-size:10px;color:beige;"> (WEB TANITIM VE REKLAM TALEPLERİNİZ İÇİN)</span></span>
                 </div>
                 <div class="col-md-12">
-                    <span style="font-size:16px;color:#ffffff;"><a href="mailto:editor@okul34.com">editor@okul34.com</a><span style="font-size:13px;color:beige;"> (TÜM YAZI VE ROPÖRTAJ TALEPLERİNİZ İÇİN)</span></span>
+                    <span style="font-size:12px;color:#ffffff;"><a href="mailto:editor@okul34.com">editor@okul34.com</a><span style="font-size:10px;color:beige;"> (TÜM YAZI VE ROPÖRTAJ TALEPLERİNİZ İÇİN)</span></span>
                 </div>
                 <div class="col-md-12">
-                    <span style="font-size:16px;color:#ffffff;"><a href="mailto:sikayet@okul34.com">sikayet@okul34.com</a><span style="font-size:13px;color:beige;"> (ŞİKAYET VE DİLEKLERİNİZ İÇİN)</span></span>
+                    <span style="font-size:12px;color:#ffffff;"><a href="mailto:sikayet@okul34.com">sikayet@okul34.com</a><span style="font-size:10px;color:beige;"> (ŞİKAYET VE DİLEKLERİNİZ İÇİN)</span></span>
                 </div>
             </div>
        </div>
@@ -205,7 +205,7 @@
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="col-md-11"><h3 class="modal-title" id="largeModalLabel" style="font-size:18px;font-weight:bold;color:#000000;">Ayın En İyi Anaokulu</h3></div>
+                <div class="col-md-11"><h3 class="modal-title" id="largeModalLabel" style="font-size:18px;font-weight:bold;color:#000000;">Ayın En İyi Koleji</h3></div>
                 <div class="col-md-1"><button type="button" class="btn btn-default" data-dismiss="modal">KAPAT</button></div>
             </div>
             <div class="modal-body">
@@ -268,6 +268,53 @@
             </div>
             <div class="modal-body">
                 @Html.Partial("/Views/_Partial/_HaberPopupEniyiOkulServisi.cshtml", ViewData["HaberPopupEniyiOkulServisi"])
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*En İyi Okullar*@
+<div class="modal fade" id="PopupEniyiOkullar" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" style="width:1200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-11"><h3 class="modal-title" id="largeModalLabel" style="font-size:18px;font-weight:bold;color:#000000;">En İyi Okullar</h3></div>
+                <div class="col-md-1"><button type="button" class="btn btn-default" data-dismiss="modal">KAPAT</button></div>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("/Views/_Partial/_PopupEniyiOkullar.cshtml", ViewData["PopupEniyiOkullar"])
+            </div>
+        </div>
+    </div>
+</div>
+
+@*En İyi Yöneticiler*@
+<div class="modal fade" id="PopupEniyiYoneticiler" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" style="width:1200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-11"><h3 class="modal-title" id="largeModalLabel" style="font-size:18px;font-weight:bold;color:#000000;">En İyi Yöneticiler</h3></div>
+                <div class="col-md-1"><button type="button" class="btn btn-default" data-dismiss="modal">KAPAT</button></div>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("/Views/_Partial/_PopupEniyiYoneticiler.cshtml", ViewData["PopupEniyiYoneticiler"])
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*En İyi Eğitmenler*@
+<div class="modal fade" id="PopupEniyiEgitmenler" role="dialog" aria-labelledby="largeModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-lg" style="width:1200px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="col-md-11"><h3 class="modal-title" id="largeModalLabel" style="font-size:18px;font-weight:bold;color:#000000;">En İyi Eğitmenler</h3></div>
+                <div class="col-md-1"><button type="button" class="btn btn-default" data-dismiss="modal">KAPAT</button></div>
+            </div>
+            <div class="modal-body">
+                @Html.Partial("/Views/_Partial/_PopupEniyiEgitmenler.cshtml", ViewData["PopupEniyiEgitmenler"])
             </div>
         </div>
     </div>

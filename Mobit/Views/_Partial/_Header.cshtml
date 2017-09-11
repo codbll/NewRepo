@@ -2,36 +2,8 @@
     <div>
         @{Html.RenderAction("HeaderReklam", "Home"); }
     </div>
-    <div class="header-body">
-
-        <div class="header-row">
-            <div class="header-column">
-                <div class="header-nav">
-                    <button class="btn header-btn-collapse-nav" data-toggle="collapse" data-target=".header-nav-main">
-                        <i class="fa fa-bars"></i>
-                    </button>
-                    @{Html.RenderAction("Menu", "Home"); }
-
-                </div>
-            </div>
-            @*
-                <div class="header-column SourcePasif" style="padding-left:10px;">
-                    @{
-                        Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
-                        foreach (var item in db.MetaTag)
-                        {
-                            <ul class="social-icons SourcePasif">
-                                <li class="social-icons-facebook"><a href="@item.Facebook" target="_blank" title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                <li class="social-icons-twitter"><a href="@item.Twitter" target="_blank" title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                <li class="social-icons-linkedin"><a href="@item.Linkedin" target="_blank" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
-                            </ul>
-                        }
-                    }
-                </div>
-            *@
-        </div>
-
-
-
+    <div class="tp-caption main-label">
+        @{Html.RenderAction("Menu", "Home"); }
     </div>
+
 </header>

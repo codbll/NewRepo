@@ -221,25 +221,25 @@
           <Property Name="KurumAdi" Type="nvarchar" MaxLength="150" />
           <Property Name="Slug" Type="nvarchar" MaxLength="150" />
           <Property Name="UploadYolu" Type="nvarchar" MaxLength="150" />
-          <Property Name="Resim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="150" />
           <Property Name="KurumMuduru" Type="nvarchar" MaxLength="150" />
-          <Property Name="MudurYardimcilari" Type="nvarchar" MaxLength="250" />
-          <Property Name="Aktiviteler" Type="nvarchar" MaxLength="250" />
+          <Property Name="MudurYardimcilari" Type="nvarchar(max)" />
+          <Property Name="Aktiviteler" Type="nvarchar(max)" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
           <Property Name="KurulusTarih" Type="nvarchar" MaxLength="50" />
-          <Property Name="WebSitesi" Type="nvarchar" MaxLength="100" />
-          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
-          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSitesi" Type="nvarchar" MaxLength="150" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="150" />
           <Property Name="Harita" Type="nvarchar(max)" />
           <Property Name="Video" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Adres" Type="nvarchar(max)" />
           <Property Name="Durum" Type="bit" Nullable="false" />
-          <Property Name="Subeler" Type="nvarchar" MaxLength="250" />
-          <Property Name="Kurucusu" Type="nvarchar" MaxLength="250" />
-          <Property Name="Egitimciler" Type="nvarchar" MaxLength="500" />
+          <Property Name="Subeler" Type="nvarchar(max)" />
+          <Property Name="Kurucusu" Type="nvarchar(max)" />
+          <Property Name="Egitimciler" Type="nvarchar(max)" />
           <Property Name="Panoroma" Type="nvarchar(max)" />
-          <Property Name="Eniyiler" Type="int" />
+          <Property Name="Eniyiler" Type="nvarchar" MaxLength="200" />
           <Property Name="Kordinatorler" Type="nvarchar(max)" />
           <Property Name="EgitimDili" Type="varchar" MaxLength="500" />
           <Property Name="OgrenciSayisi" Type="varchar" MaxLength="500" />
@@ -372,22 +372,22 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <Property Name="ilceId" Type="int" />
           <Property Name="KurumAdi" Type="nvarchar" MaxLength="150" />
           <Property Name="UploadYolu" Type="nvarchar" MaxLength="150" />
-          <Property Name="Resim" Type="nvarchar" MaxLength="50" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="150" />
           <Property Name="KurumMuduru" Type="nvarchar" MaxLength="150" />
-          <Property Name="MudurYardimcilari" Type="nvarchar" MaxLength="250" />
-          <Property Name="Aktiviteler" Type="nvarchar" MaxLength="250" />
+          <Property Name="MudurYardimcilari" Type="nvarchar(max)" />
+          <Property Name="Aktiviteler" Type="nvarchar(max)" />
           <Property Name="Aciklama" Type="nvarchar(max)" />
           <Property Name="KurulusTarih" Type="nvarchar" MaxLength="50" />
-          <Property Name="WebSitesi" Type="nvarchar" MaxLength="100" />
-          <Property Name="Tel" Type="nvarchar" MaxLength="50" />
-          <Property Name="Fax" Type="nvarchar" MaxLength="50" />
+          <Property Name="WebSitesi" Type="nvarchar" MaxLength="150" />
+          <Property Name="Tel" Type="nvarchar" MaxLength="150" />
+          <Property Name="Fax" Type="nvarchar" MaxLength="150" />
           <Property Name="Harita" Type="nvarchar(max)" />
           <Property Name="Video" Type="nvarchar(max)" />
-          <Property Name="Email" Type="nvarchar" MaxLength="100" />
-          <Property Name="Adres" Type="nvarchar" MaxLength="250" />
-          <Property Name="Subeler" Type="nvarchar" MaxLength="250" />
-          <Property Name="Kurucusu" Type="nvarchar" MaxLength="250" />
-          <Property Name="Egitimciler" Type="nvarchar" MaxLength="500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Adres" Type="nvarchar(max)" />
+          <Property Name="Subeler" Type="nvarchar(max)" />
+          <Property Name="Kurucusu" Type="nvarchar(max)" />
+          <Property Name="Egitimciler" Type="nvarchar(max)" />
           <Property Name="Panoroma" Type="nvarchar(max)" />
           <Property Name="EnSevdiginizEgitimciAdiSoyadi" Type="nvarchar" MaxLength="250" />
           <Property Name="EnSevdiginizYoneticiAdiSoyadi" Type="nvarchar" MaxLength="250" />
@@ -1128,31 +1128,31 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <Property Name="KurumAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Slug" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="UploadYolu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="KurumMuduru" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="MudurYardimcilari" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Aktiviteler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MudurYardimcilari" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktiviteler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="KurulusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WebSitesi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSitesi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Harita" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Durum" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="AltKategoriler" Relationship="Model.FK_Kurumlar_AltKategoriler" FromRole="Kurumlar" ToRole="AltKategoriler" />
           <NavigationProperty Name="ilceler" Relationship="Model.FK_Kurumlar_ilceler" FromRole="Kurumlar" ToRole="ilceler" />
           <NavigationProperty Name="iller" Relationship="Model.FK_Kurumlar_iller" FromRole="Kurumlar" ToRole="iller" />
           <NavigationProperty Name="Kategoriler" Relationship="Model.FK_Kurumlar_Kategoriler" FromRole="Kurumlar" ToRole="Kategoriler" />
           <NavigationProperty Name="KurumResim" Relationship="Model.FK_KurumResim_Kurumlar" FromRole="Kurumlar" ToRole="KurumResim" />
-          <Property Name="Subeler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Kurucusu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Egitimciler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Subeler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kurucusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Egitimciler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Panoroma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="KurumEgitimciler" Relationship="Model.FK_KurumEgitimciler_Kurumlar" FromRole="Kurumlar" ToRole="KurumEgitimciler" />
-          <Property Name="Eniyiler" Type="Int32" />
+          <Property Name="Eniyiler" Type="String" />
           <Property Name="Kordinatorler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EgitimDili" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="OgrenciSayisi" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -1495,22 +1495,22 @@ warning 6002: The table/view 'okulcom.dbo.VW_Anketler' does not have a primary k
           <Property Name="ilceId" Type="Int32" />
           <Property Name="KurumAdi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="UploadYolu" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="Resim" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Resim" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="KurumMuduru" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
-          <Property Name="MudurYardimcilari" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Aktiviteler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="MudurYardimcilari" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Aktiviteler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="KurulusTarih" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="WebSitesi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WebSitesi" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Tel" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Fax" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <Property Name="Harita" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Video" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Adres" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Subeler" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Kurucusu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="Egitimciler" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Adres" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Subeler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Kurucusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Egitimciler" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Panoroma" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="EnSevdiginizEgitimciAdiSoyadi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="EnSevdiginizYoneticiAdiSoyadi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />

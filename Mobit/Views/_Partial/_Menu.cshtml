@@ -1,20 +1,20 @@
 ﻿@model Mobit.Models.MenuModel
 
-<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1 collapse" style="z-index:-1000;">
+<div class="header-nav-main header-nav-main-square header-nav-main-effect-2 header-nav-main-sub-effect-1 collapse" style="z-index:-1000;margin-top:-5px;">
     <nav>
         <ul class="nav nav-pills" id="mainNav">
-            <li>
-                <a href="/">
+            <li style="color:#FFF;">
+                <a href="/" style="color:#FFF;">
                     Ana Sayfa
                 </a>
             </li>
-            <li>
-                <a href="~/haberler">
+            <li style="color:#FFF;">
+                <a href="~/haberler" style="color:#FFF;">
                     HABERLER
                 </a>
             </li>
-            <li>
-                <a href="~/roportajlar">
+            <li style="color:#FFF;">
+                <a href="~/roportajlar"  style="color:#FFF;">
                     BİYOGRAFİLER
                 </a>
             </li>
@@ -22,7 +22,7 @@
             @foreach (var kategori in Model.Kategoriler)
             {
                 <li @(kategori.Area == true ? " class=dropdown" : "")>
-                    <a @(kategori.Area == true ? " class=dropdown-toggle" : "") href="/Kategori/@kategori.Slug/">
+                    <a @(kategori.Area == true ? " class=dropdown-toggle" : "") href="/Kategori/@kategori.Slug/"  style="color:#FFF;">
                         @kategori.KategoriAdi
                     </a>
                     <ul @(kategori.Area == true ? " class=dropdown-menu" : "")>

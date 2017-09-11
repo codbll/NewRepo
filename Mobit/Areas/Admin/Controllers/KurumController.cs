@@ -161,14 +161,14 @@ namespace Mobit.Areas.Admin.Controllers
             ViewBag.ilceId = new SelectList(db.ilceler.Where(i => i.ilId == 40 || i.ilId == 82).ToList(), "ilceId", "ilceAdi");
 
         }
-        [Route("Kurum/AltKategoriGetir")]
+        //[Route("Kurum/AltKategoriGetir")]
         public ActionResult AltKategoriGetir(int KategoriId)
         {
             var kategoriler = db.AltKategoriler.Where(k => k.KategoriId == KategoriId).Select(k => new { k.AltKategoriAdi, k.AltKategoriId }).ToList();
 
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
-        [Route("Kurum/ilceGetir")]
+        //[Route("Kurum/ilceGetir")]
         public ActionResult ilceGetir(int ilId)
         {
             var kategoriler = db.ilceler.Where(k => k.ilId == ilId).Select(k => new { k.ilceAdi, k.ilceId }).ToList();
@@ -215,7 +215,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             if (System.IO.File.Exists(fi.ToString()))
             {
-                fi.Delete();
+                //fi.Delete();
             }
 
 
@@ -243,7 +243,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             if (System.IO.File.Exists(fi.ToString()))
             {
-                fi.Delete();
+                //fi.Delete();
             }
 
 
@@ -283,7 +283,7 @@ namespace Mobit.Areas.Admin.Controllers
 
                 if (System.IO.Directory.Exists(klasorYolu))
                 {
-                    Directory.Delete(klasorYolu, true);
+                    //Directory.Delete(klasorYolu, true);
                 }
             }
             catch (Exception)

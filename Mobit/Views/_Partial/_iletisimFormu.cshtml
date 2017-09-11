@@ -81,12 +81,12 @@
             else {
             $.ajax({
                 type: "post",
-                url: "/iletisim/MailGonder",
+                url: "/Admin/iletisim/MailGonder",
                 data: { adSoyad: $("#AdSoyad").val(), mail: $("#email").val(), telefon: $("#telefon").val(), konu: $("#konu").val(), mesaj: $("#mesaj").val(),url:url,@Html.AntiForgeryTokenForAjaxPost()},
                 success: function (response) {
 
                     if (response != null && response.success) {
-                     
+
                         $("#bilgiMesaj").removeClass("hidden");
                         $("#hataMesaj").addClass("hidden");
                         //alert("Mesajınız başarıyla gönderildi.");
@@ -115,7 +115,7 @@
                 },
                 complate: function () {
 
-                   
+
 
                 },
 
@@ -127,6 +127,6 @@
         });
     }
 
-  
+
 
 </script>
