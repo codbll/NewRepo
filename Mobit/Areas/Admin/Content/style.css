@@ -3575,7 +3575,9 @@ table.table-mail tr td {
   background-color: #ED5565; }
 
 .panel-title {
-  font-size: inherit; }
+    font-size: inherit;
+    color: red;
+}
 
 .jumbotron {
   border-radius: 6px;
