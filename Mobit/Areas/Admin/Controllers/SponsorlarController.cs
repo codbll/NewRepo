@@ -119,6 +119,18 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.Aciklama = kurum.Aciklama;
             kurumlar.KurulusTarih = kurum.KurulusTarih;
             kurumlar.WebSitesi = kurum.WebSitesi;
+            if (kurum.Sponsorlar == "En İyi Okullar")
+            {
+                kurumlar.Eniyiler = "PopupEniyiOkullar";
+            }
+            else if (kurum.Sponsorlar == "En İyi Yöneticiler")
+            {
+                kurumlar.Eniyiler = "PopupEniyiYoneticiler";
+            }
+            else if (kurum.Sponsorlar == "En İyi Eğitmenler")
+            {
+                kurumlar.Eniyiler = "PopupEniyiEgitmenler";
+            }
             kurumlar.Tel = kurum.Tel;
             kurumlar.Fax = kurum.Fax;
             kurumlar.Email = kurum.Email;

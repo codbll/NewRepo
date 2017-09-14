@@ -281,7 +281,7 @@ namespace Mobit.Areas.Admin.Controllers
             {
                 if (dosya != null)
                 {
-                    dosya.Decrypt();
+                    //dosya.Decrypt();
                 }
             }
             catch (Exception)

@@ -409,25 +409,26 @@
     }
 </style>
 
-<div style="background-color: #FFEB98;">
-    <br />
-    <br />
+<div class="container-fluid">
     @{
         Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
         foreach (var Model in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Koleji").Take(1).ToList())
         {
-            <div class="container">
-                <div class="col-md-10">
+
                     <div class="col-md-12">
-                        <div class="row" style="padding-left:2px;padding-right:25px;">
-                            <div class="col-md-12 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:20px;">
-                                <div class="col-md-2">
-                                    <img class="img-responsive img-thumbnail" src="~/Upload/slide/@Model.Resim" style="height:100px;" alt="@Model.KurumAdi">
-                                </div>
-                                <div class="col-md-10">
-                                    <br />
-                                    <span style="font-size:40px;vertical-align:bottom;text-align: center;" class="heading-primary">@Model.KurumAdi</span>
-                                </div>
+                        <div class="row" style="background-color: #FFFFFF;">
+                            <div class="col-md-3">
+                            </div>
+                            <div class="col-md-6">
+                                <br />
+                                <span style="font-size:40px;vertical-align:center;text-align: center;" class="heading-primary">@Model.KurumAdi</span>
+                            </div>
+                            <div class="col-md-1">
+
+                            </div>
+                            <div class="col-md-2">
+                                <br />
+                                <button type="button" class="btn btn-default" data-dismiss="modal">KAPAT</button><br />
                             </div>
                         </div>
                     </div>
@@ -617,27 +618,44 @@
                                             </p>
                                         </div>
                                         <div class="tab-pane" id="videoEniyiKoleji">
-                                            @*<iframe src='@Html.Raw(Model.Video)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>*@
-                                            @Html.Raw(Model.Video)
+                                            @if (Model.Video != null && Model.Video.Contains("iframe"))
+                                            {
+                                                @Html.Raw(Model.Video)
+                                            }
+                                            else
+                                            {
+                                                <iframe src="@Html.Raw(Model.Video)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            }
                                         </div>
                                         <div class="tab-pane" id="haritaEniyiKoleji">
-                                            @*<iframe src='@Html.Raw(Model.Harita)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>*@
-                                            @Html.Raw(Model.Harita)
-
-
+                                            @if (Model.Harita != null && Model.Harita.Contains("iframe"))
+                                            {
+                                                @Html.Raw(Model.Harita)
+                                            }
+                                            else
+                                            {
+                                                <iframe src="@Html.Raw(Model.Harita)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            }
                                         </div>
                                         <div class="tab-pane" id="3dEniyiKoleji">
-                                            @*<iframe src='@Html.Raw(Model.D3Boyutlu)' width='100%' height='450' frameborder='0' style='border:0' allowfullscreen></iframe>*@
-                                            @Html.Raw(Model.D3Boyutlu)
-
-
+                                            @if (Model.D3Boyutlu != null && Model.D3Boyutlu.Contains("iframe"))
+                                            {
+                                                @Html.Raw(Model.D3Boyutlu)
+                                            }
+                                            else
+                                            {
+                                                <iframe src="@Html.Raw(Model.D3Boyutlu)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            }
                                         </div>
                                         <div class="tab-pane" id="panoromaEniyiKoleji">
-
-                                            @Html.Raw(Model.Panoroma)
-
-
-                                            @*<iframe src="@Html.Raw(Model.Panoroma)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>*@
+                                            @if (Model.Panoroma != null && Model.Panoroma.Contains("iframe"))
+                                            {
+                                                @Html.Raw(Model.Panoroma)
+                                            }
+                                            else
+                                            {
+                                                <iframe src="@Html.Raw(Model.Panoroma)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                            }
                                         </div>
                                         <div class="tab-pane" id="ResimlerEniyiKoleji">
                                             <div id="jssor_ResimlerEniyiKoleji" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">
@@ -690,94 +708,94 @@
                                                 @if (Model.Adres != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ADRESİ :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Adres</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Adres</span></dd>
                                                 }
 
                                                 @if (Model.Tel != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Tel</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Tel</span></dd>
                                                 }
                                                 @if (Model.Subeler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ŞUBELER :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Subeler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Subeler</span></dd>
                                                 }
                                                 @if (Model.KurulusTarih != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AÇILIŞ YILI :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurulusTarih</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurulusTarih</span></dd>
                                                 }
                                                 @if (Model.Kurucusu != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurucusu</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurucusu</span></dd>
                                                 }
                                                 @if (Model.Kordinatorler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KORDİNATÖRLER :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kordinatorler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kordinatorler</span></dd>
                                                 }
                                                 @if (Model.KurumMuduru != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
                                                 }
                                                 @if (Model.KurumMuduru != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR YARDIMCILARI :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
                                                 }
                                                 @if (Model.Egitimciler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİMCİLER :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Egitimciler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Egitimciler</span></dd>
                                                 }
                                                 @if (Model.Aktiviteler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AKTİVİTELER :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Aktiviteler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Aktiviteler</span></dd>
                                                 }
                                                 @if (Model.Fax != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">FAKS :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Fax</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Fax</span></dd>
                                                 }
                                                 @if (Model.Email != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">E-MAİL :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Email</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Email</span></dd>
                                                 }
 
                                                 @if (Model.EgitimDili != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.EgitimDili" target="_blank">@Model.EgitimDili</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.EgitimDili" target="_blank">@Model.EgitimDili</a></span></dd>
                                                 }
                                                 @if (Model.OgrenciSayisi != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.OgrenciSayisi" target="_blank">@Model.OgrenciSayisi</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.OgrenciSayisi" target="_blank">@Model.OgrenciSayisi</a></span></dd>
                                                 }
                                                 @if (Model.YurticiUniversiteBasariOrani != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurticiUniversiteBasariOrani" target="_blank">@Model.YurticiUniversiteBasariOrani</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurticiUniversiteBasariOrani" target="_blank">@Model.YurticiUniversiteBasariOrani</a></span></dd>
                                                 }
                                                 @if (Model.YurtDisiUniversiteBasariOrani != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurtDisiUniversiteBasariOrani" target="_blank">@Model.YurtDisiUniversiteBasariOrani</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurtDisiUniversiteBasariOrani" target="_blank">@Model.YurtDisiUniversiteBasariOrani</a></span></dd>
                                                 }
                                                 @if (Model.BursOlanakları != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.BursOlanakları" target="_blank">@Model.BursOlanakları</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.BursOlanakları" target="_blank">@Model.BursOlanakları</a></span></dd>
                                                 }
                                                 @if (Model.Ucreti != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
-                                                        <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Ucreti" target="_blank">@Model.Ucreti</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Ucreti" target="_blank">@Model.Ucreti</a></span></dd>
                                                 }
 
 
@@ -790,9 +808,6 @@
                         </div>
 
                     </div>
-
-                </div>
-            </div>
         }
 
     }
