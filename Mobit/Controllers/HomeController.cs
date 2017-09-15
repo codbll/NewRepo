@@ -62,6 +62,7 @@ namespace Mobit.Controllers
             // kategoriler
             model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
             model.iller = db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
+            model.Haberler  = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h => h.Id).Take(20).ToList();
 
             var meta = db.MetaTag.FirstOrDefault();
 
@@ -365,7 +366,7 @@ namespace Mobit.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //[Route("Arama")]
+        [Route("Arama")]
         public ActionResult Arama(GelismisAramaModel arama, int? Sayfa)
         {
 

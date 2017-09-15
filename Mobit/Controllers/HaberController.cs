@@ -39,7 +39,7 @@ namespace Mobit.Controllers
         }
 
 
-        //[Route("Haberler")]
+        [Route("Haberler")]
         public ActionResult Haberler(int? Sayfa)
         {
 
@@ -63,9 +63,9 @@ namespace Mobit.Controllers
             ViewData["ustTekReklam"] = reklam.Where(r => r.SliderId == 16).OrderBy(s => s.Sira).Take(1).ToList();
             return View(haberler);
         }
- 
- 
-        //[Route("Roportajlar")]
+
+
+        [Route("Roportajlar")]
         public ActionResult Roportajlar(int? Sayfa)
         {
 

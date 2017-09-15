@@ -11,6 +11,8 @@ namespace Mobit.Models
         public List<Kategoriler> Kategoriler { get; set; }
         public List<iller> iller { get; set; }
         public List<ilceler> ilceler { get; set; }
+        public List<Haberler> Haberler { get; set; }
+
 
     }
 }

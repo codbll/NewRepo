@@ -9,7 +9,7 @@
         
 <div class="form-group">
     <div class="col-md-12" style="text-align:center;">
-        <div class="header-column SourcePasif" style="padding-left:10px;">
+        <div class="header-column SourcePasif" style="padding-left:10px;margin-top:-12px;">
             @{
                 Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
                 foreach (var item in db.MetaTag)
@@ -24,7 +24,6 @@
                 }
             }
         </div>
-        <br />
 
         <span style="color:white;font-size:29px;font-weight:bold;text-align:center;vertical-align:central;" >
         0850 532 
@@ -38,6 +37,7 @@
     </div>
 </div>
 <div id="searchForm">
+   
     <form id="myform" method="post" action="/Arama" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
         <div class="form-group SourcePasif">
@@ -105,7 +105,7 @@
 
             $.ajax({
                 type: "post",
-                url: "/Admin/Home/ilceGetir",
+                url: "/Home/ilceGetir",
                 data: { ilId: ilId },
                 success: function (kategoriler) {
 
@@ -144,7 +144,7 @@
 
             $.ajax({
                 type: "post",
-                url: "/Admin/Home/AltKategoriGetir",
+                url: "/Home/AltKategoriGetir",
                 data: { KategoriId: KategoriId },
                 success: function (kategoriler) {
                     $.each(kategoriler, function (index, kategori) {
