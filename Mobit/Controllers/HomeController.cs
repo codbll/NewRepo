@@ -62,7 +62,6 @@ namespace Mobit.Controllers
             // kategoriler
             model.Kategoriler = db.Kategoriler.Where(k => k.Aktif == true).OrderBy(k => k.Sira).ToList();
             model.iller = db.iller.Where(i => i.ilId == 40 || i.ilId == 82).ToList();
-            model.Haberler  = db.Haberler.Where(h => h.Aktif == true).OrderByDescending(h => h.Id).Take(20).ToList();
 
             var meta = db.MetaTag.FirstOrDefault();
 
@@ -384,6 +383,10 @@ namespace Mobit.Controllers
             else if (arama.KategoriId != 0 && arama.ilId != 0 && string.IsNullOrEmpty(arama.SearchKey))
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            }
+            else if (arama.KategoriId != 0 && arama.AltKategoriId != 0 && string.IsNullOrEmpty(arama.SearchKey))
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId &&  k.AltKategoriId== arama.AltKategoriId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
             else if (arama.KategoriId != 0 && string.IsNullOrEmpty(arama.SearchKey))
             {
