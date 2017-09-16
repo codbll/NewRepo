@@ -15,7 +15,7 @@ namespace Mobit.Areas.Admin.Controllers
         // GET: Admin/Slider
         public ActionResult Index()
         {
-            var slider = db.Slider.OrderBy(s=>s.SliderKategori.SliderId).OrderBy(k => k.SliderId).ToList();
+            var slider = db.Slider.OrderBy(s => s.SliderKategori.SliderId).OrderBy(k => k.SliderId).ToList();
             return View(slider);
         }
 
@@ -24,6 +24,14 @@ namespace Mobit.Areas.Admin.Controllers
             ViewBag.SliderId = new SelectList(db.SliderKategori.ToList(), "SliderId", "SliderAdi");
 
             return View();
+        }
+        public ActionResult SiraGetir(int SliderId)
+        {
+            
+           var sira = db.Slider.Where(s => s.SliderId == SliderId).OrderByDescending(sl => sl.Sira).Select(s => s.Sira).FirstOrDefault();
+
+            sira = sira + 1;
+            return Content(sira.ToString());
         }
 
         [HttpPost]
@@ -44,12 +52,12 @@ namespace Mobit.Areas.Admin.Controllers
             }
 
             Random rnd = new Random();
-            string resimAdi = Path.GetFileNameWithoutExtension(Resim.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(Resim.FileName);
+            string resimAdi = Path.GetFileNameWithoutExtension(Resim.FileName) + "-" + rnd.Next(1, 100000) + Path.GetExtension(Resim.FileName);
             var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/slide/"), resimAdi);
             Resim.SaveAs(yuklemeYeri);
 
             string target = "_blank";
-            if (Slider.Target == "False")
+            if (Slider.Target == "false")
                 target = "_self";
 
             Slider.Target = target;
@@ -103,7 +111,7 @@ namespace Mobit.Areas.Admin.Controllers
             else
             {
                 Random rnd = new Random();
-                string resimAdi = Path.GetFileNameWithoutExtension(Resim.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(Resim.FileName);
+                string resimAdi = Path.GetFileNameWithoutExtension(Resim.FileName) + "-" + rnd.Next(1, 100000) + Path.GetExtension(Resim.FileName);
                 var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/slide/"), resimAdi);
                 Resim.SaveAs(yuklemeYeri);
 

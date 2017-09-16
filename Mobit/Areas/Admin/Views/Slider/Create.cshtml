@@ -74,6 +74,8 @@
     @Html.ActionLink("Listeye Dön", "Index")
 </div>
 
+@Scripts.Render("~/admin/bundles/jqueryval")
+
 @section scripts{
     <script>
         $("document").ready(function () {
@@ -97,4 +99,38 @@
             fileopen.replaceWith(clone);
         }
     </script>
+
+    <script>
+
+        $('#SliderId').change(function () {
+            var SliderId = $(this).val();
+
+            if (SliderId != null && SliderId != '') {
+                $.ajax({
+                    type: "post",
+                    url: "/Admin/Slider/SiraGetir",
+                    data: { SliderId: SliderId },
+                    success: function (sira) {
+                        if (sira >= 1) {
+                            $("#Sira").val(sira);
+                        }
+                    },
+                    error: function (kategoriler) {
+
+                        //alert("Hata: Sıra getirilemedi");
+                    },
+                    beforeSend: function () {
+
+                    },
+                    complete: function () {
+
+                    }
+                });
+
+            }
+        });
+
+    </script>
+
 }
+
