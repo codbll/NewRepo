@@ -30,7 +30,7 @@
 
 		&:after {
 			content: "";
-			background: rgba(23, 23, 23, 0.8);
+			background: rgba(23, 23, 23, 0.2);
 			@include transition (all 0.3s);
 			border-radius: 4px;
 			bottom: -4px;
@@ -81,7 +81,7 @@
 
 	.thumb-info-title {
 		@include transition (all 0.3s);
-		background: rgba(23, 23, 23, 0.8);
+		background: rgba(23, 23, 23, 0.2);
 		bottom: 10%;
 		color: #FFF;
 		font-size: 18px;
@@ -274,7 +274,7 @@
 
 	&.thumb-info-bottom-info-dark {
 		.thumb-info-title {
-			@include background(linear-gradient(to top, rgba(23, 23, 23, 0.8) 0, transparent 100%) repeat scroll 0 0 rgba(0, 0, 0, 0));
+			@include background(linear-gradient(to top, rgba(23, 23, 23, 0.2) 0, transparent 100%) repeat scroll 0 0 rgba(0, 0, 0, 0));
 			color: #FFF;
 		}
 	}

@@ -319,7 +319,8 @@
         .jssort101 .pav .t, .jssort101 .p:hover .t{opacity:1;}
 </style>
 
-<div class="container-fluid">
+<div class="container-fluid" style="background-color:aliceblue;" >
+    <br />
     @{
         Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
         foreach (var Model in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Anaokulu").Take(1).ToList())
@@ -327,10 +328,11 @@
                     <div class="col-md-12">
                         <div class="row" style="background-color: #FFFFFF;">
                             <div class="col-md-3">
+                                <img data-u="image" src="~/Upload/slide/@Model.Resim" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="width:100px;height:50px;" />
                             </div>
                             <div class="col-md-6">
                                 <br />
-                                <span style="font-size:40px;vertical-align:center;text-align: center;" class="heading-primary">@Model.KurumAdi</span>
+                                <span style="font-size:40px;vertical-align:middle;text-align: center;" class="heading-primary">@Model.KurumAdi</span>
                             </div>
                             <div class="col-md-1">
 
@@ -380,28 +382,28 @@
                                                 {
                                                     <li><a href="#3dAnaokulu" data-toggle="tab" style="color:blue;">3D Tanıtım</a></li>
                                                 }
-                                                <li><a href="#ResimlerAnaokulu" data-toggle="tab" style="color:blue;">Resimler</a></li>
+                                                <li><a href="#ResimlerAnaokulu" data-toggle="tab" style="color:blue;">Eğitimciler</a></li>
                                                 <li><a href="#DetaylarAnaokulu" data-toggle="tab" style="color:blue;">Detaylar</a></li>
                                             </ul>
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="haberlerAnaokulu">
-                                                    <div id="jssor_haberlerAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                                    <div id="jssor_haberlerAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                         <!-- Loading Screen -->
                                                         <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                                                             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" />
                                                         </div>
-                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:480px;overflow:hidden;">
+                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
                                                             @foreach (var resim in db.Haberler.Where(r => r.KategoriId == 13).OrderByDescending(u => u.Id))
                                                             {
-                                                                <div>
-                                                                    <img data-u="image" src="~/Upload/haber/@resim.Resim" alt="@resim.Ad" title="@resim.Ad" />
-                                                                    <div style="position:absolute;top:80px;width:720px;height:40px;font-size:36px;color:#fff;line-height:40px;">@Html.Raw(resim.Ad)</div>
+                                                                <div style="background-color:#fff;border:solid;border-color:aliceblue;border-width:5px;">
+                                                                    @*<img data-u="image" src="~/Upload/haber/@resim.Resim" alt="@resim.Ad" title="@resim.Ad" />*@
+                                                                    <div style="position:absolute;top:0px;left:20px ;width:720px;color:#fff;overflow-y: scroll;">@Html.Raw(resim.Detay)</div>
                                                                     <img data-u="thumb" src="~/Upload/haber/@resim.Resim" alt="@resim.Ad" title="@resim.Ad" />
                                                                 </div>
                                                             }
                                                         </div>
                                                         <!-- Thumbnail Navigator -->
-                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:480px;background-color:#fff;" data-autocenter="2" data-scale-left="0.75">
+                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;width:240px;height:420px;background-color:#FFF;" data-autocenter="2" data-scale-left="0.75">
                                                             <div data-u="slides">
                                                                 <div data-u="prototype" class="p" style="width:99px;height:66px;">
                                                                     <div data-u="thumbnailtemplate" class="t"></div>
@@ -430,13 +432,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane" id="slaytAnaokulu">
-                                                    <div id="jssor_slaytAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                                <div class="tab-pane" id="slaytAnaokulu" style="background-color:#FFF;">
+                                                    <div id="jssor_slaytAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                         <!-- Loading Screen -->
                                                         <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                                                             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" />
                                                         </div>
-                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:480px;overflow:hidden;">
+                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
                                                             @foreach (var resim in db.KurumResim.Where(r => r.ResimTipi == 1 && r.KurumId == Model.KurumId))
                                                             {
                                                                 <div>
@@ -447,7 +449,7 @@
                                                             }
                                                         </div>
                                                         <!-- Thumbnail Navigator -->
-                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:480px;background-color:#fff;" data-autocenter="2" data-scale-left="0.75">
+                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:420px;background-color:#FFF;" data-autocenter="2" data-scale-left="0.75">
                                                             <div data-u="slides">
                                                                 <div data-u="prototype" class="p" style="width:99px;height:66px;">
                                                                     <div data-u="thumbnailtemplate" class="t"></div>
@@ -476,13 +478,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane" id="aktivitelerAnaokulu">
-                                                    <div id="jssor_aktivitelerAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                                <div class="tab-pane" id="aktivitelerAnaokulu" style="background-color:#FFF;">
+                                                    <div id="jssor_aktivitelerAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                         <!-- Loading Screen -->
                                                         <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                                                             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" />
                                                         </div>
-                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:480px;overflow:hidden;">
+                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
                                                             @foreach (var resim in db.KurumResim.Where(r => r.ResimTipi == 4 && r.KurumId == Model.KurumId))
                                                             {
                                                                 <div>
@@ -493,7 +495,7 @@
                                                             }
                                                         </div>
                                                         <!-- Thumbnail Navigator -->
-                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:480px;background-color:#fff;" data-autocenter="2" data-scale-left="0.75">
+                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:420px;background-color:#FFF;" data-autocenter="2" data-scale-left="0.75">
                                                             <div data-u="slides">
                                                                 <div data-u="prototype" class="p" style="width:99px;height:66px;">
                                                                     <div data-u="thumbnailtemplate" class="t"></div>
@@ -522,12 +524,12 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane" id="aciklamaAnaokulu">
+                                                <div class="tab-pane" id="aciklamaAnaokulu" style="background-color:#FFF;">
                                                     <p>
                                                         @Html.Raw(Model.Aciklama)
                                                     </p>
                                                 </div>
-                                                <div class="tab-pane" id="videoAnaokulu">
+                                                <div class="tab-pane" id="videoAnaokulu" style="background-color:#FFF;">
                                                     @if (Model.Video != null && Model.Video.Contains("iframe"))
                                                     {
                                                         @Html.Raw(Model.Video)
@@ -537,7 +539,7 @@
                                                         <iframe src="@Html.Raw(Model.Video)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                                                     }
                                                 </div>
-                                                <div class="tab-pane" id="haritaAnaokulu">
+                                                <div class="tab-pane" id="haritaAnaokulu" style="background-color:#FFF;">
                                                    @if (Model.Harita != null && Model.Harita.Contains("iframe"))
                                                    {
                                                     @Html.Raw(Model.Harita)
@@ -547,7 +549,7 @@
                                                     <iframe src="@Html.Raw(Model.Harita)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                                                    }
                                                 </div>
-                                                <div class="tab-pane" id="3dAnaokulu">
+                                                <div class="tab-pane" id="3dAnaokulu" style="background-color:#FFF;">
                                                    @if (Model.D3Boyutlu != null && Model.D3Boyutlu.Contains("iframe"))
                                                    {
                                                     @Html.Raw(Model.D3Boyutlu)
@@ -557,7 +559,7 @@
                                                     <iframe src="@Html.Raw(Model.D3Boyutlu)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                                                    }
                                                 </div>
-                                                <div class="tab-pane" id="panoromaAnaokulu">
+                                                <div class="tab-pane" id="panoromaAnaokulu" style="background-color:#FFF;">
                                                     @if (Model.Panoroma != null && Model.Panoroma.Contains("iframe"))
                                                     {
                                                         @Html.Raw(Model.Panoroma)
@@ -567,13 +569,13 @@
                                                         <iframe src="@Html.Raw(Model.Panoroma)" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
                                                     }
                                                 </div>
-                                                <div class="tab-pane" id="ResimlerAnaokulu">
-                                                    <div id="jssor_ResimlerAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:480px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                                <div class="tab-pane" id="ResimlerAnaokulu" style="background-color:#FFF;">
+                                                    <div id="jssor_ResimlerAnaokulu" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                         <!-- Loading Screen -->
                                                         <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
                                                             <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" />
                                                         </div>
-                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:480px;overflow:hidden;">
+                                                        <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
                                                             @foreach (var resim in db.KurumEgitimciler.Where(r => r.Tip == 1 && r.KurumId == Model.KurumId))
                                                             {
                                                                 <div>
@@ -584,7 +586,7 @@
                                                             }
                                                         </div>
                                                         <!-- Thumbnail Navigator -->
-                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:480px;background-color:#fff;" data-autocenter="2" data-scale-left="0.75">
+                                                        <div data-u="thumbnavigator" class="jssort101" style="position:absolute;left:0px;top:0px;width:240px;height:420px;background-color:#FFF;" data-autocenter="2" data-scale-left="0.75">
                                                             <div data-u="slides">
                                                                 <div data-u="prototype" class="p" style="width:99px;height:66px;">
                                                                     <div data-u="thumbnailtemplate" class="t"></div>
@@ -613,7 +615,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="tab-pane" id="DetaylarAnaokulu">
+                                                <div class="tab-pane" id="DetaylarAnaokulu" style="background-color:#FFF;">
                                                     <dl>
                                                         @if (Model.Adres != null)
                                                         {
@@ -625,6 +627,11 @@
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
                                                             <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Tel</span></dd>
+                                                        }
+                                                        @if (Model.WebSitesi != null)
+                                                        {
+                                                            <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">WEB SİTESİ :</span></dt>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.WebSitesi" target="_blank">@Model.WebSitesi</a></span></dd>
                                                         }
                                                         @if (Model.Subeler != null)
                                                         {
@@ -680,32 +687,32 @@
                                                         @if (Model.EgitimDili != null)
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
-                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.EgitimDili" target="_blank">@Model.EgitimDili</a></span></dd>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.EgitimDili</span></dd>
                                                         }
                                                         @if (Model.OgrenciSayisi != null)
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
-                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.OgrenciSayisi" target="_blank">@Model.OgrenciSayisi</a></span></dd>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.OgrenciSayisi</span></dd>
                                                         }
                                                         @if (Model.YurticiUniversiteBasariOrani != null)
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurticiUniversiteBasariOrani" target="_blank">@Model.YurticiUniversiteBasariOrani</a></span></dd>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.YurticiUniversiteBasariOrani</span></dd>
                                                         }
                                                         @if (Model.YurtDisiUniversiteBasariOrani != null)
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.YurtDisiUniversiteBasariOrani" target="_blank">@Model.YurtDisiUniversiteBasariOrani</a></span></dd>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.YurtDisiUniversiteBasariOrani</span></dd>
                                                         }
                                                         @if (Model.BursOlanakları != null)
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
-                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.BursOlanakları" target="_blank">@Model.BursOlanakları</a></span></dd>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.BursOlanakları</span></dd>
                                                         }
                                                         @if (Model.Ucreti != null)
                                                         {
                                                             <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
-                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;"><a href="@Model.Ucreti" target="_blank">@Model.Ucreti</a></span></dd>
+                                                            <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Ucreti</span></dd>
                                                         }
 
 

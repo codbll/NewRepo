@@ -4553,7 +4553,7 @@ html.boxed .pricing-table .plan, html.boxed .pricing-table h3 {
 
 .thumb-info .thumb-info-wrapper:after {
 	content: "";
-	background: rgba(23, 23, 23, 0.8);
+	background: rgba(23, 23, 23, 0.2);
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
@@ -4613,7 +4613,7 @@ html.boxed .pricing-table .plan, html.boxed .pricing-table h3 {
 	-webkit-transition: all 0.3s;
 	-moz-transition: all 0.3s;
 	transition: all 0.3s;
-	background: rgba(23, 23, 23, 0.8);
+	background: rgba(23, 23, 23, 0.2);
 	bottom: 10%;
 	color: #FFF;
 	font-size: 18px;
@@ -4816,8 +4816,8 @@ html.boxed .pricing-table .plan, html.boxed .pricing-table h3 {
 }
 
 .thumb-info.thumb-info-bottom-info-dark .thumb-info-title {
-	background: -webkit-linear-gradient( bottom , rgba(23, 23, 23, 0.8) 0, transparent 100%) repeat scroll 0 0 transparent;
-	background: linear-gradient(to top, rgba(23, 23, 23, 0.8) 0, transparent 100%) repeat scroll 0 0 transparent;
+	background: -webkit-linear-gradient( bottom , rgba(23, 23, 23, 0.2) 0, transparent 100%) repeat scroll 0 0 transparent;
+	background: linear-gradient(to top, rgba(23, 23, 23, 0.2) 0, transparent 100%) repeat scroll 0 0 transparent;
 	color: #FFF;
 }
 

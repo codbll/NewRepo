@@ -39,7 +39,7 @@ namespace Mobit.Areas.Admin.Controllers
             var folder = Server.MapPath("~/Upload/kurum/" + folderName);
             if (!Directory.Exists(folder))
             {
-                Directory.CreateDirectory(folder);
+               // Directory.CreateDirectory(folder);
             }
 
             if (resimYukle != null)
