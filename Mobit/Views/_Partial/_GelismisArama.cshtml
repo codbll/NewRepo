@@ -110,7 +110,11 @@
                 success: function (kategoriler) {
 
 
+                    $('#ilceId').append($('<option/>', {
+                        value: 0,
+                        text: "İlçe Seçimi"
 
+                    }));
                     $.each(kategoriler, function (index, kategori) {
                         $('#ilceId').append($('<option/>', {
                             value: kategori.ilceId,
@@ -123,7 +127,7 @@
                 },
                 error: function (kategoriler) {
 
-                    alert("Hata: İlçeler listelenemedi.");
+                    //alert("Hata: İlçeler listelenemedi.");
                 },
                 beforeSend: function () {
 
@@ -159,7 +163,7 @@
                 },
                 error: function (kategoriler) {
 
-                    alert("Hata: Alt Kategoriler listelenemedi.");
+                    //alert("Hata: Alt Kategoriler listelenemedi.");
                 },
                 beforeSend: function () {
 

@@ -63,7 +63,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="largeModal" role="dialog" >
+<div class="modal fade" id="largeModal" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-body">
@@ -73,7 +73,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="largeModal1" role="dialog" >
+<div class="modal fade" id="largeModal1" role="dialog">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
@@ -85,7 +85,7 @@
 </div>
 
 @*SPONSOR 1*@
-<div class="modal fade" id="Sponsor1" role="dialog" >
+<div class="modal fade" id="Sponsor1" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
 
@@ -97,7 +97,7 @@
 </div>
 
 @*SPONSOR 2*@
-<div class="modal fade" id="Sponsor2" role="dialog" >
+<div class="modal fade" id="Sponsor2" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
 
@@ -110,7 +110,7 @@
 
 
 @*SPONSOR 3*@
-<div class="modal fade" id="Sponsor3" role="dialog" >
+<div class="modal fade" id="Sponsor3" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
 
@@ -123,7 +123,7 @@
 
 
 @*SPONSOR 4*@
-<div class="modal fade" id="Sponsor4" role="dialog" >
+<div class="modal fade" id="Sponsor4" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
 
@@ -136,7 +136,7 @@
 
 
 @*SPONSOR 5*@
-<div class="modal fade" id="Sponsor5" role="dialog" >
+<div class="modal fade" id="Sponsor5" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
 
@@ -149,7 +149,7 @@
 
 
 @*SPONSOR 6*@
-<div class="modal fade" id="Sponsor6" role="dialog" >
+<div class="modal fade" id="Sponsor6" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content">
 
@@ -161,7 +161,7 @@
 </div>
 
 @*Ayın En İyi Anaokulu*@
-<div class="modal fade" id="HaberPopupEniyiAnaokulu" role="dialog" >
+<div class="modal fade" id="HaberPopupEniyiAnaokulu" role="dialog">
     <div class="modal-dialog modal-lg" style="width:1200px;">
         <div class="modal-content" style="margin:0px">
             <div class="modal-body" style="margin:0px">
@@ -172,89 +172,93 @@
 </div>
 
 @*HaberPopupEniyiKoleji*@
-<div class="modal fade" id="HaberPopupEniyiKoleji" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content" style="margin:0px">
-            <div class="modal-body" style="margin:0px">
-                @Html.Partial("/Views/_Partial/_HaberPopupAyinEniyiTedarikcisi.cshtml", ViewData["HaberPopupAyinEniyiTedarikcisi"])
-            </div>
-        </div>
-    </div>
-</div>
+@if (ViewData["HaberPopupAyinEniyiTedarikcisi"] != null)
+{
 
-@*HaberPopupEniyiUniversitesi*@
-<div class="modal fade" id="HaberPopupEniyiUniversitesi" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_HaberPopupEniyiUniversitesi.cshtml", ViewData["HaberPopupEniyiUniversitesi"])
+    <div class="modal fade" id="HaberPopupEniyiKoleji" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content" style="margin:0px">
+                <div class="modal-body" style="margin:0px">
+                    @Html.Partial("/Views/_Partial/_HaberPopupAyinEniyiTedarikcisi.cshtml", ViewData["HaberPopupAyinEniyiTedarikcisi"])
+                </div>
             </div>
         </div>
     </div>
-</div>
+}
 
-@*HaberPopupEniyiKursu*@
-<div class="modal fade" id="HaberPopupEniyiKursu" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_HaberPopupEniyiKursu.cshtml", ViewData["HaberPopupEniyiKursu"])
+    @*HaberPopupEniyiUniversitesi*@
+    <div class="modal fade" id="HaberPopupEniyiUniversitesi" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_HaberPopupEniyiUniversitesi.cshtml", ViewData["HaberPopupEniyiUniversitesi"])
+                </div>
             </div>
         </div>
     </div>
-</div>
-@*HaberPopupEniyiTedarikcisi*@
-<div class="modal fade" id="HaberPopupEniyiTedarikcisi" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_HaberPopupEniyiTedarikcisi.cshtml", ViewData["HaberPopupEniyiTedarikcisi"])
-            </div>
-        </div>
-    </div>
-</div>
-@*HaberPopupEniyiOkulServisi*@
-<div class="modal fade" id="HaberPopupEniyiOkulServisi" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_HaberPopupEniyiOkulServisi.cshtml", ViewData["HaberPopupEniyiOkulServisi"])
-            </div>
-        </div>
-    </div>
-</div>
 
-
-@*En İyi Okullar*@
-<div class="modal fade" id="PopupEniyiOkullar" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_PopupEniyiOkullar.cshtml", ViewData["PopupEniyiOkullar"])
+    @*HaberPopupEniyiKursu*@
+    <div class="modal fade" id="HaberPopupEniyiKursu" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_HaberPopupEniyiKursu.cshtml", ViewData["HaberPopupEniyiKursu"])
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-@*En İyi Yöneticiler*@
-<div class="modal fade" id="PopupEniyiYoneticiler" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_PopupEniyiYoneticiler.cshtml", ViewData["PopupEniyiYoneticiler"])
+    @*HaberPopupEniyiTedarikcisi*@
+    <div class="modal fade" id="HaberPopupEniyiTedarikcisi" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_HaberPopupEniyiTedarikcisi.cshtml", ViewData["HaberPopupEniyiTedarikcisi"])
+                </div>
             </div>
         </div>
     </div>
-</div>
+    @*HaberPopupEniyiOkulServisi*@
+    <div class="modal fade" id="HaberPopupEniyiOkulServisi" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_HaberPopupEniyiOkulServisi.cshtml", ViewData["HaberPopupEniyiOkulServisi"])
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-@*En İyi Eğitmenler*@
-<div class="modal fade" id="PopupEniyiEgitmenler" role="dialog" >
-    <div class="modal-dialog modal-lg" style="width:1200px;">
-        <div class="modal-content">
-            <div class="modal-body">
-                @Html.Partial("/Views/_Partial/_PopupEniyiEgitmenler.cshtml", ViewData["PopupEniyiEgitmenler"])
+    @*En İyi Okullar*@
+    <div class="modal fade" id="PopupEniyiOkullar" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_PopupEniyiOkullar.cshtml", ViewData["PopupEniyiOkullar"])
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    @*En İyi Yöneticiler*@
+    <div class="modal fade" id="PopupEniyiYoneticiler" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_PopupEniyiYoneticiler.cshtml", ViewData["PopupEniyiYoneticiler"])
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    @*En İyi Eğitmenler*@
+    <div class="modal fade" id="PopupEniyiEgitmenler" role="dialog">
+        <div class="modal-dialog modal-lg" style="width:1200px;">
+            <div class="modal-content">
+                <div class="modal-body">
+                    @Html.Partial("/Views/_Partial/_PopupEniyiEgitmenler.cshtml", ViewData["PopupEniyiEgitmenler"])
+                </div>
+            </div>
+        </div>
+    </div>

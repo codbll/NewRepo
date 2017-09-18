@@ -380,6 +380,10 @@ namespace Mobit.Controllers
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.ilceId == arama.ilceId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
+            else if (arama.KategoriId != 0 && arama.ilId != 0 && arama.AltKategoriId != 0 && string.IsNullOrEmpty(arama.SearchKey))
+            {
+                kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.AltKategoriId == arama.AltKategoriId && k.ilId == arama.ilId  && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+            }
             else if (arama.KategoriId != 0 && arama.ilId != 0 && string.IsNullOrEmpty(arama.SearchKey))
             {
                 kurumlar = db.Kurumlar.Where(k => k.KategoriId == arama.KategoriId && k.ilId == arama.ilId && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
