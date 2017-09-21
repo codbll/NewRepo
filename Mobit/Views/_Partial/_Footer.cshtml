@@ -172,19 +172,17 @@
 </div>
 
 @*HaberPopupEniyiKoleji*@
-@if (ViewData["HaberPopupAyinEniyiTedarikcisi"] != null)
-{
 
     <div class="modal fade" id="HaberPopupEniyiKoleji" role="dialog">
         <div class="modal-dialog modal-lg" style="width:1200px;">
             <div class="modal-content" style="margin:0px">
                 <div class="modal-body" style="margin:0px">
-                    @Html.Partial("/Views/_Partial/_HaberPopupAyinEniyiTedarikcisi.cshtml", ViewData["HaberPopupAyinEniyiTedarikcisi"])
+                    @Html.Partial("/Views/_Partial/_HaberPopupEniyiKoleji.cshtml", ViewData["HaberPopupEniyiKoleji"])
                 </div>
             </div>
         </div>
     </div>
-}
+
 
     @*HaberPopupEniyiUniversitesi*@
     <div class="modal fade" id="HaberPopupEniyiUniversitesi" role="dialog">
