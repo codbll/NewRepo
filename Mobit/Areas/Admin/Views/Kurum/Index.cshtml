@@ -35,7 +35,7 @@
                     </thead>
                     <tbody>
 
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Where(i => i.Sponsorlar == null).ToList())
                         {
                             <tr class="gradeX">
 

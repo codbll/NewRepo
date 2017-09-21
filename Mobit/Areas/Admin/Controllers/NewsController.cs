@@ -398,14 +398,10 @@ namespace Mobit.Areas.Admin.Controllers
                 return Redirect("/Admin/News/images/" + galeri);
             }
 
-            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/galeri/" + res.Resim));
 
             db.HaberlerResim.Remove(res);
             db.SaveChanges();
-            if (System.IO.File.Exists(fi.ToString()))
-            {
-                //fi.Delete();
-            }
+
 
             return Redirect("/Admin/News/images/" + galeri);
         }

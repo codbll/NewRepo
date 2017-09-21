@@ -36,17 +36,13 @@ namespace Mobit.Areas.Admin.Controllers
             #region  resim ve pdf upload işlemleri
             // resim yüklenmese bile klasörü oluştur
             string folderName = Kontrol.ToSlug(kurum.KurumAdi);
-            var folder = Server.MapPath("~/Upload/kurum/" + folderName);
-            if (!Directory.Exists(folder))
-            {
-               // Directory.CreateDirectory(folder);
-            }
+            var folder =  Server.MapPath("~/Upload/slide");
 
             if (resimYukle != null)
             {
                 Random rnd = new Random();
                 resimDosyaAdi = Path.GetFileNameWithoutExtension(resimYukle.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(resimYukle.FileName);
-                var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/kurum/" + folderName), resimDosyaAdi);
+                var yuklemeYeri = Path.Combine( Server.MapPath("~/Upload/slide"), resimDosyaAdi);
                 resimYukle.SaveAs(yuklemeYeri);
             }
 
@@ -92,17 +88,13 @@ namespace Mobit.Areas.Admin.Controllers
             string resimDosyaAdi = kurumlar.Resim;
             string folderName = kurumlar.UploadYolu;
             // resim dosyası ürün eklenirken oluşturuluyor ama olaki silindiyse yeniden oluştur 
-            var folder = Server.MapPath("~/Upload/kurum/" + folderName);
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
+            var folder =  Server.MapPath("~/Upload/slide");
 
             if (resimYukle != null)
             {
                 Random rnd = new Random();
                 resimDosyaAdi = Path.GetFileNameWithoutExtension(resimYukle.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(resimYukle.FileName);
-                var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/kurum/" + folderName), resimDosyaAdi);
+                var yuklemeYeri = Path.Combine( Server.MapPath("~/Upload/slide"), resimDosyaAdi);
                 resimYukle.SaveAs(yuklemeYeri);
             }
 
@@ -211,12 +203,6 @@ namespace Mobit.Areas.Admin.Controllers
 
             db.SaveChanges();
 
-            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/kurum/" + kurum.UploadYolu + "/" + fileName));
-
-            if (System.IO.File.Exists(fi.ToString()))
-            {
-                //fi.Delete();
-            }
 
 
             return Redirect("/Admin/Kurum/Edit/" + id);
@@ -238,14 +224,6 @@ namespace Mobit.Areas.Admin.Controllers
                 db.KurumEgitimciler.Remove(rsm);
             }
             db.SaveChanges();
-
-            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/kurum/" + kurum.UploadYolu + "/" + fileName));
-
-            if (System.IO.File.Exists(fi.ToString()))
-            {
-                //fi.Delete();
-            }
-
 
             return Redirect("/Admin/Kurum/Edit/" + id);
         }
@@ -278,13 +256,6 @@ namespace Mobit.Areas.Admin.Controllers
                 db.Kurumlar.Remove(kurum);
                 db.SaveChanges();
 
-
-                string klasorYolu = Server.MapPath("~/Upload/kurum/" + kurum.UploadYolu);
-
-                if (System.IO.Directory.Exists(klasorYolu))
-                {
-                    //Directory.Delete(klasorYolu, true);
-                }
             }
             catch (Exception)
             {
@@ -312,7 +283,7 @@ namespace Mobit.Areas.Admin.Controllers
                 {
                     Random rnd = new Random();
                     string dosyaAdi = Path.GetFileNameWithoutExtension(file.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(file.FileName);
-                    var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/kurum/" + uploadYol), dosyaAdi);
+                    var yuklemeYeri = Path.Combine( Server.MapPath("~/Upload/slide"), dosyaAdi);
                     file.SaveAs(yuklemeYeri);
 
                     KurumResim resimler = new KurumResim()
@@ -349,7 +320,7 @@ namespace Mobit.Areas.Admin.Controllers
                 {
                     Random rnd = new Random();
                     string dosyaAdi = Path.GetFileNameWithoutExtension(file.FileName) + "-" + rnd.Next(1, 10000) + Path.GetExtension(file.FileName);
-                    var yuklemeYeri = Path.Combine(Server.MapPath("~/Upload/kurum/" + uploadYol), dosyaAdi);
+                    var yuklemeYeri = Path.Combine( Server.MapPath("~/Upload/slide"), dosyaAdi);
                     file.SaveAs(yuklemeYeri);
 
                     KurumEgitimciler resimler = new KurumEgitimciler()

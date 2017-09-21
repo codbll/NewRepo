@@ -76,12 +76,6 @@ namespace Mobit.Areas.Admin.Controllers
             }
             var bilgi = db.DosyaYoneticisi.Find(id);
 
-            FileInfo sil = new FileInfo(Server.MapPath("/Upload/files/" + bilgi.Url));
-            if (sil.Exists == true)
-            {
-                //sil.Delete();
-            }
-
             db.DosyaYoneticisi.Remove(bilgi);
             db.SaveChanges();
 

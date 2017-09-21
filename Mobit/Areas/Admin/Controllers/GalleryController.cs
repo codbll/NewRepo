@@ -33,12 +33,7 @@ namespace Mobit.Areas.Admin.Controllers
             }
 
             string folderName = Kontrol.ToSlug(galeri.GaleriAdi);
-            var folder = Server.MapPath("~/Upload/galeri/" + folderName);
-
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
+            var folder = Server.MapPath("~/Upload/galeri");
 
             galeri.GaleriYolu = folderName;
             db.Galeri.Add(galeri);
@@ -141,14 +136,9 @@ namespace Mobit.Areas.Admin.Controllers
                 return Redirect("/Admin/Gallery/images/" + galeri);
             }
 
-            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/galeri/" + galeriBilgi.GaleriYolu + "/" + res.Resim));
-
             db.GaleriResim.Remove(res);
             db.SaveChanges();
-            if (System.IO.File.Exists(fi.ToString()))
-            {
-                //fi.Delete();
-            }
+
 
             return Redirect("/Admin/Gallery/images/" + galeri);
         }
@@ -169,22 +159,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             db.Galeri.Remove(galeri);
             db.SaveChanges();
-
-            try
-            {
-                var folder = Server.MapPath("~/Upload/galeri/" + galeri.GaleriYolu);
-
-                if (Directory.Exists(folder))
-                {
-                    //Directory.Delete(folder);
-
-                }
-
-            }
-            catch (Exception)
-            {
-
-            }
+            
 
 
 

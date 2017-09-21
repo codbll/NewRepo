@@ -37,10 +37,6 @@ namespace Mobit.Areas.Admin.Controllers
             // resim yüklenmese bile klasörü oluştur
             string folderName = Kontrol.ToSlug(kurum.KurumAdi);
             var folder = Server.MapPath("~/Upload/slide");
-            if (!Directory.Exists(folder))
-            {
-                //Directory.CreateDirectory(folder);
-            }
 
             if (resimYukle != null)
             {
@@ -94,10 +90,6 @@ namespace Mobit.Areas.Admin.Controllers
             string folderName = kurumlar.UploadYolu;
             // resim dosyası ürün eklenirken oluşturuluyor ama olaki silindiyse yeniden oluştur 
             var folder = Server.MapPath("~/Upload/slide");
-            if (!Directory.Exists(folder))
-            {
-                //Directory.CreateDirectory(folder);
-            }
 
             if (resimYukle != null)
             {
@@ -225,12 +217,6 @@ namespace Mobit.Areas.Admin.Controllers
 
             db.SaveChanges();
 
-            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/slide"+ "/" + fileName));
-
-            if (System.IO.File.Exists(fi.ToString()))
-            {
-                //fi.Delete();
-            }
 
 
             return Redirect("/Admin/Sponsorlar/Edit/" + id);
@@ -252,13 +238,6 @@ namespace Mobit.Areas.Admin.Controllers
                 db.KurumEgitimciler.Remove(rsm);
             }
             db.SaveChanges();
-
-            FileInfo fi = new FileInfo(Server.MapPath("~/Upload/slide" + "/" + fileName));
-
-            if (System.IO.File.Exists(fi.ToString()))
-            {
-                //fi.Delete();
-            }
 
 
             return Redirect("/Admin/Sponsorlar/Edit/" + id);
@@ -292,13 +271,6 @@ namespace Mobit.Areas.Admin.Controllers
                 db.Kurumlar.Remove(kurum);
                 db.SaveChanges();
 
-
-                string klasorYolu = Server.MapPath("~/Upload/slide");
-
-                if (System.IO.Directory.Exists(klasorYolu))
-                {
-                    //Directory.Delete(klasorYolu, true);
-                }
             }
             catch (Exception)
             {
