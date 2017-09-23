@@ -142,6 +142,7 @@ namespace Mobit.Areas.Admin.Controllers
             kurumlar.BursOlanakları = kurum.BursOlanakları;
             kurumlar.Ucreti = kurum.Ucreti;
             kurumlar.D3Boyutlu = kurum.D3Boyutlu;
+            kurumlar.Sira = kurum.Sira;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -182,7 +183,14 @@ namespace Mobit.Areas.Admin.Controllers
             return Json(kategoriler, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult SiraGetir()
+        {
 
+            var sira = db.Kurumlar.OrderByDescending(sl => sl.Sira).Select(s => s.Sira).FirstOrDefault();
+
+            sira = sira + 1;
+            return Content(sira.ToString());
+        }
         public ActionResult DeleteFile(int id, string fileName, int? kurumResim)
         {
 

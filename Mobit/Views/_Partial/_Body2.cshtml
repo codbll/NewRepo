@@ -58,7 +58,7 @@
                 @{
                     Int32 l = 0;
                     Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
-                    foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Okullar").Take(10).OrderBy(s => s.Sponsorlar))
+                    foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Okullar").Take(10).OrderBy(s => s.Sira))
                     {
                         l = l + 1;
                         <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
@@ -89,7 +89,7 @@
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 3, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 2000}'>
                 @{
-                    foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Yöneticiler").Take(10).OrderBy(s => s.Sponsorlar))
+                    foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Yöneticiler").Take(10).OrderBy(s => s.Sira))
                     {
 
                         <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
@@ -118,7 +118,7 @@
             </div>
             <div class="owl-carousel owl-theme show-nav-hover" data-plugin-options='{"items": 3, "margin": 2, "loop": true, "nav": true, "dots": false,"autoplay": true, "autoplayTimeout": 2000}'>
                 @{
-                    foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Eğitmenler").Take(10).OrderBy(s => s.Sponsorlar))
+                    foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Eğitmenler").Take(10).OrderBy(s => s.Sira))
                     {
                         <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
                             <div title="@item.KurumAdi">
