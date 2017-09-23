@@ -19,6 +19,7 @@ namespace Mobit.Controllers
     public class HomeController : Controller
     {
         Entities db = new Entities();
+
         public ActionResult Index()
         {
             TitleGetir();
@@ -28,19 +29,19 @@ namespace Mobit.Controllers
             var haberler = db.Haberler.ToList();
 
             ViewData["HaberlerPopup"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 4).ToList();
-            ViewData["RoportajlarPopup"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 3).ToList();
+            ViewData["RoportajlarPopup"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 3).ToList();
 
-            ViewData["HaberPopupEniyiAnaokulu"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 13).ToList();
-            ViewData["HaberPopupEniyiKoleji"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 14).ToList();
-            ViewData["HaberPopupEniyiUniversitesi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 15).ToList();
-            ViewData["HaberPopupEniyiKursu"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 16).ToList();
-            ViewData["HaberPopupEniyiTedarikcisi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 17).ToList();
-            ViewData["HaberPopupEniyiOkulServisi"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 18).ToList();
+            ViewData["HaberPopupEniyiAnaokulu"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 13).ToList();
+            ViewData["HaberPopupEniyiKoleji"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 14).ToList();
+            ViewData["HaberPopupEniyiUniversitesi"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 15).ToList();
+            ViewData["HaberPopupEniyiKursu"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 16).ToList();
+            ViewData["HaberPopupEniyiTedarikcisi"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 17).ToList();
+            ViewData["HaberPopupEniyiOkulServisi"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 18).ToList();
 
 
-            ViewData["PopupEniyiOkullar"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 19).ToList();
-            ViewData["PopupEniyiYoneticiler"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 20).ToList();
-            ViewData["PopupEniyiEgitmenler"] = db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 21).ToList();
+            ViewData["PopupEniyiOkullar"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 19).ToList();
+            ViewData["PopupEniyiYoneticiler"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 20).ToList();
+            ViewData["PopupEniyiEgitmenler"] = haberler.Where(h => h.Aktif == true && h.KategoriId == 21).ToList();
 
             return View();
 
@@ -48,9 +49,10 @@ namespace Mobit.Controllers
         [Route("Anketler")]
         public PartialViewResult Anketler()
         {
+            var KurumEgitimciler = db.KurumEgitimciler.ToList();
             ViewBag.KurumId = new SelectList(db.Kurumlar.ToList(), "KurumId", "KurumAdi");
-            ViewBag.EnSevdiginizOgretmenveBransi = new SelectList(db.KurumEgitimciler.Where(h => h.Tip == 1).OrderBy(h => h.Aciklama).ToList(), "EgitimciId", "Aciklama");//Eğitimci
-            ViewBag.EnSevdiginizYonetici = new SelectList(db.KurumEgitimciler.Where(h => h.Tip == 2).OrderBy(h => h.Aciklama).ToList(), "EgitimciId", "Aciklama");//Yönetici
+            ViewBag.EnSevdiginizOgretmenveBransi = new SelectList(KurumEgitimciler.Where(h => h.Tip == 1).OrderBy(h => h.Aciklama).ToList(), "EgitimciId", "Aciklama");//Eğitimci
+            ViewBag.EnSevdiginizYonetici = new SelectList(KurumEgitimciler.Where(h => h.Tip == 2).OrderBy(h => h.Aciklama).ToList(), "EgitimciId", "Aciklama");//Yönetici
 
             return PartialView("~/Views/_Partial/_Anketler.cshtml");
 
@@ -108,11 +110,13 @@ namespace Mobit.Controllers
         }
         void Slider()
         {
+            var Slider = db.Slider.ToList();
+
             //slider
-            var slider = db.Slider.Where(sld => sld.Aktif == true).OrderBy(sld => sld.Sira).ToList();
+            var slider = Slider.Where(sld => sld.Aktif == true).OrderBy(sld => sld.Sira).ToList();
             TempData["slider"] = slider;
 
-            var popup = db.Slider.Where(sld => sld.Aktif == true && sld.SliderId == 18).OrderBy(sld => sld.Sira).ToList();
+            var popup = Slider.Where(sld => sld.Aktif == true && sld.SliderId == 18).OrderBy(sld => sld.Sira).ToList();
             TempData["popup"] = popup;
 
         }
