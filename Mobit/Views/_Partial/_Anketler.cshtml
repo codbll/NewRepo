@@ -43,7 +43,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label>EN SEVDİĞİNİZ ÖĞRETMEN VE BRANŞI  *</label>
-                            @Html.DropDownList("EnSevdiginizOgretmenveBransi", Enumerable.Empty<SelectListItem>(), "Önce Kurum Seçiniz", new { @class = "form-control" })
+                            @Html.EditorFor(model => model.EnSevdiginizOgretmenveBransi, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
                             @Html.ValidationMessageFor(model => model.EnSevdiginizOgretmenveBransi, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <label>EN SEVDİĞİNİZ YÖNETİCİ MÜDÜR-MÜDÜR YARDIMCISI *</label>
-                            @Html.DropDownList("EnSevdiginizYonetici", Enumerable.Empty<SelectListItem>(), "Önce Kurum Seçiniz", new { @class = "form-control" })
+                            @Html.EditorFor(model => model.EnSevdiginizYonetici, new { htmlAttributes = new { @class = "form-control", @required = "required" } })
                             @Html.ValidationMessageFor(model => model.EnSevdiginizYonetici, "", new { @class = "text-danger" })
                         </div>            
                     </div>
@@ -115,59 +115,59 @@
              dropdown.empty();
              if (kurumId != null && kurumId != '') {
 
-                 $.ajax({
-                     type: "post",
-                     url: "/Admin/Home/EnSevdiginizOgretmenveBransiGetir",
-                     data: { KurumId: kurumId },
-                     success: function (kategoriler) {
-                         $.each(kategoriler, function (index, kategori) {
-                             $('#EnSevdiginizOgretmenveBransi').append($('<option/>', {
-                                 value: kategori.EgitimciId,
-                                 text: kategori.Aciklama
+                 //$.ajax({
+                 //    type: "post",
+                 //    url: "/Admin/Home/EnSevdiginizOgretmenveBransiGetir",
+                 //    data: { KurumId: kurumId },
+                 //    success: function (kategoriler) {
+                 //        $.each(kategoriler, function (index, kategori) {
+                 //            $('#EnSevdiginizOgretmenveBransi').append($('<option/>', {
+                 //                value: kategori.EgitimciId,
+                 //                text: kategori.Aciklama
 
-                             }));
+                 //            }));
 
-                         });
+                 //        });
 
-                     },
-                     error: function (kategoriler) {
+                 //    },
+                 //    error: function (kategoriler) {
 
-                         alert("Hata: EnSevdiginizOgretmenveBransi listelenemedi.");
-                     },
-                     beforeSend: function () {
+                 //        alert("Hata: EnSevdiginizOgretmenveBransi listelenemedi.");
+                 //    },
+                 //    beforeSend: function () {
 
-                     },
-                     complete: function () {
+                 //    },
+                 //    complete: function () {
 
-                     }
-                 });
+                 //    }
+                 //});
 
-                 $.ajax({
-                     type: "post",
-                     url: "/Admin/Home/EnSevdiginizYoneticiGetir",
-                     data: { KurumId: kurumId },
-                     success: function (kategoriler) {
-                         $.each(kategoriler, function (index, kategori) {
-                             $('#EnSevdiginizYonetici').append($('<option/>', {
-                                 value: kategori.EgitimciId,
-                                 text: kategori.Aciklama
+                 //$.ajax({
+                 //    type: "post",
+                 //    url: "/Admin/Home/EnSevdiginizYoneticiGetir",
+                 //    data: { KurumId: kurumId },
+                 //    success: function (kategoriler) {
+                 //        $.each(kategoriler, function (index, kategori) {
+                 //            $('#EnSevdiginizYonetici').append($('<option/>', {
+                 //                value: kategori.EgitimciId,
+                 //                text: kategori.Aciklama
 
-                             }));
+                 //            }));
 
-                         });
+                 //        });
 
-                     },
-                     error: function (kategoriler) {
+                 //    },
+                 //    error: function (kategoriler) {
 
-                         alert("Hata: EnSevdiginizOgretmenveBransi listelenemedi.");
-                     },
-                     beforeSend: function () {
+                 //        alert("Hata: EnSevdiginizOgretmenveBransi listelenemedi.");
+                 //    },
+                 //    beforeSend: function () {
 
-                     },
-                     complete: function () {
+                 //    },
+                 //    complete: function () {
 
-                     }
-                 });
+                 //    }
+                 //});
 
              }
          });

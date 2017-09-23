@@ -21,8 +21,8 @@
 
 <div role="main" class="main shop" style="padding-left:2px;padding-right:25px;margin-left:7px;">
     <div class="container">
-        <div class="row" style="padding-left:2px;padding-right:25px;">
-            <div class="col-md-12 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:20px;">
+        <div class="row" style="padding-left:2px;padding-right:2px;">
+            <div class="col-md-11 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:2px;">
                 <div class="col-md-2">
                     @if (@Model.Kurumlar.Sponsorlar != null)
                     {
@@ -33,14 +33,14 @@
                         <img class="img-responsive img-thumbnail" src="~/Upload/slide/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
                     }
                 </div>
-                <div class="col-md-10">
+                <div class="col-md-9">
                     <br />
                     <span style="font-size:60px;vertical-align:bottom;text-align: center;" class="heading-primary">@Model.Kurumlar.KurumAdi</span>
                 </div>
             </div>
         </div>
     </div>
-
+    <br />
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -50,10 +50,7 @@
                             <div class="col-md-12">
                                 <div class="tabs tabs-tertiary tabs-center nav-tabs-justified">
                                     <ul class="nav nav-tabs">
-                                        @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1).Count() >= 1)
-                                        {
-                                            <li class="active"><a href="#slayt" data-toggle="tab">Tanıtım Slaytları</a></li>
-                                        }
+                                        <li class="active"><a href="#slayt" data-toggle="tab">Tanıtım Slaytları</a></li>
 
                                         @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 4).Count() >= 1)
                                         {
@@ -80,7 +77,7 @@
                                         {
                                             <li><a href="#3d" data-toggle="tab">3D Tanıtım</a></li>
                                         }
-                                        
+
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="slayt">
@@ -103,7 +100,7 @@
                                                                         {
                                                                             <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
                                                                         }
-                                                                        
+
                                                                         <span class="thumb-info-title">
                                                                             <span class="thumb-info-inner">@resim.Aciklama</span>
                                                                             <span class="thumb-info-type">@resim.Kurumlar.KurumAdi</span>
@@ -152,7 +149,7 @@
                                                             <div class="image-gallery-item">
                                                                 <span class="thumb-info thumb-info-lighten">
                                                                     <span class="thumb-info-wrapper">
-                                                                        
+
                                                                         @if (@Model.Kurumlar.Sponsorlar != null)
                                                                         {
                                                                             <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:400px;">
@@ -306,11 +303,11 @@
                                                             <span class="thumb-info-wrapper">
                                                                 @if (@Model.Kurumlar.Sponsorlar != null)
                                                                 {
-                                                                <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
+                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
                                                                 }
                                                                 else
                                                                 {
-                                                                <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
+                                                                    <img src="~/Upload/slide/@resim.Resim" class="img-responsive" alt="@Model.Kurumlar.KurumAdi" title="@Model.Kurumlar.KurumAdi" style="width:100%;height:500px;">
                                                                 }
                                                                 <span class="thumb-info-title">
                                                                     <span class="thumb-info-inner">@resim.Aciklama</span>
@@ -352,8 +349,8 @@
                                 </div>
                             </div>
                         }
-                        
-                        
+
+
                     </div>
                 </div>
                 <div class="col-md-5">
@@ -473,7 +470,7 @@
                                 </div>
                             </div>
                         }
-                        
+
                     </div>
 
 
@@ -482,46 +479,47 @@
 
             </div>
 
-        <div class="col-md-12">
-            <hr />
-            @if (ViewData["detayReklam"] != null)
+            <div class="col-md-12">
+                <hr />
+                @if (ViewData["detayReklam"] != null)
             {
-                @*foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
-                {
-                    <div class="col-md-12">
-                        <a href="@item.Url" target="@item.Target">
-                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
-                        </a>
-                    </div>
-                }*@
-
-                <div class="col-md-12" style="margin-left:-28px;">
-                    <ul class="image-gallery sort-destination full-width">
-
-                        @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                    @*foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
                         {
-                            <li class="isotope-item">
-                                <div class="image-gallery-item" style="padding:5px;">
-                                    <a href="@item.Url" target="@item.Target">
-                                        <span class="thumb-info thumb-info-centered-info">
-                                            <span class="thumb-info-wrapper">
-                                                <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim" style="height:300px;">
+                            <div class="col-md-12">
+                                <a href="@item.Url" target="@item.Target">
+                                    <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+                                </a>
+                            </div>
+                        }*@
+
+                    <div class="col-md-12" style="margin-left:-28px;">
+                        <ul class="image-gallery sort-destination full-width">
+
+                            @foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
+                        {
+                                <li class="isotope-item">
+                                    <div class="image-gallery-item" style="padding:5px;">
+                                        <a href="@item.Url" target="@item.Target">
+                                            <span class="thumb-info thumb-info-centered-info">
+                                                <span class="thumb-info-wrapper">
+                                                    <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim" style="height:300px;">
+                                                </span>
                                             </span>
-                                        </span>
-                                    </a>
-                                </div>
-                            </li>
+                                        </a>
+                                    </div>
+                                </li>
                         }
-                    </ul>
-                </div>
+                        </ul>
+                    </div>
 
 
             }
+            </div>
+
+
+
+
         </div>
 
-
-
-
     </div>
-
 </div>
