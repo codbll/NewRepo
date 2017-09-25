@@ -14,9 +14,9 @@ namespace Mobit.Areas.Admin
         
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            HttpContext.Current.Session.Add("AdminId", "1");
-            HttpContext.Current.Session.Add("AdSoyad", "Bilal ");
-            HttpContext.Current.Session["Yetki"] = "Admin";
+            //HttpContext.Current.Session.Add("AdminId", "1");
+            //HttpContext.Current.Session.Add("AdSoyad", "Bilal ");
+            //HttpContext.Current.Session["Yetki"] = "Admin";
 
             if (Roles == null || Roles == "")// normal session kontrolü - Rolün olmadığı oturum açmış herkes görebilir.
             {
