@@ -13,11 +13,11 @@ namespace Mobit.Controllers
         // GET: Kurum
         Entities db = new Entities();
 
-        public ActionResult Index(string kategoriSlug, string kurumSlug, int Id)
+        public ActionResult Index(string kategoriSlug, string kurumSlug)
         {
             var model = new KurumDetayModel();
 
-            model.Kurumlar = db.Kurumlar.Where(u => u.KurumId == Id && u.Durum == true).FirstOrDefault();
+            model.Kurumlar = db.Kurumlar.Where(u => u.Slug == kurumSlug && u.Durum == true).FirstOrDefault();
 
             if (model.Kurumlar == null)
             {

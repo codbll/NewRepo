@@ -193,6 +193,7 @@
     <Compile Include="Areas\Admin\_Yetki.cs" />
     <Compile Include="Controllers\AltKategoriController.cs" />
     <Compile Include="Controllers\HaberController.cs" />
+    <Compile Include="Controllers\SponsorlarController.cs" />
     <Compile Include="Controllers\KurumController.cs" />
     <Compile Include="Helpers\YetkiKontrol.cs" />
     <Compile Include="Areas\Admin\_SessionController.cs" />
@@ -209,6 +210,7 @@
     <Compile Include="Models\GelismisAramaModel.cs" />
     <Compile Include="Models\HeaderModel.cs" />
     <Compile Include="Models\BodyModel.cs" />
+    <Compile Include="Models\SponsorlarDetayModel.cs" />
     <Compile Include="Models\KurumDetayModel.cs" />
     <Compile Include="Models\MenuModel.cs" />
     <Compile Include="Models\SliderModel.cs" />
@@ -2927,6 +2929,7 @@
     <Content Include="Views\_Partial\_PopupEniyiEgitmenler.cshtml" />
     <Content Include="Views\_Partial\_PopupEniyiOkullar.cshtml" />
     <Content Include="Views\_Partial\_PopupEniyiYoneticiler.cshtml" />
+    <Content Include="Views\Sponsorlar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

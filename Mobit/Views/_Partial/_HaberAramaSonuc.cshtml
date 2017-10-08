@@ -27,7 +27,7 @@
                 @foreach (var item in Model.Haberler)
                 {
                    
-                    <a href="/haber/@item.Slug" title="@item.Ad">
+                    <a href="/haber/@item.Slug" title="@item.Ad" rel="canonical">
                         <li class='SearchResultItem'>
                             @Html.Raw(item.Ad.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
                                              .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")

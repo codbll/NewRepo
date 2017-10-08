@@ -9,7 +9,7 @@
         {
             <div class="col-md-4" style="padding:7px;">
                 <div class="heading heading-primary heading-border heading-bottom-border">
-                    <h3 class="heading-primary">@item.Ad <br /><a href="@item.Url" class="btn btn-xl btn-primary col-md-12">Tüm @item.Ad</a></h3>
+                    <h3 class="heading-primary">@item.Ad <br /><a href="@item.Url" class="btn btn-xl btn-primary col-md-12"  rel="canonical">Tüm @item.Ad</a></h3>
                 </div>
                 <aside class="sidebar">
                     <ul class="simple-post-list">
@@ -17,19 +17,19 @@
                         {
                             <li style="margin:0px;padding:0px;height:162px;font-size:12px;font-family: Arial, sans-serif;">
                                 <div class="post-image">
-                                    <a href="/Haber/@haberler.Slug">
+                                    <a href="/Haber/@haberler.Slug" rel="canonical">
                                         <div class="img-thumbnail">
                                             <span class="thumb-info thumb-info-lighten">
                                                 <span class="thumb-info-wrapper">
                                                     <img src="~/Upload/haber/@haberler.Resim" style="width:100px;height:100px;" alt="@haberler.Slug" />
-                                                    <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary" style="width:100%;">Devamını Oku</a>
+                                                    <a href="/Haber/@haberler.Slug" class="btn btn-xs btn-primary" style="width:100%;" rel="canonical">Devamını Oku</a>
                                                 </span>
                                             </span>
                                         </div>
                                     </a>
                                 </div>
                                 <div class="post-info">
-                                    <a href="/Haber/@haberler.Slug" style="font-size:13px;font-family: Arial, sans-serif;font-weight: bold;">
+                                    <a href="/Haber/@haberler.Slug" style="font-size:13px;font-family: Arial, sans-serif;font-weight: bold;" rel="canonical">
                                         @{
                                             string firstTwoWords2 = string.Join(" ", Html.Raw(haberler.Ad.ToString().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")).ToString().Split().Take(9).ToArray());
                                             Write(Html.Raw(firstTwoWords2.ToUpper().Replace("<p>", "").Replace("</p>", "").Replace("<em>", "").Replace("</em>", "").Replace("<strong>", "").Replace("</strong>", "")));
@@ -61,7 +61,7 @@
                     foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Okullar").Take(10).OrderBy(s => s.Sira))
                     {
                         l = l + 1;
-                        <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                        <a href="/Sponsorlar/@item.Slug" >
                             <div title="@item.KurumAdi">
 
                                 <span class="thumb-info thumb-info-lighten" style="height:125px;width:150px;">
@@ -92,7 +92,7 @@
                     foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Yöneticiler").Take(10).OrderBy(s => s.Sira))
                     {
 
-                        <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                        <a href="/Sponsorlar/@item.Slug">
                             <div title="@item.KurumAdi">
 
                                 <span class="thumb-info thumb-info-lighten" style="height:125px;width:150px;">
@@ -120,7 +120,7 @@
                 @{
                     foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "En İyi Eğitmenler").Take(10).OrderBy(s => s.Sira))
                     {
-                        <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                        <a href="/Sponsorlar/@item.Slug">
                             <div title="@item.KurumAdi">
 
                                 <span class="thumb-info thumb-info-lighten" style="height:125px;width:150px;">
@@ -144,7 +144,7 @@
             @foreach (var item in Model.Slider.Where(s => s.SliderId == 11).Take(14).OrderBy(s => s.Sira))
             {
                 <div class="col-md-12" style="padding:7px;">
-                    <a href="@item.Url" target="@item.Target">
+                    <a href="@item.Url" target="@item.Target" rel="canonical">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="height:125px;width:100%" alt="@item.Baslik">
@@ -167,7 +167,7 @@
             @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Anaokulu").Take(1).OrderBy(s => s.Sponsorlar))
             {
                 <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                    <a href="/Sponsorlar/@item.Slug">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
@@ -188,7 +188,7 @@
             @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Koleji").Take(1).OrderBy(s => s.Sponsorlar))
             {
                 <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                    <a href="/Sponsorlar/@item.Slug">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
@@ -209,7 +209,7 @@
             @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Üniversitesi").Take(1).OrderBy(s => s.Sponsorlar))
             {
                 <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                    <a href="/Sponsorlar/@item.Slug">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
@@ -233,7 +233,7 @@
             @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Kursu").Take(1).OrderBy(s => s.Sponsorlar))
             {
                 <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                    <a href="/Sponsorlar/@item.Slug">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
@@ -254,7 +254,7 @@
             @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Tedarikçisi").Take(1).OrderBy(s => s.Sponsorlar))
             {
                 <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                    <a href="/Sponsorlar/@item.Slug">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">
@@ -275,7 +275,7 @@
             @foreach (var item in db.Kurumlar.Where(h => h.Sponsorlar == "Ayın En İyi Okul Servisi").Take(1).OrderBy(s => s.Sponsorlar))
             {
                 <div class="portfolio-item">
-                    <a href="#" data-toggle="modal" data-target="#@item.Eniyiler">
+                    <a href="/Sponsorlar/@item.Slug">
                         <span class="thumb-info thumb-info-lighten">
                             <span class="thumb-info-wrapper">
                                 <img src="~/Upload/slide/@item.Resim" class="img-responsive" alt="@item.KurumAdi" style="height:250px;">

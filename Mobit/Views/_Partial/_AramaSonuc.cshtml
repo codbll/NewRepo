@@ -26,7 +26,7 @@
             <ul class='SearchResultItemHead'>
                 @foreach (var item in Model.Kurumlar)
                 {
-                    <a href="/@item.Kategoriler.Slug/@item.Slug" title="@item.KurumAdi">
+                    <a href="/@item.Kategoriler.Slug/@item.Slug" title="@item.KurumAdi" rel="canonical">
                         <li class='SearchResultItem'>
                             @Html.Raw(item.KurumAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
                                              .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")
@@ -50,7 +50,7 @@
                 @foreach (var item in Model.Kategoriler)
                 {
 
-                    <a href="/Kategori/@item.Slug" title="@item.KategoriAdi">
+                    <a href="/Kategori/@item.Slug" title="@item.KategoriAdi" rel="canonical">
                         <li class='SearchResultItem'>
                             @Html.Raw(item.KategoriAdi.Replace(Model.SearchKey, "<b><font color='#990066'>" + Model.SearchKey + "</font></b>")
                                 .Replace(HtmlHelperExtensions.UppercaseFirst(Model.SearchKey), "<b><font color='#990066'>" + HtmlHelperExtensions.UppercaseFirst(Model.SearchKey) + "</font></b>")

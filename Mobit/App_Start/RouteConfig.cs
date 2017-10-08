@@ -49,15 +49,19 @@ namespace Mobit
            new[] { "Mobit.Controllers" }
             );
 
-
             routes.MapRoute(
-              "kurumDetay",
-               "{kategoriSlug}/{kurumSlug}/{Id}",
-               new { controller = "Kurum", action = "Index", },
+              "sponsorlarDetay",
+               "Sponsorlar/{kurumSlug}",
+               new { controller = "Sponsorlar", action = "Index", },
                new[] { "Mobit.Controllers" }
             );
 
-         
+            routes.MapRoute(
+              "kurumDetay",
+               "{kategoriSlug}/{kurumSlug}",
+               new { controller = "Kurum", action = "Index", },
+               new[] { "Mobit.Controllers" }
+            ); 
 
             routes.MapRoute(
                "Default",

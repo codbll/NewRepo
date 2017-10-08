@@ -1,9 +1,15 @@
-﻿<script src="~/Content/slider/js/jquery-1.9.1.min.js"></script>
+﻿﻿@model Mobit.Models.SponsorlarDetayModel
+@using Mobit.Helpers
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.bilgi = "";
+}
+<script src="~/Content/slider/js/jquery-1.9.1.min.js"></script>
 <script src="~/Content/slider/js/jssor.slider.min.js"></script>
 <script type="text/javascript">
-    jssor_haberlerSponsor4_slider_init = function () {
+    jssor_haberlerSponsor1_slider_init = function () {
 
-        var jssor_haberlerSponsor4_SlideshowTransitions = [
+        var jssor_haberlerSponsor1_SlideshowTransitions = [
             { $Duration: 1200, $Zoom: 1, $Easing: { $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad }, $Opacity: 2 },
             { $Duration: 1000, $Zoom: 11, $SlideOut: true, $Easing: { $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
             { $Duration: 1200, $Zoom: 1, $Rotate: 1, $During: { $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $Jease$.$Swing, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$Swing }, $Opacity: 2, $Round: { $Rotate: 0.5 } },
@@ -20,11 +26,11 @@
             { $Duration: 1200, x: 1, y: 2, $Cols: 2, $Zoom: 11, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Column: 19 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
         ];
 
-        var jssor_haberlerSponsor4_options = {
+        var jssor_haberlerSponsor1_options = {
             $AutoPlay: 1,
             $SlideshowOptions: {
                 $Class: $JssorSlideshowRunner$,
-                $Transitions: jssor_haberlerSponsor4_SlideshowTransitions,
+                $Transitions: jssor_haberlerSponsor1_SlideshowTransitions,
                 $TransitionsOrder: 1
             },
             $ArrowNavigatorOptions: {
@@ -41,21 +47,21 @@
             }
         };
 
-        var jssor_haberlerSponsor4_slider = new $JssorSlider$("jssor_haberlerSponsor4", jssor_haberlerSponsor4_options);
+        var jssor_haberlerSponsor1_slider = new $JssorSlider$("jssor_haberlerSponsor1", jssor_haberlerSponsor1_options);
 
         /*#region responsive code begin*/
 
         var MAX_WIDTH = 960;
 
         function ScaleSlider() {
-            var containerElement = jssor_haberlerSponsor4_slider.$Elmt.parentNode;
+            var containerElement = jssor_haberlerSponsor1_slider.$Elmt.parentNode;
             var containerWidth = containerElement.clientWidth;
 
             if (containerWidth) {
 
                 var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
 
-                jssor_haberlerSponsor4_slider.$ScaleWidth(expectedWidth);
+                jssor_haberlerSponsor1_slider.$ScaleWidth(expectedWidth);
             }
             else {
                 window.setTimeout(ScaleSlider, 30);
@@ -70,9 +76,9 @@
         /*#endregion responsive code end*/
     };
 
-    jssor_slaytSponsor4_slider_init = function () {
+    jssor_slaytSponsor1_slider_init = function () {
 
-        var jssor_slaytSponsor4_SlideshowTransitions = [
+        var jssor_slaytSponsor1_SlideshowTransitions = [
             { $Duration: 1200, $Zoom: 1, $Easing: { $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad }, $Opacity: 2 },
             { $Duration: 1000, $Zoom: 11, $SlideOut: true, $Easing: { $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
             { $Duration: 1200, $Zoom: 1, $Rotate: 1, $During: { $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $Jease$.$Swing, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$Swing }, $Opacity: 2, $Round: { $Rotate: 0.5 } },
@@ -89,11 +95,11 @@
             { $Duration: 1200, x: 1, y: 2, $Cols: 2, $Zoom: 11, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Column: 19 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
         ];
 
-        var jssor_slaytSponsor4_options = {
+        var jssor_slaytSponsor1_options = {
             $AutoPlay: 1,
             $SlideshowOptions: {
                 $Class: $JssorSlideshowRunner$,
-                $Transitions: jssor_slaytSponsor4_SlideshowTransitions,
+                $Transitions: jssor_slaytSponsor1_SlideshowTransitions,
                 $TransitionsOrder: 1
             },
             $ArrowNavigatorOptions: {
@@ -110,21 +116,21 @@
             }
         };
 
-        var jssor_slaytSponsor4_slider = new $JssorSlider$("jssor_slaytSponsor4", jssor_slaytSponsor4_options);
+        var jssor_slaytSponsor1_slider = new $JssorSlider$("jssor_slaytSponsor1", jssor_slaytSponsor1_options);
 
         /*#region responsive code begin*/
 
         var MAX_WIDTH = 960;
 
         function ScaleSlider() {
-            var containerElement = jssor_slaytSponsor4_slider.$Elmt.parentNode;
+            var containerElement = jssor_slaytSponsor1_slider.$Elmt.parentNode;
             var containerWidth = containerElement.clientWidth;
 
             if (containerWidth) {
 
                 var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
 
-                jssor_slaytSponsor4_slider.$ScaleWidth(expectedWidth);
+                jssor_slaytSponsor1_slider.$ScaleWidth(expectedWidth);
             }
             else {
                 window.setTimeout(ScaleSlider, 30);
@@ -139,9 +145,9 @@
         /*#endregion responsive code end*/
     };
 
-    jssor_aktivitelerSponsor4_slider_init = function () {
+    jssor_aktivitelerSponsor1_slider_init = function () {
 
-        var jssor_aktivitelerSponsor4_SlideshowTransitions = [
+        var jssor_aktivitelerSponsor1_SlideshowTransitions = [
             { $Duration: 1200, $Zoom: 1, $Easing: { $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad }, $Opacity: 2 },
             { $Duration: 1000, $Zoom: 11, $SlideOut: true, $Easing: { $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
             { $Duration: 1200, $Zoom: 1, $Rotate: 1, $During: { $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $Jease$.$Swing, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$Swing }, $Opacity: 2, $Round: { $Rotate: 0.5 } },
@@ -158,11 +164,11 @@
             { $Duration: 1200, x: 1, y: 2, $Cols: 2, $Zoom: 11, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Column: 19 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
         ];
 
-        var jssor_aktivitelerSponsor4_options = {
+        var jssor_aktivitelerSponsor1_options = {
             $AutoPlay: 1,
             $SlideshowOptions: {
                 $Class: $JssorSlideshowRunner$,
-                $Transitions: jssor_aktivitelerSponsor4_SlideshowTransitions,
+                $Transitions: jssor_aktivitelerSponsor1_SlideshowTransitions,
                 $TransitionsOrder: 1
             },
             $ArrowNavigatorOptions: {
@@ -179,21 +185,21 @@
             }
         };
 
-        var jssor_aktivitelerSponsor4_slider = new $JssorSlider$("jssor_aktivitelerSponsor4", jssor_aktivitelerSponsor4_options);
+        var jssor_aktivitelerSponsor1_slider = new $JssorSlider$("jssor_aktivitelerSponsor1", jssor_aktivitelerSponsor1_options);
 
         /*#region responsive code begin*/
 
         var MAX_WIDTH = 960;
 
         function ScaleSlider() {
-            var containerElement = jssor_aktivitelerSponsor4_slider.$Elmt.parentNode;
+            var containerElement = jssor_aktivitelerSponsor1_slider.$Elmt.parentNode;
             var containerWidth = containerElement.clientWidth;
 
             if (containerWidth) {
 
                 var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
 
-                jssor_aktivitelerSponsor4_slider.$ScaleWidth(expectedWidth);
+                jssor_aktivitelerSponsor1_slider.$ScaleWidth(expectedWidth);
             }
             else {
                 window.setTimeout(ScaleSlider, 30);
@@ -208,9 +214,9 @@
         /*#endregion responsive code end*/
     };
 
-    jssor_ResimlerSponsor4_slider_init = function () {
+    jssor_ResimlerSponsor1_slider_init = function () {
 
-        var jssor_ResimlerSponsor4_SlideshowTransitions = [
+        var jssor_ResimlerSponsor1_SlideshowTransitions = [
             { $Duration: 1200, $Zoom: 1, $Easing: { $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad }, $Opacity: 2 },
             { $Duration: 1000, $Zoom: 11, $SlideOut: true, $Easing: { $Zoom: $Jease$.$InExpo, $Opacity: $Jease$.$Linear }, $Opacity: 2 },
             { $Duration: 1200, $Zoom: 1, $Rotate: 1, $During: { $Zoom: [0.2, 0.8], $Rotate: [0.2, 0.8] }, $Easing: { $Zoom: $Jease$.$Swing, $Opacity: $Jease$.$Linear, $Rotate: $Jease$.$Swing }, $Opacity: 2, $Round: { $Rotate: 0.5 } },
@@ -227,11 +233,11 @@
             { $Duration: 1200, x: 1, y: 2, $Cols: 2, $Zoom: 11, $Rotate: 1, $Assembly: 2049, $ChessMode: { $Column: 19 }, $Easing: { $Left: $Jease$.$InCubic, $Top: $Jease$.$InCubic, $Zoom: $Jease$.$InCubic, $Opacity: $Jease$.$OutQuad, $Rotate: $Jease$.$InCubic }, $Opacity: 2, $Round: { $Rotate: 0.8 } }
         ];
 
-        var jssor_ResimlerSponsor4_options = {
+        var jssor_ResimlerSponsor1_options = {
             $AutoPlay: 1,
             $SlideshowOptions: {
                 $Class: $JssorSlideshowRunner$,
-                $Transitions: jssor_ResimlerSponsor4_SlideshowTransitions,
+                $Transitions: jssor_ResimlerSponsor1_SlideshowTransitions,
                 $TransitionsOrder: 1
             },
             $ArrowNavigatorOptions: {
@@ -248,21 +254,21 @@
             }
         };
 
-        var jssor_ResimlerSponsor4_slider = new $JssorSlider$("jssor_ResimlerSponsor4", jssor_ResimlerSponsor4_options);
+        var jssor_ResimlerSponsor1_slider = new $JssorSlider$("jssor_ResimlerSponsor1", jssor_ResimlerSponsor1_options);
 
         /*#region responsive code begin*/
 
         var MAX_WIDTH = 960;
 
         function ScaleSlider() {
-            var containerElement = jssor_ResimlerSponsor4_slider.$Elmt.parentNode;
+            var containerElement = jssor_ResimlerSponsor1_slider.$Elmt.parentNode;
             var containerWidth = containerElement.clientWidth;
 
             if (containerWidth) {
 
                 var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
 
-                jssor_ResimlerSponsor4_slider.$ScaleWidth(expectedWidth);
+                jssor_ResimlerSponsor1_slider.$ScaleWidth(expectedWidth);
             }
             else {
                 window.setTimeout(ScaleSlider, 30);
@@ -409,81 +415,93 @@
     }
 </style>
 
-<div class="container-fluid" style="background-color:aliceblue;">
-    <br />
-    @{
-        Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();
-        foreach (var Model in db.Kurumlar.Where(h => h.Sponsorlar == "Sponsor4").Take(1).ToList())
-        {
-            <div class="col-md-12">
-                <div class="row" style="background-color: #FFFFFF;">
-                    <div class="col-md-3">
-                        <img data-u="image" src="~/Upload/slide/@Model.Resim" alt="@Model.KurumAdi" title="@Model.KurumAdi" style="width:100px;height:50px;" />
-                    </div>
-                    <div class="col-md-6">
-                        <br />
-                        <span style="font-size:40px;vertical-align:middle;text-align: center;" class="heading-primary">@Model.KurumAdi</span>
-                    </div>
-                    <div class="col-md-1">
 
-                    </div>
-                    <div class="col-md-2">
-                        <br />
-                        <button type="button" class="btn btn-default" data-dismiss="modal">KAPAT</button><br />
-                    </div>
+
+@section baslikAlan{
+    
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="breadcrumb">
+                <li> @{ if (@Model.Kurumlar.Kategoriler != null) { @Model.Kurumlar.Kategoriler.KategoriAdi} }</li>
+                <li>@Model.Kurumlar.KurumAdi</li>
+            </ul>
+        </div>
+    </div>
+}
+@{Mobit.Data.Context.Entities db = new Mobit.Data.Context.Entities();}
+<div role="main" class="main shop" style="padding-left:2px;padding-right:25px;margin-left:7px;">
+    <div class="container">
+        <div class="row" style="padding-left:2px;padding-right:2px;">
+            <div class="col-md-11 img-thumbnail" style="padding:7px;margin-top:-10px;margin-left:7px;margin-right:2px;">
+                <div class="col-md-2">
+                    @if (@Model.Kurumlar.Sponsorlar != null)
+                    {
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
+                    }
+                    else
+                    {
+                        <img class="img-responsive img-thumbnail" src="~/Upload/slide/@Model.Kurumlar.Resim" style="height:150px;" alt="@Model.Kurumlar.KurumAdi">
+                    }
+                </div>
+                <div class="col-md-9">
+                    <br />
+                    <span style="font-size:60px;vertical-align:bottom;text-align: center;" class="heading-primary">@Model.Kurumlar.KurumAdi</span>
                 </div>
             </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="row">
+        </div>
+    </div>
+    <br />
+    <div class="container">
+        <div class="row">
+            <div class="col-md-11">
                             <div class="col-md-12">
                                 <div class="tabs tabs-tertiary tabs-center nav-tabs-justified">
                                     <ul class="nav nav-tabs">
-                                        <li class="active"><a href="#haberlerSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Haberler</a></li>
-                                        @if (Model.KurumResim.Where(r => r.ResimTipi == 1 && r.KurumId == Model.KurumId).Count() >= 1)
+                                        <li class="active"><a href="#haberlerSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Haberler</a></li>
+                                        @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 1 && r.KurumId == Model.Kurumlar.KurumId).Count() >= 1)
                                         {
-                                            <li><a href="#slaytSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Tanıtım Slaytları</a></li>
+                                            <li><a href="#slaytSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Tanıtım Slaytları</a></li>
                                         }
 
-                                        @if (Model.KurumResim.Where(r => r.ResimTipi == 4 && r.KurumId == Model.KurumId).Count() >= 1)
+                                        @if (Model.Kurumlar.KurumResim.Where(r => r.ResimTipi == 4 && r.KurumId == Model.Kurumlar.KurumId).Count() >= 1)
                                         {
-                                            <li><a href="#aktivitelerSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Aktiviteler</a></li>
+                                            <li><a href="#aktivitelerSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Aktiviteler</a></li>
                                         }
-                                        @if (Model.Aciklama != null && Model.Aciklama.Length > 10)
+                                        @if (Model.Kurumlar.Aciklama != null && Model.Kurumlar.Aciklama.Length > 10)
                                         {
-                                            <li><a href="#aciklamaSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Hakkında</a></li>
+                                            <li><a href="#aciklamaSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Hakkında</a></li>
                                         }
-                                        @if (Model.Video != null && Model.Video.Length > 20)
+                                        @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Length > 20)
                                         {
-                                            <li><a href="#videoSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Tanıtım Videosu</a></li>
+                                            <li><a href="#videoSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Tanıtım Videosu</a></li>
 
                                         }
-                                        @if (Model.Harita != null && Model.Harita.Length > 20)
+                                        @if (Model.Kurumlar.Harita != null && Model.Kurumlar.Harita.Length > 20)
                                         {
-                                            <li><a href="#haritaSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Harita</a></li>
+                                            <li><a href="#haritaSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Harita</a></li>
 
                                         }
-                                        @if (Model.Panoroma != null && Model.Panoroma.Length > 10)
+                                        @if (Model.Kurumlar.Panoroma != null && Model.Kurumlar.Panoroma.Length > 10)
                                         {
-                                            <li><a href="#panoromaSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Panoroma</a></li>
+                                            <li><a href="#panoromaSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Panoroma</a></li>
                                         }
-                                        @if (Model.D3Boyutlu != null && Model.D3Boyutlu.Length > 10)
+                                        @if (Model.Kurumlar.D3Boyutlu != null && Model.Kurumlar.D3Boyutlu.Length > 10)
                                         {
-                                            <li><a href="#3dSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">3D Tanıtım</a></li>
+                                            <li><a href="#3dSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">3D Tanıtım</a></li>
                                         }
-                                        <li><a href="#ResimlerSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Eğitimciler</a></li>
-                                        <li><a href="#DetaylarSponsor4" data-toggle="tab" style="color:blue;" rel="canonical">Detaylar</a></li>
+                                        <li><a href="#ResimlerSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Eğitimciler</a></li>
+                                        <li><a href="#DetaylarSponsor1" data-toggle="tab" style="color:blue;" rel="canonical">Detaylar</a></li>
+                                        <li><a href="#iletisim" data-toggle="tab" style="color:blue;" rel="canonical">İletişim</a></li>
                                     </ul>
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="haberlerSponsor4">
-                                            <div id="jssor_haberlerSponsor4" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                        <div class="tab-pane active" id="haberlerSponsor1">
+                                            <div id="jssor_haberlerSponsor1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                 <!-- Loading Screen -->
                                                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"  src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları"   />
+                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları" />
                                                 </div>
                                                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
-                                                    @foreach (var resim in db.Haberler.Where(r => r.KategoriId == 8).OrderByDescending(u => u.Id))
+                                                    @foreach (var resim in db.Haberler.Where(r => r.KategoriId == 5).OrderByDescending(u => u.Id))
                                                     {
                                                         <div style="background-color:#fff;border:solid;border-color:aliceblue;border-width:5px;">
                                                             @*<img data-u="image" src="~/Upload/haber/@resim.Resim" alt="@resim.Ad" title="@resim.Ad" />*@
@@ -522,14 +540,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="slaytSponsor4" style="background-color:#FFF;">
-                                            <div id="jssor_slaytSponsor4" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                        <div class="tab-pane" id="slaytSponsor1" style="background-color:#FFF;">
+                                            <div id="jssor_slaytSponsor1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                 <!-- Loading Screen -->
                                                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"  src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları"   />
+                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları" />
                                                 </div>
                                                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
-                                                    @foreach (var resim in db.KurumResim.Where(r => r.ResimTipi == 1 && r.KurumId == Model.KurumId))
+                                                    @foreach (var resim in db.KurumResim.Where(r => r.ResimTipi == 1 && r.KurumId == Model.Kurumlar.KurumId))
                                                     {
                                                         <div>
                                                             <img data-u="image" src="~/Upload/slide/@resim.Resim" alt="@resim.Resim" title="@resim.Resim" />
@@ -568,14 +586,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="aktivitelerSponsor4" style="background-color:#FFF;">
-                                            <div id="jssor_aktivitelerSponsor4" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                        <div class="tab-pane" id="aktivitelerSponsor1" style="background-color:#FFF;">
+                                            <div id="jssor_aktivitelerSponsor1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                 <!-- Loading Screen -->
                                                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"  src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları"   />
+                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları" />
                                                 </div>
                                                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
-                                                    @foreach (var resim in db.KurumResim.Where(r => r.ResimTipi == 4 && r.KurumId == Model.KurumId))
+                                                    @foreach (var resim in db.KurumResim.Where(r => r.ResimTipi == 4 && r.KurumId == Model.Kurumlar.KurumId))
                                                     {
                                                         <div>
                                                             <img data-u="image" src="~/Upload/slide/@resim.Resim" alt="@resim.Resim" title="@resim.Resim" />
@@ -614,59 +632,59 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="aciklamaSponsor4" style="background-color:#FFF;">
+                                        <div class="tab-pane" id="aciklamaSponsor1" style="background-color:#FFF;">
                                             <p>
-                                                @Html.Raw(Model.Aciklama)
+                                                @Html.Raw(Model.Kurumlar.Aciklama)
                                             </p>
                                         </div>
-                                        <div class="tab-pane" id="videoSponsor4" style="background-color:#FFF;">
-                                            @if (Model.Video != null && Model.Video.Contains("<embed"))
+                                        <div class="tab-pane" id="videoSponsor1" style="background-color:#FFF;">
+                                            @if (Model.Kurumlar.Video != null && Model.Kurumlar.Video.Contains("<embed"))
                                             {
-                                                @Html.Raw(Model.Video)
+                                                @Html.Raw(Model.Kurumlar.Video)
                                             }
                                             else
                                             {
-                                                <embed style="width:100%; height:450px;"  src="@Html.Raw(Model.Video)" flashvars="" />
+                                                <embed style="width:100%; height:450px;" src="@Html.Raw(Model.Kurumlar.Video)" flashvars="" />
                                             }
                                         </div>
-                                        <div class="tab-pane" id="haritaSponsor4" style="background-color:#FFF;">
-                                            @if (Model.Harita != null && Model.Harita.Contains("<embed"))
+                                        <div class="tab-pane" id="haritaSponsor1" style="background-color:#FFF;">
+                                            @if (Model.Kurumlar.Harita != null && Model.Kurumlar.Harita.Contains("<embed"))
                                             {
-                                                @Html.Raw(Model.Harita)
+                                                @Html.Raw(Model.Kurumlar.Harita)
                                             }
                                             else
                                             {
-                                                <embed style="width:100%; height:450px;"  src="@Html.Raw(Model.Harita)" flashvars="" />
+                                                <embed style="width:100%; height:450px;" src="@Html.Raw(Model.Kurumlar.Harita)" flashvars="" />
                                             }
                                         </div>
-                                        <div class="tab-pane" id="3dSponsor4" style="background-color:#FFF;">
-                                            @if (Model.D3Boyutlu != null && Model.D3Boyutlu.Contains("<embed"))
+                                        <div class="tab-pane" id="3dSponsor1" style="background-color:#FFF;">
+                                            @if (Model.Kurumlar.D3Boyutlu != null && Model.Kurumlar.D3Boyutlu.Contains("<embed"))
                                             {
-                                                @Html.Raw(Model.D3Boyutlu)
+                                                @Html.Raw(Model.Kurumlar.D3Boyutlu)
                                             }
                                             else
                                             {
-                                                <embed style="width:100%; height:450px;"  src="@Html.Raw(Model.D3Boyutlu)" flashvars="" />
+                                                <embed style="width:100%; height:450px;" src="@Html.Raw(Model.Kurumlar.D3Boyutlu)" flashvars="" />
                                             }
                                         </div>
-                                        <div class="tab-pane" id="panoromaSponsor4" style="background-color:#FFF;">
-                                            @if (Model.Panoroma != null && Model.Panoroma.Contains("<embed"))
+                                        <div class="tab-pane" id="panoromaSponsor1" style="background-color:#FFF;">
+                                            @if (Model.Kurumlar.Panoroma != null && Model.Kurumlar.Panoroma.Contains("<embed"))
                                             {
-                                                @Html.Raw(Model.Panoroma)
+                                                @Html.Raw(Model.Kurumlar.Panoroma)
                                             }
                                             else
                                             {
-                                                <embed style="width:100%; height:450px;"  src="@Html.Raw(Model.Panoroma)" flashvars="" />
+                                                <embed style="width:100%; height:450px;" src="@Html.Raw(Model.Kurumlar.Panoroma)" flashvars="" />
                                             }
                                         </div>
-                                        <div class="tab-pane" id="ResimlerSponsor4" style="background-color:#FFF;">
-                                            <div id="jssor_ResimlerSponsor4" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
+                                        <div class="tab-pane" id="ResimlerSponsor1" style="background-color:#FFF;">
+                                            <div id="jssor_ResimlerSponsor1" style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:420px;overflow:hidden;visibility:hidden;background-color:#24262e;">
                                                 <!-- Loading Screen -->
                                                 <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
-                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;"  src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları"   />
+                                                    <img style="margin-top:-19px;position:relative;top:50%;width:38px;height:38px;" src="~/Content/slider/svg/loading/static-svg/spin.svg" alt="okullar, anaokulları, ilkokullar, ortaokullar, liseler, kolejler, meslek okulları, yurtlar,kurslar, dershaneler, üniversiteler, öğrenci servisleri, okul servisleri, yabancı dil, kursları, yurt dışı eğitim, istanbul okulları, istanbul kolejler, istanbul anaokulları, istanbul okul haberleri, istanbul üniversiteler, istanbul yurtlar, kız yurtları, erkek yurtları, sürücü kursları, sanat kursları, istanbul liseler ,istanbuldaki okullar, istanbuldaki kolejler, burslu okullar, kreşler, istanbul kreşler, kız yurtları ,erkek yurtları" />
                                                 </div>
                                                 <div data-u="slides" style="cursor:default;position:relative;top:0px;left:240px;width:720px;height:420px;overflow:hidden;">
-                                                    @foreach (var resim in db.KurumEgitimciler.Where(r => r.Tip == 1 && r.KurumId == Model.KurumId))
+                                                    @foreach (var resim in db.KurumEgitimciler.Where(r => r.Tip == 1 && r.KurumId == Model.Kurumlar.KurumId))
                                                     {
                                                         <div>
                                                             <img data-u="image" src="~/Upload/slide/@resim.Resim" alt="@resim.Resim" title="@resim.Resim" />
@@ -705,134 +723,128 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="tab-pane" id="DetaylarSponsor4" style="background-color:#FFF;">
+                                        <div class="tab-pane" id="DetaylarSponsor1" style="background-color:#FFF;">
                                             <dl>
-                                                @if (Model.Adres != null)
+                                                @if (Model.Kurumlar.Adres != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ADRESİ :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Adres</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Adres</span></dd>
                                                 }
 
-                                                @if (Model.Tel != null)
+                                                @if (Model.Kurumlar.Tel != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">TELEFON NO :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Tel</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Tel</span></dd>
                                                 }
-                                                @if (Model.WebSitesi != null)
+                                                @if (Model.Kurumlar.WebSitesi != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">WEB SİTESİ :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;color:#000000;"><a href="@Model.WebSitesi" target="_blank"  style="font-weight:bold;margin-left:10px;color:#000000;" rel="canonical">@Model.WebSitesi</a></span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;color:#000000;"><a href="@Model.Kurumlar.WebSitesi" target="_blank" style="font-weight:bold;margin-left:10px;color:#000000;" rel="canonical">@Model.Kurumlar.WebSitesi</a></span></dd>
                                                 }
-                                                @if (Model.Subeler != null)
+                                                @if (Model.Kurumlar.Subeler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ŞUBELER :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Subeler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Subeler</span></dd>
                                                 }
-                                                @if (Model.KurulusTarih != null)
+                                                @if (Model.Kurumlar.KurulusTarih != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AÇILIŞ YILI :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurulusTarih</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurulusTarih</span></dd>
                                                 }
-                                                @if (Model.Kurucusu != null)
+                                                @if (Model.Kurumlar.Kurucusu != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KURUCUSU \ YÖNETİCİSİ :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurucusu</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kurucusu</span></dd>
                                                 }
-                                                @if (Model.Kordinatorler != null)
+                                                @if (Model.Kurumlar.Kordinatorler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">KORDİNATÖRLER :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kordinatorler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Kordinatorler</span></dd>
                                                 }
-                                                @if (Model.KurumMuduru != null)
+                                                @if (Model.Kurumlar.KurumMuduru != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dd>
                                                 }
-                                                @if (Model.KurumMuduru != null)
+                                                @if (Model.Kurumlar.KurumMuduru != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">MÜDÜR YARDIMCILARI :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.KurumMuduru</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.KurumMuduru</span></dd>
                                                 }
-                                                @if (Model.Egitimciler != null)
+                                                @if (Model.Kurumlar.Egitimciler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİMCİLER :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Egitimciler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Egitimciler</span></dd>
                                                 }
-                                                @if (Model.Aktiviteler != null)
+                                                @if (Model.Kurumlar.Aktiviteler != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">AKTİVİTELER :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Aktiviteler</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Aktiviteler</span></dd>
                                                 }
-                                                @if (Model.Fax != null)
+                                                @if (Model.Kurumlar.Fax != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">FAKS :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Fax</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Fax</span></dd>
                                                 }
-                                                @if (Model.Email != null)
+                                                @if (Model.Kurumlar.Email != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">E-MAİL :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Email</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Email</span></dd>
                                                 }
 
-                                                @if (Model.EgitimDili != null)
+                                                @if (Model.Kurumlar.EgitimDili != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">EĞİTİM DİLİ :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.EgitimDili</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.EgitimDili</span></dd>
                                                 }
-                                                @if (Model.OgrenciSayisi != null)
+                                                @if (Model.Kurumlar.OgrenciSayisi != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÖĞRENCİ SAYISI :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.OgrenciSayisi</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.OgrenciSayisi</span></dd>
                                                 }
-                                                @if (Model.YurticiUniversiteBasariOrani != null)
+                                                @if (Model.Kurumlar.YurticiUniversiteBasariOrani != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT İÇİ ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.YurticiUniversiteBasariOrani</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.YurticiUniversiteBasariOrani</span></dd>
                                                 }
-                                                @if (Model.YurtDisiUniversiteBasariOrani != null)
+                                                @if (Model.Kurumlar.YurtDisiUniversiteBasariOrani != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">YURT DIŞI ÜNİVERSİTE BAŞARI ORANI :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.YurtDisiUniversiteBasariOrani</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.YurtDisiUniversiteBasariOrani</span></dd>
                                                 }
-                                                @if (Model.BursOlanakları != null)
+                                                @if (Model.Kurumlar.BursOlanakları != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">BURS OLANAKLARI :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.BursOlanakları</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.BursOlanakları</span></dd>
                                                 }
-                                                @if (Model.Ucreti != null)
+                                                @if (Model.Kurumlar.Ucreti != null)
                                                 {
                                                     <dt style="background-color:#FFF;width:95%;"><span style="color:red;font-weight:bold;margin-left:10px;">ÜCRETİ :</span></dt>
-                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Ucreti</span></dd>
+                                                    <dd style="width:95%;background-color:#FFF;"><span style="font-weight:bold;margin-left:10px;">@Model.Kurumlar.Ucreti</span></dd>
                                                 }
 
 
                                             </dl>
+                                        </div>
 
+                                        <div class="tab-pane" id="iletisim" style="background-color:#FFF;">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    @Html.Partial("/Views/_Partial/_kurumMesajGonder.cshtml", Model.Kurumlar)
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-
-
             </div>
-
-        }
-
-    }
-
-
-
-
-
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
-    jssor_haberlerSponsor4_slider_init();
-    jssor_slaytSponsor4_slider_init();
-    jssor_aktivitelerSponsor4_slider_init();
-    jssor_ResimlerSponsor4_slider_init();
+    jssor_haberlerSponsor1_slider_init();
+    jssor_slaytSponsor1_slider_init();
+    jssor_aktivitelerSponsor1_slider_init();
+    jssor_ResimlerSponsor1_slider_init();
 </script>

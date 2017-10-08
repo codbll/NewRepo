@@ -17,7 +17,7 @@
                 @foreach (var item in ViewData["ustTekReklam"] as List<Mobit.Data.Context.Slider>)
                 {
                     <div class="col-md-12" style="padding:7px;margin-top:-10px">
-                        <a href="@item.Url" target="@item.Target">
+                        <a href="@item.Url" target="@item.Target" rel="canonical">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" alt="@item.Baslik">
                         </a>
                     </div>
@@ -40,7 +40,7 @@
 
                                     <div class="post-image">
 
-                                        <h2><a href="/haber/@haber.Slug" title="@haber.Ad">@haber.Ad</a></h2>
+                                        <h2><a href="/haber/@haber.Slug" title="@haber.Ad" rel="canonical">@haber.Ad</a></h2>
 
                                     </div>
                                 </div>
@@ -53,7 +53,7 @@
                                         <div class="owl-carousel owl-theme" data-plugin-options='{"items":1}'>
                                             <div>
                                                 <div class="img-thumbnail">
-                                                    <a href="/haber/@haber.Slug">  <img class="img-responsive" src="~/Upload/haber/@haber.Resim" title="@haber.Ad" alt="@haber.Ad" style="width:100%;height:150px;"></a>
+                                                    <a href="/haber/@haber.Slug" rel="canonical">  <img class="img-responsive" src="~/Upload/haber/@haber.Resim" title="@haber.Ad" alt="@haber.Ad" style="width:100%;height:150px;"></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -63,7 +63,7 @@
 
                                     <div class="col-md-9">
                                         <div class="post-info">
-                                            <h4><a href="/Haber/@haber.Slug">@haber.Ad</a></h4>
+                                            <h4><a href="/Haber/@haber.Slug" rel="canonical">@haber.Ad</a></h4>
                                             @{
                                                 string firstTwoWords = string.Join(" ", Html.Raw(haber.Detay).ToString().Split().Take(40).ToArray());
                                                 Write(Html.Raw(firstTwoWords));
@@ -82,7 +82,7 @@
                                 <div class="post-meta">
                                     <span><i class="fa fa-calendar"></i>@haber.Tarih.ToString("d") </span>
 
-                                    <a href="/haber/@haber.Slug" class="btn btn-xs btn-primary pull-right">Devamını Oku</a>
+                                    <a href="/haber/@haber.Slug" class="btn btn-xs btn-primary pull-right" rel="canonical">Devamını Oku</a>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +106,13 @@
         @if (ViewData["detayReklam"] != null)
             {
             @*foreach (var item in ViewData["detayReklam"] as List<Mobit.Data.Context.Slider>)
-                {
-                    <div class="col-md-12">
-                        <a href="@item.Url" target="@item.Target">
-                            <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
-                        </a>
-                    </div>
-                }*@
+    {
+        <div class="col-md-12">
+            <a href="@item.Url" target="@item.Target" rel="canonical">
+                <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" width="100%" alt="@item.Baslik">
+            </a>
+        </div>
+    }*@
 
             <div class="col-md-12" style="margin-left:-28px;">
                 <ul class="image-gallery sort-destination full-width">
@@ -121,7 +121,7 @@
                     {
                         <li class="isotope-item">
                             <div class="image-gallery-item" style="padding:5px;">
-                                <a href="@item.Url" target="@item.Target">
+                                <a href="@item.Url" target="@item.Target" rel="canonical">
                                     <span class="thumb-info thumb-info-centered-info">
                                         <span class="thumb-info-wrapper">
                                             <img src="~/Upload/slide/@item.Resim" class="img-responsive img-thumbnail" alt="@item.Resim" style="height:300px;">

@@ -6,7 +6,7 @@
 
                 @foreach (var item in db.Haberler.Where(h => h.Aktif == true && h.KategoriId == 4).OrderByDescending(u => u.Id).ToList())
                 {
-                    <a href="/haber/@item.Slug" >
+                    <a href="/haber/@item.Slug" rel="canonical">
                         <div class="image-gallery-item">
                             <span class="thumb-info thumb-info-lighten">
                                 <span class="thumb-info-wrapper">

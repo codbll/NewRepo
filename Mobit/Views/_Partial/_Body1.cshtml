@@ -10,7 +10,7 @@
                     @foreach (var item in Model.Slider.Where(sld => sld.SliderId == 2))
                     {
                         <div>
-                            <a href="@item.Url" target="@item.Target">
+                            <a href="@item.Url" target="@item.Target" rel="canonical">
                                 <span class="thumb-info thumb-info-lighten">
                                     <span class="thumb-info-wrapper">
                                         <img alt="@item.Baslik" title="@item.Baslik" class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:400px;">
@@ -28,7 +28,7 @@
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 12).Take(1).OrderByDescending(s => s.Id))
             {
                     <div class="col-md-12 SmallSlayt">
-                        <a href="@item.Url" target="@item.Target">
+                        <a href="@item.Url" target="@item.Target" rel="canonical">
                             <span class="thumb-info thumb-info-lighten">
                                 <span class="thumb-info-wrapper">
                                     <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:75px;" alt="@item.Baslik">
@@ -42,7 +42,7 @@
                 @foreach (var item in Model.Slider.Where(s => s.SliderId == 7).Take(2).OrderBy(s => s.Sira))
             {
                     <div class="col-md-6 SmallSlayt">
-                        <a href="@item.Url" target="@item.Target">
+                        <a href="@item.Url" target="@item.Target" rel="canonical">
                             <span class="thumb-info thumb-info-lighten">
                                 <span class="thumb-info-wrapper">
                                     <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:303px;" alt="@item.Baslik">
@@ -61,7 +61,7 @@
         @foreach (var item in Model.Slider.Where(s => s.SliderId == 8).Take(1).OrderByDescending(s => s.Id))
         {
             <div class="col-md-12" style="padding:6px;">
-                <a href="@item.Url" target="@item.Target">
+                <a href="@item.Url" target="@item.Target" rel="canonical">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:150px;" alt="@item.Baslik">
@@ -76,7 +76,7 @@
         @foreach (var item in Model.Slider.Where(s => s.SliderId == 9).Take(2).OrderBy(s => s.Sira))
         {
             <div class="col-md-6" style="padding:6px;">
-                <a href="@item.Url" target="@item.Target">
+                <a href="@item.Url" target="@item.Target" rel="canonical">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:150px;" alt="@item.Baslik">
@@ -90,7 +90,7 @@
         @foreach (var item in Model.Slider.Where(s => s.SliderId == 10).Take(3).OrderBy(s => s.Sira))
         {
             <div class="col-md-4" style="padding:6px;">
-                <a href="@item.Url" target="@item.Target">
+                <a href="@item.Url" target="@item.Target" rel="canonical">
                     <span class="thumb-info thumb-info-lighten">
                         <span class="thumb-info-wrapper">
                             <img class="img-responsive img-thumbnail" src="~/Upload/slide/@item.Resim" style="width:100%;height:150px;" alt="@item.Baslik">
