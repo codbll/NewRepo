@@ -18,7 +18,7 @@ namespace Mobit.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var kurumlar = db.Kurumlar.Where(u => u.Durum == true).ToList();
+            var kurumlar = db.Kurumlar.Where(k => k.Sponsorlar == null || k.Sponsorlar == "").ToList();
 
 
             var haberler = db.Haberler.ToList();
@@ -26,7 +26,7 @@ namespace Mobit.Areas.Admin.Controllers
 
             ViewBag.kategoriSayi = db.Kategoriler.Count();
             ViewBag.altKategoriSayi = db.AltKategoriler.Count();
-            ViewBag.kurumSayi = db.Kurumlar.Count();
+            ViewBag.kurumSayi = db.Kurumlar.Where(k => k.Sponsorlar == null || k.Sponsorlar == "").Count();
             ViewBag.haberler = db.Haberler.Count();
 
             return View(kurumlar);

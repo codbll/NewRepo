@@ -407,7 +407,7 @@ namespace Mobit.Controllers
             }
             else
             {
-                kurumlar = db.Kurumlar.Where(k => k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
+                kurumlar = db.Kurumlar.Where(k => k.KurumAdi.Contains(arama.SearchKey) && k.Durum == true && k.Sponsorlar == null).OrderByDescending(u => u.KurumId).ToPagedList<Kurumlar>(_sayfaNo, 20);
             }
 
             if (kurumlar.Count == 0)

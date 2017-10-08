@@ -16,7 +16,7 @@ namespace Mobit.Areas.Admin.Controllers
 
         public ActionResult Index()
         {
-            var kurumlar = db.Kurumlar.ToList();
+            var kurumlar = db.Kurumlar.Where(k => k.Sponsorlar == null || k.Sponsorlar == "").ToList();
 
             return View(kurumlar);
         }
